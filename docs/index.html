@@ -1,1 +1,29 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="stylesheet" href="css/style.min.css">    <title>Salamandra | PC Builder</title>    <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon/favicon-32x32.png">    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">    <!-- <link rel="manifest" href="/site.webmanifest"> --></head><body>    <h1>Hello world!</h1>    <script src="js/script.js"></script></body></html>
+<!DOCTYPE html><html lang="ru"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <link rel="stylesheet" href="css/style.min.css">    <title>Salamandra | PC Builder</title>    <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon/favicon-32x32.png">    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">    <!-- <link rel="manifest" href="/site.webmanifest"> --></head><body>    <header class="header">
+    <div class="header__container">
+        <a href="#" class="header__logo logo-header">
+            <img src="img/logo_header.svg" alt="">
+            <div class="logo-header__title">
+                <p><span>Salamandra</span></p>
+                <p>PC Builder</p>
+            </div>
+        </a>
+        <div class="header__links">
+            <a href="#" class="header__link"><span class="svg-icon icon-search"></span>Поиск</a>
+            <a href="#" class="header__link"><span class="svg-icon icon-collection"></span>Сборки</a>
+        </div>
+    </div>
+    <nav class="navigation">
+        <ul class="navigation__list">
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-cpu"></span>Процессоры</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-gpu"></span>Видеокарты</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-ram"></span>Оп. память</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-hdd"></span>Постоянная память</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-mb"></span>Мат. платы</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-power"></span>Блоки питания</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-cooler"></span>Охлаждение</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-periphery"></span>Периферия</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-block"></span>Корпуса</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-other"></span>Другое</a></li>
+        </ul>
+    </nav>
+</header>    <script src="js/script.js"></script>    <!-- !filter -->    <div class="hidden-svg">        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">            <filter id="white">                <!-- #ffffff in rgba -->                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="                            0 0 0 0 1                            0 0 0 0 1                            0 0 0 0 1                            0 0 0 1 0" />            </filter>            <filter id="grey">                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0                            0   0.75  0   0   0                            0   0   0.75  0   0                            0   0   0   1   0 " />            </filter>            <filter id="nav">                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0                            0   0.75  0   0   0                            0   0   0.75  0   0                            0   0   0   1   0 " />            </filter>        </svg>    </div></body></html>

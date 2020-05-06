@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -13,8 +13,34 @@
 </head>
 
 <body>
-    <h1>Hello world!</h1>
+    @@include("_header.html")
     <script src="js/script.js"></script>
+
+    <!-- !filter -->
+    <div class="hidden-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <filter id="white">
+                <!-- #ffffff in rgba -->
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="
+                            0 0 0 0 1
+                            0 0 0 0 1
+                            0 0 0 0 1
+                            0 0 0 1 0" />
+            </filter>
+            <filter id="grey">
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0
+                            0   0.75  0   0   0
+                            0   0   0.75  0   0
+                            0   0   0   1   0 " />
+            </filter>
+            <filter id="nav">
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0
+                            0   0.75  0   0   0
+                            0   0   0.75  0   0
+                            0   0   0   1   0 " />
+            </filter>
+        </svg>
+    </div>
 </body>
 
 </html>

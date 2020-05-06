@@ -115,30 +115,35 @@ function images(done) {
 	return done();
 }
 
+function otf2ttf(done) {
+	src([ sourceFolder + 'fonts/*.otf' ])
+		.pipe(
+			fonter({
+				formats: [ 'ttf' ]
+			})
+		)
+		.pipe(dest(sourceFolder + 'fonts/'));
+	return done();
+}
+
 function fonts(done) {
 	src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
 	src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
 	return done();
 }
 
-function otf2ttf(done) {
-	src([ sourceFolder + 'fonts/*.otf' ]).pipe(
-		fonter({
-			formats: [ 'ttf' ]
-		}).pipe(dest(sourceFolder + 'fonts/'))
-	);
-	return done();
-}
-
 function putFonts(done) {
-	fs.readdir(path.build.fonts, function(err, items) {
+	return fs.readdir(path.build.fonts, function(err, items) {
 		if (items) {
 			for (let item of items) {
 				let fontName = item.split('.')[0];
-				fs.appendFileSync(
-					sourceFolder + 'scss/_fonts.scss',
-					'@include font("' + fontName + '", "' + fontName + '", "400", "normal");\r\n'
-				);
+				let isWoff = item.split('.')[1] === 'woff';
+				if (isWoff) {
+					fs.appendFileSync(
+						sourceFolder + 'scss/_fonts.scss',
+						'@include font("' + fontName + '", "' + fontName + '", "400", "normal");\r\n'
+					);
+				}
 			}
 			return done();
 		} else {
@@ -149,7 +154,7 @@ function putFonts(done) {
 
 function svg2Sprite(done) {
 	gulp
-		.src(sourceFolder + 'iconsSprite/*.svg')
+		.src(sourceFolder + 'icon/iconsSprite/*.svg')
 		.pipe(
 			svgSprite({
 				mode: {
@@ -173,9 +178,9 @@ gulp.task('js', js);
 gulp.task('css', css);
 gulp.task('html', html);
 gulp.task('images', images);
+gulp.task('otf2ttf', otf2ttf);
 gulp.task('fonts', fonts);
 gulp.task('putFonts', putFonts);
-gulp.task('otf2ttf', otf2ttf);
 gulp.task('svg2Sprite', svg2Sprite);
 
 let start = gulp.series(gulp.parallel(images, svg2Sprite, otf2ttf), fonts, putFonts);
