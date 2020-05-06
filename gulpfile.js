@@ -1,4 +1,4 @@
-let projectFolder = require('path').basename(__dirname) + '/';
+let projectFolder = 'docs/';
 let sourceFolder = 'src/';
 
 let path = {
