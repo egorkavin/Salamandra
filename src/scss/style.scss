@@ -120,11 +120,14 @@
 		display: inline-flex;
 		align-items: center;
 		&:last-child {
+			//TODO
 			margin-right: 35px;
 		}
 	}
 }
 
 .hidden-svg {
-	display: none;
+	position: absolute;
+	top: 0;
+	z-index: -100;
 }
