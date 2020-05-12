@@ -65,7 +65,7 @@ function css(done) {
 		.pipe(
 			scss({
 				outputStyle: 'expanded'
-			})
+			}).on('error', scss.logError)
 		)
 		.pipe(gcmq())
 		.pipe(autoprefixer([ 'last 5 version' ], { cascade: true }))
@@ -160,6 +160,11 @@ function svg2Sprite(done) {
 				mode: {
 					stack: {
 						sprite: '../icons/icons.svg'
+					}
+				},
+				shape: {
+					dimension: {
+						attributes: true
 					}
 				}
 			})
