@@ -14,7 +14,6 @@ testWebP(function(support) {
 });
 
 let sidebar = document.querySelector('.sidebar');
-console.log(sidebar);
 let sidebarBtn = sidebar.querySelector('.sidebar__btn');
 sidebarBtn.addEventListener('click', (e) => {
 	if (e.target.closest('.sidebar__btn')) {
@@ -28,6 +27,7 @@ filters.forEach((filter) => {
 	let filterName = filter.querySelector('.filter__name');
 	if (filterName) {
 		let filterItemsList = filter.querySelector('.filter__items-list');
+
 		let filterItemsCount = filter.querySelector('.filter__items-count');
 		filterItemsCount.innerHTML = '(' + filterItemsList.childElementCount + ')';
 		filterName.addEventListener('click', (e) => {
@@ -35,6 +35,7 @@ filters.forEach((filter) => {
 			if (e.target.closest('.filter__name')) {
 				filterName.classList.toggle('filter__name_active');
 				filterItemsList.classList.toggle('filter__items-list_active');
+				// console.log(filterItemsList.scrollHeight);
 			}
 		});
 
