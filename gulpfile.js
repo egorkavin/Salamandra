@@ -10,7 +10,7 @@ let path = {
 		fonts: projectFolder + 'fonts/'
 	},
 	src: {
-		html: [ sourceFolder + '*.html', '!' + sourceFolder + '_*.html' ],
+		html: [sourceFolder + '*.html', '!' + sourceFolder + '_*.html'],
 		css: sourceFolder + 'scss/*.scss',
 		js: sourceFolder + 'js/script.js',
 		img: sourceFolder + 'img/**/*.*',
@@ -25,7 +25,10 @@ let path = {
 	clean: './' + projectFolder
 };
 
-let { src, dest } = require('gulp');
+let {
+	src,
+	dest
+} = require('gulp');
 let gulp = require('gulp');
 let browserSync = require('browser-sync').create();
 let fileInclude = require('gulp-file-include');
@@ -35,10 +38,6 @@ let gcmq = require('gulp-group-css-media-queries');
 let cleanCSS = require('gulp-clean-css');
 let rename = require('gulp-rename');
 let uglify = require('gulp-uglify-es').default;
-let imagemin = require('gulp-imagemin');
-let webp = require('gulp-webp');
-let webpHTML = require('gulp-webp-html');
-let webpCSS = require('gulp-webpcss');
 let ttf2woff = require('gulp-ttf2woff');
 let ttf2woff2 = require('gulp-ttf2woff2');
 let fonter = require('gulp-fonter');
@@ -56,7 +55,10 @@ function browserSyncFunc() {
 }
 
 function html(done) {
-	src(path.src.html).pipe(webpHTML()).pipe(fileInclude()).pipe(dest(path.build.html)).pipe(browserSync.stream());
+	src(path.src.html)
+		.pipe(fileInclude())
+		.pipe(dest(path.build.html))
+		.pipe(browserSync.stream());
 	return done();
 }
 
@@ -68,8 +70,9 @@ function css(done) {
 			}).on('error', scss.logError)
 		)
 		.pipe(gcmq())
-		.pipe(autoprefixer([ 'last 5 version' ], { cascade: true }))
-		.pipe(webpCSS())
+		.pipe(autoprefixer(['last 5 version'], {
+			cascade: true
+		}))
 		.pipe(dest(path.build.css))
 		.pipe(cleanCSS())
 		.pipe(
@@ -98,28 +101,18 @@ function js(done) {
 
 function images(done) {
 	src(path.src.img)
-		.pipe(webp())
 		.pipe(dest(path.build.img))
 		.pipe(src(path.src.img))
-		.pipe(
-			imagemin({
-				progressive: true,
-				interlaced: true,
-				optimizationLevel: 3,
-				svgoPlugins: [ { removeViewBox: true } ]
-			})
-		)
-		.pipe(dest(path.build.img))
 		.pipe(src(sourceFolder + 'icon/favicon/**'))
 		.pipe(dest(projectFolder + 'icon/favicon/'));
 	return done();
 }
 
 function otf2ttf(done) {
-	src([ sourceFolder + 'fonts/*.otf' ])
+	src([sourceFolder + 'fonts/*.otf'])
 		.pipe(
 			fonter({
-				formats: [ 'ttf' ]
+				formats: ['ttf']
 			})
 		)
 		.pipe(dest(sourceFolder + 'fonts/'));
@@ -133,7 +126,7 @@ function fonts(done) {
 }
 
 function putFonts(done) {
-	return fs.readdir(path.build.fonts, function(err, items) {
+	return fs.readdir(path.build.fonts, function (err, items) {
 		if (items) {
 			for (let item of items) {
 				let fontName = item.split('.')[0];

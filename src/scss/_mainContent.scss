@@ -1,10 +1,50 @@
-.main-container {}
+.main-container {
+    width: 1060px;
+    margin: 24px auto 0;
+    font-family: Verdana, sans-serif;
+    font-weight: 700;
+}
 
 .main-content {
 
-    &__managmentw {}
+    &__managment {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-    &__back-button {}
+    &__button {
+        background-color: #212020;
+        border-radius: 3px;
+        border: 1px solid #1b1a1a;
+
+        &_back {
+            width: 140px;
+            height: 40px;
+            color: #979797;
+            font-weight: 700;
+        }
+
+        &_search {
+            width: 40px;
+            height: 40px;
+            margin-left: auto;
+            margin-right: 11px;
+        }
+
+        &_view {
+            width: 108px;
+            height: 40px;
+
+            &_two-in-row {}
+
+            &_three-in-row {}
+
+            &_one-by-one {}
+        }
+    }
+
 
     &__icon {
 
@@ -13,43 +53,80 @@
         &_search {}
     }
 
-    &__search {}
-
-    &__view-type {}
-
-    &__view {
-
-        &_two-in-row {}
-
-        &_three-in-row {}
-
-        &_one-by-one {}
+    &__products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-
-    &__product {}
 }
 
 .product {
+    width: 455px;
+    height: 100%; //TODO
+    padding: 20px;
+    background-color: #1b1a1a;
+    border-radius: 3px;
+
+    &:nth-child(2n+1) {
+        margin-right: 25px;
+    }
+
+    &:hover &__hidden-description {
+        display: block;
+    }
 
     &__link {}
 
     &__image {}
 
-    &__title {}
+    &__title {
+        font-size: 16px;
+        color: #f9f9f9;
+    }
 
-    &__price-and-buttons {}
+    &__price-and-buttons {
+        display: flex;
+        align-items: center;
+        padding-top: 12px;
+    }
 
     &__rating {}
 
-    &__price {}
+    &__price {
+        align-self: flex-end;
+        //height: 25px;
+        margin-left: auto;
+        margin-right: 14px;
+        //padding-top: auto;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #da0b29;
+        font-size: 14px;
+        font-weight: 400;
+        color: #7c7575;
+    }
 
-    &__price-value {}
+    &__price-value {
+        font-weight: 700;
+        color: #f9f9f9;
+    }
 
     &__button {
+        border-radius: 3px;
 
-        &_compare {}
+        &_compare {
+            width: 25px;
+            height: 25px;
+            background-color: #bfbfbf;
+            margin-right: 10px;
+        }
 
-        &_to-build {}
+        &_to-build {
+            width: 110px;
+            height: 25px;
+            background-color: #da0b29;
+            font-weight: 700;
+            color: #1b1a1a;
+        }
     }
 
     &__icon {
@@ -59,14 +136,30 @@
         &_to-build {}
     }
 
-    &__hidden-description {}
+    &__hidden-description {
+        display: none;
+    }
 }
 
 .product-info {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #212020;
 
-    &__field {}
+    &__field {
+        font-size: 14px;
 
-    &__title {}
+        &:not(:last-child) {
+            margin-bottom: 13px;
+        }
+    }
 
-    &__value {}
+    &__title {
+        color: #807979;
+        font-weight: 400;
+    }
+
+    &__value {
+        color: #bfbfbf;
+    }
 }

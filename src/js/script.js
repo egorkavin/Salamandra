@@ -35,10 +35,12 @@ filters.forEach((filter) => {
 			if (e.target.closest('.filter__name')) {
 				filterName.classList.toggle('filter__name_active');
 				filterItemsList.classList.toggle('filter__items-list_active');
-				// console.log(filterItemsList.scrollHeight);
+				// let filterItemsListHeight = filterItemsList.scrollHeight;
+
+				// filterItemsList.style.maxHeight = `${filterItemsListHeight}px`;
+				console.log(filterItemsList.style.maxHeight);
 			}
 		});
-
 		filterItemsList.addEventListener('change', (e) => {
 			let count = filterItemsList.querySelectorAll('input[type="checkbox"]:checked').length;
 			if (count === 0) {
