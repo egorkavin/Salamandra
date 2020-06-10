@@ -1,0 +1,72 @@
+.main-container {}
+
+.main-content {
+
+    &__managmentw {}
+
+    &__back-button {}
+
+    &__icon {
+
+        &_back-arrow {}
+
+        &_search {}
+    }
+
+    &__search {}
+
+    &__view-type {}
+
+    &__view {
+
+        &_two-in-row {}
+
+        &_three-in-row {}
+
+        &_one-by-one {}
+    }
+
+    &__product {}
+}
+
+.product {
+
+    &__link {}
+
+    &__image {}
+
+    &__title {}
+
+    &__price-and-buttons {}
+
+    &__rating {}
+
+    &__price {}
+
+    &__price-value {}
+
+    &__button {
+
+        &_compare {}
+
+        &_to-build {}
+    }
+
+    &__icon {
+
+        &_compare {}
+
+        &_to-build {}
+    }
+
+    &__hidden-description {}
+}
+
+.product-info {
+
+    &__field {}
+
+    &__title {}
+
+    &__value {}
+}

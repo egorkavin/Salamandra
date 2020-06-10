@@ -362,13 +362,13 @@ body {
   width: 10px;
   height: 10px;
   border: 1px solid #f9f9f9;
-  border-radius: 50%;
+  border-radius: 5px;
   position: relative;
   margin-right: 5px;
 }
 
 .fake-checkbox::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   top: 1px;
@@ -376,11 +376,11 @@ body {
   width: 6px;
   height: 6px;
   background-color: #f9f9f9;
-  border-radius: 50%;
+  border-radius: 3px;
   opacity: 0;
-  -webkit-transition: opacity .2s;
-  -o-transition: opacity .2s;
-  transition: opacity .2s;
+  -webkit-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 .filter {
@@ -399,11 +399,11 @@ body {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  -webkit-transition: -webkit-transform .2s;
-  transition: -webkit-transform .2s;
-  -o-transition: transform .2s;
-  transition: transform .2s;
-  transition: transform .2s, -webkit-transform .2s;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  -o-transition: transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .filter__icon_arrow {
@@ -424,9 +424,9 @@ body {
 .filter__checkbox:checked ~ span,
 .filter__checkbox:checked {
   color: #f9f9f9;
-  -webkit-transition: color .2s;
-  -o-transition: color .2s;
-  transition: color .2s;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
 }
 
 .filter__name {
@@ -464,6 +464,11 @@ body {
   margin-bottom: 18px;
 }
 
+.sidebar-list {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .sidebar-list__item {
   padding-left: 15px;
   border-bottom: 1px solid #1b1a1a;
@@ -471,4 +476,28 @@ body {
 
 .sidebar-list__item:first-of-type {
   border-top: 1px solid #1b1a1a;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  width: 1px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
