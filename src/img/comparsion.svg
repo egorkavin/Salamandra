@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f9f9f9;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="comparsion" class="cls-1" d="M793,524.2h7.346l-2.778,2.8h1.964L803,523.5l-3.473-3.5h-1.964l2.778,2.8H793v1.4Zm8,4.6h-7.346l2.779-2.8H794.47L791,529.5l3.473,3.5h1.965l-2.779-2.8H801v-1.4Z" transform="translate(-791 -520)"/>
+</svg>

@@ -62,8 +62,9 @@
 
 .product {
     width: 455px;
-    height: 100%; //TODO
+    height: 350px; //TODO
     padding: 20px;
+    margin-bottom: 20px;
     background-color: #1b1a1a;
     border-radius: 3px;
 
@@ -162,4 +163,119 @@
     &__value {
         color: #bfbfbf;
     }
+}
+
+.pages-navigation {
+    font-size: 12px;
+    text-align: center;
+
+    &__show-more {
+        width: 130px;
+        height: 20px;
+        border-radius: 10px;
+        background-color: #bfbfbf;
+    }
+
+    &__icon {
+
+        &_show-more {}
+    }
+
+    &__list-of-pages {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &__page-wrapper {
+        &:not(:last-of-type) {
+            margin-right: 10px;
+        }
+
+        &_active .pages-navigation__page-button {
+            background-color: #da0b29;
+            color: #f9f9f9;
+        }
+    }
+
+    &__page-button {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #bfbfbf;
+    }
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #f9f9f9;
+    border-radius: 3PX;
+
+    &__item {
+        margin-top: 30px;
+        background-color: #1b1a1a;
+        padding: 25px 10px 22px;
+    }
+
+    &__logo {
+        width: 50px;
+        margin-right: 40px;
+        margin-left: 30px;
+    }
+
+    &__links {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__link {
+        &:not(:last-child) {
+            margin-right: 36px;
+        }
+    }
+
+    &__icon {
+
+        &_about-project {}
+
+        &_help {}
+
+        &_hot-game {}
+
+        &_email {}
+
+        &_facebook {}
+
+        &_twitter {}
+
+        &_vk {}
+
+        &_telegram {}
+    }
+}
+
+.about-block {
+    display: flex;
+    width: 721px;
+
+    &__wrapper {
+        display: flex;
+    }
+
+    &__info {}
+}
+
+.contacts {
+    width: 209px;
+    text-align: center;
+
+    &__list {}
+
+    &__item {}
 }
