@@ -98,6 +98,11 @@ ul li {
 
 body {
   background-color: #222;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
 }
 
 .header {
@@ -299,37 +304,49 @@ body {
   position: absolute;
   top: 125px;
   bottom: 0;
-  z-index: 10;
+  z-index: 30;
   background-color: #212020;
-  border-right: 1px solid #1b1a1a;
   color: #bfbfbf;
   font-family: Verdana;
   font-size: 14px;
   line-height: 1rem;
-  left: 0;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 
 .sidebar_filter {
+  left: 0;
   width: 320px;
   padding-left: 10px;
   padding-right: 5px;
+  border-right: 1px solid #1b1a1a;
+}
+
+.sidebar_filter_hidden {
+  left: -320px;
+}
+
+.sidebar_assemblage {
+  right: 0;
+  width: 360px;
+  padding-left: 25px;
+  padding-right: 20px;
+  border-left: 1px solid #1b1a1a;
+}
+
+.sidebar_assemblage_hidden {
+  right: -360px;
 }
 
 .sidebar__btn {
   width: 36px;
   height: 44px;
   border-radius: 3px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   background-color: #212020;
   border: 1px solid #1b1a1a;
-  border-left: none;
   position: absolute;
   top: 22px;
-  right: -36px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,6 +361,20 @@ body {
       -ms-flex-align: end;
           align-items: flex-end;
   cursor: pointer;
+}
+
+.sidebar__btn_filter {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+  right: -36px;
+}
+
+.sidebar__btn_assemblage {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  left: -36px;
 }
 
 .sidebar__btn span {
@@ -367,10 +398,6 @@ body {
   font-size: 16px;
   font-weight: 700;
   padding: 38px 0 20px 15px;
-}
-
-.sidebar_hidden {
-  left: -320px;
 }
 
 .fake-checkbox {
@@ -547,6 +574,7 @@ body {
   height: 40px;
   color: #979797;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .main-content__button_search {
@@ -573,23 +601,68 @@ body {
 }
 
 .product {
-  width: 455px;
   height: 350px;
-  padding: 20px;
   margin-bottom: 20px;
-  background-color: #1b1a1a;
-  border-radius: 3px;
 }
 
-.product:nth-child(2n+1) {
-  margin-right: 25px;
+.product__wrapper {
+  width: 465px;
+  padding: 0 20px 20px 20px;
+  background-color: #1b1a1a;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
+}
+
+.product:nth-child(2n + 1) {
+  margin-right: 20px;
 }
 
 .product:hover .product__hidden-description {
   display: block;
 }
 
+.product:hover .product__wrapper {
+  position: relative;
+  z-index: 20;
+  -webkit-box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
+}
+
+.product__image-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 425px;
+  height: 250px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.product__image-wrapper:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-image: -o-radial-gradient(ellipse 180px 90px, transparent, #fff);
+  background-image: radial-gradient(ellipse 180px 90px, transparent, #fff);
+}
+
+.product__image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .product__title {
+  margin-top: 6px;
   font-size: 16px;
   color: #f9f9f9;
 }
@@ -601,7 +674,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 12px;
+  margin-top: 17px;
+}
+
+.product__rating {
+  font-size: 14px;
+  color: #f9f9f9;
 }
 
 .product__price {
@@ -609,7 +687,7 @@ body {
       align-self: flex-end;
   margin-left: auto;
   margin-right: 14px;
-  padding-bottom: 6px;
+  padding: 0 6px 6px 6px;
   border-bottom: 1px solid #da0b29;
   font-size: 14px;
   font-weight: 400;
@@ -648,6 +726,8 @@ body {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid #212020;
+  position: relative;
+  z-index: 20;
 }
 
 .product-info__field {

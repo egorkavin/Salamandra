@@ -2,39 +2,67 @@
 	position: absolute;
 	top: 125px;
 	bottom: 0;
-	z-index: 10;
+	z-index: 30;
 	background-color: #212020;
-	border-right: 1px solid #1b1a1a;
 	color: #bfbfbf;
 	font-family: Verdana;
 	font-size: 14px;
 	line-height: 1rem;
-	left: 0;
 	transition: all 0.5s;
 
 	&_filter {
+		left: 0;
 		width: 320px;
 		padding-left: 10px;
 		padding-right: 5px;
+		border-right: 1px solid #1b1a1a;
+
+		&_hidden {
+			left: -320px;
+		}
+	}
+
+	&_assemblage {
+		right: 0;
+		width: 360px;
+		padding-left: 25px;
+		padding-right: 20px;
+		border-left: 1px solid #1b1a1a;
+
+		&_hidden {
+			right: -360px;
+		}
 	}
 
 	&__btn {
 		width: 36px;
 		height: 44px;
 		border-radius: 3px;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
 		background-color: #212020;
 		border: 1px solid #1b1a1a;
-		border-left: none;
 		position: absolute;
 		top: 22px;
-		right: -36px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-end;
 		cursor: pointer;
+
+		&_filter {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			border-left: none;
+			right: -36px;
+		}
+
+		&_assemblage {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-right: none;
+			left: -36px;
+
+
+		}
 
 		span {
 			width: 16px;
@@ -58,10 +86,6 @@
 		font-size: 16px;
 		font-weight: 700;
 		padding: 38px 0 20px 15px;
-	}
-
-	&_hidden {
-		left: -320px;
 	}
 }
 
@@ -116,11 +140,11 @@
 		display: none;
 
 		&:checked {
-			& + .fake-checkbox::before {
+			&+.fake-checkbox::before {
 				opacity: 1;
 			}
 
-			& ~ span,
+			&~span,
 			& {
 				color: #f9f9f9;
 				transition: color 0.2s;
@@ -135,7 +159,7 @@
 		width: calc(100% - 25px);
 		position: relative;
 
-		& + ul .filter__item {
+		&+ul .filter__item {
 			margin-left: 15px;
 		}
 
@@ -148,8 +172,7 @@
 		}
 	}
 
-	&__items-count {
-	}
+	&__items-count {}
 
 	&__items-list {
 		display: none;
@@ -166,13 +189,13 @@
 		}
 	}
 
-	&__item-quantity {
-	}
+	&__item-quantity {}
 }
 
 .sidebar-list {
 	height: 100%;
 	overflow-y: scroll;
+
 	&__item {
 		padding-left: 15px;
 		border-bottom: 1px solid #1b1a1a;

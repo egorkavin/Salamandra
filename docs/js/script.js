@@ -1,9 +1,23 @@
-let sidebar = document.querySelector('.sidebar');
-let sidebarBtn = sidebar.querySelector('.sidebar__btn');
-sidebarBtn.addEventListener('click', (e) => {
-	if (e.target.closest('.sidebar__btn')) {
-		sidebar.classList.toggle('sidebar_hidden');
-	}
+let sidebarButtons = document.querySelectorAll('.sidebar__btn');
+// sidebarBtn.addEventListener('click', (e) => {
+// 	if (e.target.closest('.sidebar__btn')) {
+// 		if (e.target.closest('.sidebar__btn_assemblage')) {
+// 			sidebar.classList.toggle('sidebar_assemblage_hidden');
+// 		} else if (e.target.closest('.sidebar__btn_filter')) {
+// 			console.log(1);
+// 			sidebar.classList.toggle('sidebar_filter_hidden');
+// 		}
+// 	}
+// });
+
+sidebarButtons.forEach(button => {
+	button.addEventListener('click', e => {
+		const buttonClasses = button.classList;
+		const buttonLastClass = buttonClasses.item(buttonClasses.length - 1);
+		const parentSelector = '.sidebar_' + buttonLastClass.split('_').pop();
+		const parentSidebar = document.querySelector(parentSelector);
+		parentSidebar.classList.toggle(parentSelector.substr(1) + '_hidden');
+	});
 });
 
 let filters = document.querySelectorAll('.filter');
@@ -18,6 +32,11 @@ filters.forEach((filter) => {
 			if (e.target.closest('.filter__name')) {
 				filterName.classList.toggle('filter__name_active');
 				filterItemsList.classList.toggle('filter__items-list_active');
+				// console.log(filterItemsList.scrollHeight);
+				// let filterItemsListHeight = filterItemsList.scrollHeight;
+
+				// filterItemsList.style.maxHeight = `${filterItemsListHeight+36}px`;
+				// console.log(filterItemsList.style.maxHeight);
 			}
 		});
 		filterItemsList.addEventListener('change', e => {
