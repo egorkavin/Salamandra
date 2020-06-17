@@ -117,7 +117,7 @@
 	font-size: 14px;
 	font-weight: 400;
 
-	& label {
+	label {
 		cursor: pointer;
 	}
 
@@ -136,6 +136,21 @@
 		}
 	}
 
+	&__item {
+
+		&_disabled {
+			color: #807979;
+
+			label {
+				cursor: default;
+			}
+
+			.fake-checkbox {
+				border-color: #807979;
+			}
+		}
+	}
+
 	&__checkbox {
 		display: none;
 
@@ -144,8 +159,8 @@
 				opacity: 1;
 			}
 
-			&~span,
-			& {
+			&,
+			&~span {
 				color: #f9f9f9;
 				transition: color 0.2s;
 			}
@@ -158,10 +173,7 @@
 		font-weight: 700;
 		width: calc(100% - 25px);
 		position: relative;
-
-		&+ul .filter__item {
-			margin-left: 15px;
-		}
+		transition: color .2s;
 
 		&_active {
 			color: #f9f9f9;
@@ -174,13 +186,18 @@
 
 	&__items-count {}
 
-	&__items-list {
-		display: none;
+	&__items-wrapper {
+		max-height: 0;
+		overflow: hidden;
+		transition: all .5s;
 
-		&_active {
-			display: block;
-			padding: 18px 0;
+		.filter__items-list {
+			padding-left: 15px;
 		}
+	}
+
+	&__items-list {
+		padding: 18px 0;
 	}
 
 	&__item {

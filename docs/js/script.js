@@ -1,16 +1,5 @@
-let sidebarButtons = document.querySelectorAll('.sidebar__btn');
-// sidebarBtn.addEventListener('click', (e) => {
-// 	if (e.target.closest('.sidebar__btn')) {
-// 		if (e.target.closest('.sidebar__btn_assemblage')) {
-// 			sidebar.classList.toggle('sidebar_assemblage_hidden');
-// 		} else if (e.target.closest('.sidebar__btn_filter')) {
-// 			console.log(1);
-// 			sidebar.classList.toggle('sidebar_filter_hidden');
-// 		}
-// 	}
-// });
-
-sidebarButtons.forEach(button => {
+const sidebarOpenButtons = document.querySelectorAll('.sidebar__btn');
+sidebarOpenButtons.forEach(button => {
 	button.addEventListener('click', e => {
 		const buttonClasses = button.classList;
 		const buttonLastClass = buttonClasses.item(buttonClasses.length - 1);
@@ -20,33 +9,49 @@ sidebarButtons.forEach(button => {
 	});
 });
 
-let filters = document.querySelectorAll('.filter');
-filters.forEach((filter) => {
-	let filterName = filter.querySelector('.filter__name');
+const filters = document.querySelectorAll('.filter');
+filters.forEach(filter => {
+	const filterName = filter.querySelector('.filter__name');
 	if (filterName) {
-		let filterItemsList = filter.querySelector('.filter__items-list');
-		let filterItemsCount = filter.querySelector('.filter__items-count');
-		filterItemsCount.innerHTML = '(' + filterItemsList.childElementCount + ')';
-		filterName.addEventListener('click', e => {
-			e.preventDefault();
-			if (e.target.closest('.filter__name')) {
-				filterName.classList.toggle('filter__name_active');
-				filterItemsList.classList.toggle('filter__items-list_active');
-				// console.log(filterItemsList.scrollHeight);
-				// let filterItemsListHeight = filterItemsList.scrollHeight;
+		const itemsList = filter.querySelector('.filter__items-list');
+		const itemsCount = filterName.querySelector('.filter__items-count');
+		itemsCount.innerHTML = '(' + itemsList.childElementCount + ')';
+		toggleItemsListByFilterName(itemsList, filterName);
+		setItemsCountInList(itemsCount, itemsList);
+	}
+});
 
-				// filterItemsList.style.maxHeight = `${filterItemsListHeight+36}px`;
-				// console.log(filterItemsList.style.maxHeight);
-			}
-		});
-		filterItemsList.addEventListener('change', e => {
-			let count = filterItemsList.querySelectorAll('input[type="checkbox"]:checked').length;
-			if (count === 0) {
-				filterItemsCount.innerHTML = `(${filterItemsList.childElementCount})`;
-			} else {
-				filterItemsCount.innerHTML = `(${count}/${filterItemsList.childElementCount})`;
-			}
-		});
+function toggleItemsListByFilterName(itemsList, filterName) {
+	filterName.addEventListener('click', e => {
+		e.preventDefault();
+		filterName.classList.toggle('filter__name_active');
+		const itemsListHeight = itemsList.clientHeight;
+		const itemsWrapper = itemsList.parentNode;
+		if (itemsWrapper.style.maxHeight) {
+			itemsWrapper.removeAttribute('style');
+		} else {
+			itemsWrapper.style.maxHeight = itemsListHeight + 'px';
+		}
+	});
+}
+
+function setItemsCountInList(itemsCount, itemsList) {
+	itemsList.addEventListener('change', e => {
+		let count = itemsList.querySelectorAll('input[type="checkbox"]:checked').length;
+		if (count === 0) {
+			itemsCount.innerHTML = `(${itemsList.childElementCount})`;
+		} else {
+			itemsCount.innerHTML = `(${count}/${itemsList.childElementCount})`;
+		}
+	});
+}
+
+const filtersItemsQuantity = document.querySelectorAll('.filter__item-quantity');
+filtersItemsQuantity.forEach(filterItemQuantity => {
+	if (filterItemQuantity.textContent === '(+0)') {
+		const parent = filterItemQuantity.closest('.filter__item');
+		parent.classList.add('filter__item_disabled');
+		parent.addEventListener('click', e => e.preventDefault());
 	}
 });
 
