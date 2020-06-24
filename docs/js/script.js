@@ -55,6 +55,28 @@ filtersItemsQuantity.forEach(filterItemQuantity => {
 	}
 });
 
+const tabs = document.querySelectorAll('.product-tabs__item');
+tabs.forEach(tab => {
+	tab.addEventListener('click', e => {
+		const prevActiveTab = document.querySelector('.product-tabs__item_active');
+		const prevActiveTabBody = document.querySelector('#' + prevActiveTab.dataset.tab);
+		const newActiveTabBody = document.querySelector('#' + tab.dataset.tab);
+		prevActiveTab.classList.remove('product-tabs__item_active');
+		prevActiveTabBody.classList.remove('product-tabs__block_active');
+		tab.classList.add('product-tabs__item_active');
+		newActiveTabBody.classList.add('product-tabs__block_active');
+	});
+});
+
+const sliderTrack = document.querySelector('.product-slider__track');
+const sliderBtnNext = document.querySelector('.product-slider__button_next');
+let offset = 100;
+sliderBtnNext.addEventListener('click', e => {
+	offset *= 2;
+	sliderTrack.style.transform = `translateX(-${offset}px)`;
+});
+
+
 const itemsFromAllPages = document.querySelectorAll('.product');
 let itemsPerPage = 4;
 let currentPage = 1;
