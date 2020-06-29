@@ -149,7 +149,9 @@
         }
     }
 
-    &__link {}
+    &__link {
+        cursor: pointer;
+    }
 
     &__image-wrapper {
         display: flex;
@@ -158,6 +160,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        background-color: #f9f9f9;
 
         &:after {
             content: '';
