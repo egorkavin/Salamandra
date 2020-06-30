@@ -133,8 +133,11 @@ if (slider) {
 	const sliderItems = slider.querySelectorAll('.product-slider__item-wrapper');
 	const itemsCount = sliderItems.length;
 	const itemsWidthArr = [].map.call(sliderItems, (item) => item.clientWidth);
-	let position = calcVisibleItems(itemsWidthArr);
+
+	const startPosition = calcVisibleItems(itemsWidthArr);
+	let position = startPosition;
 	let offset = 0;
+
 	sliderBtnNext.addEventListener('click', (e) => {
 		sliderBtnPrev.style.display = 'inline';
 		let itemsLeft = itemsCount - position;
@@ -154,6 +157,7 @@ if (slider) {
 			offset -= calcOffset(itemsWidthArr, (position -= 3), position + 3);
 		} else {
 			offset -= calcOffset(itemsWidthArr, 0, itemsLeft);
+			position = startPosition;
 			sliderBtnPrev.style.display = 'none';
 		}
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
