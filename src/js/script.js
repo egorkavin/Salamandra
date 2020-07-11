@@ -139,26 +139,26 @@ if (slider) {
 	let offset = 0;
 
 	sliderBtnNext.addEventListener('click', (e) => {
-		sliderBtnPrev.style.display = 'inline';
+		sliderBtnPrev.style.opacity = '100%';
 		let itemsLeft = itemsCount - position;
 		if (itemsLeft >= 3) {
 			offset += calcOffset(itemsWidthArr, position, (position += 3));
 		} else {
 			offset += calcOffset(itemsWidthArr, position, (position = itemsCount));
-			sliderBtnNext.style.display = 'none';
+			sliderBtnNext.style.opacity = '0';
 		}
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
 	});
 
 	sliderBtnPrev.addEventListener('click', (e) => {
-		sliderBtnNext.style.display = 'inline';
+		sliderBtnNext.style.opacity = '100%';
 		let itemsLeft = calcPrevItems(itemsWidthArr, offset);
 		if (itemsLeft >= 3) {
 			offset -= calcOffset(itemsWidthArr, (position -= 3), position + 3);
 		} else {
 			offset -= calcOffset(itemsWidthArr, 0, itemsLeft);
 			position = startPosition;
-			sliderBtnPrev.style.display = 'none';
+			sliderBtnPrev.style.opacity = '0';
 		}
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
 	});
@@ -197,4 +197,30 @@ function calcPrevItems(itemsWidthArr, offset) {
 			return i + 1;
 		}
 	}
+}
+
+const stars = document.querySelectorAll('.product-rating__star');
+if (stars) {
+	stars.forEach((item) =>
+		item.addEventListener('click', () => {
+			const { value } = item.dataset;
+			item.parentNode.dataset.totalValue = value;
+			document.querySelector('.product-rating__note').remove();
+		})
+	);
+}
+
+const yearRates = document.querySelectorAll('.year-rate__value');
+if (yearRates) {
+	yearRates.forEach((yearRate) => {
+		const circle = yearRate.querySelector('.percent-circle__circle');
+		const radius = circle.r.baseVal.value;
+		const circumference = 2 * Math.PI * radius;
+
+		circle.style.strokeDasharray = `${circumference} ${circumference}`;
+		circle.style.strokeDashoffset = circumference;
+		const percent = parseInt(yearRate.textContent);
+		const offset = circumference - percent / 100 * circumference;
+		circle.style.strokeDashoffset = offset;
+	});
 }
