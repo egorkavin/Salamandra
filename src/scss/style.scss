@@ -7,9 +7,10 @@ body {
 	overflow-x: hidden;
 }
 
-.container {
-	position: relative;
-	min-height: 100%;
+.hidden-svg {
+	position: absolute;
+	top: 0;
+	z-index: -100;
 }
 
 @import 'header';
@@ -18,4 +19,6 @@ body {
 
 @import 'graphicCards';
 
-@import 'product'
+@import 'product';
+
+@import 'footer';

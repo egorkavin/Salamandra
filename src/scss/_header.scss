@@ -19,7 +19,7 @@
 		color: #bfbfbf;
 		font-weight: 700;
 
-		&:not(:last-child) {
+		&--search {
 			margin-right: 36px;
 		}
 
@@ -151,14 +151,7 @@
 		align-items: center;
 
 		&:last-child {
-			//TODO
 			margin-right: 35px;
 		}
 	}
-}
-
-.hidden-svg {
-	position: absolute;
-	top: 0;
-	z-index: -100;
 }

@@ -1,31 +1,22 @@
-<main class="main-content">
-    <div class="main-content__wrapper-top">
-        <section class="main-content__managment">
-            <button class="main-content__button main-content__button_back">
-                <span class="main-content__icon main-content__icon_back-arrow"></span>
-                <span>МОДЕЛИ</span>
-            </button>
-            <button class="main-content__button main-content__button_search">
-                <span class="main-content__icon main-content__icon_search"></span>
-            </button>
-            <span class="main-content__button main-content__button_view">
-                <button class="main-content__button_view_one-by-one"></button>
-                <button class="main-content__button_view_two-in-row">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <button class="main-content__button_view_three-in-row"></button>
-            </span>
-        </section>
-    </div>
+<div class="container">
+    <section class="content-management">
+        <button class="content-management__button content-management__button--back">
+            <span class="content-management__icon content-management__icon--back-arrow"></span>
+            <span>МОДЕЛИ</span>
+        </button>
+        <button class="content-management__button content-management__button--search">
+            <span class="content-management__icon content-management__icon--search"></span>
+        </button>
+        <span class="content-management__button content-management__button--view-type">
+            <button class="content-management__button content-management__button--view--one-in-row"></button>
+            <button class="content-management__button content-management__button--view--two-in-row"></button>
+            <button class="content-management__button content-management__button--view--three-in-row"></button>
+        </span>
+    </section>
 
-    <div class="main-content__main-wrapper">
-        <section class="main-content__products">
-            <div class="product">
+    <main class="main">
+        <section class="main__products">
+            <div class="main__product product">
                 <div class="product__wrapper">
                     <a class="product__link product__image-wrapper" href="1msi.html">
                         <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
@@ -71,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product ">
+            <div class="main__product product">
                 <div class="product__wrapper">
                     <a href="#" class="product__link product__image-wrapper">
                         <img src="img/graphicsCard/test.jpg" class="product__image"></img>
@@ -117,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product product_long">
+            <div class="main__product product product_long">
                 <div class="product__wrapper">
                     <a href="#" class="product__link product__image-wrapper">
                         <img src="img/graphicsCard/test.jpg" class="product__image"></img>
@@ -171,67 +162,9 @@
                 <span>Не работает пока</span>
             </button>
             <ul class="pages-navigation__list-of-pages">
-                <!-- <li class="pages-navigation__page-wrapper pages-navigation__page-wrapper_active">
-                    <button class="pages-navigation__page-button">1</button>
-                </li>
-                <li class="pages-navigation__page-wrapper">
-                    <button class="pages-navigation__page-button">2</button>
-                </li>
-                <li class="pages-navigation__page-wrapper">
-                    <button class="pages-navigation__page-button">3</button>
-                </li> -->
             </ul>
         </section>
 
-        <footer class="footer">
-            <div class="footer__item about-block">
-                <div class="about-block__wrapper">
-                    <img src="img/logo_header.svg" class="footer__logo">
-                    <div class="about-block__info">
-                        Каталог игр Hot-Game.info предоставляет максимальное количество игр и ведущих магазинов. Вы
-                        легко
-                        сможете найти игру, сравнить цены, выбрать интернет-магазин и купить игру по выгодной цене!
-                        <div class="footer__links">
-                            <a href="#" class="footer__link">
-                                <span class="footer__icon footer__icon_about-project"></span>
-                                О проекте
-                            </a>
-                            <a href="#" class="footer__link">
-                                <span class="footer__icon footer__icon_help"></span>
-                                Помощь
-                            </a>
-                            <a href="https://hot-game.info/" class="footer__link">
-                                <span class="footer__icon footer__icon_hot-game"></span>
-                                Hot-game.info
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__item contacts">
-                <ul class="contacts__list">
-                    <li class="contacts__item">
-                        <a href="mailto:help@salamandr.ru" class="footer__link">
-                            <span class="footer__icon footer__icon_email"></span>
-                            help@salamandr.ru
-                        </a>
-                    </li>
-                    <li class="contacts__item">
-                        <a href="#" class="footer__links">
-                            <span class="footer__icon footer__icon_hot-game"></span>
-                            Обратная связь
-                        </a>
-                    </li>
-                    <li class="contacts__item">
-                        <span class="footer__icon footer__icon_facebook"></span>
-                        <span class="footer__icon footer__icon_twitter"></span>
-                        <span class="footer__icon footer__icon_vk"></span>
-                        <span class="footer__icon footer__icon_telegram"></span>
-                    </li>
-                </ul>
-            </div>
-
-        </footer>
-    </div>
-
-</main>
+    </main>
+    @@include("_footer.html")
+</div>

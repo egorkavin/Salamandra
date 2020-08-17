@@ -1,18 +1,18 @@
 //Sidebar
 const sidebarOpenButtons = document.querySelectorAll('.sidebar__btn');
 if (sidebarOpenButtons) {
-	sidebarOpenButtons.forEach((button) => {
-		button.addEventListener('click', (e) => {
+	sidebarOpenButtons.forEach(button => {
+		button.addEventListener('click', e => {
 			const buttonClasses = button.classList;
 			const buttonLastClass = buttonClasses.item(buttonClasses.length - 1);
-			const parentSelector = '.sidebar_' + buttonLastClass.split('_').pop();
+			const parentSelector = '.sidebar--' + buttonLastClass.split('--').pop();
 			const parentSidebar = document.querySelector(parentSelector);
-			parentSidebar.classList.toggle(parentSelector.substr(1) + '_hidden');
+			parentSidebar.classList.toggle(parentSelector.substr(1) + '--hidden');
 		});
 	});
 
 	const filters = document.querySelectorAll('.filter');
-	filters.forEach((filter) => {
+	filters.forEach(filter => {
 		const filterName = filter.querySelector('.filter__name');
 		if (filterName) {
 			const itemsList = filter.querySelector('.filter__items-list');
@@ -24,19 +24,19 @@ if (sidebarOpenButtons) {
 	});
 
 	const filtersItemsQuantity = document.querySelectorAll('.filter__item-quantity');
-	filtersItemsQuantity.forEach((filterItemQuantity) => {
+	filtersItemsQuantity.forEach(filterItemQuantity => {
 		if (filterItemQuantity.textContent === '(+0)') {
 			const parent = filterItemQuantity.closest('.filter__item');
 			parent.classList.add('filter__item_disabled');
-			parent.addEventListener('click', (e) => e.preventDefault());
+			parent.addEventListener('click', e => e.preventDefault());
 		}
 	});
 }
 
 function toggleItemsListByFilterName(itemsList, filterName) {
-	filterName.addEventListener('click', (e) => {
+	filterName.addEventListener('click', e => {
 		e.preventDefault();
-		filterName.classList.toggle('filter__name_active');
+		filterName.classList.toggle('filter__name--active');
 		const itemsListHeight = itemsList.clientHeight;
 		const itemsWrapper = itemsList.parentNode;
 		if (itemsWrapper.style.maxHeight) {
@@ -48,7 +48,7 @@ function toggleItemsListByFilterName(itemsList, filterName) {
 }
 
 function setItemsCountInList(itemsCount, itemsList) {
-	itemsList.addEventListener('change', (e) => {
+	itemsList.addEventListener('change', e => {
 		let count = itemsList.querySelectorAll('input[type="checkbox"]:checked').length;
 		if (count === 0) {
 			itemsCount.innerHTML = `(${itemsList.childElementCount})`;
@@ -73,8 +73,8 @@ function displayPage(pageNumber, itemsPerPage, allItems) {
 	const from = (pageNumber - 1) * itemsPerPage;
 	const arrOfNodes = Array.prototype.slice.call(allItems);
 	const pageItems = arrOfNodes.splice(from, itemsPerPage);
-	pageItems.forEach((item) => item.removeAttribute('style'));
-	arrOfNodes.forEach((item) => (item.style.display = 'none'));
+	pageItems.forEach(item => item.removeAttribute('style'));
+	arrOfNodes.forEach(item => (item.style.display = 'none'));
 }
 
 function createPagination(paginationSection, itemsPerPage, allItems) {
@@ -112,19 +112,47 @@ function createPageButton(pageNumber, itemsPerPage, allItems) {
 //Tabs
 const tabs = document.querySelectorAll('.product-tabs__item');
 if (tabs) {
-	tabs.forEach((tab) => {
-		tab.addEventListener('click', (e) => {
-			const prevActiveTab = document.querySelector('.product-tabs__item_active');
+	tabs.forEach(tab => {
+		tab.addEventListener('click', e => {
+			const prevActiveTab = document.querySelector('.product-tabs__item--active');
 			const prevActiveTabBody = document.querySelector('#' + prevActiveTab.dataset.tab);
 			const newActiveTabBody = document.querySelector('#' + tab.dataset.tab);
-			prevActiveTab.classList.remove('product-tabs__item_active');
-			prevActiveTabBody.classList.remove('product-tabs__block_active');
-			tab.classList.add('product-tabs__item_active');
-			newActiveTabBody.classList.add('product-tabs__block_active');
+			prevActiveTab.classList.remove('product-tabs__item--active');
+			prevActiveTabBody.classList.remove('product-tabs__block--active');
+			tab.classList.add('product-tabs__item--active');
+			newActiveTabBody.classList.add('product-tabs__block--active');
 		});
 	});
 }
 
+//Start rating
+const stars = document.querySelectorAll('.product-rating__star');
+if (stars) {
+	stars.forEach(item =>
+		item.addEventListener('click', () => {
+			const { value } = item.dataset;
+			item.parentNode.dataset.totalValue = value;
+			document.querySelector('.product-rating__note').remove();
+		})
+	);
+}
+
+const yearRates = document.querySelectorAll('.year-rate__value');
+if (yearRates) {
+	yearRates.forEach(yearRate => {
+		const circle = yearRate.querySelector('.percent-circle__circle');
+		const radius = circle.r.baseVal.value;
+		const circumference = 2 * Math.PI * radius;
+
+		circle.style.strokeDasharray = `${circumference} ${circumference}`;
+		circle.style.strokeDashoffset = circumference;
+		const percent = parseInt(yearRate.textContent);
+		const offset = circumference - percent / 100 * circumference;
+		circle.style.strokeDashoffset = offset;
+	});
+}
+
+//Slider
 const slider = document.querySelector('.product-slider');
 if (slider) {
 	const sliderTrack = slider.querySelector('.product-slider__track');
@@ -132,13 +160,13 @@ if (slider) {
 	const sliderBtnPrev = slider.querySelector('.product-slider__button_prev');
 	const sliderItems = slider.querySelectorAll('.product-slider__item-wrapper');
 	const itemsCount = sliderItems.length;
-	const itemsWidthArr = [].map.call(sliderItems, (item) => item.clientWidth);
+	const itemsWidthArr = [].map.call(sliderItems, item => item.clientWidth);
 
 	const startPosition = calcVisibleItems(itemsWidthArr);
 	let position = startPosition;
 	let offset = 0;
 
-	sliderBtnNext.addEventListener('click', (e) => {
+	sliderBtnNext.addEventListener('click', e => {
 		sliderBtnPrev.style.opacity = '100%';
 		let itemsLeft = itemsCount - position;
 		if (itemsLeft >= 3) {
@@ -150,7 +178,7 @@ if (slider) {
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
 	});
 
-	sliderBtnPrev.addEventListener('click', (e) => {
+	sliderBtnPrev.addEventListener('click', e => {
 		sliderBtnNext.style.opacity = '100%';
 		let itemsLeft = calcPrevItems(itemsWidthArr, offset);
 		if (itemsLeft >= 3) {
@@ -163,7 +191,7 @@ if (slider) {
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
 	});
 
-	sliderTrack.addEventListener('click', (e) => {
+	sliderTrack.addEventListener('click', e => {
 		if (e.target.tagName == 'IMG') {
 			let mainPhoto = document.querySelector('.product__image-wrapper');
 			mainPhoto.innerHTML = `
@@ -199,28 +227,15 @@ function calcPrevItems(itemsWidthArr, offset) {
 	}
 }
 
-const stars = document.querySelectorAll('.product-rating__star');
-if (stars) {
-	stars.forEach((item) =>
-		item.addEventListener('click', () => {
-			const { value } = item.dataset;
-			item.parentNode.dataset.totalValue = value;
-			document.querySelector('.product-rating__note').remove();
-		})
-	);
-}
-
-const yearRates = document.querySelectorAll('.year-rate__value');
-if (yearRates) {
-	yearRates.forEach((yearRate) => {
-		const circle = yearRate.querySelector('.percent-circle__circle');
-		const radius = circle.r.baseVal.value;
-		const circumference = 2 * Math.PI * radius;
-
-		circle.style.strokeDasharray = `${circumference} ${circumference}`;
-		circle.style.strokeDashoffset = circumference;
-		const percent = parseInt(yearRate.textContent);
-		const offset = circumference - percent / 100 * circumference;
-		circle.style.strokeDashoffset = offset;
+//Comment votes
+const voteRatings = document.querySelectorAll('.comment-vote__rating');
+if (voteRatings) {
+	voteRatings.forEach(rating => {
+		console.log(rating);
+		if (rating.textContent >= 10) {
+			rating.closest('.product-comment').classList.add('product-comment--good');
+		} else if (rating.textContent <= -5) {
+			rating.closest('.product-comment').classList.add('product-comment--bad');
+		}
 	});
 }

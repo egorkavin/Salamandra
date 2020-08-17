@@ -10,26 +10,26 @@
 	line-height: 1rem;
 	transition: all 0.5s;
 
-	&_filter {
+	&--filter {
 		left: 0;
 		width: 320px;
 		padding-left: 10px;
 		padding-right: 5px;
 		border-right: 1px solid #1b1a1a;
 
-		&_hidden {
+		&--hidden {
 			left: -320px;
 		}
 	}
 
-	&_assemblage {
+	&--assemblage {
 		right: 0;
 		width: 360px;
 		padding-left: 25px;
 		padding-right: 20px;
 		border-left: 1px solid #1b1a1a;
 
-		&_hidden {
+		&--hidden {
 			right: -360px;
 		}
 	}
@@ -48,14 +48,14 @@
 		align-items: flex-end;
 		cursor: pointer;
 
-		&_filter {
+		&--filter {
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			border-left: none;
 			right: -36px;
 		}
 
-		&_assemblage {
+		&--assemblage {
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 			border-right: none;
@@ -126,17 +126,16 @@
 		transform: translateY(-50%);
 		transition: transform 0.2s;
 
-		&_arrow {
+		&--arrow {
 			width: 10px;
 			height: 9px;
 			background-image: url(../img/filter/filter__arrow.svg);
-			right: -10px;
+			right: -15px;
 		}
 	}
 
 	&__item {
-
-		&_disabled {
+		&--disabled {
 			color: #807979;
 
 			label {
@@ -153,12 +152,12 @@
 		display: none;
 
 		&:checked {
-			&+.fake-checkbox::before {
+			& + .fake-checkbox::before {
 				opacity: 1;
 			}
 
 			&,
-			&~span {
+			& ~ span {
 				color: #f9f9f9;
 				transition: color 0.2s;
 			}
@@ -173,7 +172,7 @@
 		position: relative;
 		transition: color .2s;
 
-		&_active {
+		&--active {
 			color: #f9f9f9;
 
 			.filter__icon_arrow {
@@ -182,7 +181,8 @@
 		}
 	}
 
-	&__items-count {}
+	&__items-count {
+	}
 
 	&__items-wrapper {
 		max-height: 0;
@@ -204,7 +204,8 @@
 		}
 	}
 
-	&__item-quantity {}
+	&__item-quantity {
+	}
 }
 
 .sidebar-list {

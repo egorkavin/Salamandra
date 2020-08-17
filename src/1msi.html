@@ -8,39 +8,31 @@
     <title>Salamandra | PC Builder</title>
     <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">>
 </head>
 
 <body>
+    @@include("_header.html")
+    @@include("_filters.html")
+    @@include("_assemblage.html")
     <div class="container">
-        @@include("_header.html")
-        @@include("_filters.html")
-        @@include("_assemblage.html")
-        <main class="main-content">
-            <div class="main-content__wrapper-top">
-                <section class="main-content__managment">
-                    <button class="main-content__button main-content__button_back">
-                        <span class="main-content__icon main-content__icon_back-arrow"></span>
-                        <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
-                    </button>
-                    <button class="main-content__button main-content__button_search">
-                        <span class="main-content__icon main-content__icon_search"></span>
-                    </button>
-                    <span class="main-content__button main-content__button_view">
-                        <button class="main-content__button_view_one-by-one"></button>
-                        <button class="main-content__button_view_two-in-row">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <button class="main-content__button_view_three-in-row"></button>
-                    </span>
-                </section>
-            </div>
-            <div class="main-content__product-page-wrapper product-page">
+        <section class="content-management">
+            <button class="content-management__button content-management__button--back">
+                <span class="content-management__icon content-management__icon--back-arrow"></span>
+                <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
+            </button>
+            <button class="content-management__button content-management__button--search">
+                <span class="content-management__icon content-management__icon--search"></span>
+            </button>
+            <span class="content-management__button content-management__button--view-type">
+                <button class="content-management__button content-management__button--view--one-in-row"></button>
+                <button class="content-management__button content-management__button--view--two-in-row"></button>
+                <button class="content-management__button content-management__button--view--three-in-row"></button>
+            </span>
+        </section>
+
+        <main class="main">
+            <div class="main__product-page-wrapper product-page">
                 <div class="product-page__item product-card">
                     <div class="product product_long">
                         <div class="product__wrapper">
@@ -185,13 +177,13 @@
                 </div>
                 <div class="product-page__item product-tabs">
                     <ul class="product-tabs__items">
-                        <li data-tab="shops" class="product-tabs__item product-tabs__item_active">Магазины</li>
+                        <li data-tab="shops" class="product-tabs__item product-tabs__item--active">Магазины</li>
                         <li data-tab="description" class="product-tabs__item">Описание</li>
                         <li data-tab="specs" class="product-tabs__item">Характеристики</li>
                         <li data-tab="comments" class="product-tabs__item">Отзывы</li>
                     </ul>
                     <div class="product-tabs__content">
-                        <div id="shops" class="product-shops product-tabs__block product-tabs__block_active">
+                        <div id="shops" class="product-shops product-tabs__block product-tabs__block--active">
                             <div class="product-shops__shop product-shop">
                                 <div class="product-shop__image-wrapper">
                                     <img class="product-shop__image" src="img/shop1.png"></img>
@@ -228,14 +220,14 @@
                                                 от
                                                 <span class="product-price__price-value">23999 р.</span>
                                             </span>
-                                            <a class="product-price__button product-price__button_to-store">
+                                            <a class="product-price__button product-price__button--to-store">
                                                 <span>В магазин</span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-shops__shop product-shop product-shop_out-of-stock">
+                            <div class="product-shops__shop product-shop product-shop--out-of-stock">
                                 <div class="product-shop__image-wrapper">
                                     <img class="product-shop__image" src="img/shop1.png"></img>
                                 </div>
@@ -270,7 +262,7 @@
                                             <span class="product-price__price">
                                                 нет в наличии
                                             </span>
-                                            <a class="product-price__button product-price__button_to-store">
+                                            <a class="product-price__button product-price__button--to-store">
                                                 <span>В магазин</span>
                                             </a>
                                         </div>
@@ -400,8 +392,10 @@
                                         <span class="product-comment__author">
                                             Some User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            10
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">10</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -429,8 +423,10 @@
                                             </span>
                                             Some User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            9
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">9</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -450,13 +446,15 @@
                                     <div class="product-comment__header">
                                         <span class="product-comment__author">
                                             Some3
-                                            <span class="product-comment__response">
+                                            <span class="product-comment__responsed-to">
                                                 ответил
                                             </span>
                                             Some Other User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            -9
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">-9</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -474,7 +472,9 @@
                 <div class="product-page__item"></div>
             </div>
         </main>
+        @@include('_footer.html')
     </div>
+
 
     <!-- !filter -->
     <div class="hidden-svg">
@@ -501,6 +501,9 @@
             </filter>
         </svg>
     </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script src="js/script.js"></script>
 </body>
 

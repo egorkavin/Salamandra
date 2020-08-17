@@ -8,12 +8,11 @@
     <title>Salamandra | PC Builder</title>
     <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">>
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
+    <header class="header">
     <div class="header__container">
         <a href="https://egorkavin.github.io/Salamandra/" class="header__logo logo-header">
             <span class="logo-header__icon main-icon"></span>
@@ -48,8 +47,8 @@
         </ul>
     </nav>
 </header>
-        <aside class="sidebar sidebar_filter sidebar_filter_hidden">
-    <a class="sidebar__btn sidebar__btn_filter">
+    <aside class="sidebar sidebar--filter sidebar--filter--hidden">
+    <a class="sidebar__btn sidebar__btn--filter">
         <span></span>
         <span></span>
         <span></span>
@@ -57,7 +56,7 @@
     <p class="sidebar__title">Фильтр</p>
     <ul class="sidebar-list">
         <li class="sidebar-list__item filter">
-            <ul class="filter__items-list filter__items-list_active">
+            <ul class="filter__items-list">
                 <li class="filter__item">
                     <label>
                         <input type="checkbox" class="filter__checkbox">
@@ -85,7 +84,7 @@
             <a href="#" class="filter__name">
                 Модель
                 <span class="filter__items-count">(267)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -126,7 +125,7 @@
             <a href="#" class="filter__name">
                 Объем памяти
                 <span class="filter__items-count">(2/10)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -159,7 +158,7 @@
             <a href="#" class="filter__name">
                 Производитель
                 <span class="filter__items-count">(267)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -230,7 +229,7 @@
             <a href="#" class="filter__name">
                 Разрядность шины памяти
                 <span class="filter__items-count">(43)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -256,7 +255,7 @@
             <a href="#" class="filter__name">
                 Тип памяти
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -289,7 +288,7 @@
             <a href="#" class="filter__name">
                 Интерфейс
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -323,7 +322,7 @@
             <a href="#" class="filter__name">
                 Семейство графического процессора
                 <span class="filter__items-count">(3/56)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -341,7 +340,7 @@
             <a href="#" class="filter__name">
                 Разъемы
                 <span class="filter__items-count">(13)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -367,7 +366,7 @@
             <a href="#" class="filter__name">
                 Форм-фактор
                 <span class="filter__items-count">(3/6)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -424,7 +423,7 @@
             <a href="#" class="filter__name">
                 Производитель
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -481,7 +480,7 @@
                 Разрядность шины
                 памяти
                 <span class="filter__items-count">(13)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -522,7 +521,7 @@
             <a href="#" class="filter__name">
                 Тип памяти
                 <span class="filter__items-count">(210)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -547,14 +546,14 @@
     </ul>
 
 </aside>
-        <aside class="sidebar sidebar_assemblage sidebar_assemblage_hidden">
-    <a class="sidebar__btn sidebar__btn_assemblage">
+    <aside class="sidebar sidebar--assemblage sidebar--assemblage--hidden">
+    <a class="sidebar__btn sidebar__btn--assemblage">
 
     </a>
     <p class="sidebar__title">Сборка</p>
     <ul class="sidebar-list">
         <li class="sidebar-list__item component">
-            <ul class="filter__items-list filter__items-list_active">
+            <ul class="filter__items-list filter__items-list--active">
                 <li class="filter__item">
                     <label>
                         <input type="checkbox" class="filter__checkbox">
@@ -581,31 +580,24 @@
     </ul>
 
 </aside>
-        <main class="main-content">
-            <div class="main-content__wrapper-top">
-                <section class="main-content__managment">
-                    <button class="main-content__button main-content__button_back">
-                        <span class="main-content__icon main-content__icon_back-arrow"></span>
-                        <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
-                    </button>
-                    <button class="main-content__button main-content__button_search">
-                        <span class="main-content__icon main-content__icon_search"></span>
-                    </button>
-                    <span class="main-content__button main-content__button_view">
-                        <button class="main-content__button_view_one-by-one"></button>
-                        <button class="main-content__button_view_two-in-row">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <button class="main-content__button_view_three-in-row"></button>
-                    </span>
-                </section>
-            </div>
-            <div class="main-content__product-page-wrapper product-page">
+    <div class="container">
+        <section class="content-management">
+            <button class="content-management__button content-management__button--back">
+                <span class="content-management__icon content-management__icon--back-arrow"></span>
+                <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
+            </button>
+            <button class="content-management__button content-management__button--search">
+                <span class="content-management__icon content-management__icon--search"></span>
+            </button>
+            <span class="content-management__button content-management__button--view-type">
+                <button class="content-management__button content-management__button--view--one-in-row"></button>
+                <button class="content-management__button content-management__button--view--two-in-row"></button>
+                <button class="content-management__button content-management__button--view--three-in-row"></button>
+            </span>
+        </section>
+
+        <main class="main">
+            <div class="main__product-page-wrapper product-page">
                 <div class="product-page__item product-card">
                     <div class="product product_long">
                         <div class="product__wrapper">
@@ -750,13 +742,13 @@
                 </div>
                 <div class="product-page__item product-tabs">
                     <ul class="product-tabs__items">
-                        <li data-tab="shops" class="product-tabs__item product-tabs__item_active">Магазины</li>
+                        <li data-tab="shops" class="product-tabs__item product-tabs__item--active">Магазины</li>
                         <li data-tab="description" class="product-tabs__item">Описание</li>
                         <li data-tab="specs" class="product-tabs__item">Характеристики</li>
                         <li data-tab="comments" class="product-tabs__item">Отзывы</li>
                     </ul>
                     <div class="product-tabs__content">
-                        <div id="shops" class="product-shops product-tabs__block product-tabs__block_active">
+                        <div id="shops" class="product-shops product-tabs__block product-tabs__block--active">
                             <div class="product-shops__shop product-shop">
                                 <div class="product-shop__image-wrapper">
                                     <img class="product-shop__image" src="img/shop1.png"></img>
@@ -793,14 +785,14 @@
                                                 от
                                                 <span class="product-price__price-value">23999 р.</span>
                                             </span>
-                                            <a class="product-price__button product-price__button_to-store">
+                                            <a class="product-price__button product-price__button--to-store">
                                                 <span>В магазин</span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-shops__shop product-shop product-shop_out-of-stock">
+                            <div class="product-shops__shop product-shop product-shop--out-of-stock">
                                 <div class="product-shop__image-wrapper">
                                     <img class="product-shop__image" src="img/shop1.png"></img>
                                 </div>
@@ -835,7 +827,7 @@
                                             <span class="product-price__price">
                                                 нет в наличии
                                             </span>
-                                            <a class="product-price__button product-price__button_to-store">
+                                            <a class="product-price__button product-price__button--to-store">
                                                 <span>В магазин</span>
                                             </a>
                                         </div>
@@ -965,8 +957,10 @@
                                         <span class="product-comment__author">
                                             Some User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            10
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">10</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -994,8 +988,10 @@
                                             </span>
                                             Some User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            9
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">9</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -1015,13 +1011,15 @@
                                     <div class="product-comment__header">
                                         <span class="product-comment__author">
                                             Some3
-                                            <span class="product-comment__response">
+                                            <span class="product-comment__responsed-to">
                                                 ответил
                                             </span>
                                             Some Other User Name
                                         </span>
-                                        <span class="product-comment__vote">
-                                            -9
+                                        <span class="product-comment__vote comment-vote">
+                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                            <span class="comment-vote__rating">-9</span>
+                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
                                         </span>
                                     </div>
                                     <p class="product-comment__text">
@@ -1039,7 +1037,57 @@
                 <div class="product-page__item"></div>
             </div>
         </main>
+        <footer class="footer">
+    <div class="footer__item about-block">
+        <div class="about-block__wrapper">
+            <img src="img/logo_header.svg" class="footer__logo">
+            <div class="about-block__info">
+                Каталог игр Hot-Game.info предоставляет максимальное количество игр и ведущих магазинов. Вы
+                легко
+                сможете найти игру, сравнить цены, выбрать интернет-магазин и купить игру по выгодной цене!
+                <div class="footer__links">
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_about-project"></span>
+                        О проекте
+                    </a>
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_help"></span>
+                        Помощь
+                    </a>
+                    <a href="https://hot-game.info/" class="footer__link">
+                        <span class="footer__icon footer__icon_hot-game"></span>
+                        Hot-game.info
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="footer__item contacts">
+        <ul class="contacts__list">
+            <li class="contacts__item">
+                <a href="mailto:help@salamandr.ru" class="footer__link">
+                    <span class="footer__icon footer__icon_email"></span>
+                    help@salamandr.ru
+                </a>
+            </li>
+            <li class="contacts__item">
+                <a href="#" class="footer__links">
+                    <span class="footer__icon footer__icon_hot-game"></span>
+                    Обратная связь
+                </a>
+            </li>
+            <li class="contacts__item">
+                <span class="footer__icon footer__icon_facebook"></span>
+                <span class="footer__icon footer__icon_twitter"></span>
+                <span class="footer__icon footer__icon_vk"></span>
+                <span class="footer__icon footer__icon_telegram"></span>
+            </li>
+        </ul>
+    </div>
+
+</footer>
+    </div>
+
 
     <!-- !filter -->
     <div class="hidden-svg">
@@ -1066,6 +1114,9 @@
             </filter>
         </svg>
     </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script src="js/script.js"></script>
 </body>
 

@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <header class="header">
+    <header class="header">
     <div class="header__container">
         <a href="https://egorkavin.github.io/Salamandra/" class="header__logo logo-header">
             <span class="logo-header__icon main-icon"></span>
@@ -48,8 +47,8 @@
         </ul>
     </nav>
 </header>
-        <aside class="sidebar sidebar_filter sidebar_filter_hidden">
-    <a class="sidebar__btn sidebar__btn_filter">
+    <aside class="sidebar sidebar--filter sidebar--filter--hidden">
+    <a class="sidebar__btn sidebar__btn--filter">
         <span></span>
         <span></span>
         <span></span>
@@ -57,7 +56,7 @@
     <p class="sidebar__title">Фильтр</p>
     <ul class="sidebar-list">
         <li class="sidebar-list__item filter">
-            <ul class="filter__items-list filter__items-list_active">
+            <ul class="filter__items-list">
                 <li class="filter__item">
                     <label>
                         <input type="checkbox" class="filter__checkbox">
@@ -85,7 +84,7 @@
             <a href="#" class="filter__name">
                 Модель
                 <span class="filter__items-count">(267)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -126,7 +125,7 @@
             <a href="#" class="filter__name">
                 Объем памяти
                 <span class="filter__items-count">(2/10)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -159,7 +158,7 @@
             <a href="#" class="filter__name">
                 Производитель
                 <span class="filter__items-count">(267)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -230,7 +229,7 @@
             <a href="#" class="filter__name">
                 Разрядность шины памяти
                 <span class="filter__items-count">(43)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -256,7 +255,7 @@
             <a href="#" class="filter__name">
                 Тип памяти
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -289,7 +288,7 @@
             <a href="#" class="filter__name">
                 Интерфейс
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -323,7 +322,7 @@
             <a href="#" class="filter__name">
                 Семейство графического процессора
                 <span class="filter__items-count">(3/56)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -341,7 +340,7 @@
             <a href="#" class="filter__name">
                 Разъемы
                 <span class="filter__items-count">(13)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -367,7 +366,7 @@
             <a href="#" class="filter__name">
                 Форм-фактор
                 <span class="filter__items-count">(3/6)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -424,7 +423,7 @@
             <a href="#" class="filter__name">
                 Производитель
                 <span class="filter__items-count">(4)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -481,7 +480,7 @@
                 Разрядность шины
                 памяти
                 <span class="filter__items-count">(13)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -522,7 +521,7 @@
             <a href="#" class="filter__name">
                 Тип памяти
                 <span class="filter__items-count">(210)</span>
-                <span class="filter__icon filter__icon_arrow"></span>
+                <span class="filter__icon filter__icon--arrow"></span>
             </a>
             <div class="filter__items-wrapper">
                 <ul class="filter__items-list">
@@ -547,14 +546,14 @@
     </ul>
 
 </aside>
-        <aside class="sidebar sidebar_assemblage sidebar_assemblage_hidden">
-    <a class="sidebar__btn sidebar__btn_assemblage">
+    <aside class="sidebar sidebar--assemblage sidebar--assemblage--hidden">
+    <a class="sidebar__btn sidebar__btn--assemblage">
 
     </a>
     <p class="sidebar__title">Сборка</p>
     <ul class="sidebar-list">
         <li class="sidebar-list__item component">
-            <ul class="filter__items-list filter__items-list_active">
+            <ul class="filter__items-list filter__items-list--active">
                 <li class="filter__item">
                     <label>
                         <input type="checkbox" class="filter__checkbox">
@@ -581,34 +580,25 @@
     </ul>
 
 </aside>
-        <main class="main-content">
-    <div class="main-content__wrapper-top">
-        <section class="main-content__managment">
-            <button class="main-content__button main-content__button_back">
-                <span class="main-content__icon main-content__icon_back-arrow"></span>
-                <span>МОДЕЛИ</span>
-            </button>
-            <button class="main-content__button main-content__button_search">
-                <span class="main-content__icon main-content__icon_search"></span>
-            </button>
-            <span class="main-content__button main-content__button_view">
-                <button class="main-content__button_view_one-by-one"></button>
-                <button class="main-content__button_view_two-in-row">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <button class="main-content__button_view_three-in-row"></button>
-            </span>
-        </section>
-    </div>
+    <div class="container">
+    <section class="content-management">
+        <button class="content-management__button content-management__button--back">
+            <span class="content-management__icon content-management__icon--back-arrow"></span>
+            <span>МОДЕЛИ</span>
+        </button>
+        <button class="content-management__button content-management__button--search">
+            <span class="content-management__icon content-management__icon--search"></span>
+        </button>
+        <span class="content-management__button content-management__button--view-type">
+            <button class="content-management__button content-management__button--view--one-in-row"></button>
+            <button class="content-management__button content-management__button--view--two-in-row"></button>
+            <button class="content-management__button content-management__button--view--three-in-row"></button>
+        </span>
+    </section>
 
-    <div class="main-content__main-wrapper">
-        <section class="main-content__products">
-            <div class="product">
+    <main class="main">
+        <section class="main__products">
+            <div class="main__product product">
                 <div class="product__wrapper">
                     <a class="product__link product__image-wrapper" href="1msi.html">
                         <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
@@ -654,7 +644,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product ">
+            <div class="main__product product">
                 <div class="product__wrapper">
                     <a href="#" class="product__link product__image-wrapper">
                         <img src="img/graphicsCard/test.jpg" class="product__image"></img>
@@ -700,7 +690,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product product_long">
+            <div class="main__product product product_long">
                 <div class="product__wrapper">
                     <a href="#" class="product__link product__image-wrapper">
                         <img src="img/graphicsCard/test.jpg" class="product__image"></img>
@@ -754,73 +744,62 @@
                 <span>Не работает пока</span>
             </button>
             <ul class="pages-navigation__list-of-pages">
-                <!-- <li class="pages-navigation__page-wrapper pages-navigation__page-wrapper_active">
-                    <button class="pages-navigation__page-button">1</button>
-                </li>
-                <li class="pages-navigation__page-wrapper">
-                    <button class="pages-navigation__page-button">2</button>
-                </li>
-                <li class="pages-navigation__page-wrapper">
-                    <button class="pages-navigation__page-button">3</button>
-                </li> -->
             </ul>
         </section>
 
-        <footer class="footer">
-            <div class="footer__item about-block">
-                <div class="about-block__wrapper">
-                    <img src="img/logo_header.svg" class="footer__logo">
-                    <div class="about-block__info">
-                        Каталог игр Hot-Game.info предоставляет максимальное количество игр и ведущих магазинов. Вы
-                        легко
-                        сможете найти игру, сравнить цены, выбрать интернет-магазин и купить игру по выгодной цене!
-                        <div class="footer__links">
-                            <a href="#" class="footer__link">
-                                <span class="footer__icon footer__icon_about-project"></span>
-                                О проекте
-                            </a>
-                            <a href="#" class="footer__link">
-                                <span class="footer__icon footer__icon_help"></span>
-                                Помощь
-                            </a>
-                            <a href="https://hot-game.info/" class="footer__link">
-                                <span class="footer__icon footer__icon_hot-game"></span>
-                                Hot-game.info
-                            </a>
-                        </div>
-                    </div>
+    </main>
+    <footer class="footer">
+    <div class="footer__item about-block">
+        <div class="about-block__wrapper">
+            <img src="img/logo_header.svg" class="footer__logo">
+            <div class="about-block__info">
+                Каталог игр Hot-Game.info предоставляет максимальное количество игр и ведущих магазинов. Вы
+                легко
+                сможете найти игру, сравнить цены, выбрать интернет-магазин и купить игру по выгодной цене!
+                <div class="footer__links">
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_about-project"></span>
+                        О проекте
+                    </a>
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_help"></span>
+                        Помощь
+                    </a>
+                    <a href="https://hot-game.info/" class="footer__link">
+                        <span class="footer__icon footer__icon_hot-game"></span>
+                        Hot-game.info
+                    </a>
                 </div>
             </div>
-            <div class="footer__item contacts">
-                <ul class="contacts__list">
-                    <li class="contacts__item">
-                        <a href="mailto:help@salamandr.ru" class="footer__link">
-                            <span class="footer__icon footer__icon_email"></span>
-                            help@salamandr.ru
-                        </a>
-                    </li>
-                    <li class="contacts__item">
-                        <a href="#" class="footer__links">
-                            <span class="footer__icon footer__icon_hot-game"></span>
-                            Обратная связь
-                        </a>
-                    </li>
-                    <li class="contacts__item">
-                        <span class="footer__icon footer__icon_facebook"></span>
-                        <span class="footer__icon footer__icon_twitter"></span>
-                        <span class="footer__icon footer__icon_vk"></span>
-                        <span class="footer__icon footer__icon_telegram"></span>
-                    </li>
-                </ul>
-            </div>
-
-        </footer>
+        </div>
+    </div>
+    <div class="footer__item contacts">
+        <ul class="contacts__list">
+            <li class="contacts__item">
+                <a href="mailto:help@salamandr.ru" class="footer__link">
+                    <span class="footer__icon footer__icon_email"></span>
+                    help@salamandr.ru
+                </a>
+            </li>
+            <li class="contacts__item">
+                <a href="#" class="footer__links">
+                    <span class="footer__icon footer__icon_hot-game"></span>
+                    Обратная связь
+                </a>
+            </li>
+            <li class="contacts__item">
+                <span class="footer__icon footer__icon_facebook"></span>
+                <span class="footer__icon footer__icon_twitter"></span>
+                <span class="footer__icon footer__icon_vk"></span>
+                <span class="footer__icon footer__icon_telegram"></span>
+            </li>
+        </ul>
     </div>
 
-</main>
-    </div>
+</footer>
+</div>
 
-    <!-- !filter -->
+    <!-- filter -->
     <div class="hidden-svg">
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <filter id="white">
