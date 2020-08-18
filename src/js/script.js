@@ -231,11 +231,20 @@ function calcPrevItems(itemsWidthArr, offset) {
 const voteRatings = document.querySelectorAll('.comment-vote__rating');
 if (voteRatings) {
 	voteRatings.forEach(rating => {
-		console.log(rating);
 		if (rating.textContent >= 10) {
 			rating.closest('.product-comment').classList.add('product-comment--good');
 		} else if (rating.textContent <= -5) {
 			rating.closest('.product-comment').classList.add('product-comment--bad');
+		}
+	});
+}
+
+//Price at shops
+const pricesAtShops = document.querySelectorAll('.product-price__price');
+if (pricesAtShops) {
+	pricesAtShops.forEach(price => {
+		if (!price.textContent.trim().localeCompare('нет в наличии')) {
+			price.style.border = 'none';
 		}
 	});
 }
