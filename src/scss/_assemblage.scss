@@ -1,0 +1,146 @@
+.sidebar {
+	&--assemblage {
+		background-color: #f9f9f9;
+		right: 0;
+		width: 360px;
+		border-left: 1px solid #1b1a1a;
+		&--hidden {
+			right: -360px;
+		}
+	}
+
+	&__btn {
+		&--assemblage {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-right: none;
+			left: -36px;
+		}
+	}
+
+	&__pc-parts {
+		margin-top: 10px;
+	}
+}
+
+.pc-parts {
+	padding: 0 30px;
+	&__item {
+		padding-top: 10px;
+		padding-bottom: 15px;
+		font-size: 12px;
+		border-bottom: 1px solid #1b1a1a;
+		.pc-part--multiple:not(:first-child) {
+			margin-top: 15px;
+		}
+	}
+
+	&__add-item {
+		margin-top: 12px;
+		color: #bfbfbf;
+		&:before {
+			content: '+ ';
+			font-size: 18px;
+			font-weight: 700;
+		}
+	}
+
+	&__conflicts {
+	}
+
+	&__choose-item {
+		color: #bfbfbf;
+		font-size: 14px;
+		font-weight: 700;
+		&:before {
+			content: '+ ';
+			font-size: 18px;
+			font-weight: 700;
+		}
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__assemblage-number {
+		font-size: 14px;
+		color: #807979;
+	}
+
+	&__total {
+		font-size: 12px;
+		color: #afafaf;
+	}
+}
+
+.pc-part {
+	display: flex;
+
+	&--current {
+		font-size: 14px;
+		color: #807979;
+	}
+
+	&--multiple {
+	}
+
+	&__description {
+		margin-right: auto;
+	}
+
+	&__title {
+		color: #da0b29;
+	}
+
+	&__details {
+		color: #807979;
+	}
+
+	&__price {
+		color: #bfbfbf;
+		font-size: 11px;
+		position: relative;
+		&:after {
+			content: '₽';
+			position: absolute;
+			right: -10px;
+		}
+	}
+
+	&:hover {
+		.pc-part__price {
+			color: #f9f9f9;
+		}
+	}
+}
+
+.conflicts {
+	&__title {
+		width: 320px;
+		height: 35px;
+		margin-bottom: 20px;
+		padding-left: 15px;
+		line-height: 35px;
+		font-size: 16px;
+		font-weight: 700;
+		color: #212020;
+		background-color: #e0a006;
+		border-radius: 3px;
+	}
+
+	&__item {
+		margin-left: 12px;
+		font-size: 14px;
+		color: #e0a006;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+		&:before {
+			content: '! ';
+			font-size: 16px;
+			font-weight: 700;
+		}
+	}
+}
