@@ -2,33 +2,30 @@ let projectFolder = 'docs/';
 let sourceFolder = 'src/';
 
 let path = {
-	build: {
-		html: projectFolder,
-		css: projectFolder + 'css/',
-		js: projectFolder + 'js/',
-		img: projectFolder + 'img/',
-		fonts: projectFolder + 'fonts/'
+	build : {
+		html  : projectFolder,
+		css   : projectFolder + 'css/',
+		js    : projectFolder + 'js/',
+		img   : projectFolder + 'img/',
+		fonts : projectFolder + 'fonts/'
 	},
-	src: {
-		html: [sourceFolder + '*.html', '!' + sourceFolder + '_*.html'],
-		css: sourceFolder + 'scss/*.scss',
-		js: sourceFolder + 'js/script.js',
-		img: sourceFolder + 'img/**/*.*',
-		fonts: sourceFolder + 'fonts/*.ttf'
+	src   : {
+		html  : [ sourceFolder + '*.html', '!' + sourceFolder + '_*.html' ],
+		css   : sourceFolder + 'scss/*.scss',
+		js    : sourceFolder + 'js/script.js',
+		img   : sourceFolder + 'img/**/*.*',
+		fonts : sourceFolder + 'fonts/*.ttf'
 	},
-	watch: {
-		html: sourceFolder + '**/*.html',
-		css: sourceFolder + 'scss/**/*.scss',
-		js: sourceFolder + 'js/**/*.js',
-		img: sourceFolder + 'img/**/*.*'
+	watch : {
+		html : sourceFolder + '**/*.html',
+		css  : sourceFolder + 'scss/**/*.scss',
+		js   : sourceFolder + 'js/**/*.js',
+		img  : sourceFolder + 'img/**/*.*'
 	},
-	clean: './' + projectFolder
+	clean : './' + projectFolder
 };
 
-let {
-	src,
-	dest
-} = require('gulp');
+let { src, dest } = require('gulp');
 let gulp = require('gulp');
 let browserSync = require('browser-sync').create();
 let fileInclude = require('gulp-file-include');
@@ -46,19 +43,16 @@ let fs = require('fs');
 
 function browserSyncFunc() {
 	browserSync.init({
-		server: {
-			baseDir: './' + projectFolder
+		server : {
+			baseDir : './' + projectFolder
 		},
-		port: 3000,
-		notify: false
+		port   : 3000,
+		notify : false
 	});
 }
 
 function html(done) {
-	src(path.src.html)
-		.pipe(fileInclude())
-		.pipe(dest(path.build.html))
-		.pipe(browserSync.stream());
+	src(path.src.html).pipe(fileInclude()).pipe(dest(path.build.html)).pipe(browserSync.stream());
 	return done();
 }
 
@@ -66,18 +60,20 @@ function css(done) {
 	src(path.src.css)
 		.pipe(
 			scss({
-				outputStyle: 'expanded'
+				outputStyle : 'expanded'
 			}).on('error', scss.logError)
 		)
 		.pipe(gcmq())
-		.pipe(autoprefixer(['last 5 version'], {
-			cascade: true
-		}))
+		.pipe(
+			autoprefixer([ 'last 5 version' ], {
+				cascade : true
+			})
+		)
 		.pipe(dest(path.build.css))
 		.pipe(cleanCSS())
 		.pipe(
 			rename({
-				extname: '.min.css'
+				extname : '.min.css'
 			})
 		)
 		.pipe(dest(path.build.css))
@@ -91,7 +87,7 @@ function js(done) {
 		.pipe(uglify())
 		.pipe(
 			rename({
-				extname: '.min.css'
+				extname : '.min.css'
 			})
 		)
 		.pipe(dest(path.build.js))
@@ -109,10 +105,10 @@ function images(done) {
 }
 
 function otf2ttf(done) {
-	src([sourceFolder + 'fonts/*.otf'])
+	src([ sourceFolder + 'fonts/*.otf' ])
 		.pipe(
 			fonter({
-				formats: ['ttf']
+				formats : [ 'ttf' ]
 			})
 		)
 		.pipe(dest(sourceFolder + 'fonts/'));
@@ -126,7 +122,7 @@ function fonts(done) {
 }
 
 function putFonts(done) {
-	return fs.readdir(path.build.fonts, function (err, items) {
+	return fs.readdir(path.build.fonts, function(err, items) {
 		if (items) {
 			for (let item of items) {
 				let fontName = item.split('.')[0];
@@ -150,14 +146,14 @@ function svg2Sprite(done) {
 		.src(sourceFolder + 'icon/iconsSprite/*.svg')
 		.pipe(
 			svgSprite({
-				mode: {
-					stack: {
-						sprite: '../icons/icons.svg'
+				mode  : {
+					stack : {
+						sprite : '../icons/icons.svg'
 					}
 				},
-				shape: {
-					dimension: {
-						attributes: true
+				shape : {
+					dimension : {
+						attributes : true
 					}
 				}
 			})
@@ -166,7 +162,7 @@ function svg2Sprite(done) {
 	done();
 }
 
-function wathcFiles() {
+function watchFiles() {
 	gulp.watch(path.watch.html, html);
 	gulp.watch(path.watch.css, css);
 	gulp.watch(path.watch.js, js);
@@ -184,7 +180,7 @@ gulp.task('svg2Sprite', svg2Sprite);
 let start = gulp.series(gulp.parallel(images, svg2Sprite, otf2ttf), fonts, putFonts);
 gulp.task('start', start);
 
-let watch = gulp.parallel(gulp.parallel(js, css, html), wathcFiles, browserSyncFunc);
+let watch = gulp.parallel(gulp.parallel(js, css, html), watchFiles, browserSyncFunc);
 gulp.task('watch', watch);
 
 gulp.task('default', watch);

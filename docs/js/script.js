@@ -59,12 +59,12 @@ if (sidebarOpenButtons) {
 }
 
 //Pagination
-const itemsFromAllPages = document.querySelectorAll('.product');
-let itemsPerPage = 4;
-let currentPage = 1;
 const paginationSection = document.querySelector('.pages-navigation');
 //const pageNumberButtons = paginationSection.querySelector('.pages-navigation__page-numbers');
 if (paginationSection) {
+	const itemsFromAllPages = document.querySelectorAll('.product');
+	let itemsPerPage = 4;
+	let currentPage = 1;
 	displayPage(1, itemsPerPage, itemsFromAllPages);
 	createPagination(paginationSection, itemsPerPage, itemsFromAllPages);
 
@@ -135,10 +135,8 @@ if (stars) {
 			document.querySelector('.product-rating__note').remove();
 		})
 	);
-}
 
-const yearRates = document.querySelectorAll('.year-rate__value');
-if (yearRates) {
+	const yearRates = document.querySelectorAll('.year-rate__value');
 	yearRates.forEach(yearRate => {
 		const circle = yearRate.querySelector('.percent-circle__circle');
 		const radius = circle.r.baseVal.value;
@@ -199,30 +197,30 @@ if (slider) {
 			`;
 		}
 	});
-}
 
-function calcVisibleItems(itemsWidthArr) {
-	let totalWidth = 0;
-	for (let i = 0; i < itemsWidthArr.length; i++) {
-		if (totalWidth >= 475) {
-			return i - 1;
+	function calcVisibleItems(itemsWidthArr) {
+		let totalWidth = 0;
+		for (let i = 0; i < itemsWidthArr.length; i++) {
+			if (totalWidth >= 475) {
+				return i - 1;
+			}
+			totalWidth += itemsWidthArr[i];
 		}
-		totalWidth += itemsWidthArr[i];
+		return itemsWidthArr.length;
 	}
-	return itemsWidthArr.length;
-}
 
-function calcOffset(itemsWidthArray, start, end) {
-	const nextItems = [].slice.call(itemsWidthArray, start, end);
-	return nextItems.reduce((a, b) => a + b, 0);
-}
+	function calcOffset(itemsWidthArray, start, end) {
+		const nextItems = [].slice.call(itemsWidthArray, start, end);
+		return nextItems.reduce((a, b) => a + b, 0);
+	}
 
-function calcPrevItems(itemsWidthArr, offset) {
-	let buf = 0;
-	for (let i = 0; i < itemsWidthArr.length; i++) {
-		buf += itemsWidthArr[i];
-		if (offset - buf <= 0) {
-			return i + 1;
+	function calcPrevItems(itemsWidthArr, offset) {
+		let buf = 0;
+		for (let i = 0; i < itemsWidthArr.length; i++) {
+			buf += itemsWidthArr[i];
+			if (offset - buf <= 0) {
+				return i + 1;
+			}
 		}
 	}
 }
@@ -249,6 +247,7 @@ if (pricesAtShops) {
 	});
 }
 
+//TODO
 const pcParts = document.querySelectorAll('.pc-part__title');
 if (pcParts) {
 	const pos1 = pcParts[0].getBoundingClientRect();
