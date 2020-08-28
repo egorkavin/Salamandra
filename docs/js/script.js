@@ -138,15 +138,18 @@ if (stars) {
 
 	const yearRates = document.querySelectorAll('.year-rate__value');
 	yearRates.forEach(yearRate => {
-		const circle = yearRate.querySelector('.percent-circle__circle');
-		const radius = circle.r.baseVal.value;
-		const circumference = 2 * Math.PI * radius;
-
-		circle.style.strokeDasharray = `${circumference} ${circumference}`;
-		circle.style.strokeDashoffset = circumference;
-		const percent = parseInt(yearRate.textContent);
-		const offset = circumference - percent / 100 * circumference;
-		circle.style.strokeDashoffset = offset;
+		const percentValue = parseInt(yearRate.textContent);
+		const circumference = 2 * Math.PI * 13;
+		const offset = circumference - percentValue / 100 * circumference;
+		const circle = `
+		<svg class="percent-circle" width="30" height="30">
+			<circle class="percent-circle__circle" stroke="#fff"
+				fill="transparent" stroke-width="2" cx="15" cy="15"
+				r="13" stroke-dasharray="${circumference} ${circumference}" 
+				stroke-dashoffset="${offset}"/>
+		</svg>
+		`;
+		yearRate.innerHTML += circle;
 	});
 }
 
