@@ -162,8 +162,9 @@
 
 .percent-circle {
 	position: absolute;
-	top: -6px;
-	left: -9px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-55%, -46%);
 	&__circle {
 		transform-origin: center;
 		transform: rotate(-90deg);
@@ -188,6 +189,7 @@
 	&__value {
 		position: relative;
 		font-size: 11px;
+		width: 40px;
 		margin-right: 5px;
 	}
 

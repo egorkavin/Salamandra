@@ -149,6 +149,7 @@ if (stars) {
 				stroke-dashoffset="${offset}"/>
 		</svg>
 		`;
+		yearRate.innerHTML = percentValue === 100 ? '<span>★</span>' : `<span>${percentValue}</span>`;
 		yearRate.innerHTML += circle;
 	});
 }

@@ -1157,8 +1157,11 @@ body {
 
 .percent-circle {
   position: absolute;
-  top: -6px;
-  left: -9px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-55%, -46%);
+      -ms-transform: translate(-55%, -46%);
+          transform: translate(-55%, -46%);
 }
 
 .percent-circle__circle {
@@ -1189,6 +1192,7 @@ body {
 .year-rate__value {
   position: relative;
   font-size: 11px;
+  width: 40px;
   margin-right: 5px;
 }
 
