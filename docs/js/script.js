@@ -226,15 +226,35 @@ if (slider) {
 }
 
 //Comment votes
-const voteRatings = document.querySelectorAll('.comment-vote__rating');
-if (voteRatings) {
-	voteRatings.forEach(rating => {
-		if (rating.textContent >= 10) {
-			rating.closest('.product-comment').classList.add('product-comment--good');
-		} else if (rating.textContent <= -5) {
-			rating.closest('.product-comment').classList.add('product-comment--bad');
-		}
+const commentVotes = document.querySelectorAll('.comment-vote');
+if (commentVotes) {
+	commentVotes.forEach(vote => {
+		const upvoteBtn = vote.querySelector('.comment-vote__btn--up');
+		const downvoteBtn = vote.querySelector('.comment-vote__btn--down');
+		const rating = vote.querySelector('.comment-vote__rating');
+		upvoteBtn.addEventListener('click', () => {
+			rating.textContent++;
+			checkRating(rating);
+		});
+		downvoteBtn.addEventListener('click', () => {
+			rating.textContent--;
+			checkRating(rating);
+		});
+
+		checkRating(rating);
 	});
+
+	function checkRating(rating) {
+		const comment = rating.closest('.product-comment');
+		if (rating.textContent >= 10) {
+			comment.classList.add('product-comment--good');
+		} else if (rating.textContent <= -5) {
+			comment.classList.add('product-comment--bad');
+		} else {
+			comment.classList.remove('product-comment--good');
+			comment.classList.remove('product-comment--bad');
+		}
+	}
 }
 
 //Price at shops
