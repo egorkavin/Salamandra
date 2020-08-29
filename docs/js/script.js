@@ -271,11 +271,15 @@ if (pricesAtShops) {
 	});
 }
 
-//TODO
-const pcParts = document.querySelectorAll('.pc-part__title');
+const pcParts = document.querySelector('.pc-parts');
 if (pcParts) {
-	const pos1 = pcParts[0].getBoundingClientRect();
-	const pos2 = pcParts[1].getBoundingClientRect();
-	let line = document.createElement('svg');
-	line.innerHTML = `<line id="line1" x1=${pos1.left} y1=${pos1.top} x2=${pos2.left} y2=${pos2.top} stroke=red/>`;
+	const prices = pcParts.querySelectorAll('.pc-part__price');
+	const totalPrice = pcParts.querySelector('.pc-parts__total');
+	const reducer = (acc, price) => {
+		const priceContent = price.textContent;
+		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.');
+		return acc + +priceValue;
+	};
+	const sum = [].reduce.call(prices, reducer, 0);
+	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
 }
