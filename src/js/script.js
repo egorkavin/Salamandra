@@ -27,7 +27,7 @@ if (sidebarOpenButtons) {
 	filtersItemsQuantity.forEach(filterItemQuantity => {
 		if (filterItemQuantity.textContent === '(+0)') {
 			const parent = filterItemQuantity.closest('.filter__item');
-			parent.classList.add('filter__item_disabled');
+			parent.classList.add('filter__item--disabled');
 			parent.addEventListener('click', e => e.preventDefault());
 		}
 	});
@@ -93,16 +93,16 @@ if (paginationSection) {
 		button.textContent = pageNumber;
 
 		if (pageNumber === currentPage) {
-			li.classList.add('pages-navigation__page-wrapper_active');
+			li.classList.add('pages-navigation__page-wrapper--active');
 		}
 		button.addEventListener('click', () => {
 			currentPage = pageNumber;
 			displayPage(pageNumber, itemsPerPage, allItems);
 			const prevPage = document.querySelector(
-				'.pages-navigation__page-wrapper.pages-navigation__page-wrapper_active'
+				'.pages-navigation__page-wrapper.pages-navigation__page-wrapper--active'
 			);
-			prevPage.classList.remove('pages-navigation__page-wrapper_active');
-			li.classList.add('pages-navigation__page-wrapper_active');
+			prevPage.classList.remove('pages-navigation__page-wrapper--active');
+			li.classList.add('pages-navigation__page-wrapper--active');
 		});
 		li.appendChild(button);
 		return li;

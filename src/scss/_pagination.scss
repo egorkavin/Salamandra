@@ -1,0 +1,40 @@
+.pages-navigation {
+	font-size: 12px;
+	text-align: center;
+
+	&__show-more {
+		width: 130px;
+		height: 20px;
+		border-radius: 10px;
+		background-color: #bfbfbf;
+	}
+
+	&__icon {
+		&--show-more {
+		}
+	}
+
+	&__list-of-pages {
+		display: flex;
+		justify-content: center;
+		margin-top: 20px;
+	}
+
+	&__page-wrapper {
+		&:not(:last-of-type) {
+			margin-right: 10px;
+		}
+
+		&--active .pages-navigation__page-button {
+			background-color: #da0b29;
+			color: #f9f9f9;
+		}
+	}
+
+	&__page-button {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: #bfbfbf;
+	}
+}
