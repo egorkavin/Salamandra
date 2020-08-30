@@ -149,7 +149,7 @@ if (stars) {
 				stroke-dashoffset="${offset}"/>
 		</svg>
 		`;
-		yearRate.innerHTML = percentValue === 100 ? '<span>★</span>' : `<span>${percentValue}</span>`;
+		yearRate.innerHTML = percentValue === 100 ? '★' : `${percentValue}`;
 		yearRate.innerHTML += circle;
 	});
 }
@@ -282,4 +282,22 @@ if (pcParts) {
 	};
 	const sum = [].reduce.call(prices, reducer, 0);
 	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
+
+	const titles = document.querySelectorAll('.pc-part__title');
+	const pos1 = titles[0].getBoundingClientRect();
+	const pos2 = titles[1].getBoundingClientRect();
+	console.log('pos2', pos2);
+	const line = `
+	<svg width="500" height="500"><line stroke="red" x1="${pos1.x}" y1="${pos1.y}" x2="${pos2.x}" y2="${pos2.y}" stroke="black"/></svg>
+	`;
+	pcParts.innerHTML += line;
 }
+
+// //TODO
+// const pcParts = document.querySelectorAll('.pc-part__title');
+// if (pcParts) {
+// 	const pos1 = pcParts[0].getBoundingClientRect();
+// 	const pos2 = pcParts[1].getBoundingClientRect();
+// 	let line = document.createElement('svg');
+// 	line.innerHTML = `<line id="line1" x1=${pos1.left} y1=${pos1.top} x2=${pos2.left} y2=${pos2.top} stroke=red/>`;
+// }
