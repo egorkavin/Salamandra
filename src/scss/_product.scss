@@ -145,26 +145,28 @@
 }
 
 .product-score {
+	display: flex;
+	align-items: center;
 	height: 30px;
 	font-size: 14px;
 	color: #f9f9f9;
 
 	&__rating {
-		display: inline-block;
-		padding: 8px 10px 8px 0;
+		margin-right: 10px;
 		font-weight: 700;
-		border-right: 1px solid #212020;
 	}
 
 	&__year-rate {
+		&:not(:last-child) {
+			margin-right: 10px;
+		}
 	}
 }
 
 .percent-circle {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-55%, -46%);
+	top: 0;
+	left: 0;
 	&__circle {
 		transform-origin: center;
 		transform: rotate(-90deg);
@@ -172,25 +174,29 @@
 }
 
 .year-rate {
-	display: inline-block;
-	padding-left: 10px;
+	display: inline-flex;
+	height: 30px;
+	align-items: center;
 	font-weight: 400;
-	padding: 6px 0;
-
-	&:not(:last-child) {
-		padding-right: 10px;
-		border-right: 1px solid #212020;
-	}
+	padding-left: 5px;
+	border-left: 1px solid #212020;
 
 	&__percentage {
 		margin: 0 12px;
+		display: inline-flex;
+		height: 30px;
+		align-items: center;
 	}
 
 	&__value {
 		position: relative;
 		font-size: 11px;
-		width: 40px;
 		margin-right: 5px;
+		display: inline-flex;
+		height: 30px;
+		width: 30px;
+		line-height: 30px; //align-items: center ?
+		justify-content: center;
 	}
 
 	&__year {

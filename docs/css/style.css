@@ -1142,25 +1142,30 @@ body {
 }
 
 .product-score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 30px;
   font-size: 14px;
   color: #f9f9f9;
 }
 
 .product-score__rating {
-  display: inline-block;
-  padding: 8px 10px 8px 0;
+  margin-right: 10px;
   font-weight: 700;
-  border-right: 1px solid #212020;
+}
+
+.product-score__year-rate:not(:last-child) {
+  margin-right: 10px;
 }
 
 .percent-circle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-55%, -46%);
-      -ms-transform: translate(-55%, -46%);
-          transform: translate(-55%, -46%);
+  top: 0;
+  left: 0;
 }
 
 .percent-circle__circle {
@@ -1173,26 +1178,42 @@ body {
 }
 
 .year-rate {
-  display: inline-block;
-  padding-left: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-weight: 400;
-  padding: 6px 0;
-}
-
-.year-rate:not(:last-child) {
-  padding-right: 10px;
-  border-right: 1px solid #212020;
+  padding-left: 5px;
+  border-left: 1px solid #212020;
 }
 
 .year-rate__percentage {
   margin: 0 12px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .year-rate__value {
   position: relative;
   font-size: 11px;
-  width: 40px;
   margin-right: 5px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .year-rate__year {
