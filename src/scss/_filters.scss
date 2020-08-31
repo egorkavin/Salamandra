@@ -13,8 +13,6 @@
 	&--filter {
 		left: 0;
 		width: 320px;
-		padding-left: 10px;
-		padding-right: 5px;
 		border-right: 1px solid #1b1a1a;
 
 		&--hidden {
@@ -64,7 +62,8 @@
 	&__title {
 		font-size: 16px;
 		font-weight: 700;
-		padding: 38px 0 20px 15px;
+		padding: 38px 0 20px 25px;
+		border-bottom: 1px solid #1b1a1a;
 	}
 }
 
@@ -192,14 +191,12 @@
 .sidebar-list {
 	height: calc(100% - 74px);
 	overflow-y: auto;
+	padding-left: 10px;
+	padding-right: 5px;
 
 	&__item {
 		padding-left: 15px;
 		border-bottom: 1px solid #1b1a1a;
-
-		&:first-of-type {
-			border-top: 1px solid #1b1a1a;
-		}
 	}
 }
 
