@@ -191,7 +191,7 @@
 
 .sidebar-list {
 	height: calc(100% - 74px);
-	overflow-y: scroll;
+	overflow-y: auto;
 
 	&__item {
 		padding-left: 15px;

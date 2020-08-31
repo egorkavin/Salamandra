@@ -532,7 +532,7 @@ body {
 
 .sidebar-list {
   height: calc(100% - 74px);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .sidebar-list__item {
