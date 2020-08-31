@@ -380,21 +380,29 @@ body {
   right: -36px;
 }
 
-.sidebar__btn span {
-  width: 16px;
+.sidebar__btn--filter span {
+  display: inline-block;
   height: 2px;
   background-color: #f9f9f9;
-  margin: 0 14px 4px 0;
 }
 
-.sidebar__btn span:nth-of-type(2) {
+.sidebar__btn--filter span:not(:last-of-type) {
+  margin-bottom: 4px;
+}
+
+.sidebar__btn--filter span:nth-of-type(1) {
+  width: 16px;
+  margin-right: 14px;
+}
+
+.sidebar__btn--filter span:nth-of-type(2) {
   width: 8px;
   margin-right: 18px;
 }
 
-.sidebar__btn span:nth-of-type(3) {
+.sidebar__btn--filter span:nth-of-type(3) {
   width: 4px;
-  margin: 0 20px 0 0;
+  margin-right: 20px;
 }
 
 .sidebar__title {
