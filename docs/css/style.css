@@ -917,16 +917,6 @@ body {
       align-self: flex-end;
   margin-left: auto;
   margin-right: 14px;
-  padding: 0 6px 6px 6px;
-  border-bottom: 1px solid #da0b29;
-  font-size: 14px;
-  font-weight: 400;
-  color: #7c7575;
-}
-
-.product__price-value {
-  font-weight: 700;
-  color: #f9f9f9;
 }
 
 .product__button {
@@ -1434,19 +1424,6 @@ body {
       flex-shrink: 0;
 }
 
-.product-price__price {
-  padding: 0 6px 6px 6px;
-  border-bottom: 1px solid #da0b29;
-  font-size: 18px;
-  font-weight: 400;
-  color: #7c7575;
-}
-
-.product-price__price-value {
-  font-weight: 700;
-  color: #f9f9f9;
-}
-
 .product-price__button {
   display: inline-block;
   cursor: pointer;
@@ -1743,4 +1720,21 @@ body {
 .contacts {
   width: 209px;
   text-align: center;
+}
+
+.price {
+  padding: 0 6px 6px 6px;
+  border-bottom: 1px solid #da0b29;
+  font-size: 14px;
+  font-weight: 400;
+  color: #7c7575;
+}
+
+.price__value {
+  font-weight: 700;
+  color: #f9f9f9;
+}
+
+.price--big {
+  font-size: 18px;
 }
