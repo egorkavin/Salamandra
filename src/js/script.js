@@ -135,9 +135,12 @@ if (stars) {
 			document.querySelector('.product-rating__note').remove();
 		})
 	);
+}
 
-	const yearRates = document.querySelectorAll('.year-rate__value');
-	yearRates.forEach(yearRate => {
+const yearRates = document.querySelectorAll('.year-rate');
+if (yearRates) {
+	const value = document.querySelectorAll('.year-rate__value');
+	value.forEach(yearRate => {
 		const percentValue = parseInt(yearRate.textContent);
 		const circumference = 2 * Math.PI * 13;
 		const offset = circumference - percentValue / 100 * circumference;
@@ -271,27 +274,27 @@ if (pricesAtShops) {
 	});
 }
 
-const pcParts = document.querySelector('.pc-parts');
-if (pcParts) {
-	const prices = pcParts.querySelectorAll('.pc-part__price');
-	const totalPrice = pcParts.querySelector('.pc-parts__total');
-	const reducer = (acc, price) => {
-		const priceContent = price.textContent;
-		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.');
-		return acc + +priceValue;
-	};
-	const sum = [].reduce.call(prices, reducer, 0);
-	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
+// const pcParts = document.querySelector('.pc-parts');
+// if (pcParts) {
+// 	const prices = pcParts.querySelectorAll('.pc-part__price');
+// 	const totalPrice = pcParts.querySelector('.pc-parts__total');
+// 	const reducer = (acc, price) => {
+// 		const priceContent = price.textContent;
+// 		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.');
+// 		return acc + +priceValue;
+// 	};
+// 	const sum = [].reduce.call(prices, reducer, 0);
+// 	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
 
-	const titles = document.querySelectorAll('.pc-part__title');
-	const pos1 = titles[0].getBoundingClientRect();
-	const pos2 = titles[1].getBoundingClientRect();
-	console.log('pos2', pos2);
-	const line = `
-	<svg width="500" height="500"><line stroke="red" x1="${pos1.x}" y1="${pos1.y}" x2="${pos2.x}" y2="${pos2.y}" stroke="black"/></svg>
-	`;
-	pcParts.innerHTML += line;
-}
+// 	const titles = document.querySelectorAll('.pc-part__title');
+// 	const pos1 = titles[0].getBoundingClientRect();
+// 	const pos2 = titles[1].getBoundingClientRect();
+// 	console.log('pos2', pos2);
+// 	const line = `
+// 	<svg width="500" height="500"><line stroke="red" x1="${pos1.x}" y1="${pos1.y}" x2="${pos2.x}" y2="${pos2.y}" stroke="black"/></svg>
+// 	`;
+// 	pcParts.innerHTML += line;
+// }
 
 // //TODO
 // const pcParts = document.querySelectorAll('.pc-part__title');
