@@ -40,6 +40,7 @@ let ttf2woff2 = require('gulp-ttf2woff2');
 let fonter = require('gulp-fonter');
 let svgSprite = require('gulp-svg-sprite');
 let fs = require('fs');
+let sourcemap = require('gulp-sourcemaps');
 
 function browserSyncFunc() {
 	browserSync.init({
@@ -59,6 +60,7 @@ function html(done) {
 
 function css(done) {
 	src(path.src.css)
+		.pipe(sourcemap.init())
 		.pipe(
 			scss({
 				outputStyle : 'expanded'
@@ -77,6 +79,7 @@ function css(done) {
 				extname : '.min.css'
 			})
 		)
+		.pipe(sourcemap.write('.'))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.stream());
 	return done();
