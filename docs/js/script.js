@@ -165,36 +165,45 @@ if (slider) {
 	const sliderBtnPrev = slider.querySelector('.product-slider__button_prev');
 	const sliderItems = slider.querySelectorAll('.product-slider__item-wrapper');
 	const itemsCount = sliderItems.length;
-	const itemsWidthArr = [].map.call(sliderItems, item => item.clientWidth);
+	const itemsWidthArr = [].map.call(sliderItems, item => Math.round(item.getBoundingClientRect().width));
 
 	const startPosition = calcVisibleItems(itemsWidthArr);
+	console.log("startPosition", startPosition)
 	let position = startPosition;
 	let offset = 0;
 
-	sliderBtnNext.addEventListener('click', e => {
+	sliderBtnNext.addEventListener('click', moveTrackForward);
+
+	function moveTrackForward() {
 		sliderBtnPrev.style.opacity = '100%';
+		sliderBtnPrev.addEventListener('click', moveTrackBack);
+
 		let itemsLeft = itemsCount - position;
-		if (itemsLeft >= 3) {
+		if (itemsLeft > 3) {
 			offset += calcOffset(itemsWidthArr, position, (position += 3));
 		} else {
 			offset += calcOffset(itemsWidthArr, position, (position = itemsCount));
 			sliderBtnNext.style.opacity = '0';
+			sliderBtnNext.removeEventListener('click', moveTrackForward);
 		}
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
-	});
+	}
 
-	sliderBtnPrev.addEventListener('click', e => {
+	function moveTrackBack() {
 		sliderBtnNext.style.opacity = '100%';
+		sliderBtnNext.addEventListener('click', moveTrackForward);
+
 		let itemsLeft = calcPrevItems(itemsWidthArr, offset);
-		if (itemsLeft >= 3) {
+		if (itemsLeft > 3) {
 			offset -= calcOffset(itemsWidthArr, (position -= 3), position + 3);
 		} else {
 			offset -= calcOffset(itemsWidthArr, 0, itemsLeft);
 			position = startPosition;
 			sliderBtnPrev.style.opacity = '0';
+			sliderBtnPrev.removeEventListener('click', moveTrackBack);
 		}
 		sliderTrack.style.transform = `translateX(-${offset}px)`;
-	});
+	}
 
 	sliderTrack.addEventListener('click', e => {
 		if (e.target.tagName == 'IMG') {
@@ -217,8 +226,8 @@ if (slider) {
 	}
 
 	function calcOffset(itemsWidthArray, start, end) {
-		const nextItems = [].slice.call(itemsWidthArray, start, end);
-		return nextItems.reduce((a, b) => a + b, 0);
+		const nextItemsWidth = [].slice.call(itemsWidthArray, start, end);
+		return nextItemsWidth.reduce((a, b) => a + b);
 	}
 
 	function calcPrevItems(itemsWidthArr, offset) {
@@ -274,27 +283,18 @@ if (pricesAtShops) {
 	});
 }
 
-// const pcParts = document.querySelector('.pc-parts');
-// if (pcParts) {
-// 	const prices = pcParts.querySelectorAll('.pc-part__price');
-// 	const totalPrice = pcParts.querySelector('.pc-parts__total');
-// 	const reducer = (acc, price) => {
-// 		const priceContent = price.textContent;
-// 		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.');
-// 		return acc + +priceValue;
-// 	};
-// 	const sum = [].reduce.call(prices, reducer, 0);
-// 	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
-
-// 	const titles = document.querySelectorAll('.pc-part__title');
-// 	const pos1 = titles[0].getBoundingClientRect();
-// 	const pos2 = titles[1].getBoundingClientRect();
-// 	console.log('pos2', pos2);
-// 	const line = `
-// 	<svg width="500" height="500"><line stroke="red" x1="${pos1.x}" y1="${pos1.y}" x2="${pos2.x}" y2="${pos2.y}" stroke="black"/></svg>
-// 	`;
-// 	pcParts.innerHTML += line;
-// }
+const pcParts = document.querySelector('.pc-parts');
+if (pcParts) {
+	const prices = pcParts.querySelectorAll('.pc-part__price');
+	const totalPrice = pcParts.querySelector('.pc-parts__total');
+	const reducer = (acc, price) => {
+		const priceContent = price.textContent;
+		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.');
+		return acc + +priceValue;
+	};
+	const sum = [].reduce.call(prices, reducer, 0);
+	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
+}
 
 // //TODO
 // const pcParts = document.querySelectorAll('.pc-part__title');
