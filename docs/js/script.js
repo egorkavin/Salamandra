@@ -125,14 +125,15 @@ if (tabs) {
 	});
 }
 
-//Start rating
+//Stars rating
 const stars = document.querySelectorAll('.product-rating__star');
 if (stars) {
 	stars.forEach(item =>
 		item.addEventListener('click', () => {
 			const { value } = item.dataset;
 			item.parentNode.dataset.totalValue = value;
-			document.querySelector('.product-rating__note').remove();
+			const note = document.querySelector('.product-rating__note');
+			if (note) note.remove();
 		})
 	);
 }
@@ -168,7 +169,6 @@ if (slider) {
 	const itemsWidthArr = [].map.call(sliderItems, item => Math.round(item.getBoundingClientRect().width));
 
 	const startPosition = calcVisibleItems(itemsWidthArr);
-	console.log("startPosition", startPosition)
 	let position = startPosition;
 	let offset = 0;
 
@@ -217,7 +217,7 @@ if (slider) {
 	function calcVisibleItems(itemsWidthArr) {
 		let totalWidth = 0;
 		for (let i = 0; i < itemsWidthArr.length; i++) {
-			if (totalWidth >= 475) {
+			if (totalWidth >= 485) {
 				return i - 1;
 			}
 			totalWidth += itemsWidthArr[i];
