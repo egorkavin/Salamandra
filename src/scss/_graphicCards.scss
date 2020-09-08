@@ -73,21 +73,22 @@
 }
 
 .product {
-	height: 350px;
+	height: 350px; //TODO
 	width: 465px;
+
 	&__wrapper {
 		width: 100%;
 		overflow: hidden;
 		background-color: #1b1a1a;
 		border-radius: 3px;
-		box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 0 4.5px 0.5px rgba(126,37,37,.2);
 	}
-
+	
 	&:hover {
 		.product__wrapper {
 			position: relative;
 			z-index: 20;
-			box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
+			box-shadow: 0 0 13.5px 1.5px rgba(126,37,37,.5);
 		}
 
 		.product__hidden-description {
@@ -96,12 +97,19 @@
 	}
 
 	&_long {
+		max-height: 250px;
+		height: 100%;
 		width: 100%;
-		height: 250px;
-
+		
 		.product {
+
 			&__wrapper {
 				display: flex;
+				max-height: 250px;
+			}
+			
+			&__image-wrapper {
+				flex-shrink: 0;
 			}
 
 			&__main-part {
@@ -113,25 +121,19 @@
 
 			&__title {
 				order: 1;
-				margin: 0;
 			}
 
 			&__hidden-description {
 				order: 2;
 				display: block;
-				padding: 0;
-				margin: 0;
-				align-self: center;
+				margin: 10px auto;
+				overflow: auto;
 				border: none;
 			}
 
 			&__price-and-buttons {
 				order: 3;
 				margin: 0;
-			}
-
-			&__image-wrapper {
-				flex-shrink: 0;
 			}
 		}
 	}
@@ -147,7 +149,7 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		background-color: #f9f9f9;
+		background-color: #fff;
 		border-radius: 10px; //костыль
 
 		&:after {
