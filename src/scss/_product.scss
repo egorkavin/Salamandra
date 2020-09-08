@@ -2,12 +2,10 @@
 	&__item {
 		background-color: #1b1a1a;
 		border-radius: 3px;
+		box-shadow: 0px 0px 4.5px 0.5px rgba(126,37,37, 0.2);
 
-		&:not(:first-child) {
-			box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
-			&:hover {
-				box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
-			}
+		&:hover {
+			box-shadow: 0px 0px 13.5px 1.5px rgba(126,37,37, 0.5);
 		}
 
 		&:not(:last-child) {
@@ -18,12 +16,18 @@
 
 .product-card {
 	.product {
-		&_long {
-			height: auto;
+		&:hover {
+			.product__wrapper {
+				box-shadow: none;
+			}
 		}
-
+		&_long {
+			max-height: 100%;
+		}
 		&__wrapper {
+			max-height: 100%;
 			flex-wrap: wrap;
+			box-shadow: none;
 		}
 
 		&__title {
@@ -39,8 +43,8 @@
 		}
 
 		&__image-wrapper {
-			width: 475px;
-			height: 267px;
+			width: 485px;
+			height: 285px;
 		}
 
 		&__image {
@@ -96,7 +100,7 @@
 .product-slider {
 	overflow: hidden;
 	height: 56px;
-	width: 475px;
+	width: 485px;
 	position: relative;
 
 	&__track {
