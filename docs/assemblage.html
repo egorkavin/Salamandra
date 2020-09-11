@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>Salamandra | PC Builder</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon/favicon-16x16.png">
+</head>
+
+<body>
+    <header class="header">
+    <div class="header__container">
+        <a href="/" class="header__logo logo-header">
+            <span class="logo-header__icon main-icon"></span>
+            <div class="logo-header__text">
+                <p class="logo-header__title">Salamandra</p>
+                <p>PC Builder</p>
+            </div>
+        </a>
+        <div class="header__buttons">
+            <a href="#" class="header__button header__button--search">
+                <span class="svg-icon icon-search"></span>
+                Поиск
+            </a>
+            <a href="#" class="header__button header__button--assemblage">
+                <span class="svg-icon icon-collection"></span>
+                Сборки
+            </a>
+        </div>
+    </div>
+    <nav class="navigation">
+        <ul class="navigation__list">
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-cpu"></span>Процессоры</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-gpu"></span>Видеокарты</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-ram"></span>Оп. память</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-hdd"></span>Постоянная память</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-mb"></span>Мат. платы</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-power"></span>Блоки питания</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-cooler"></span>Охлаждение</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-periphery"></span>Периферия</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-block"></span>Корпуса</a></li>
+            <li><a href="#" class="navigation__link"><span class="svg-icon icon-other"></span>Другое</a></li>
+        </ul>
+    </nav>
+</header>
+    <aside class="sidebar sidebar--filter sidebar--filter--hidden">
+    <a class="sidebar__btn sidebar__btn--filter">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+    <p class="sidebar__title">Фильтр</p>
+    <ul class="sidebar-list">
+        <li class="sidebar-list__item filter">
+            <ul class="filter__items-list">
+                <li class="filter__item">
+                    <label>
+                        <input type="checkbox" class="filter__checkbox">
+                        <span class="fake-checkbox"></span>
+                        <span>Только подходящие сборке</span>
+                    </label>
+                </li>
+                <li class="filter__item">
+                    <label>
+                        <input type="checkbox" class="filter__checkbox">
+                        <span class="fake-checkbox"></span>
+                        <span>Только в наличии</span>
+                    </label>
+                </li>
+                <li class="filter__item">
+                    <label>
+                        <input type="checkbox" class="filter__checkbox">
+                        <span class="fake-checkbox"></span>
+                        <span>“Живое” использование фильтра</span>
+                    </label>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Модель
+                <span class="filter__items-count">(267)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Объем памяти
+                <span class="filter__items-count">(2/10)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter ">
+            <a href="#" class="filter__name">
+                Производитель
+                <span class="filter__items-count">(267)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Разрядность шины памяти
+                <span class="filter__items-count">(43)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Тип памяти
+                <span class="filter__items-count">(4)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Интерфейс
+                <span class="filter__items-count">(4)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Семейство графического процессора
+                <span class="filter__items-count">(3/56)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Разъемы
+                <span class="filter__items-count">(13)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>ATX-classic</span>
+                            <span class="filter__item-quantity">(+32)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Форм-фактор
+                <span class="filter__items-count">(3/6)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>ATX-classic</span>
+                            <span class="filter__item-quantity">(+32)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Длинный вариант, который
+                                занимает две строки</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Производитель
+                <span class="filter__items-count">(4)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Разрядность шины
+                памяти
+                <span class="filter__items-count">(13)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Мини</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Увеличенная</span>
+                            <span class="filter__item-quantity">(+405)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                    </li>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="sidebar-list__item filter">
+            <a href="#" class="filter__name">
+                Тип памяти
+                <span class="filter__items-count">(210)</span>
+                <span class="filter__icon filter__icon--arrow"></span>
+            </a>
+            <div class="filter__items-wrapper">
+                <ul class="filter__items-list">
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Низкопрофильная</span>
+                            <span class="filter__item-quantity">(+0)</span>
+                        </label>
+                        </>
+                    <li class="filter__item">
+                        <label>
+                            <input type="checkbox" class="filter__checkbox">
+                            <span class="fake-checkbox"></span>
+                            <span>Стандартная</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+</aside>
+    <aside class="sidebar sidebar--assemblage sidebar--assemblage--hidden">
+    <a class="sidebar__btn sidebar__btn--assemblage"></a>
+    <p class="sidebar__title">Сборка</p>
+    <ul class="sidebar__pc-parts pc-parts">
+        <li class="pc-parts__item pc-part">
+            <div class="pc-part__description">
+                <p class="pc-part__title">Intel Core i5-7431Y</p>
+                <p class="pc-part__details">3.9 ГГц</p>
+            </div>
+            <span class="pc-part__price">20 999,63</span>
+        </li>
+        <li class="pc-parts__item pc-part pc-part--current">
+            <p>Выбор видеокарты</p>
+        </li>
+        <li class="pc-parts__item pc-part">
+            <div class="pc-part__description">
+                <p class="pc-part__title">G.Skill Fury Black (HX424C15FB/4)</p>
+                <p class="pc-part__details">2х16 Гб (DDR4, 3200 МГц)</p>
+            </div>
+            <span class="pc-part__price">8 999</span>
+        </li>
+        <li class="pc-parts__item">
+            <div class="pc-part pc-part--multiple">
+                <div class="pc-part__description">
+                    <p class="pc-part__title">Western HDD Digital Blue (WD10SLorem)</p>
+                    <p class="pc-part__details">1TB, 2.5" (SATA III, 5400rpm, 128Lorem)</p>
+                </div>
+                <span class="pc-part__price">8 999</span>
+            </div>
+            <div class="pc-part pc-part--multiple">
+                <div class="pc-part__description">
+                    <p class="pc-part__title">Kingston SSD HyperX Fury 3D (KCLorem)</p>
+                    <p class="pc-part__details">240GB, 2.5" (SATA III, TLC)</p>
+                </div>
+                <span class="pc-part__price">8 999</span>
+            </div>
+            <div class="pc-parts__add-item">Добавить постоянную память</div>
+        </li>
+        <li class="pc-parts__item pc-part">
+            <div class="pc-part__description">
+                <p class="pc-part__title">Asus Prime B450-PLUS</p>
+                <p class="pc-part__details">sAM4, AMD B450, PCI-Ex16, 4xDDLorem</p>
+            </div>
+            <span class="pc-part__price">8 999</span>
+        </li>
+        <li class="pc-parts__item pc-part">
+            <div class="pc-part__description">
+                <p class="pc-part__title">Chieftec Full-Range GPS-1250C</p>
+                <p class="pc-part__details">1250W</p>
+            </div>
+            <span class="pc-part__price">6 599</span>
+        </li>
+        <li class="pc-parts__item pc-parts__choose-item">Выбрать охлаждение</li>
+        <li class="pc-parts__item pc-parts__choose-item">Выбрать периферию</li>
+        <li class="pc-parts__item pc-parts__choose-item">Выбрать корпус</li>
+        <li class="pc-parts__item pc-parts__choose-item">Выбрать другое</li>
+        <li class="pc-parts__conflicts conflicts">
+            <div class="conflicts__title">3 Конфликта</div>
+            <div class="conflicts__body">
+                <p class="conflicts__item">Процессор и оп. память: конфликт типов памяти</p>
+                <p class="conflicts__item">Блок питания: недостаточная мощность</p>
+                <p class="conflicts__item">Выбрано 2 процессора</p>
+            </div>
+        </li>
+        <li class="pc-parts__footer">
+            <span class="pc-parts__assemblage-number">Сборка 12913</span>
+            <span class="pc-parts__total">196 998 Р</span>
+        </li>
+    </ul>
+</aside>
+
+    <div class="container">
+        <section class="content-management">
+            <button class="content-management__button content-management__button--back">
+                <span class="content-management__icon content-management__icon--back-arrow"></span>
+                <span>СБОРКА (№12302-12)</span>
+            </button>
+        </section>
+
+        <main class="assemblage">
+            <section class="assemblage__header">
+                <div class="assemblage__title">Сборка 12913</div>
+                <div class="assemblage__price price">
+                    от
+                    <span class="price__value">196 998 р.</span>
+                </div>
+            </section>
+            <section class="assemblage__info assemblage-info">
+                <div class="assemblage-info__block">
+                    <div class="assemblage-info__title">
+                        балла на HG.Compare:
+                    </div>
+                    <div class="assemblage-info__body">
+                        <div class="assemblage-info__field year-rate">
+                            Минимальные:
+                            <span class="year-rate__percentage">
+                                <span class="year-rate__value">95</span>
+                                %
+                            </span>
+                            <span class="year-rate__year">2018</span>
+                        </div>
+                        <div class="assemblage-info__field year-rate">
+                            Рекомендуемые:
+                            <span class="year-rate__percentage">
+                                <span class="year-rate__value">75</span>
+                                %
+                            </span>
+                            <span class="year-rate__year">2016</span>
+                        </div>
+                        <div class="assemblage-info__field year-rate">
+                            Рекомендуемые:
+                            <span class="year-rate__percentage">
+                                <span class="year-rate__value">75</span>
+                                %
+                            </span>
+                            <span class="year-rate__year">2016</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="assemblage-info__block">
+                    <div class="year-rate__title">
+                        Состав сборки:
+                    </div>
+                    <div class="assemblage-info__body">
+                        <p class="assemblage-info__field">
+                            Полная сборка без периферии
+                        </p>
+                        <p class="assemblage-info__field">
+                            Входит:
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="assemblage__conflicts conflicts">
+                <div class="conflicts__title">3 Конфликта</div>
+                <div class="conflicts__body">
+                    <p class="conflicts__item">Процессор и оп. память: конфликт типов памяти</p>
+                    <p class="conflicts__item">Блок питания: недостаточная мощность</p>
+                    <p class="conflicts__item conflicts__item--chosen">Выбрано 2 процессора</p>
+                    <p class="conflicts__item conflicts__item--question">Вы не выбрали видеокарту</p>
+                </div>
+            </section>
+            <section class="assemblage__parts assemblage-parts">
+                <div class="assemblage-parts__part product product--long">
+                    <h2 class="product__title">
+                        <a class="product__link">
+                            2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                        </a>
+                        <span class="icon icon--arrow"></span>
+                    </h2>
+                    <div class="product__wrapper">
+                        <a href="#" class="product__link product__image-wrapper">
+                            <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating"></span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--compare">
+                                    <span class="product__icon product__icon--compare"></span>
+                                </button>
+                                <button class="product__button product__button--to-build">
+                                    <span class="product__icon product__icon--to-build"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="assemblage-parts__part product product--long product--collapsed">
+                    <h2 class="product__title">
+                        <a class="product__link">
+                            2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                        </a>
+                        <span class="icon icon--arrow"></span>
+                    </h2>
+                    <div class="product__wrapper">
+                        <a href="#" class="product__link product__image-wrapper">
+                            <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating"></span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--compare">
+                                    <span class="product__icon product__icon--compare"></span>
+                                </button>
+                                <button class="product__button product__button--to-build">
+                                    <span class="product__icon product__icon--to-build"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="assemblage-parts__part product product--long product--collapsed">
+                    <h2 class="product__title">
+                        <a class="product__link">
+                            2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                        </a>
+                        <span class="icon icon--arrow"></span>
+                    </h2>
+                    <div class="product__wrapper">
+                        <a href="#" class="product__link product__image-wrapper">
+                            <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating"></span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--compare">
+                                    <span class="product__icon product__icon--compare"></span>
+                                </button>
+                                <button class="product__button product__button--to-build">
+                                    <span class="product__icon product__icon--to-build"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+    <div class="footer__item about-block">
+        <div class="about-block__wrapper">
+            <img src="img/logo_header.svg" class="footer__logo">
+            <div class="about-block__info">
+                Каталог игр Hot-Game.info предоставляет максимальное количество игр и ведущих магазинов. Вы
+                легко
+                сможете найти игру, сравнить цены, выбрать интернет-магазин и купить игру по выгодной цене!
+                <div class="footer__links">
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_about-project"></span>
+                        О проекте
+                    </a>
+                    <a href="#" class="footer__link">
+                        <span class="footer__icon footer__icon_help"></span>
+                        Помощь
+                    </a>
+                    <a href="https://hot-game.info/" class="footer__link">
+                        <span class="footer__icon footer__icon_hot-game"></span>
+                        Hot-game.info
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer__item contacts">
+        <ul class="contacts__list">
+            <li class="contacts__item">
+                <a href="mailto:help@salamandr.ru" class="footer__link">
+                    <span class="footer__icon footer__icon_email"></span>
+                    help@salamandr.ru
+                </a>
+            </li>
+            <li class="contacts__item">
+                <a href="#" class="footer__links">
+                    <span class="footer__icon footer__icon_hot-game"></span>
+                    Обратная связь
+                </a>
+            </li>
+            <li class="contacts__item">
+                <span class="footer__icon footer__icon_facebook"></span>
+                <span class="footer__icon footer__icon_twitter"></span>
+                <span class="footer__icon footer__icon_vk"></span>
+                <span class="footer__icon footer__icon_telegram"></span>
+            </li>
+        </ul>
+    </div>
+
+</footer>
+    </div>
+
+    <!-- filter -->
+    <div class="hidden-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <filter id="white">
+                <!-- #ffffff in rgba -->
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="
+                            0 0 0 0 1
+                            0 0 0 0 1
+                            0 0 0 0 1
+                            0 0 0 1 0" />
+            </filter>
+            <filter id="grey">
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0
+                            0   0.75  0   0   0
+                            0   0   0.75  0   0
+                            0   0   0   1   0 " />
+            </filter>
+            <filter id="nav">
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values="0.75 0   0   0   0
+                            0   0.75  0   0   0
+                            0   0   0.75  0   0
+                            0   0   0   1   0 " />
+            </filter>
+        </svg>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
