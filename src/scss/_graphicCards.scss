@@ -198,14 +198,14 @@
 	&__button {
 		border-radius: 3px;
 
-		&_compare {
+		&--compare {
 			width: 25px;
 			height: 25px;
 			background-color: #bfbfbf;
 			margin-right: 10px;
 		}
 
-		&_to-build {
+		&--to-build {
 			width: 110px;
 			height: 25px;
 			background-color: #da0b29;
@@ -215,10 +215,10 @@
 	}
 
 	&__icon {
-		&_compare {
+		&--compare {
 		}
 
-		&_to-build {
+		&--to-build {
 		}
 	}
 

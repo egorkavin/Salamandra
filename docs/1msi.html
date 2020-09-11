@@ -547,9 +547,7 @@
 
 </aside>
     <aside class="sidebar sidebar--assemblage sidebar--assemblage--hidden">
-    <a class="sidebar__btn sidebar__btn--assemblage">
-
-    </a>
+    <a class="sidebar__btn sidebar__btn--assemblage"></a>
     <p class="sidebar__title">Сборка</p>
     <ul class="sidebar__pc-parts pc-parts">
         <li class="pc-parts__item pc-part">
@@ -606,9 +604,11 @@
         <li class="pc-parts__item pc-parts__choose-item">Выбрать другое</li>
         <li class="pc-parts__conflicts conflicts">
             <div class="conflicts__title">3 Конфликта</div>
-            <p class="conflicts__item">Процессор и оп. память: конфликт типов памяти</p>
-            <p class="conflicts__item">Блок питания: недостаточная мощность</p>
-            <p class="conflicts__item">Выбрано 2 процессора</p>
+            <div class="conflicts__body">
+                <p class="conflicts__item">Процессор и оп. память: конфликт типов памяти</p>
+                <p class="conflicts__item">Блок питания: недостаточная мощность</p>
+                <p class="conflicts__item">Выбрано 2 процессора</p>
+            </div>
         </li>
         <li class="pc-parts__footer">
             <span class="pc-parts__assemblage-number">Сборка 12913</span>
@@ -635,7 +635,7 @@
         <main class="main">
             <div class="main__product-page-wrapper product-page">
                 <div class="product-page__item product-card">
-                    <div class="product product_long">
+                    <div class="product product--long">
                         <div class="product__wrapper">
                             <h2 class="product__title">
                                 MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit) (1354/7008) (DVI, HDMI,
@@ -688,11 +688,11 @@
                                         от
                                         <span class="price__value">23999 р.</span>
                                     </span>
-                                    <button class="product__button product__button_compare">
-                                        <span class="product__icon product__icon_compare"></span>
+                                    <button class="product__button product__button--compare">
+                                        <span class="product__icon product__icon--compare"></span>
                                     </button>
-                                    <button class="product__button product__button_to-build">
-                                        <span class="product__icon product__icon_to-build"></span>
+                                    <button class="product__button product__button--to-build">
+                                        <span class="product__icon product__icon--to-build"></span>
                                         <span>Купить</span>
                                     </button>
                                 </div>
@@ -1054,6 +1054,26 @@
                 <div class="product-page__item"></div>
             </div>
         </main>
+        <ul id="lightSlider">
+            <li>
+                <img src="img/graphicsCard/test2.jpeg"></img>
+            </li>
+            <li>
+                <img src="img/graphicsCard/test3.jpg"></img>
+            </li>
+            <li>
+                <img src="img/graphicsCard/test2.jpeg"></img>
+            </li>
+            <li>
+                <img src="img/graphicsCard/test3.jpg"></img>
+            </li>
+            <li>
+                <img src="img/graphicsCard/test2.jpeg"></img>
+            </li>
+            <li>
+                <img src="img/graphicsCard/test3.jpg"></img>
+            </li>
+        </ul>
         <footer class="footer">
     <div class="footer__item about-block">
         <div class="about-block__wrapper">
@@ -1103,6 +1123,7 @@
     </div>
 
 </footer>
+
     </div>
 
     <!-- !filter -->
@@ -1130,8 +1151,54 @@
             </filter>
         </svg>
     </div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/lightslider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#lightSlider").lightSlider({
+                autoWidth: true,
+                slideMove: 1, // slidemove will be 1 if loop is true
+                slideMargin: 10,
+
+                mode: "slide",
+                useCSS: true,
+                cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+                easing: 'linear', //'for jquery animation',////
+
+                speed: 400, //ms'
+                auto: false,
+                loop: false,
+                slideEndAnimation: true,
+                pause: 2000,
+
+                keyPress: false,
+                controls: true,
+                prevHtml: '',
+                nextHtml: '',
+
+                rtl: false,
+                adaptiveHeight: false,
+
+                vertical: false,
+                verticalHeight: 500,
+                vThumbWidth: 100,
+
+                thumbItem: 10,
+                pager: true,
+                gallery: false,
+                galleryMargin: 5,
+                thumbMargin: 5,
+
+                enableTouch: true,
+                enableDrag: true,
+                freeMove: true,
+                swipeThreshold: 40,
+            });
+        });
+    </script>
+</body>
 
 </html>

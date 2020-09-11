@@ -119,7 +119,6 @@
 .conflicts {
 	&__title {
 		width: 320px;
-		height: 35px;
 		margin-bottom: 20px;
 		padding-left: 15px;
 		line-height: 35px;
@@ -130,17 +129,37 @@
 		border-radius: 3px;
 	}
 
+	&__body {
+		padding-left: 12px;
+	}
+
 	&__item {
-		margin-left: 12px;
 		font-size: 14px;
 		color: #e0a006;
+		cursor: pointer;
+
 		&:not(:last-child) {
 			margin-bottom: 15px;
 		}
+
 		&:before {
 			content: '! ';
 			font-size: 16px;
 			font-weight: 700;
+		}
+
+		&--chosen {
+			color: #212020;
+			background-color: #e0a006;
+			border-radius: 3px;
+		}
+
+		&--question {
+			color: #bfbfbf;
+
+			&:before {
+				content: '? ';
+			}
 		}
 	}
 }

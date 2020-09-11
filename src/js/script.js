@@ -296,6 +296,16 @@ if (pcParts) {
 	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
 }
 
+const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
+if (assemblageParts) {
+	assemblageParts.forEach(part => {
+		const title = part.querySelector('.product__title');
+		title.addEventListener('click', () => {
+			part.classList.toggle('product--collapsed')
+		})
+	})
+}
+
 const conflicts = document.querySelectorAll('.conflicts');
 if (conflicts) {
 	const isWarning = item => item.classList.contains('conflicts__item--question');

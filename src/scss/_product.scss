@@ -69,18 +69,18 @@
 		}
 
 		&__button {
-			&_compare {
+			&--compare {
 			}
 
-			&_to-build {
+			&--to-build {
 			}
 		}
 
 		&__icon {
-			&_compare {
+			&--compare {
 			}
 
-			&_to-build {
+			&--to-build {
 			}
 		}
 
@@ -209,7 +209,6 @@
 		height: 18px;
 		border-radius: 2px;
 		text-align: center;
-		padding: 2px 0;
 		background-color: #f9f9f9;
 		color: #1b1a1a;
 	}

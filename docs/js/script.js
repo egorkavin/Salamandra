@@ -296,7 +296,36 @@ if (pcParts) {
 	totalPrice.textContent = Math.round(sum).toLocaleString('ru-RU') + ' ₽';
 }
 
-// //TODO
+const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
+if (assemblageParts) {
+	assemblageParts.forEach(part => {
+		const title = part.querySelector('.product__title');
+		title.addEventListener('click', () => {
+			part.classList.toggle('product--collapsed')
+		})
+	})
+}
+
+const conflicts = document.querySelectorAll('.conflicts');
+if (conflicts) {
+	const isWarning = item => item.classList.contains('conflicts__item--question');
+
+	conflicts.forEach(conflictsBlock => {
+		const items = conflictsBlock.querySelectorAll('.conflicts__item');
+
+		items.forEach(item => {
+			item.addEventListener('click', () => {
+				const chosen = conflictsBlock.querySelector('.conflicts__item--chosen');
+				if (item !== chosen && !isWarning(item)) {
+					chosen.classList.remove('conflicts__item--chosen');
+					item.classList.add('conflicts__item--chosen');
+				}
+			})
+		})
+
+	})
+}
+//TODO
 // const pcParts = document.querySelectorAll('.pc-part__title');
 // if (pcParts) {
 // 	const pos1 = pcParts[0].getBoundingClientRect();
