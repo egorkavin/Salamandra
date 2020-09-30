@@ -42,17 +42,6 @@ let svgSprite = require('gulp-svg-sprite');
 let fs = require('fs');
 let sourcemap = require('gulp-sourcemaps');
 
-function browserSyncFunc() {
-	browserSync.init({
-		server: {
-			baseDir: './' + projectFolder
-		},
-		port: 3000,
-		notify: false,
-		open: false
-	});
-}
-
 function html(done) {
 	src(path.src.html).pipe(fileInclude()).pipe(dest(path.build.html)).pipe(browserSync.stream());
 	return done();
@@ -172,6 +161,19 @@ function watchFiles() {
 	gulp.watch(path.watch.js, js);
 }
 
+function browserSyncFunc() {
+	browserSync.init({
+		server: {
+			baseDir: './' + projectFolder
+		},
+		port: 3000,
+		notify: false,
+		open: false
+	});
+
+	watchFiles();
+}
+
 gulp.task('js', js);
 gulp.task('css', css);
 gulp.task('html', html);
@@ -184,7 +186,7 @@ gulp.task('svg2Sprite', svg2Sprite);
 let start = gulp.series(gulp.parallel(images, svg2Sprite, otf2ttf), fonts, putFonts);
 gulp.task('start', start);
 
-let watch = gulp.parallel(gulp.parallel(js, css, html), watchFiles, browserSyncFunc);
+let watch = gulp.series(gulp.parallel(js, css, html), browserSyncFunc);
 gulp.task('watch', watch);
 
 gulp.task('default', watch);
