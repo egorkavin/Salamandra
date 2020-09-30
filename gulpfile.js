@@ -1,7 +1,7 @@
-let projectFolder = 'docs/';
-let sourceFolder = 'src/';
+const projectFolder = 'docs/';
+const sourceFolder = 'src/';
 
-let path = {
+const path = {
 	build: {
 		html: projectFolder,
 		css: projectFolder + 'css/',
@@ -25,22 +25,22 @@ let path = {
 	clean: './' + projectFolder
 };
 
-let { src, dest } = require('gulp');
-let gulp = require('gulp');
-let browserSync = require('browser-sync').create();
-let fileInclude = require('gulp-file-include');
-let scss = require('gulp-sass');
-let autoprefixer = require('gulp-autoprefixer');
-let gcmq = require('gulp-group-css-media-queries');
-let cleanCSS = require('gulp-clean-css');
-let rename = require('gulp-rename');
-let uglify = require('gulp-uglify-es').default;
-let ttf2woff = require('gulp-ttf2woff');
-let ttf2woff2 = require('gulp-ttf2woff2');
-let fonter = require('gulp-fonter');
-let svgSprite = require('gulp-svg-sprite');
-let fs = require('fs');
-let sourcemap = require('gulp-sourcemaps');
+const { src, dest } = require('gulp');
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const fileInclude = require('gulp-file-include');
+const scss = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const gcmq = require('gulp-group-css-media-queries');
+const cleanCSS = require('gulp-clean-css');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify-es').default;
+const ttf2woff = require('gulp-ttf2woff');
+const ttf2woff2 = require('gulp-ttf2woff2');
+const fonter = require('gulp-fonter');
+const svgSprite = require('gulp-svg-sprite');
+const fs = require('fs');
+const sourcemap = require('gulp-sourcemaps');
 
 function html(done) {
 	src(path.src.html).pipe(fileInclude()).pipe(dest(path.build.html)).pipe(browserSync.stream());
@@ -117,9 +117,9 @@ function fonts(done) {
 function putFonts(done) {
 	return fs.readdir(path.build.fonts, function (err, items) {
 		if (items) {
-			for (let item of items) {
-				let fontName = item.split('.')[0];
-				let isWoff = item.split('.')[1] === 'woff';
+			for (const item of items) {
+				const fontName = item.split('.')[0];
+				const isWoff = item.split('.')[1] === 'woff';
 				if (isWoff) {
 					fs.appendFileSync(
 						sourceFolder + 'scss/_fonts.scss',
@@ -183,10 +183,10 @@ gulp.task('fonts', fonts);
 gulp.task('putFonts', putFonts);
 gulp.task('svg2Sprite', svg2Sprite);
 
-let start = gulp.series(gulp.parallel(images, svg2Sprite, otf2ttf), fonts, putFonts);
+const start = gulp.series(gulp.parallel(images, svg2Sprite, otf2ttf), fonts, putFonts);
 gulp.task('start', start);
 
-let watch = gulp.series(gulp.parallel(js, css, html), browserSyncFunc);
+const watch = gulp.series(gulp.parallel(js, css, html), browserSyncFunc);
 gulp.task('watch', watch);
 
 gulp.task('default', watch);
