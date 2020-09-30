@@ -42,12 +42,15 @@ const svgSprite = require('gulp-svg-sprite');
 const fs = require('fs');
 const sourcemap = require('gulp-sourcemaps');
 
-function html(done) {
-	src(path.src.html).pipe(fileInclude()).pipe(dest(path.build.html)).pipe(browserSync.stream());
-	return done();
+function html(cb) {
+	src(path.src.html)
+		.pipe(fileInclude())
+		.pipe(dest(path.build.html))
+		.pipe(browserSync.stream());
+	return cb();
 }
 
-function css(done) {
+function css(cb) {
 	src(path.src.css)
 		.pipe(sourcemap.init())
 		.pipe(
@@ -71,10 +74,10 @@ function css(done) {
 		.pipe(sourcemap.write('.'))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.stream());
-	return done();
+	return cb();
 }
 
-function js(done) {
+function js(cb) {
 	src(path.src.js)
 		.pipe(dest(path.build.js))
 		.pipe(uglify())
@@ -85,19 +88,19 @@ function js(done) {
 		)
 		.pipe(dest(path.build.js))
 		.pipe(browserSync.stream());
-	return done();
+	return cb();
 }
 
-function images(done) {
+function images(cb) {
 	src(path.src.img)
 		.pipe(dest(path.build.img))
 		.pipe(src(path.src.img))
 		.pipe(src(sourceFolder + 'icon/favicon/**'))
 		.pipe(dest(projectFolder + 'icon/favicon/'));
-	return done();
+	return cb();
 }
 
-function otf2ttf(done) {
+function otf2ttf(cb) {
 	src([sourceFolder + 'fonts/*.otf'])
 		.pipe(
 			fonter({
@@ -105,16 +108,16 @@ function otf2ttf(done) {
 			})
 		)
 		.pipe(dest(sourceFolder + 'fonts/'));
-	return done();
+	return cb();
 }
 
-function fonts(done) {
+function fonts(cb) {
 	src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
 	src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
-	return done();
+	return cb();
 }
 
-function putFonts(done) {
+function putFonts(cb) {
 	return fs.readdir(path.build.fonts, function (err, items) {
 		if (items) {
 			for (const item of items) {
@@ -127,14 +130,12 @@ function putFonts(done) {
 					);
 				}
 			}
-			return done();
-		} else {
-			return done();
 		}
+		cb();
 	});
 }
 
-function svg2Sprite(done) {
+function svg2Sprite(cb) {
 	gulp
 		.src(sourceFolder + 'icon/iconsSprite/*.svg')
 		.pipe(
@@ -152,7 +153,7 @@ function svg2Sprite(done) {
 			})
 		)
 		.pipe(dest(path.build.img));
-	done();
+	return cb();
 }
 
 function watchFiles() {
