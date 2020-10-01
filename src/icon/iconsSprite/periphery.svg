@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15" viewBox="0 0 13 15"><defs><clipPath id="qlnna"><path fill="#fff" d="M2 7.999h9a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"/></clipPath><clipPath id="qlnnb"><path fill="#fff" d="M7 7.999H6v-2h1z"/></clipPath><clipPath id="qlnnc"><path fill="#fff" d="M7 5H6V4h1z"/></clipPath><clipPath id="qlnnd"><path fill="#fff" d="M7 3H6V1h1z"/></clipPath><clipPath id="qlnne"><path fill="#fff" d="M4 1V0h5v1z"/></clipPath></defs><g><g><g><path fill="none" stroke="#da0b29" stroke-miterlimit="20" stroke-width="2" d="M2 7.999h9a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z" clip-path="url(&quot;#qlnna&quot;)"/></g><g><path fill="none" stroke="#da0b29" stroke-miterlimit="20" stroke-width="2" d="M7 7.999v0H6v0-2 0h1v0z" clip-path="url(&quot;#qlnnb&quot;)"/></g><g><path fill="none" stroke="#da0b29" stroke-miterlimit="20" stroke-width="2" d="M7 5v0H6v0-1 0h1v0z" clip-path="url(&quot;#qlnnc&quot;)"/></g><g><path fill="none" stroke="#da0b29" stroke-miterlimit="20" stroke-width="2" d="M7 3v0H6v0-2 0h1v0z" clip-path="url(&quot;#qlnnd&quot;)"/></g><g><path fill="none" stroke="#da0b29" stroke-miterlimit="20" stroke-width="2" d="M4 1v0-1 0h5v1z" clip-path="url(&quot;#qlnne&quot;)"/></g><g><g><path fill="#da0b29" d="M2 10h1v1H2z"/></g><g><path fill="#da0b29" d="M2 12h1v1H2z"/></g><g><path fill="#da0b29" d="M4 10h1v1H4z"/></g><g><path fill="#da0b29" d="M4 12h1v1H4z"/></g><g><path fill="#da0b29" d="M6 10h1v1H6z"/></g><g><path fill="#da0b29" d="M6 12h1v1H6z"/></g><g><path fill="#da0b29" d="M8 10h1v1H8z"/></g><g><path fill="#da0b29" d="M8 12h1v1H8z"/></g><g><path fill="#da0b29" d="M10 10h1v1h-1z"/></g><g><path fill="#da0b29" d="M10 12h1v1h-1z"/></g></g></g></g></svg>
+<svg id="Periphery" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #da0b29;
+        stroke-width: 1px;
+      }
+
+      .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #da0b29;
+      }
+    </style>
+  </defs>
+  <rect id="Прямоугольник_скругл._углы_6" data-name="Прямоугольник, скругл. углы 6" class="cls-1" x="4" y="11" width="13" height="7" rx="2" ry="2"/>
+  <path id="Фигура_10" data-name="Фигура 10" class="cls-2" d="M36,530H35v-2h1v2Z" transform="translate(-25 -519)"/>
+  <path id="Фигура_13" data-name="Фигура 13" class="cls-2" d="M36,527H35v-1h1v1Z" transform="translate(-25 -519)"/>
+  <path id="Фигура_14" data-name="Фигура 14" class="cls-2" d="M36,525H35v-2h1v2Z" transform="translate(-25 -519)"/>
+  <path id="Фигура_20" data-name="Фигура 20" class="cls-2" d="M33,523v-1h5v1H33Z" transform="translate(-25 -519)"/>
+  <g id="Группа_14" data-name="Группа 14">
+    <path id="Фигура_19" data-name="Фигура 19" class="cls-3" d="M31,532h1v1H31v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия" data-name="Фигура 19 копия" class="cls-3" d="M31,534h1v1H31v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_2" data-name="Фигура 19 копия 2" class="cls-3" d="M33,532h1v1H33v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_3" data-name="Фигура 19 копия 3" class="cls-3" d="M33,534h1v1H33v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_4" data-name="Фигура 19 копия 4" class="cls-3" d="M35,532h1v1H35v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_5" data-name="Фигура 19 копия 5" class="cls-3" d="M35,534h1v1H35v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_6" data-name="Фигура 19 копия 6" class="cls-3" d="M37,532h1v1H37v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_7" data-name="Фигура 19 копия 7" class="cls-3" d="M37,534h1v1H37v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_8" data-name="Фигура 19 копия 8" class="cls-3" d="M39,532h1v1H39v-1Z" transform="translate(-25 -519)"/>
+    <path id="Фигура_19_копия_9" data-name="Фигура 19 копия 9" class="cls-3" d="M39,534h1v1H39v-1Z" transform="translate(-25 -519)"/>
+  </g>
+</svg>

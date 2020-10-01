@@ -1,0 +1,11 @@
+<svg id="flex-lines" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21"
+  height="21" viewBox="0 0 21 21">
+  <g>
+    <rect x="2.5" y="2.5" width="7" height="4" />
+    <rect x="11.5" y="2.5" width="7" height="4" />
+    <rect x="2.5" y="8.5" width="7" height="4" />
+    <rect x="11.5" y="8.5" width="7" height="4" />
+    <rect x="2.5" y="14.5" width="7" height="4" />
+    <rect x="11.5" y="14.5" width="7" height="4" />
+  </g>
+</svg>

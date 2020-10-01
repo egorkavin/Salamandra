@@ -1,0 +1,9 @@
+<svg id="compare" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21"
+  viewBox="0 0 21 21">
+  <g>
+    <path d="M1278,473.2h7.34l-2.78,2.8h1.97l3.47-3.5-3.47-3.5h-1.97l2.78,2.8H1278v1.4Z"
+      transform="translate(-1271.5 -465)" />
+    <path d="M1286,477.8h-7.34l2.77-2.8h-1.96l-3.47,3.5,3.47,3.5h1.96l-2.77-2.8H1286v-1.4Z"
+      transform="translate(-1271.5 -465)" />
+  </g>
+</svg>

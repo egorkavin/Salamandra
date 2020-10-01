@@ -1,2 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="SVGDoc" width="12" height="" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:avocode="https://avocode.com/" viewBox="0 0 12 12"><defs><clipPath id="ClipPath1135"><path d="M6.67919,6.67921v0h5.3205v0v5.32012v0h-5.3205v0z" fill="#ffffff"></path></clipPath><clipPath id="ClipPath1144"><path d="M5.24966,2.24927v0h1.50001v0v0.74993v0h-1.50001v0z" fill="#ffffff"></path></clipPath><clipPath id="ClipPath1151"><path d="M2.24965,5.24947v0h0.75v0v1.49986v0h-0.75v0z" fill="#ffffff"></path></clipPath><clipPath id="ClipPath1158"><path d="M5.24966,8.99913v0h1.50001v0v0.74993v0h-1.50001v0z" fill="#ffffff"></path></clipPath></defs><desc>Generated with Avocode.</desc><g><g><title>icon копия 2</title><g><title>Прямоугольник 1</title><path d="M-0.00036,-0.00052v0h5.32019v0v5.32012v0h-5.32019v0z" fill="#1b1a1a" fill-opacity="1"></path></g><g><title>Прямоугольник 1 копия</title><path d="M6.67919,-0.00052v0h5.3205v0v5.32012v0h-5.3205v0z" fill="#1b1a1a" fill-opacity="1"></path></g><g><title>Прямоугольник 1 копия 2</title><path d="M6.67919,6.67921v0h5.3205v0v5.32012v0h-5.3205v0z" fill-opacity="0" fill="#ffffff" stroke-dashoffset="0" stroke-dasharray="" stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" stroke="#1b1a1a" stroke-miterlimit="20" stroke-width="3" clip-path="url(&quot;#ClipPath1135&quot;)"></path></g><g><title>Группа 17</title><g><title>Прямоугольник 30</title><path d="M5.24966,2.24927v0h1.50001v0v0.74993v0h-1.50001v0z" fill-opacity="0" fill="#ffffff" stroke-dashoffset="0" stroke-dasharray="" stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" stroke="#f9f9f9" stroke-miterlimit="20" stroke-width="2" clip-path="url(&quot;#ClipPath1144&quot;)"></path></g><g><title>Прямоугольник 31</title><path d="M2.24965,5.24947v0h0.75v0v1.49986v0h-0.75v0z" fill-opacity="0" fill="#ffffff" stroke-dashoffset="0" stroke-dasharray="" stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" stroke="#f9f9f9" stroke-miterlimit="20" stroke-width="2" clip-path="url(&quot;#ClipPath1151&quot;)"></path></g><g><title>Прямоугольник 32</title><path d="M5.24966,8.99913v0h1.50001v0v0.74993v0h-1.50001v0z" fill-opacity="0" fill="#ffffff" stroke-dashoffset="0" stroke-dasharray="" stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" stroke="#f9f9f9" stroke-miterlimit="20" stroke-width="2" clip-path="url(&quot;#ClipPath1158&quot;)"></path></g></g><g><title>Группа 6</title><g><title>Прямоугольник 2</title><path d="M6.74967,8.24967v0h5.25002v0v2.2498v0h-5.25002v0z" fill="#1b1a1a" fill-opacity="1"></path></g><g><title>Прямоугольник 3</title><path d="M8.24967,6.74934v0h2.25001v0v5.24999v0h-2.25001v0z" fill="#1b1a1a" fill-opacity="1"></path></g></g><g><title>Прямоугольник 1 копия 3</title><path d="M-0.00036,6.67921v0h5.32019v0v5.32012v0h-5.32019v0z" fill="#1b1a1a" fill-opacity="1"></path></g></g></g></svg>
+<svg id="collection" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .gcls-1 {
+        fill: #1b1a1a;
+      }
+
+      .gcls-2,
+      .gcls-3 {
+        fill: none;
+      }
+
+      .gcls-2 {
+        stroke: #1b1a1a;
+        stroke-width: 2px;
+      }
+
+      .gcls-3 {
+        stroke: #f9f9f9;
+        stroke-width: 1px;
+      }
+    </style>
+  </defs>
+  <rect class="gcls-1" x="2" y="2" width="7.09" height="7.094" />
+  <rect class="gcls-1" x="10.91" y="2" width="7.09" height="7.094" />
+  <rect class="gcls-2" x="11.91" y="11.906" width="5.09" height="5.094" />
+  <g>
+    <rect class="gcls-3" x="9" y="5" width="2" height="1" />
+    <rect class="gcls-3" x="5" y="9" width="1" height="2" />
+  </g>
+  <rect class="gcls-1" x="2" y="10.906" width="7.09" height="7.094" />
+</svg>

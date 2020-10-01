@@ -129,6 +129,86 @@
 		filter: url(#white);
 		background-image: url("../img/icons/icons.svg#other");
 	}
+
+	&.lines {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#lines");
+	}
+
+	&.flex-lines {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#flex-lines");
+	}
+
+	&.blocks {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#blocks");
+	}
+
+	&.icon-compare {
+		filter: url(#black);
+		background-image: url("../img/icons/icons.svg#compare");
+	}
+
+	&.icon-to-assemblage {
+		filter: url(#black);
+		background-image: url("../img/icons/icons.svg#to-assemblage");
+	}
+
+	&.icon-about {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#about");
+	}
+	
+	&.icon-help {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#help");
+	}
+
+	&.icon-feedback {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#feedback");
+	}
+
+	&.icon-vk {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#vk");
+	}
+
+	&.icon-telegram {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#telegram");
+	}
+
+	&.icon-twitter {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#twitter");
+	}
+
+	&.icon-email {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#email");
+	}
+
+	&.icon-facebook {
+		filter: url(#white);
+		background-image: url("../img/icons/icons.svg#facebook");
+	}
+
+	&.icon-share {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#share");
+	}
+
+	&.icon-save-game {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#save-game");
+	}
+
+	&.icon-subscribe {
+		filter: url(#white) url(#grey);
+		background-image: url("../img/icons/icons.svg#subscribe");
+	}
 }
 
 .navigation {

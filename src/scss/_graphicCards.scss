@@ -25,12 +25,12 @@
 			padding-right: 24px;
 			color: #979797;
 			font-weight: 700;
+			margin-right: auto;
 		}
 
 		&--search {
 			width: 40px;
 			height: 40px;
-			margin-left: auto;
 			margin-right: 11px;
 		}
 
@@ -38,14 +38,11 @@
 			width: 108px;
 			height: 40px;
 
-			&--one-in-row {
-			}
+			display: inline-flex;
+    		justify-content: space-evenly;
+			align-items: center;
+			
 
-			&--two-in-row {
-			}
-
-			&--three-in-row {
-			}
 		}
 	}
 
@@ -54,6 +51,16 @@
 		}
 
 		&_search {
+		}
+	}
+}
+
+.view-types {
+	&__type {
+		cursor: pointer;
+
+		&--active.svg-icon {
+			filter: url(#white) url(#red);
 		}
 	}
 }
@@ -196,6 +203,9 @@
 	}
 
 	&__button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		border-radius: 3px;
 
 		&--compare {
@@ -211,14 +221,8 @@
 			background-color: #da0b29;
 			font-weight: 700;
 			color: #1b1a1a;
-		}
-	}
 
-	&__icon {
-		&--compare {
-		}
-
-		&--to-build {
+			justify-content: space-evenly;
 		}
 	}
 

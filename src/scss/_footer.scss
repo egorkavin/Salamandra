@@ -6,7 +6,7 @@
 	line-height: 18px;
 	font-weight: 400;
 	color: #f9f9f9;
-	border-radius: 3PX;
+	border-radius: 3px;
 
 	&__item {
 		margin-top: 30px;
@@ -27,34 +27,11 @@
 	}
 
 	&__link {
+		display: inline-flex;
+		align-content: center;
+		line-height: 21px;
 		&:not(:last-child) {
 			margin-right: 36px;
-		}
-	}
-
-	&__icon {
-		&_about-project {
-		}
-
-		&_help {
-		}
-
-		&_hot-game {
-		}
-
-		&_email {
-		}
-
-		&_facebook {
-		}
-
-		&_twitter {
-		}
-
-		&_vk {
-		}
-
-		&_telegram {
 		}
 	}
 }
@@ -73,11 +50,24 @@
 
 .contacts {
 	width: 209px;
-	text-align: center;
+	padding: 25px 25px 20px 25px;
 
 	&__list {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	&__item {
+		&:last-child {
+			text-align: center;
+		}
+
+		&:not(:last-child) {
+			.svg-icon {
+				margin-right: 5px;
+			}
+		}
 	}
 }
