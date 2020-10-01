@@ -133,9 +133,16 @@
 			}
 
 			.product {
+				&__title .product__link {
+					height: 25px;
+					width: 540px;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
 				&__wrapper {
 					height: 25px;
-					margin-top: 0;
+					margin-top: -25px;
 				}
 
 				&__button {
@@ -152,7 +159,6 @@
 
 		&__wrapper {
 			position: relative;
-			margin-top: 25px;
 			box-shadow: none;
 			transition: all .5s;
 			height: 179px;
@@ -163,21 +169,18 @@
 		}
 
 		&__title {
-			position: absolute;
-			z-index: 30;
-			background-color: #1b1a1a;
+			display: flex;
 			order: 0;
-			height: 25px;
+			z-index: 30;
 			cursor: pointer;
-
+			
 			.product__link {
-				display: inline-block;
+				background-color: #1b1a1a;
+				overflow:hidden;
+				display:inline-block;
+				width: 100%;
+				// transition: all 2s;
 				line-height: 25px;
-				max-width: 540px;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				position: relative;
 			}
 		}
 		
