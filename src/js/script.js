@@ -300,9 +300,7 @@ const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
 if (assemblageParts) {
 	assemblageParts.forEach(part => {
 		const title = part.querySelector('.product__title');
-		title.addEventListener('click', () => {
-			part.classList.toggle('product--collapsed')
-		})
+		title.addEventListener('click', () => part.classList.toggle('product--collapsed'));
 	})
 }
 
@@ -325,6 +323,21 @@ if (conflicts) {
 
 	})
 }
+
+//TODO
+const viewTypes = document.querySelectorAll('.view-types__type');
+if (viewTypes) {
+	viewTypes.forEach(type => {
+		type.addEventListener('click', () => {
+			const active = document.querySelector('.view-types__type--active');
+			if (type !== active) {
+				active.classList.remove('view-types__type--active');
+				type.classList.add('view-types__type--active');
+			}
+		})
+	})
+}
+
 //TODO
 // const pcParts = document.querySelectorAll('.pc-part__title');
 // if (pcParts) {
