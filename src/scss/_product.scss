@@ -645,11 +645,10 @@
 		vertical-align: middle;
 		cursor: pointer;
 		visibility: hidden;
-		&--down {
-			background-image: url('../img/arrow-down.svg');
-		}
+		background-image: url('../img/vote-down.svg');
+
 		&--up {
-			background-image: url('../img/arrow-up.svg');
+			transform: rotate(180deg);
 		}
 	}
 }
