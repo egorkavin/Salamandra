@@ -13,12 +13,17 @@ if (sidebarOpenButtons) {
 
 	const filters = document.querySelectorAll('.filter')
 	filters.forEach(filter => {
-		const filterName = filter.querySelector('.filter__name')
+		const filterName = filter.querySelector('.filter__name span')
 		if (filterName) {
 			const itemsList = filter.querySelector('.filter__items-list')
-			const itemsCount = filterName.querySelector('.filter__items-count')
-			itemsCount.innerHTML = `(${itemsList.childElementCount})`
-			toggleItemsListByFilterName(itemsList, filterName)
+			const itemsCount = document.createElement('span')
+			itemsCount.innerHTML = ` (${itemsList.childElementCount})`
+			filterName.insertAdjacentElement('beforeend', itemsCount)
+			filterName.insertAdjacentHTML(
+				'beforeend',
+				'<span class="filter__icon filter__icon--arrow"></span>'
+			)
+			toggleItemsListByFilterName(itemsList, filterName.parentNode)
 			setItemsCountInList(itemsCount, itemsList)
 		}
 	})
@@ -35,24 +40,60 @@ if (sidebarOpenButtons) {
 	function toggleItemsListByFilterName(itemsList, filterName) {
 		filterName.addEventListener('click', e => {
 			e.preventDefault()
-			filterName.classList.toggle('filter__name--active')
-			const itemsListHeight = itemsList.clientHeight
-			const itemsWrapper = itemsList.parentNode
-			if (itemsWrapper.style.maxHeight) {
-				itemsWrapper.removeAttribute('style')
-			} else {
-				itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+			if (!e.target.classList.contains('icon-cancel-filter')) {
+				filterName.classList.toggle('filter__name--active')
+				const itemsListHeight = itemsList.clientHeight
+				const itemsWrapper = itemsList.parentNode
+				if (itemsWrapper.style.maxHeight) {
+					itemsWrapper.removeAttribute('style')
+				} else {
+					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+				}
 			}
 		})
 	}
 
+	const getCheckedItems = itemsList =>
+		itemsList.querySelectorAll('input[type="checkbox"]:checked')
+
 	function setItemsCountInList(itemsCount, itemsList) {
 		itemsList.addEventListener('change', () => {
-			const count = itemsList.querySelectorAll('input[type="checkbox"]:checked').length
+			const parent = itemsCount.parentNode
+			const count = getCheckedItems(itemsList).length
 			if (count === 0) {
-				itemsCount.innerHTML = `(${itemsList.childElementCount})`
+				setItemsCountToZero(itemsCount)
 			} else {
 				itemsCount.innerHTML = `(${count}/${itemsList.childElementCount})`
+				if (parent.parentNode.childElementCount === 1) {
+					parent.insertAdjacentHTML(
+						'beforebegin',
+						'<span class="svg-icon icon-square-box"><span>'
+					)
+					parent.insertAdjacentHTML(
+						'afterend',
+						'<span class="svg-icon icon-cancel-filter"><span>'
+					)
+					addCancelListener(itemsCount)
+
+					function addCancelListener(itemsCount) {
+						const cancel = parent.parentNode.querySelector(
+							'.svg-icon.icon-cancel-filter'
+						)
+						cancel.addEventListener('click', () => {
+							const checkedItems = getCheckedItems(itemsList)
+							checkedItems.forEach(item => {
+								item.checked = false
+							})
+							setItemsCountToZero(itemsCount)
+						})
+					}
+				}
+			}
+
+			function setItemsCountToZero(itemsCount) {
+				itemsCount.innerHTML = `(${itemsList.childElementCount})`
+				const icons = parent.parentNode.querySelectorAll('.svg-icon')
+				icons.forEach(icon => parent.parentNode.removeChild(icon))
 			}
 		})
 	}
