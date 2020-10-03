@@ -1,0 +1,9 @@
+<svg id="buy" width="21" height="21" viewBox="0 0 21 21">
+  <circle cx="9.766" cy="16.5" r="2"/>
+  <circle cx="15.766" cy="16.5" r="2"/>
+  <path d="M18.526,7.842l0.949,0.316-2,6-0.949-.316Z" transform="translate(0.766 0.5)"/>
+  <path d="M17,13v1H6V13H17Z" transform="translate(0.766 0.5)"/>
+  <path d="M2.518,3.132l0.965-.263,3,11-0.965.263Z" transform="translate(0.766 0.5)"/>
+  <path d="M0,3V2H4V3H0Z" transform="translate(0.766 0.5)"/>
+  <path d="M11.4,2V8.609L9,6.108V7.876L12,11l3-3.126V6.108l-2.4,2.5V2H11.4Z" transform="translate(0.766 0.5)"/>
+</svg>

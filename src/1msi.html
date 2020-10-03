@@ -18,7 +18,7 @@
     <div class="container">
         <section class="content-management">
             <button class="content-management__button content-management__button--back">
-                <span class="content-management__icon content-management__icon--back-arrow"></span>
+                <span class="svg-icon icon-back-arrow"></span>
                 <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
             </button>
             <span class="content-management__button content-management__button--view-type">
@@ -84,10 +84,15 @@
                                         от
                                         <span class="price__value">23999 р.</span>
                                     </span>
-                                    <button class="product__button product__button--compare">
-                                    </button>
-                                    <button class="product__button product__button--to-build">
+                                    <button class="product__button product__button--big">
+                                        <span class="svg-icon icon-buy"></span>
                                         <span>Купить</span>
+                                    </button>
+                                    <button class="product__button product__button--small product__button--small--red">
+                                        <span class="svg-icon icon-to-assemblage"></span>
+                                    </button>
+                                    <button class="product__button product__button--small product__button--small--grey">
+                                        <span class="svg-icon icon-cancel"></span>
                                     </button>
                                 </div>
                                 <div class="product__hidden-description product-info">
@@ -445,31 +450,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-page__item"></div>
             </div>
         </main>
-        <ul id="lightSlider">
-            <li>
-                <img src="img/graphicsCard/test2.jpeg"></img>
-            </li>
-            <li>
-                <img src="img/graphicsCard/test3.jpg"></img>
-            </li>
-            <li>
-                <img src="img/graphicsCard/test2.jpeg"></img>
-            </li>
-            <li>
-                <img src="img/graphicsCard/test3.jpg"></img>
-            </li>
-            <li>
-                <img src="img/graphicsCard/test2.jpeg"></img>
-            </li>
-            <li>
-                <img src="img/graphicsCard/test3.jpg"></img>
-            </li>
-        </ul>
         @@include('_footer.html')
-
     </div>
 
     <!-- !filter -->
