@@ -360,8 +360,58 @@ if (conflicts) {
 			item.addEventListener('click', () => {
 				const chosen = conflictsBlock.querySelector('.conflicts__item--chosen')
 				if (item !== chosen && !isWarning(item)) {
-					chosen.classList.remove('conflicts__item--chosen')
+					if (chosen) {
+						chosen.classList.remove('conflicts__item--chosen')
+					}
 					item.classList.add('conflicts__item--chosen')
+				}
+			})
+
+			item.addEventListener('mouseover', () => {
+				const conflictID = item.dataset.conflictid
+				const circles = document.querySelectorAll(
+					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+				)
+				console.log(circles)
+				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+				if (conflictSVG) {
+					conflictSVG.classList.add('hover')
+				}
+				circles.forEach(circle => {
+					circle.classList.add('pc-part__conflict-circle--hover')
+				})
+			})
+
+			item.addEventListener('mouseout', () => {
+				const conflictID = item.dataset.conflictid
+				const circles = document.querySelectorAll(
+					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+				)
+				console.log(circles)
+				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+				if (conflictSVG) {
+					conflictSVG.classList.remove('hover')
+				}
+				circles.forEach(circle => {
+					circle.classList.remove('pc-part__conflict-circle--hover')
+				})
+			})
+
+			item.addEventListener('click', () => {
+				const conflictID = item.dataset.conflictid
+				const circles = document.querySelectorAll(
+					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+				)
+				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+				if (conflictSVG) {
+					const fixed = document.querySelector('svg[data-conflictid].fixed')
+					if (fixed) {
+						fixed.classList.remove('fixed')
+					}
+					conflictSVG.classList.add('fixed')
+					circles.forEach(circle => {
+						circle.classList.remove('pc-part__conflict-circle--fixed')
+					})
 				}
 			})
 		})
@@ -382,11 +432,113 @@ if (viewTypes) {
 	})
 }
 
-//TODO
-// const pcParts = document.querySelectorAll('.pc-part__title');
-// if (pcParts) {
-// 	const pos1 = pcParts[0].getBoundingClientRect();
-// 	const pos2 = pcParts[1].getBoundingClientRect();
-// 	let line = document.createElement('svg');
-// 	line.innerHTML = `<line id="line1" x1=${pos1.left} y1=${pos1.top} x2=${pos2.left} y2=${pos2.top} stroke=red/>`;
-// }
+const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflictID]')
+if (pcPartConflicts) {
+	let conflicts = document.querySelectorAll('.pc-part[data-conflictID="1"]')
+	const getTitle = conflict => conflict.querySelector('.pc-part__title')
+	for (let i = 1; conflicts.length > 0; ) {
+		if (conflicts.length !== 1) {
+			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
+		}
+		conflicts = document.querySelectorAll(`.pc-part[data-conflictID="${++i}"]`)
+	}
+
+	pcPartConflicts.forEach(item => {
+		const title = item.querySelector('.pc-part__title')
+		const circle = document.createElement('span')
+		circle.classList.add('pc-part__conflict-circle')
+		circle.addEventListener('mouseover', () => {
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
+			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+			if (conflictSVG) {
+				conflictSVG.classList.add('hover')
+			}
+		})
+		circle.addEventListener('mouseout', () => {
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
+			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+			if (conflictSVG) {
+				conflictSVG.classList.remove('hover')
+			}
+		})
+		circle.addEventListener('click', () => {
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
+			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+			if (conflictSVG) {
+				const fixed = document.querySelector('svg[data-conflictid].fixed')
+				if (fixed) {
+					fixed.classList.remove('fixed')
+				}
+				conflictSVG.classList.add('fixed')
+			}
+		})
+		title.insertAdjacentElement('afterbegin', circle)
+	})
+}
+
+function setConflictsLines(id, ...conflicts) {
+	const top1 = conflicts[0].offsetTop
+	const topN = conflicts[conflicts.length - 1].offsetTop
+	const len = topN - top1
+	const lineHeight = 8
+	const topAbs = top1 + lineHeight
+	const createConflictDash = conflict => `
+		<polyline 
+			points="
+				1,${conflict.offsetTop - top1 + 6}
+				6,${conflict.offsetTop - top1 + 6}
+			"
+			stroke="#e0a006"
+		/>
+		<polyline 
+			points="
+				7,${conflict.offsetTop - top1}
+				7,${conflict.offsetTop - top1 + 11}
+			"
+			stroke="#e0a006"
+		/>
+	`
+	const linesToPart = conflicts.map(createConflictDash).join('')
+	const line = `
+		<svg data-conflictid="${id}"
+			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
+			width="8" height="${len + 2 + 12}" viewBox="0 0 8 ${len + 2 + 12}"
+		>
+			<polyline 
+				points="
+					1,6
+					1,${len + 6}
+				"
+				fill="transparent" stroke="#e0a006" stroke-dasharray="4px"
+			/>
+			${linesToPart}
+		</svg>
+	`
+	document.querySelector('.sidebar__pc-parts').insertAdjacentHTML('beforeend', line)
+}
+
+const dataIcons = document.querySelectorAll('[data-icon]')
+dataIcons.forEach(item => {
+	const iconName = item.dataset.icon
+	if (item.classList.contains('pc-parts__choose-item')) {
+		item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
+	} else {
+		const title = item.querySelector('.pc-part__title')
+		title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
+	}
+})
+
+const pcPartsDescriptions = document.querySelectorAll('.pc-part__description')
+if (pcPartsDescriptions) {
+	pcPartsDescriptions.forEach(description => {
+		const title = description.querySelector('.pc-part__title')
+		const titleP = title.querySelector('p')
+		const details = description.querySelector('.pc-part__details')
+		if (titleP.offsetWidth === 215) {
+			title.classList.add('pc-part__title--gradient')
+		}
+		if (details.offsetWidth === 215) {
+			details.classList.add('pc-part__details--gradient')
+		}
+	})
+}
