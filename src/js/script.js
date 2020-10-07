@@ -372,7 +372,6 @@ if (conflicts) {
 				const circles = document.querySelectorAll(
 					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
 				)
-				console.log(circles)
 				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
 				if (conflictSVG) {
 					conflictSVG.classList.add('hover')
@@ -387,7 +386,6 @@ if (conflicts) {
 				const circles = document.querySelectorAll(
 					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
 				)
-				console.log(circles)
 				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
 				if (conflictSVG) {
 					conflictSVG.classList.remove('hover')
@@ -502,12 +500,12 @@ function setConflictsLines(id, ...conflicts) {
 	const line = `
 		<svg data-conflictid="${id}"
 			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
-			width="8" height="${len + 2 + 12}" viewBox="0 0 8 ${len + 2 + 12}"
+			width="8" height="${len + 12}" viewBox="0 0 8 ${len + 12}"
 		>
 			<polyline 
 				points="
-					1,6
-					1,${len + 6}
+					1.5,6
+					1.5,${len + 6}
 				"
 				fill="transparent" stroke="#e0a006" stroke-dasharray="4px"
 			/>
