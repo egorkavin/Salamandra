@@ -559,15 +559,15 @@ function setConflictsLines(id, ...conflicts) {
 	const createConflictDash = conflict => `
 		<polyline 
 			points="
-				1,${conflict.offsetTop - top1 + 6}
-				6,${conflict.offsetTop - top1 + 6}
+				1,${conflict.offsetTop - top1 + 5}.5
+				6,${conflict.offsetTop - top1 + 5}.5
 			"
 			stroke="#e0a006"
 		/>
 		<polyline 
 			points="
-				7,${conflict.offsetTop - top1}
-				7,${conflict.offsetTop - top1 + 11}
+				7.5,${conflict.offsetTop - top1}
+				7.5,${conflict.offsetTop - top1 + 11}
 			"
 			stroke="#e0a006"
 		/>
