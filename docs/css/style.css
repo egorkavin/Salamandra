@@ -325,6 +325,30 @@ body {
   background-image: url("../img/icons/icons.svg#cancel-filter");
 }
 
+.sidebar ::-webkit-scrollbar,
+.product ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar ::-webkit-scrollbar-thumb,
+.product ::-webkit-scrollbar-thumb {
+  background: #bfbfbf;
+  border-radius: 3px;
+}
+
+.sidebar ::-webkit-scrollbar-track,
+.product ::-webkit-scrollbar-track {
+  background: #1b1a1a;
+  width: 1px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.sidebar ::-webkit-scrollbar-thumb:hover,
+.product ::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
 .header {
   font-family: "Verdana";
   font-size: 14px;
