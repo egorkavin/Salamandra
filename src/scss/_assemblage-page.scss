@@ -117,7 +117,7 @@
 		flex-direction: column;
 		max-height: 245px;
 		padding: 20px 0 0 0;
-		transition: padding .5s;
+		transition: padding 0.5s;
 
 		&:not(:last-child) {
 			padding-bottom: 20px;
@@ -147,7 +147,7 @@
 
 				&__button {
 					background-color: transparent;
-					
+
 					&--big {
 						width: 25px;
 					}
@@ -160,7 +160,6 @@
 					span {
 						overflow: hidden;
 					}
-
 				}
 			}
 		}
@@ -168,7 +167,7 @@
 		&__wrapper {
 			position: relative;
 			box-shadow: none;
-			transition: all .5s;
+			transition: all 0.5s;
 			height: 179px;
 
 			&:hover {
@@ -181,22 +180,21 @@
 			order: 0;
 			z-index: 25;
 			cursor: pointer;
-			
+
 			.product__link {
 				background-color: #1b1a1a;
-				overflow:hidden;
-				display:inline-block;
+				overflow: hidden;
+				display: inline-block;
 				width: 100%;
 				// transition: all 2s;
 				line-height: 25px;
 			}
 		}
-		
 
 		&__image-wrapper {
 			width: 346px;
 			height: auto;
-			transition: height .5s;
+			transition: height 0.5s;
 
 			&:after {
 				background-image: radial-gradient(ellipse 160px 85px, transparent, 80%, #1b1a1a);
@@ -214,7 +212,7 @@
 		}
 
 		&__button {
-			transition: all .5s;
+			transition: all 0.5s;
 		}
 	}
 
@@ -229,7 +227,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		transition: transform 0.2s;
-	
+
 		&--arrow {
 			width: 10px;
 			height: 9px;
