@@ -897,12 +897,17 @@ body {
   cursor: pointer;
 }
 
-.pc-part__conflict-circle:hover,
 .pc-part__conflict-circle--hover,
 .pc-part__conflict-circle--fixed {
   -webkit-transform: scale(1.25);
       -ms-transform: scale(1.25);
           transform: scale(1.25);
+}
+
+.pc-part__conflict-circle--fixed--previous {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
 }
 
 .conflicts__title {
@@ -938,7 +943,7 @@ body {
 }
 
 .conflicts__item--chosen,
-.conflicts__item:hover {
+.conflicts__item--hover {
   color: #212020;
   background-color: #e0a006;
   border-radius: 3px;
@@ -962,6 +967,10 @@ svg[data-conflictid].hover {
 
 svg[data-conflictid].fixed {
   display: block;
+}
+
+svg[data-conflictid].fixed.fixed--previous {
+  display: none;
 }
 
 .container {
@@ -2374,44 +2383,4 @@ svg[data-conflictid].fixed {
   height: 9px;
   background-image: url(../img/filter/filter__arrow.svg);
   right: -15px;
-}
-
-@-webkit-keyframes an {
-  0% {
-    width: 540px;
-    height: 25px;
-    white-space: normal;
-  }
-
-  50% {
-    white-space: normal;
-    width: 930px;
-    height: 25px;
-  }
-
-  100% {
-    white-space: normal;
-    width: 930px;
-    height: 50px;
-  }
-}
-
-@keyframes an {
-  0% {
-    width: 540px;
-    height: 25px;
-    white-space: normal;
-  }
-
-  50% {
-    white-space: normal;
-    width: 930px;
-    height: 25px;
-  }
-
-  100% {
-    white-space: normal;
-    width: 930px;
-    height: 50px;
-  }
 }
