@@ -366,8 +366,6 @@ function switchConflictsBlockItem(conflictsBlock, item) {
 
 const conflicts = document.querySelectorAll('.conflicts')
 if (conflicts) {
-	const isWarning = item => item.classList.contains('conflicts__item--question')
-
 	conflicts.forEach(conflictsBlock => {
 		const items = conflictsBlock.querySelectorAll('.conflicts__item')
 
@@ -577,6 +575,7 @@ function setConflictsLines(id, ...conflicts) {
 		<svg data-conflictid="${id}"
 			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
 			width="8" height="${len + 12}" viewBox="0 0 8 ${len + 12}"
+			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 		>
 			<polyline 
 				points="
