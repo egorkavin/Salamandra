@@ -188,10 +188,12 @@
 		cursor: pointer;
 		// transition: transform 0.5s;
 
-		&:hover,
 		&--hover,
 		&--fixed {
 			transform: scale(1.25);
+		}
+		&--fixed--previous {
+			transform: none;
 		}
 	}
 }
@@ -229,7 +231,7 @@
 		}
 
 		&--chosen,
-		&:hover {
+		&--hover {
 			color: #212020;
 			background-color: #e0a006;
 			border-radius: 3px;
@@ -252,5 +254,8 @@ svg[data-conflictid] {
 	}
 	&.fixed {
 		display: block;
+		&.fixed--previous {
+			display: none;
+		}
 	}
 }

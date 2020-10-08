@@ -349,6 +349,21 @@ if (assemblageParts) {
 	})
 }
 
+const isWarning = item => item.classList.contains('conflicts__item--question')
+
+function switchConflictsBlockItem(conflictsBlock, item) {
+	const chosen = conflictsBlock.querySelector('.conflicts__item--chosen') || item
+	if (!isWarning(item)) {
+		if (chosen === item) {
+			chosen.classList.remove('conflicts__item--hover')
+			chosen.classList.toggle('conflicts__item--chosen')
+		} else {
+			chosen.classList.remove('conflicts__item--chosen')
+			item.classList.add('conflicts__item--chosen')
+		}
+	}
+}
+
 const conflicts = document.querySelectorAll('.conflicts')
 if (conflicts) {
 	const isWarning = item => item.classList.contains('conflicts__item--question')
@@ -358,59 +373,22 @@ if (conflicts) {
 
 		items.forEach(item => {
 			item.addEventListener('click', () => {
-				const chosen = conflictsBlock.querySelector('.conflicts__item--chosen')
-				if (item !== chosen && !isWarning(item)) {
-					if (chosen) {
-						chosen.classList.remove('conflicts__item--chosen')
-					}
-					item.classList.add('conflicts__item--chosen')
-				}
+				switchConflictsBlockItem(conflictsBlock, item)
+				const conflictID = item.dataset.conflictid
+				switchConflict(conflictID)
 			})
 
 			item.addEventListener('mouseover', () => {
+				item.classList.add('conflicts__item--hover')
 				const conflictID = item.dataset.conflictid
-				const circles = document.querySelectorAll(
-					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-				)
-				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-				if (conflictSVG) {
-					conflictSVG.classList.add('hover')
-				}
-				circles.forEach(circle => {
-					circle.classList.add('pc-part__conflict-circle--hover')
-				})
+				hoverConflictSVG(conflictID)
+				hoverCircles(conflictID)
 			})
 
 			item.addEventListener('mouseout', () => {
-				const conflictID = item.dataset.conflictid
-				const circles = document.querySelectorAll(
-					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-				)
-				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-				if (conflictSVG) {
-					conflictSVG.classList.remove('hover')
-				}
-				circles.forEach(circle => {
-					circle.classList.remove('pc-part__conflict-circle--hover')
-				})
-			})
-
-			item.addEventListener('click', () => {
-				const conflictID = item.dataset.conflictid
-				const circles = document.querySelectorAll(
-					`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-				)
-				const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-				if (conflictSVG) {
-					const fixed = document.querySelector('svg[data-conflictid].fixed')
-					if (fixed) {
-						fixed.classList.remove('fixed')
-					}
-					conflictSVG.classList.add('fixed')
-					circles.forEach(circle => {
-						circle.classList.remove('pc-part__conflict-circle--fixed')
-					})
-				}
+				item.classList.remove('conflicts__item--hover')
+				disableHoveredConflictSVG()
+				disableHoveredCircles()
 			})
 		})
 	})
@@ -446,32 +424,130 @@ if (pcPartConflicts) {
 		const circle = document.createElement('span')
 		circle.classList.add('pc-part__conflict-circle')
 		circle.addEventListener('mouseover', () => {
+			circle.classList.add('pc-part__conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-			if (conflictSVG) {
-				conflictSVG.classList.add('hover')
-			}
+			hoverConflictSVG(conflictID)
 		})
 		circle.addEventListener('mouseout', () => {
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-			if (conflictSVG) {
-				conflictSVG.classList.remove('hover')
-			}
+			circle.classList.remove('pc-part__conflict-circle--hover')
+			disableHoveredConflictSVG()
 		})
 		circle.addEventListener('click', () => {
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-			if (conflictSVG) {
-				const fixed = document.querySelector('svg[data-conflictid].fixed')
-				if (fixed) {
-					fixed.classList.remove('fixed')
-				}
-				conflictSVG.classList.add('fixed')
-			}
+			switchConflict(conflictID)
+
+			const conflictsBlocks = document.querySelectorAll('.conflicts')
+			conflictsBlocks.forEach(conflictsBlock => {
+				const item = conflictsBlock.querySelector(
+					`.conflicts__item[data-conflictid="${conflictID}"]`
+				)
+				switchConflictsBlockItem(conflictsBlock, item)
+			})
 		})
 		title.insertAdjacentElement('afterbegin', circle)
 	})
+}
+
+function switchConflict(conflictID) {
+	const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+	if (conflictSVG) {
+		const fixed = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
+		if (fixed === conflictSVG) {
+			fixed.classList.remove('hover')
+			fixed.classList.toggle('fixed')
+			disableHoveredCircles()
+			toggleCircles(conflictID)
+		} else {
+			fixed.classList.remove('fixed', 'fixed--previous')
+			conflictSVG.classList.add('fixed')
+			disableFixedCircles()
+			fixCircles(conflictID)
+		}
+	}
+}
+
+function disableHoveredConflictSVG() {
+	const conflictSVG = document.querySelector('svg[data-conflictid].hover')
+	if (conflictSVG) {
+		conflictSVG.classList.remove('hover')
+	}
+
+	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
+	if (fixedSVG !== conflictSVG) {
+		fixedSVG.classList.remove('fixed--previous')
+		const fixedCircles = document.querySelectorAll(
+			'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+		)
+		if (fixedCircles) {
+			fixedCircles.forEach(circle =>
+				circle.classList.remove('pc-part__conflict-circle--fixed--previous')
+			)
+		}
+	}
+}
+
+function hoverConflictSVG(conflictID) {
+	const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+	if (conflictSVG) {
+		conflictSVG.classList.add('hover')
+	}
+
+	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
+	if (fixedSVG !== conflictSVG) {
+		fixedSVG.classList.add('fixed--previous')
+		const fixedCircles = document.querySelectorAll(
+			'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+		)
+		if (fixedCircles) {
+			fixedCircles.forEach(circle =>
+				circle.classList.add('pc-part__conflict-circle--fixed--previous')
+			)
+		}
+	}
+}
+
+function disableHoveredCircles() {
+	const hoveredCircles = document.querySelectorAll(
+		'.pc-part[data-conflictid] .pc-part__conflict-circle--hover'
+	)
+	hoveredCircles.forEach(circle => {
+		circle.classList.remove('pc-part__conflict-circle--hover')
+	})
+}
+
+function hoverCircles(conflictID) {
+	const circles = document.querySelectorAll(
+		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+	)
+	circles.forEach(circle => {
+		circle.classList.add('pc-part__conflict-circle--hover')
+	})
+}
+
+function disableFixedCircles() {
+	const fixedCircles = document.querySelectorAll(
+		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+	)
+	fixedCircles.forEach(circle =>
+		circle.classList.remove(
+			'pc-part__conflict-circle--fixed',
+			'pc-part__conflict-circle--fixed--previous'
+		)
+	)
+}
+
+function fixCircles(conflictID) {
+	const circles = document.querySelectorAll(
+		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+	)
+	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed'))
+}
+
+function toggleCircles(conflictID) {
+	const circles = document.querySelectorAll(
+		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+	)
+	circles.forEach(circle => circle.classList.toggle('pc-part__conflict-circle--fixed'))
 }
 
 function setConflictsLines(id, ...conflicts) {
