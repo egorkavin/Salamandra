@@ -618,3 +618,22 @@ if (pcPartsDescriptions) {
 		}
 	})
 }
+
+const productRating = document.querySelectorAll('.product-score__rating')
+if (productRating) {
+	productRating.forEach(rating => {
+		const value = parseInt(rating.textContent)
+		const DASH_LEN = 11
+		const GAP_LEN = 5
+		const CIRCUMFERENCE = (DASH_LEN + GAP_LEN) * 5 //TODO take from percentage cirlce
+		const svg = `
+		<svg class="rate-ring" width="30" height="30">
+		<circle class="rate-ring__circle" 
+			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
+			stroke-dasharray="${Array(value).fill(11).join(' 5 ')} ${CIRCUMFERENCE - 16 * value + 5}"
+		></circle>
+    	</svg>
+		`
+		rating.insertAdjacentHTML('beforeend', svg)
+	})
+}
