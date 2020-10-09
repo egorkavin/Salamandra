@@ -405,12 +405,14 @@ if (conflicts) {
 				const conflictID = item.dataset.conflictid
 				hoverCircles(conflictID)
 				hoverConflict(conflictID)
+				hoverConflictsBlockItem(conflictsBlock, item)
 			})
 			item.addEventListener('mouseout', () => {
 				item.classList.remove('conflicts__item--hover')
 				const conflictID = item.dataset.conflictid
 				unhoverCircles()
 				unhoverConflict(conflictID)
+				unhoverConflictsBlockItem(conflictsBlock, item)
 			})
 		})
 	})
