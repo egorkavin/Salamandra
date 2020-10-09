@@ -355,7 +355,7 @@ if (assemblageParts) {
 const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
 const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
 const disableCirclesAsPrevious = circle => circle.classList.add('conflict-circle--fixed--prev')
-const enablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
+const disablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
 const unhoverCircles = circle => circle.classList.remove('conflict-circle--hover')
 const hoverCircles = circle => circle.classList.add('conflict-circle--hover')
 const toggleCircles = circle => circle.classList.toggle('conflict-circle--fixed')
@@ -506,7 +506,7 @@ function switchConflict(conflictID) {
 		}
 		mapCirclesById(fixedConflictID, unhoverCircles)
 		mapCirclesById(fixedConflictID, disableFixedCircles)
-		mapCirclesById(fixedConflictID, disableCirclesAsPrevious)
+		mapCirclesById(fixedConflictID, disablePrevCircles)
 		mapCirclesById(conflictID, fixCircles)
 	} else {
 		if (conflictSVGToSwitch) {
@@ -547,7 +547,7 @@ function unhoverConflict(conflictID) {
 		if (fixedPrevSVG) {
 			fixedPrevSVG.classList.remove('fixed--prev')
 		}
-		mapCirclesById(fixedPrevConflictID, enablePrevCircles)
+		mapCirclesById(fixedPrevConflictID, disablePrevCircles)
 	}
 }
 
