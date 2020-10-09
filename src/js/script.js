@@ -353,21 +353,17 @@ if (assemblageParts) {
 
 //TODO Move to one block (conflicts)
 const disableFixedCircles = circle =>
-	circle.classList.remove(
-		'pc-part__conflict-circle--fixed',
-		'pc-part__conflict-circle--fixed--prev'
-	)
-const fixCircles = circle => circle.classList.add('pc-part__conflict-circle--fixed')
-const disableCirclesAsPrevious = circle =>
-	circle.classList.add('pc-part__conflict-circle--fixed--prev')
-const enablePrevCircles = circle => circle.classList.remove('pc-part__conflict-circle--fixed--prev')
-const unhoverCircles = circle => circle.classList.remove('pc-part__conflict-circle--hover')
-const hoverCircles = circle => circle.classList.add('pc-part__conflict-circle--hover')
-const toggleCircles = circle => circle.classList.toggle('pc-part__conflict-circle--fixed')
+	circle.classList.remove('conflict-circle--fixed', 'conflict-circle--fixed--prev')
+const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
+const disableCirclesAsPrevious = circle => circle.classList.add('conflict-circle--fixed--prev')
+const enablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
+const unhoverCircles = circle => circle.classList.remove('conflict-circle--hover')
+const hoverCircles = circle => circle.classList.add('conflict-circle--hover')
+const toggleCircles = circle => circle.classList.toggle('conflict-circle--fixed')
 
 function mapCirclesById(conflictID, callback) {
 	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+		`.pc-part[data-conflictid="${conflictID}"] .conflict-circle`
 	)
 	circles.forEach(callback)
 }
@@ -467,9 +463,9 @@ if (pcPartConflicts) {
 	pcPartConflicts.forEach(item => {
 		const title = item.querySelector('.pc-part__title')
 		const circle = document.createElement('span')
-		circle.classList.add('pc-part__conflict-circle')
+		circle.classList.add('pc-part__conflict-circle', 'conflict-circle')
 		circle.addEventListener('click', () => {
-			circle.classList.remove('pc-part__conflict-circle--hover')
+			circle.classList.remove('conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
 			switchConflict(conflictID)
 
@@ -482,7 +478,7 @@ if (pcPartConflicts) {
 			})
 		})
 		circle.addEventListener('mouseover', () => {
-			circle.classList.add('pc-part__conflict-circle--hover')
+			circle.classList.add('conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
 			hoverConflict(conflictID)
 
@@ -495,7 +491,7 @@ if (pcPartConflicts) {
 			})
 		})
 		circle.addEventListener('mouseout', () => {
-			circle.classList.remove('pc-part__conflict-circle--hover')
+			circle.classList.remove('conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
 			unhoverConflict(conflictID)
 
@@ -512,7 +508,7 @@ if (pcPartConflicts) {
 }
 
 function getCurrentConflictID() {
-	const fixedCircle = document.querySelector('.pc-part__conflict-circle--fixed')
+	const fixedCircle = document.querySelector('.conflict-circle--fixed')
 	return fixedCircle ? fixedCircle.closest('[data-conflictid]').dataset.conflictid : null
 }
 

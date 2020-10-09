@@ -180,21 +180,24 @@
 
 	&__conflict-circle {
 		position: absolute;
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
 		left: -48px;
-		background-color: #e0a006;
-		cursor: pointer;
-		// transition: transform 0.5s;
+	}
+}
 
-		&--hover,
-		&--fixed {
-			transform: scale(1.25);
-		}
-		&--fixed--prev {
-			transform: none;
-		}
+.conflict-circle {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #e0a006;
+	cursor: pointer;
+	// transition: transform 0.5s;
+
+	&--hover,
+	&--fixed {
+		transform: scale(1.25);
+	}
+	&--fixed--prev {
+		transform: none;
 	}
 }
 
