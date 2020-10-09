@@ -352,8 +352,7 @@ if (assemblageParts) {
 }
 
 //TODO Move to one block (conflicts)
-const disableFixedCircles = circle =>
-	circle.classList.remove('conflict-circle--fixed', 'conflict-circle--fixed--prev')
+const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
 const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
 const disableCirclesAsPrevious = circle => circle.classList.add('conflict-circle--fixed--prev')
 const enablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
@@ -526,6 +525,7 @@ function switchConflict(conflictID) {
 		}
 		mapCirclesById(fixedConflictID, unhoverCircles)
 		mapCirclesById(fixedConflictID, disableFixedCircles)
+		mapCirclesById(fixedConflictID, disableCirclesAsPrevious)
 		mapCirclesById(conflictID, fixCircles)
 	} else {
 		if (conflictSVGToSwitch) {
