@@ -928,7 +928,7 @@ body {
           transform: scale(1.25);
 }
 
-.pc-part__conflict-circle--fixed--previous {
+.pc-part__conflict-circle--fixed--prev {
   -webkit-transform: none;
       -ms-transform: none;
           transform: none;
@@ -966,8 +966,8 @@ body {
   font-weight: 700;
 }
 
-.conflicts__item--chosen,
-.conflicts__item--hover {
+.conflicts__item--chosen:not(.conflicts__item--prev),
+.conflicts__item--hover:not(.conflicts__item--prev) {
   color: #212020;
   background-color: #e0a006;
   border-radius: 3px;
@@ -993,7 +993,7 @@ svg[data-conflictid].fixed {
   display: block;
 }
 
-svg[data-conflictid].fixed.fixed--previous {
+svg[data-conflictid].fixed.fixed--prev {
   display: none;
 }
 

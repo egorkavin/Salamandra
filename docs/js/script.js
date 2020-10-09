@@ -351,6 +351,7 @@ if (assemblageParts) {
 	})
 }
 
+//TODO Move to one block (conflicts)
 const isWarning = item => item.classList.contains('conflicts__item--question')
 
 function switchConflictsBlockItem(conflictsBlock, item) {
@@ -366,6 +367,28 @@ function switchConflictsBlockItem(conflictsBlock, item) {
 	}
 }
 
+function hoverConflictsBlockItem(conflictsBlock, item) {
+	const toHover = item
+	const chosen = conflictsBlock.querySelector('.conflicts__item--chosen')
+	if (chosen !== toHover) {
+		if (chosen) {
+			chosen.classList.add('conflicts__item--prev')
+		}
+		toHover.classList.add('conflicts__item--hover')
+	}
+}
+
+function unhoverConflictsBlockItem(conflictsBlock, item) {
+	const toUnhover = item
+	const previous = conflictsBlock.querySelector('.conflicts__item--prev')
+	if (previous !== toUnhover) {
+		if (previous) {
+			previous.classList.remove('conflicts__item--prev')
+		}
+		toUnhover.classList.remove('conflicts__item--hover')
+	}
+}
+
 const conflicts = document.querySelectorAll('.conflicts')
 if (conflicts) {
 	conflicts.forEach(conflictsBlock => {
@@ -377,18 +400,17 @@ if (conflicts) {
 				const conflictID = item.dataset.conflictid
 				switchConflict(conflictID)
 			})
-
 			item.addEventListener('mouseover', () => {
 				item.classList.add('conflicts__item--hover')
 				const conflictID = item.dataset.conflictid
-				hoverConflictSVG(conflictID)
 				hoverCircles(conflictID)
+				hoverConflict(conflictID)
 			})
-
 			item.addEventListener('mouseout', () => {
 				item.classList.remove('conflicts__item--hover')
-				disableHoveredConflictSVG()
-				disableHoveredCircles()
+				const conflictID = item.dataset.conflictid
+				unhoverCircles()
+				unhoverConflict(conflictID)
 			})
 		})
 	})
@@ -423,16 +445,8 @@ if (pcPartConflicts) {
 		const title = item.querySelector('.pc-part__title')
 		const circle = document.createElement('span')
 		circle.classList.add('pc-part__conflict-circle')
-		circle.addEventListener('mouseover', () => {
-			circle.classList.add('pc-part__conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			hoverConflictSVG(conflictID)
-		})
-		circle.addEventListener('mouseout', () => {
-			circle.classList.remove('pc-part__conflict-circle--hover')
-			disableHoveredConflictSVG()
-		})
 		circle.addEventListener('click', () => {
+			circle.classList.remove('pc-part__conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
 			switchConflict(conflictID)
 
@@ -444,69 +458,133 @@ if (pcPartConflicts) {
 				switchConflictsBlockItem(conflictsBlock, item)
 			})
 		})
+		circle.addEventListener('mouseover', () => {
+			circle.classList.add('pc-part__conflict-circle--hover')
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
+			hoverConflict(conflictID)
+
+			const conflictsBlocks = document.querySelectorAll('.conflicts')
+			conflictsBlocks.forEach(conflictsBlock => {
+				const item = conflictsBlock.querySelector(
+					`.conflicts__item[data-conflictid="${conflictID}"]`
+				)
+				hoverConflictsBlockItem(conflictsBlock, item)
+			})
+		})
+		circle.addEventListener('mouseout', () => {
+			circle.classList.remove('pc-part__conflict-circle--hover')
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
+			unhoverConflict(conflictID)
+
+			const conflictsBlocks = document.querySelectorAll('.conflicts')
+			conflictsBlocks.forEach(conflictsBlock => {
+				const item = conflictsBlock.querySelector(
+					`.conflicts__item[data-conflictid="${conflictID}"]`
+				)
+				unhoverConflictsBlockItem(conflictsBlock, item)
+			})
+		})
 		title.insertAdjacentElement('afterbegin', circle)
 	})
 }
 
+function getCurrentConflictID() {
+	const fixedCircle = document.querySelector('.pc-part__conflict-circle--fixed')
+	return fixedCircle ? fixedCircle.closest('[data-conflictid]').dataset.conflictid : null
+}
+
 function switchConflict(conflictID) {
-	const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-	if (conflictSVG) {
-		const fixed = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
-		if (fixed === conflictSVG) {
-			fixed.classList.remove('hover')
-			fixed.classList.toggle('fixed')
-			disableHoveredCircles()
-			toggleCircles(conflictID)
-		} else {
-			fixed.classList.remove('fixed', 'fixed--previous')
-			conflictSVG.classList.add('fixed')
-			disableFixedCircles()
-			fixCircles(conflictID)
+	const conflictIDToSwitch = conflictID
+	const fixedConflictID = getCurrentConflictID()
+	const conflictSVGToSwitch = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') // || conflictSVGToSwitch
+	if (conflictIDToSwitch !== fixedConflictID) {
+		if (fixedSVG) {
+			fixedSVG.classList.remove('fixed', 'fixed--prev', 'hover')
 		}
+		if (conflictSVGToSwitch) {
+			conflictSVGToSwitch.classList.add('fixed')
+		}
+		unhoverCircles()
+		disableFixedCircles()
+		fixCircles(conflictID)
+	} else {
+		if (conflictSVGToSwitch) {
+			conflictSVGToSwitch.classList.remove('hover')
+			conflictSVGToSwitch.classList.toggle('fixed')
+		}
+		toggleCircles(conflictID)
 	}
 }
 
-function disableHoveredConflictSVG() {
-	const conflictSVG = document.querySelector('svg[data-conflictid].hover')
-	if (conflictSVG) {
-		conflictSVG.classList.remove('hover')
+function hoverConflict(conflictID) {
+	const conflictIDToHover = conflictID
+	const fixedConflictID = getCurrentConflictID()
+	const conflictSVGToHover = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+	if (conflictSVGToHover) {
+		conflictSVGToHover.classList.add('hover')
 	}
 
-	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
-	if (fixedSVG !== conflictSVG) {
-		fixedSVG.classList.remove('fixed--previous')
-		const fixedCircles = document.querySelectorAll(
-			'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+	const fixedSVG = document.querySelector('svg[data-conflictid].fixed')
+	if (fixedConflictID && fixedConflictID !== conflictIDToHover) {
+		if (fixedSVG) {
+			fixedSVG.classList.add('fixed--prev')
+		}
+		disableCirclesAsPrevious()
+	}
+}
+
+function unhoverConflict(conflictID) {
+	const conflictIDToHover = conflictID
+	const fixedConflictID = getCurrentConflictID()
+	const conflictSVGToUnhover = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+	if (conflictSVGToUnhover) {
+		conflictSVGToUnhover.classList.remove('hover')
+	}
+
+	const fixedPrevSVG = document.querySelector('svg[data-conflictid].fixed--prev')
+	if (fixedConflictID !== conflictIDToHover) {
+		if (fixedPrevSVG) {
+			fixedPrevSVG.classList.remove('fixed--prev')
+		}
+		enablePrevCircles()
+	}
+}
+
+function disableFixedCircles() {
+	const fixedCircles = document.querySelectorAll(
+		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+	)
+	fixedCircles.forEach(circle =>
+		circle.classList.remove(
+			'pc-part__conflict-circle--fixed',
+			'pc-part__conflict-circle--fixed--prev'
 		)
-		if (fixedCircles) {
-			fixedCircles.forEach(circle =>
-				circle.classList.remove('pc-part__conflict-circle--fixed--previous')
-			)
-		}
-	}
+	)
 }
 
-function hoverConflictSVG(conflictID) {
-	const conflictSVG = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-	if (conflictSVG) {
-		conflictSVG.classList.add('hover')
-	}
-
-	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') || conflictSVG
-	if (fixedSVG !== conflictSVG) {
-		fixedSVG.classList.add('fixed--previous')
-		const fixedCircles = document.querySelectorAll(
-			'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
-		)
-		if (fixedCircles) {
-			fixedCircles.forEach(circle =>
-				circle.classList.add('pc-part__conflict-circle--fixed--previous')
-			)
-		}
-	}
+function fixCircles(conflictID) {
+	const circles = document.querySelectorAll(
+		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
+	)
+	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed'))
 }
 
-function disableHoveredCircles() {
+function disableCirclesAsPrevious() {
+	const circles = document.querySelectorAll(
+		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
+	)
+	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed--prev'))
+}
+
+function enablePrevCircles() {
+	const fixedCircles = document.querySelectorAll(
+		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed--prev'
+	)
+	fixedCircles.forEach(circle => circle.classList.remove('pc-part__conflict-circle--fixed--prev'))
+}
+
+function unhoverCircles() {
 	const hoveredCircles = document.querySelectorAll(
 		'.pc-part[data-conflictid] .pc-part__conflict-circle--hover'
 	)
@@ -522,25 +600,6 @@ function hoverCircles(conflictID) {
 	circles.forEach(circle => {
 		circle.classList.add('pc-part__conflict-circle--hover')
 	})
-}
-
-function disableFixedCircles() {
-	const fixedCircles = document.querySelectorAll(
-		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
-	)
-	fixedCircles.forEach(circle =>
-		circle.classList.remove(
-			'pc-part__conflict-circle--fixed',
-			'pc-part__conflict-circle--fixed--previous'
-		)
-	)
-}
-
-function fixCircles(conflictID) {
-	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-	)
-	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed'))
 }
 
 function toggleCircles(conflictID) {
