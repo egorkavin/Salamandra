@@ -192,7 +192,7 @@
 		&--fixed {
 			transform: scale(1.25);
 		}
-		&--fixed--previous {
+		&--fixed--prev {
 			transform: none;
 		}
 	}
@@ -230,8 +230,8 @@
 			font-weight: 700;
 		}
 
-		&--chosen,
-		&--hover {
+		&--chosen:not(.conflicts__item--prev),
+		&--hover:not(.conflicts__item--prev) {
 			color: #212020;
 			background-color: #e0a006;
 			border-radius: 3px;
@@ -254,7 +254,7 @@ svg[data-conflictid] {
 	}
 	&.fixed {
 		display: block;
-		&.fixed--previous {
+		&.fixed--prev {
 			display: none;
 		}
 	}
