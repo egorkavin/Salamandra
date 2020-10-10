@@ -355,7 +355,11 @@ if (assemblageParts) {
 //TODO Move to one block (conflicts)
 const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
 const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
-const disableCirclesAsPrevious = circle => circle.classList.add('conflict-circle--fixed--prev')
+const disableCirclesAsPrevious = circle => {
+	if (!circle.classList.contains('conflict-circle--hover')) {
+		circle.classList.add('conflict-circle--fixed--prev')
+	}
+}
 const disablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
 const unhoverCircles = circle => circle.classList.remove('conflict-circle--hover')
 const hoverCircles = circle => circle.classList.add('conflict-circle--hover')
@@ -363,15 +367,14 @@ const toggleCircles = circle => circle.classList.toggle('conflict-circle--fixed'
 
 function mapCirclesById(conflictID, callback) {
 	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .conflict-circle`
+		`.pc-part[data-conflictid~="${conflictID}"] .conflict-circle`
 	)
 	circles.forEach(callback)
 }
 
-const isWarning = item => item.classList.contains('conflicts__item--question')
-
 function switchConflictsBlockItem(conflictsBlock, item) {
 	const chosen = conflictsBlock.querySelector('.conflicts__item--chosen') || item
+	const isWarning = item => item.classList.contains('conflicts__item--question')
 	if (!isWarning(item)) {
 		if (chosen === item) {
 			chosen.classList.remove('conflicts__item--hover')
@@ -453,36 +456,32 @@ if (viewTypes) {
 
 const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflictID]')
 if (pcPartConflicts) {
-	let conflicts = document.querySelectorAll('.pc-part[data-conflictID="1"]')
+	let conflicts = document.querySelectorAll('.pc-part[data-conflictID~="1"]')
 	const getTitle = conflict => conflict.querySelector('.pc-part__title')
 	for (let i = 1; conflicts.length > 0; ) {
 		if (conflicts.length !== 1) {
 			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
 		}
-		conflicts = document.querySelectorAll(`.pc-part[data-conflictID="${++i}"]`)
+		conflicts = document.querySelectorAll(`.pc-part[data-conflictID~="${++i}"]`)
 	}
 
 	pcPartConflicts.forEach(item => {
 		const title = item.querySelector('.pc-part__title')
 		const circle = document.createElement('span')
 		circle.classList.add('pc-part__conflict-circle', 'conflict-circle')
-		circle.addEventListener('click', () => {
-			circle.classList.remove('conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			switchConflict(conflictID)
-			switchConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(conflictID))
-		})
 		circle.addEventListener('mouseover', () => {
 			circle.classList.add('conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			hoverConflict(conflictID)
-			hoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(conflictID))
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
+			conflictID.forEach(id =>
+				hoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
+			)
 		})
 		circle.addEventListener('mouseout', () => {
 			circle.classList.remove('conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			unhoverConflict(conflictID)
-			unhoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(conflictID))
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
+			conflictID.forEach(id =>
+				unhoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
+			)
 		})
 		title.insertAdjacentElement('afterbegin', circle)
 	})
@@ -490,7 +489,14 @@ if (pcPartConflicts) {
 
 function getCurrentConflictID() {
 	const fixedCircle = document.querySelector('.conflict-circle--fixed')
-	return fixedCircle ? fixedCircle.closest('[data-conflictid]').dataset.conflictid : null
+	if (fixedCircle) {
+		let id = fixedCircle.closest('[data-conflictid]').dataset.conflictid
+		if (id.split(' ').length !== 1) {
+			id = document.querySelector('svg[data-conflictID].fixed').dataset.conflictid
+		}
+		return id
+	}
+	return null
 }
 
 function switchConflict(conflictID) {
