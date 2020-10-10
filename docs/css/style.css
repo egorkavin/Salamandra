@@ -736,6 +736,10 @@ body {
   margin-top: 10px;
 }
 
+.sidebar__conflicts {
+  margin: 60px 20px 0 20px;
+}
+
 .pc-parts {
   padding: 0 30px;
   position: relative;
@@ -939,7 +943,7 @@ body {
 
 .conflicts__title {
   width: 320px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-left: 15px;
   line-height: 35px;
   font-size: 16px;
@@ -950,17 +954,18 @@ body {
 }
 
 .conflicts__body {
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 .conflicts__item {
   font-size: 14px;
   color: #e0a006;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
 .conflicts__item:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .conflicts__item:before {
