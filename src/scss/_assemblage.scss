@@ -221,10 +221,11 @@
 	&__item {
 		font-size: 14px;
 		color: #e0a006;
+		padding: 5px 10px;
 		cursor: pointer;
 
 		&:not(:last-child) {
-			margin-bottom: 15px;
+			margin-bottom: 5px;
 		}
 
 		&:before {
