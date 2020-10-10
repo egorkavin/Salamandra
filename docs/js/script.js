@@ -192,9 +192,10 @@ if (yearRates) {
 		const offset = circumference - (percentValue / 100) * circumference
 		const circle = `
 		<svg class="percent-circle" width="30" height="30">
-			<circle class="percent-circle__circle" stroke="#fff"
-				fill="transparent" stroke-width="2" cx="15" cy="15"
-				r="13" stroke-dasharray="${circumference} ${circumference}" 
+			<circle
+				stroke="#fff" fill="transparent"
+				stroke-width="2" cx="15" cy="15" r="13"
+				stroke-dasharray="${circumference} ${circumference}" 
 				stroke-dashoffset="${offset}"/>
 		</svg>
 		`
@@ -352,10 +353,28 @@ if (assemblageParts) {
 }
 
 //TODO Move to one block (conflicts)
-const isWarning = item => item.classList.contains('conflicts__item--question')
+const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
+const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
+const disableCirclesAsPrevious = circle => {
+	if (!circle.classList.contains('conflict-circle--hover')) {
+		circle.classList.add('conflict-circle--fixed--prev')
+	}
+}
+const disablePrevCircles = circle => circle.classList.remove('conflict-circle--fixed--prev')
+const unhoverCircles = circle => circle.classList.remove('conflict-circle--hover')
+const hoverCircles = circle => circle.classList.add('conflict-circle--hover')
+const toggleCircles = circle => circle.classList.toggle('conflict-circle--fixed')
+
+function mapCirclesById(conflictID, callback) {
+	const circles = document.querySelectorAll(
+		`.pc-part[data-conflictid~="${conflictID}"] .conflict-circle`
+	)
+	circles.forEach(callback)
+}
 
 function switchConflictsBlockItem(conflictsBlock, item) {
 	const chosen = conflictsBlock.querySelector('.conflicts__item--chosen') || item
+	const isWarning = item => item.classList.contains('conflicts__item--question')
 	if (!isWarning(item)) {
 		if (chosen === item) {
 			chosen.classList.remove('conflicts__item--hover')
@@ -389,31 +408,34 @@ function unhoverConflictsBlockItem(conflictsBlock, item) {
 	}
 }
 
-const conflicts = document.querySelectorAll('.conflicts')
-if (conflicts) {
-	conflicts.forEach(conflictsBlock => {
-		const items = conflictsBlock.querySelectorAll('.conflicts__item')
+function getConflictsBlockItemById(conflictID) {
+	const conflictsBlock = document.querySelector('.conflicts')
+	return conflictsBlock.querySelector(`.conflicts__item[data-conflictid="${conflictID}"]`)
+}
 
-		items.forEach(item => {
-			item.addEventListener('click', () => {
-				switchConflictsBlockItem(conflictsBlock, item)
-				const conflictID = item.dataset.conflictid
-				switchConflict(conflictID)
-			})
-			item.addEventListener('mouseover', () => {
-				item.classList.add('conflicts__item--hover')
-				const conflictID = item.dataset.conflictid
-				hoverCircles(conflictID)
-				hoverConflict(conflictID)
-				hoverConflictsBlockItem(conflictsBlock, item)
-			})
-			item.addEventListener('mouseout', () => {
-				item.classList.remove('conflicts__item--hover')
-				const conflictID = item.dataset.conflictid
-				unhoverCircles()
-				unhoverConflict(conflictID)
-				unhoverConflictsBlockItem(conflictsBlock, item)
-			})
+const conflictsBlock = document.querySelector('.conflicts')
+if (conflictsBlock) {
+	const items = conflictsBlock.querySelectorAll('.conflicts__item')
+	items.forEach(item => {
+		item.addEventListener('click', () => {
+			switchConflictsBlockItem(conflictsBlock, item)
+			const conflictID = item.dataset.conflictid
+			mapCirclesById(conflictID, unhoverCircles)
+			switchConflict(conflictID)
+		})
+		item.addEventListener('mouseover', () => {
+			item.classList.add('conflicts__item--hover')
+			const conflictID = item.dataset.conflictid
+			mapCirclesById(conflictID, hoverCircles)
+			hoverConflict(conflictID)
+			hoverConflictsBlockItem(conflictsBlock, item)
+		})
+		item.addEventListener('mouseout', () => {
+			item.classList.remove('conflicts__item--hover')
+			const conflictID = item.dataset.conflictid
+			mapCirclesById(conflictID, unhoverCircles)
+			unhoverConflict(conflictID)
+			unhoverConflictsBlockItem(conflictsBlock, item)
 		})
 	})
 }
@@ -434,72 +456,54 @@ if (viewTypes) {
 
 const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflictID]')
 if (pcPartConflicts) {
-	let conflicts = document.querySelectorAll('.pc-part[data-conflictID="1"]')
+	let conflicts = document.querySelectorAll('.pc-part[data-conflictID~="1"]')
 	const getTitle = conflict => conflict.querySelector('.pc-part__title')
 	for (let i = 1; conflicts.length > 0; ) {
 		if (conflicts.length !== 1) {
 			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
 		}
-		conflicts = document.querySelectorAll(`.pc-part[data-conflictID="${++i}"]`)
+		conflicts = document.querySelectorAll(`.pc-part[data-conflictID~="${++i}"]`)
 	}
 
 	pcPartConflicts.forEach(item => {
 		const title = item.querySelector('.pc-part__title')
 		const circle = document.createElement('span')
-		circle.classList.add('pc-part__conflict-circle')
-		circle.addEventListener('click', () => {
-			circle.classList.remove('pc-part__conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			switchConflict(conflictID)
-
-			const conflictsBlocks = document.querySelectorAll('.conflicts')
-			conflictsBlocks.forEach(conflictsBlock => {
-				const item = conflictsBlock.querySelector(
-					`.conflicts__item[data-conflictid="${conflictID}"]`
-				)
-				switchConflictsBlockItem(conflictsBlock, item)
-			})
-		})
+		circle.classList.add('pc-part__conflict-circle', 'conflict-circle')
 		circle.addEventListener('mouseover', () => {
-			circle.classList.add('pc-part__conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			hoverConflict(conflictID)
-
-			const conflictsBlocks = document.querySelectorAll('.conflicts')
-			conflictsBlocks.forEach(conflictsBlock => {
-				const item = conflictsBlock.querySelector(
-					`.conflicts__item[data-conflictid="${conflictID}"]`
-				)
-				hoverConflictsBlockItem(conflictsBlock, item)
-			})
+			circle.classList.add('conflict-circle--hover')
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
+			conflictID.forEach(id =>
+				hoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
+			)
 		})
 		circle.addEventListener('mouseout', () => {
-			circle.classList.remove('pc-part__conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid
-			unhoverConflict(conflictID)
-
-			const conflictsBlocks = document.querySelectorAll('.conflicts')
-			conflictsBlocks.forEach(conflictsBlock => {
-				const item = conflictsBlock.querySelector(
-					`.conflicts__item[data-conflictid="${conflictID}"]`
-				)
-				unhoverConflictsBlockItem(conflictsBlock, item)
-			})
+			circle.classList.remove('conflict-circle--hover')
+			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
+			conflictID.forEach(id =>
+				unhoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
+			)
 		})
 		title.insertAdjacentElement('afterbegin', circle)
 	})
 }
 
 function getCurrentConflictID() {
-	const fixedCircle = document.querySelector('.pc-part__conflict-circle--fixed')
-	return fixedCircle ? fixedCircle.closest('[data-conflictid]').dataset.conflictid : null
+	const fixedCircle = document.querySelector('.conflict-circle--fixed')
+	if (fixedCircle) {
+		let id = fixedCircle.closest('[data-conflictid]').dataset.conflictid
+		if (id.split(' ').length !== 1) {
+			id = document.querySelector('svg[data-conflictID].fixed').dataset.conflictid
+		}
+		return id
+	}
+	return null
 }
 
 function switchConflict(conflictID) {
 	const conflictIDToSwitch = conflictID
 	const fixedConflictID = getCurrentConflictID()
 	const conflictSVGToSwitch = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-	const fixedSVG = document.querySelector('svg[data-conflictid].fixed') // || conflictSVGToSwitch
+	const fixedSVG = document.querySelector('svg[data-conflictid].fixed')
 	if (conflictIDToSwitch !== fixedConflictID) {
 		if (fixedSVG) {
 			fixedSVG.classList.remove('fixed', 'fixed--prev', 'hover')
@@ -507,15 +511,16 @@ function switchConflict(conflictID) {
 		if (conflictSVGToSwitch) {
 			conflictSVGToSwitch.classList.add('fixed')
 		}
-		unhoverCircles()
-		disableFixedCircles()
-		fixCircles(conflictID)
+		mapCirclesById(fixedConflictID, unhoverCircles)
+		mapCirclesById(fixedConflictID, disableFixedCircles)
+		mapCirclesById(fixedConflictID, disablePrevCircles)
+		mapCirclesById(conflictID, fixCircles)
 	} else {
 		if (conflictSVGToSwitch) {
 			conflictSVGToSwitch.classList.remove('hover')
 			conflictSVGToSwitch.classList.toggle('fixed')
 		}
-		toggleCircles(conflictID)
+		mapCirclesById(conflictID, toggleCircles)
 	}
 }
 
@@ -532,83 +537,25 @@ function hoverConflict(conflictID) {
 		if (fixedSVG) {
 			fixedSVG.classList.add('fixed--prev')
 		}
-		disableCirclesAsPrevious()
+		mapCirclesById(fixedConflictID, disableCirclesAsPrevious)
 	}
 }
 
 function unhoverConflict(conflictID) {
 	const conflictIDToHover = conflictID
-	const fixedConflictID = getCurrentConflictID()
+	const fixedPrevConflictID = getCurrentConflictID()
 	const conflictSVGToUnhover = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
 	if (conflictSVGToUnhover) {
 		conflictSVGToUnhover.classList.remove('hover')
 	}
 
 	const fixedPrevSVG = document.querySelector('svg[data-conflictid].fixed--prev')
-	if (fixedConflictID !== conflictIDToHover) {
+	if (fixedPrevConflictID !== conflictIDToHover) {
 		if (fixedPrevSVG) {
 			fixedPrevSVG.classList.remove('fixed--prev')
 		}
-		enablePrevCircles()
+		mapCirclesById(fixedPrevConflictID, disablePrevCircles)
 	}
-}
-
-function disableFixedCircles() {
-	const fixedCircles = document.querySelectorAll(
-		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
-	)
-	fixedCircles.forEach(circle =>
-		circle.classList.remove(
-			'pc-part__conflict-circle--fixed',
-			'pc-part__conflict-circle--fixed--prev'
-		)
-	)
-}
-
-function fixCircles(conflictID) {
-	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-	)
-	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed'))
-}
-
-function disableCirclesAsPrevious() {
-	const circles = document.querySelectorAll(
-		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed'
-	)
-	circles.forEach(circle => circle.classList.add('pc-part__conflict-circle--fixed--prev'))
-}
-
-function enablePrevCircles() {
-	const fixedCircles = document.querySelectorAll(
-		'.pc-part[data-conflictid] .pc-part__conflict-circle--fixed--prev'
-	)
-	fixedCircles.forEach(circle => circle.classList.remove('pc-part__conflict-circle--fixed--prev'))
-}
-
-function unhoverCircles() {
-	const hoveredCircles = document.querySelectorAll(
-		'.pc-part[data-conflictid] .pc-part__conflict-circle--hover'
-	)
-	hoveredCircles.forEach(circle => {
-		circle.classList.remove('pc-part__conflict-circle--hover')
-	})
-}
-
-function hoverCircles(conflictID) {
-	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-	)
-	circles.forEach(circle => {
-		circle.classList.add('pc-part__conflict-circle--hover')
-	})
-}
-
-function toggleCircles(conflictID) {
-	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid="${conflictID}"] .pc-part__conflict-circle`
-	)
-	circles.forEach(circle => circle.classList.toggle('pc-part__conflict-circle--fixed'))
 }
 
 function setConflictsLines(id, ...conflicts) {
@@ -676,5 +623,27 @@ if (pcPartsDescriptions) {
 		if (details.offsetWidth === 215) {
 			details.classList.add('pc-part__details--gradient')
 		}
+	})
+}
+
+const productRating = document.querySelectorAll('.product-score-rating')
+if (productRating) {
+	productRating.forEach(rating => {
+		const value = parseInt(rating.textContent)
+		const DASH_LEN = 11
+		const GAP_LEN = 5
+		const CIRCUMFERENCE = 2 * Math.PI * 13
+		const svg = `
+		<svg class="rate-ring" width="30" height="30">
+		<circle 
+			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
+			stroke-dasharray="
+			${Array(value).fill(11).join(` ${GAP_LEN} `)} 
+			${CIRCUMFERENCE - 16 * value + GAP_LEN}
+			"
+		></circle>
+    	</svg>
+		`
+		rating.insertAdjacentHTML('beforeend', svg)
 	})
 }
