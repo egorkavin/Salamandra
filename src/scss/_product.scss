@@ -167,13 +167,6 @@
 
 	&__rating {
 		margin-right: 10px;
-		font-weight: 700;
-		position: relative;
-		display: inline-flex;
-		height: 30px;
-		width: 30px;
-		line-height: 30px;
-		justify-content: center;
 	}
 
 	&__year-rate {
@@ -181,6 +174,16 @@
 			margin-right: 10px;
 		}
 	}
+}
+
+.product-score-rating {
+	font-weight: 700;
+	position: relative;
+	display: inline-flex;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	justify-content: center;
 }
 
 .percent-circle,

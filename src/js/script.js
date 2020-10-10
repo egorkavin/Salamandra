@@ -620,7 +620,7 @@ if (pcPartsDescriptions) {
 	})
 }
 
-const productRating = document.querySelectorAll('.product-score__rating')
+const productRating = document.querySelectorAll('.product-score-rating')
 if (productRating) {
 	productRating.forEach(rating => {
 		const value = parseInt(rating.textContent)
@@ -631,7 +631,10 @@ if (productRating) {
 		<svg class="rate-ring" width="30" height="30">
 		<circle 
 			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
-			stroke-dasharray="${Array(value).fill(11).join(' 5 ')} ${CIRCUMFERENCE - 16 * value + 5}"
+			stroke-dasharray="
+			${Array(value).fill(11).join(` ${GAP_LEN} `)} 
+			${CIRCUMFERENCE - 16 * value + GAP_LEN}
+			"
 		></circle>
     	</svg>
 		`
