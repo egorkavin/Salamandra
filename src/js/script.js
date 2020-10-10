@@ -470,6 +470,7 @@ if (pcPartConflicts) {
 		const circle = document.createElement('span')
 		circle.classList.add('pc-part__conflict-circle', 'conflict-circle')
 		circle.addEventListener('mouseover', () => {
+			circle.closest('.pc-part').querySelector('.pc-part__price').style.color = '#bfbfbf'
 			circle.classList.add('conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
 			conflictID.forEach(id =>
@@ -477,6 +478,7 @@ if (pcPartConflicts) {
 			)
 		})
 		circle.addEventListener('mouseout', () => {
+			circle.closest('.pc-part').querySelector('.pc-part__price').removeAttribute('style')
 			circle.classList.remove('conflict-circle--hover')
 			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
 			conflictID.forEach(id =>
