@@ -192,9 +192,10 @@ if (yearRates) {
 		const offset = circumference - (percentValue / 100) * circumference
 		const circle = `
 		<svg class="percent-circle" width="30" height="30">
-			<circle class="percent-circle__circle" stroke="#fff"
-				fill="transparent" stroke-width="2" cx="15" cy="15"
-				r="13" stroke-dasharray="${circumference} ${circumference}" 
+			<circle
+				stroke="#fff" fill="transparent"
+				stroke-width="2" cx="15" cy="15" r="13"
+				stroke-dasharray="${circumference} ${circumference}" 
 				stroke-dashoffset="${offset}"/>
 		</svg>
 		`
@@ -628,7 +629,7 @@ if (productRating) {
 		const CIRCUMFERENCE = (DASH_LEN + GAP_LEN) * 5 //TODO take from percentage cirlce
 		const svg = `
 		<svg class="rate-ring" width="30" height="30">
-		<circle class="rate-ring__circle" 
+		<circle 
 			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
 			stroke-dasharray="${Array(value).fill(11).join(' 5 ')} ${CIRCUMFERENCE - 16 * value + 5}"
 		></circle>
