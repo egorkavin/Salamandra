@@ -626,7 +626,7 @@ if (productRating) {
 		const value = parseInt(rating.textContent)
 		const DASH_LEN = 11
 		const GAP_LEN = 5
-		const CIRCUMFERENCE = (DASH_LEN + GAP_LEN) * 5 //TODO take from percentage cirlce
+		const CIRCUMFERENCE = 2 * Math.PI * 13
 		const svg = `
 		<svg class="rate-ring" width="30" height="30">
 		<circle 
