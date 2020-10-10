@@ -494,7 +494,7 @@ function getCurrentConflictID() {
 	if (fixedCircle) {
 		let id = fixedCircle.closest('[data-conflictid]').dataset.conflictid
 		if (id.split(' ').length !== 1) {
-			id = document.querySelector('svg[data-conflictID].fixed').dataset.conflictid
+			id = document.querySelector('svg[data-conflictid].fixed').dataset.conflictid
 		}
 		return id
 	}
