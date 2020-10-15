@@ -534,10 +534,10 @@ if (pcPartsDescriptions) {
 		const title = description.querySelector('.pc-part__title')
 		const titleP = title.querySelector('p')
 		const details = description.querySelector('.pc-part__details')
-		if (titleP.offsetWidth === 215) {
+		if (titleP.offsetWidth >= 215) {
 			title.classList.add('pc-part__title--gradient')
 		}
-		if (details.offsetWidth === 215) {
+		if (details.offsetWidth >= 215) {
 			details.classList.add('pc-part__details--gradient')
 		}
 	})
