@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.min.css">
     <title>Salamandra | PC Builder</title>
     <link rel="apple-touch-icon" sizes="180x180" href="icon/favicon/apple-touch-icon.png">
@@ -15,9 +16,593 @@
     @@include("_header.html")
     @@include("_filters.html")
     @@include("_assemblage.html")
-    @@include("_graphicCards.html")
+
+    <main class="container">
+        <section class="section">
+            <div class="section__header">
+                <span class="section__title">
+                    <span class="svg-icon icon-stars"></span>
+                    лучшие сборки
+                </span>
+            </div>
+            <div class="section__slider-container slider-container">
+                <div class="slider-container__buttons">
+                    <div class="section-slider__btn section-slider__btn--next">
+                        <span class="svg-icon icon-back-arrow"></span>
+                    </div>
+                    <div class="section-slider__btn section-slider__btn--prev">
+                        <span class="svg-icon icon-back-arrow"></span>
+                    </div>
+                    <div class="section-slider__btn section-slider__btn--toggle">
+                        <span class="svg-icon icon-toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="swiper-container section__slider section-slider">
+                    <div class="swiper-wrapper">
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">1</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим</span>
+                                            <span class="product__author">от 123</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>,
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">2</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">3</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">1</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">5</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">4</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">5</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product product--short swiper-slide">
+                            <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
+                                <a class="product__link product__image-wrapper" href="1msi.html">
+                                    <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                                </a>
+                                <div class="product__main-part">
+                                    <h2 class="product__title">
+                                        <a class="product__link">
+                                            <span class="svg-icon icon-collection"></span>
+                                            <span class="product__name">Название сборки выбранное самим
+                                                пользователем</span>
+                                            <span class="product__author">от 11111111</span>
+                                        </a>
+                                    </h2>
+                                    <p class="product__description">
+                                        Intel <b>Core i7-7700HQ (3.9 ГГц)</b>, 8 ГБ (DDR4, 2377 МГц), NVIDIA <b>GeForce
+                                            GTX
+                                            1050
+                                            Ti (4 ГБ)</b>, 1265 456 78 598 afa
+                                    </p>
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__rating product-score-rating">2</span>
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-compare"></span>
+                                        </button>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                            <span>В сборку</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section__header">
+                <span class="section__title">
+                    <span class="svg-icon icon-stars"></span>
+                    новинки
+                </span>
+            </div>
+            <div class="section__products">
+                <div class="section__product product">
+                    <div class="product__wrapper">
+                        <div class="discount">
+                            <div>-25%</div>
+                        </div>
+                        <a class="product__link product__image-wrapper" href="1msi.html">
+                            <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <h2 class="product__title">
+                                <a class="product__link">
+                                    1MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                                </a>
+                            </h2>
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating product-score-rating">1</span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--small product__button--small--grey">
+                                    <span class="svg-icon icon-compare"></span>
+                                </button>
+                                <button class="product__button product__button--big">
+                                    <span class="svg-icon icon-to-assemblage"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__product product">
+                    <div class="product__wrapper">
+                        <div class="discount">
+                            <div>-25%</div>
+                        </div>
+                        <a class="product__link product__image-wrapper" href="1msi.html">
+                            <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <h2 class="product__title">
+                                <a class="product__link">
+                                    1MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                                </a>
+                            </h2>
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating product-score-rating">1</span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--small product__button--small--grey">
+                                    <span class="svg-icon icon-compare"></span>
+                                </button>
+                                <button class="product__button product__button--big">
+                                    <span class="svg-icon icon-to-assemblage"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__product product">
+                    <div class="product__wrapper">
+                        <div class="discount">
+                            <div>-25%</div>
+                        </div>
+                        <a class="product__link product__image-wrapper" href="1msi.html">
+                            <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <h2 class="product__title">
+                                <a class="product__link">
+                                    1MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                                </a>
+                            </h2>
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating product-score-rating">1</span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--small product__button--small--grey">
+                                    <span class="svg-icon icon-compare"></span>
+                                </button>
+                                <button class="product__button product__button--big">
+                                    <span class="svg-icon icon-to-assemblage"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section__product product">
+                    <div class="product__wrapper">
+                        <div class="discount">
+                            <div>-25%</div>
+                        </div>
+                        <a class="product__link product__image-wrapper" href="1msi.html">
+                            <img src="img/graphicsCard/test2.jpeg" class="product__image"></img>
+                        </a>
+                        <div class="product__main-part">
+                            <h2 class="product__title">
+                                <a class="product__link">
+                                    1MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
+                                </a>
+                            </h2>
+                            <div class="product__price-and-buttons">
+                                <span class="product__rating product-score-rating">1</span>
+                                <span class="product__price price">
+                                    от
+                                    <span class="price__value">23999 р.</span>
+                                </span>
+                                <button class="product__button product__button--small product__button--small--grey">
+                                    <span class="svg-icon icon-compare"></span>
+                                </button>
+                                <button class="product__button product__button--big">
+                                    <span class="svg-icon icon-to-assemblage"></span>
+                                    <span>В сборку</span>
+                                </button>
+                            </div>
+                            <div class="product__hidden-description product-info">
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Графический чип:</span>
+                                    <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Память:</span>
+                                    <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Интерфейс:</span>
+                                    <span class="product-info__value">PCI-Express x16 3.0</span>
+                                </p>
+                                <p class="product-info__field">
+                                    <span class="product-info__title">Разъемы:</span>
+                                    <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     @@include("_filterMatrix.html")
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        let mySwiper;
+
+        function initSwiper() {
+            mySwiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                grabCursor: true,
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.section-slider__btn--next',
+                    prevEl: '.section-slider__btn--prev',
+                    disabledClass: 'section-slider__btn--disabled'
+                },
+            })
+        }
+        initSwiper()
+        const toggleSwiperBtn = document.querySelector('.section-slider__btn--toggle')
+        toggleSwiperBtn.addEventListener('click', () => {
+            const slider = document.querySelector('.slider-container');
+            if (slider.classList.contains('slider-container--opened')) {
+                initSwiper()
+            } else {
+                mySwiper.destroy()
+            }
+            slider.classList.toggle('slider-container--opened')
+        })
+    </script>
 </body>
 
 </html>
