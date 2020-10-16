@@ -534,10 +534,10 @@ if (pcPartsDescriptions) {
 		const title = description.querySelector('.pc-part__title')
 		const titleP = title.querySelector('p')
 		const details = description.querySelector('.pc-part__details')
-		if (titleP.offsetWidth === 215) {
+		if (titleP.offsetWidth >= 215) {
 			title.classList.add('pc-part__title--gradient')
 		}
-		if (details.offsetWidth === 215) {
+		if (details.offsetWidth >= 215) {
 			details.classList.add('pc-part__details--gradient')
 		}
 	})
@@ -562,5 +562,33 @@ if (productRating) {
     	</svg>
 		`
 		rating.insertAdjacentHTML('beforeend', svg)
+	})
+}
+
+const sectionSlider = document.querySelector('.section__slider')
+if (sectionSlider) {
+	const products = sectionSlider.querySelectorAll('.product--short')
+	products.forEach(product => {
+		const title = product.querySelector('.product__title')
+		if (title.offsetHeight > 40) {
+			title.classList.add('product__title--overflow')
+			const productName = title.querySelector('.product__name')
+			truncate(40, title, productName)
+		}
+
+		const productDescription = product.querySelector('.product__description')
+		if (productDescription.offsetHeight > 55) {
+			productDescription.classList.add('product__description--overflow')
+			truncate(55, productDescription, productDescription)
+		}
+
+		function truncate(maxHeight, parent, elToOverflow) {
+			while (parent.offsetHeight > maxHeight) {
+				elToOverflow.textContent = elToOverflow.textContent.substr(
+					0,
+					elToOverflow.textContent.length - 1
+				)
+			}
+		}
 	})
 }
