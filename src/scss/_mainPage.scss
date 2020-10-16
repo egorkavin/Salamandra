@@ -42,7 +42,7 @@
 	}
 
 	.product--short {
-		width: 350px;
+		width: 340px;
 		height: 450px;
 
 		.product {
@@ -161,12 +161,18 @@
 .slider-container {
 	&--opened {
 		.section-slider {
+			margin: -10px;
+
 			&:after {
 				content: none;
 			}
 
 			.swiper-wrapper {
 				flex-wrap: wrap;
+			}
+
+			.swiper-slide {
+				margin: 10px;
 			}
 
 			&__btn {
