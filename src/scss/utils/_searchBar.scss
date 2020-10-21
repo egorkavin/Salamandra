@@ -1,0 +1,48 @@
+.search-bar {
+	height: 40px;
+	display: flex;
+	align-items: center;
+
+	form {
+		display: flex;
+		align-items: center;
+		margin: 0 10px;
+		position: relative;
+	}
+
+	&--active {
+		.search-bar {
+			&__submit {
+				display: block;
+			}
+
+			&__input {
+				margin-left: 10px;
+				width: 167px;
+			}
+		}
+	}
+
+	&__submit {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 21px;
+		height: 21px;
+		z-index: 1;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	&__icon {
+		cursor: pointer;
+	}
+
+	&__input {
+		width: 0;
+		color: #f9f9f9;
+		background: transparent;
+		transition: width 0.2s;
+	}
+}

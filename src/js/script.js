@@ -592,3 +592,15 @@ if (sectionSlider) {
 		}
 	})
 }
+
+const searchBars = document.querySelectorAll('.search-bar')
+if (searchBars) {
+	searchBars.forEach(sb => {
+		sb.addEventListener('click', () => {
+			sb.classList.add('search-bar--active')
+			document.querySelector('body').addEventListener('click', e => {
+				if (!sb.contains(e.target)) sb.classList.remove('search-bar--active')
+			})
+		})
+	})
+}

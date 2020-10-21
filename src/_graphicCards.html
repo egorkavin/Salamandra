@@ -4,9 +4,13 @@
             <span class="svg-icon icon-back-arrow"></span>
             <span>МОДЕЛИ</span>
         </button>
-        <button class="content-management__button content-management__button--search">
-            <span class="svg-icon icon-search"></span>
-        </button>
+        <div class="content-management__button content-management__button--search search-bar">
+            <form>
+                <input type="submit" value="" class="search-bar__submit">
+                <span class="search-bar__icon svg-icon icon-search"></span>
+                <input type="text" class="search-bar__input" placeholder="Что вы ищите...">
+            </form>
+        </div>
         <span class="content-management__button content-management__button--view-type view-types">
             <span class="svg-icon lines view-types__type view-types__type--active"></span>
             <span class="svg-icon flex-lines view-types__type"></span>
