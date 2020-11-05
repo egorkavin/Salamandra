@@ -1,6 +1,8 @@
 .container {
-	width: 1060px;
+	max-width: 1060px;
 	margin: 24px auto 0;
+	padding: 0 10px;
+	box-sizing: content-box;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -76,7 +78,7 @@
 
 .product {
 	height: 350px; //TODO
-	width: 465px;
+	max-width: 465px;
 
 	&__wrapper {
 		position: relative;
@@ -101,7 +103,7 @@
 	&--long {
 		max-height: 250px;
 		height: 100%;
-		width: 100%;
+		max-width: 100%;
 
 		.product {
 			&__wrapper {
@@ -144,7 +146,7 @@
 	}
 
 	&__image-wrapper {
-		width: 465px;
+		max-width: 465px;
 		height: 250px;
 		display: flex;
 		align-items: center;
@@ -223,6 +225,14 @@
 			color: #1b1a1a;
 
 			justify-content: space-evenly;
+
+			@media (max-width: 425px) {
+				width: 25px;
+
+				span:nth-of-type(2) {
+					display: none;
+				}
+			}
 		}
 
 		&:not(:last-child) {
