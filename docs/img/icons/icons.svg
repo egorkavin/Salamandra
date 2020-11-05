@@ -520,7 +520,7 @@
             <path d="M456,176l-7.579-7.5L456,161h-6.429L442,168.5l7.58,7.5H456Z" transform="translate(-438.5 -158)" />
         </g>
     </svg>
-    <svg id="square-box" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+    <svg id="square-box" width="21" height="21" viewBox="0 0 21 21">
         <defs>
             <style>
                 .tcls-1 {
@@ -554,10 +554,22 @@
         </g>
     </svg>
     <svg id="toggle-slider" width="21" height="21" viewBox="0 0 21 21">
-  <g>
-    <path d="M1451,623v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)"/>
-    <path d="M1451,620v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)"/>
-    <path d="M1451,617v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)"/>
-  </g>
-</svg>
+        <g>
+            <path d="M1451,623v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)" />
+            <path d="M1451,620v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)" />
+            <path d="M1451,617v2l7,7h1l7-7v-2l-7,7h-1Z" transform="translate(-1448 -614)" />
+        </g>
+    </svg>
+    <svg id="menu" x="0px" y="0px" viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+        <style type="text/css">
+            .st123 {
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+            }
+        </style>
+        <path class="st123" d="M17,5H3C2.4,5,2,4.6,2,4v0c0-0.5,0.4-1,1-1h14c0.5,0,1,0.4,1,1v0C18,4.6,17.6,5,17,5z" />
+        <path class="st123"
+            d="M13,11H3c-0.5,0-1-0.4-1-1v0c0-0.5,0.4-1,1-1h10c0.5,0,1,0.4,1,1v0C14,10.6,13.6,11,13,11z" />
+        <path class="st123" d="M9,17H3c-0.5,0-1-0.4-1-1v0c0-0.5,0.4-1,1-1h6c0.5,0,1,0.4,1,1v0C10,16.6,9.6,17,9,17z" />
+    </svg>
 </svg>

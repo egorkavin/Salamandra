@@ -5,11 +5,8 @@ const sidebarOpenButtons = document.querySelectorAll('.sidebar__btn')
 if (sidebarOpenButtons) {
 	sidebarOpenButtons.forEach(button => {
 		button.addEventListener('click', () => {
-			const buttonClasses = button.classList
-			const buttonLastClass = buttonClasses.item(buttonClasses.length - 1)
-			const parentSelector = `.sidebar--${buttonLastClass.split('--').pop()}`
-			const parentSidebar = document.querySelector(parentSelector)
-			parentSidebar.classList.toggle(`${parentSelector.substr(1)}--hidden`)
+			const parentSidebar = button.closest('.sidebar')
+			parentSidebar.classList.toggle('sidebar--hidden')
 		})
 	})
 
@@ -330,7 +327,9 @@ function getConflictsBlockItemById(conflictID) {
 
 const conflictsBlock = document.querySelector('.conflicts')
 if (conflictsBlock) {
-	const items = conflictsBlock.querySelectorAll('.conflicts__item')
+	const items = conflictsBlock.querySelectorAll(
+		'.conflicts__item:not(.conflicts__item--question)'
+	)
 	items.forEach(item => {
 		item.addEventListener('click', () => {
 			switchConflictsBlockItem(conflictsBlock, item)
@@ -590,5 +589,26 @@ if (sectionSlider) {
 				)
 			}
 		}
+	})
+}
+
+const searchBars = document.querySelectorAll('.search-bar')
+if (searchBars) {
+	searchBars.forEach(sb => {
+		sb.addEventListener('click', () => {
+			sb.classList.add('search-bar--active')
+			document.querySelector('body').addEventListener('click', e => {
+				if (!sb.contains(e.target)) sb.classList.remove('search-bar--active')
+			})
+		})
+	})
+}
+
+const menuBtn = document.querySelector('.header .icon-menu')
+if (menuBtn) {
+	const headerSign = document.querySelector('.header__sign')
+	menuBtn.addEventListener('click', () => {
+		menuBtn.classList.toggle('icon-menu--opened')
+		headerSign.classList.toggle('header__sign--opened')
 	})
 }
