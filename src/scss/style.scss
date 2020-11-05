@@ -2,9 +2,15 @@
 @import 'mixins';
 @import 'fonts';
 
+body,
+html {
+	overflow-x: hidden;
+	position: relative;
+}
+
 body {
 	background-color: #222;
-	overflow-x: hidden;
+	min-width: 320px;
 }
 
 .hidden-svg {
@@ -26,6 +32,8 @@ body {
 @import 'filters';
 
 @import 'assemblage';
+
+@import 'sidebar';
 
 @import 'graphicCards';
 
