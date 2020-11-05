@@ -176,4 +176,9 @@
 		filter: url(#white);
 		background-image: url('../img/icons/icons.svg#toggle-slider');
 	}
+
+	&.icon-menu {
+		filter: url(#white) url(#grey);
+		background-image: url('../img/icons/icons.svg#menu');
+	}
 }
