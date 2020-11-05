@@ -1,16 +1,48 @@
 .header {
-	font-family: "Verdana";
+	font-family: 'Verdana';
 	font-size: 14px;
 	background-color: #1b1a1a;
+
+	&__logo {
+		margin-right: auto;
+	}
 
 	&__container {
 		display: flex;
 		max-width: 1150px;
 		height: 75px;
 		margin: 0 auto;
+		padding: 0 10px;
 		align-items: center;
-		justify-content: space-between;
 		border-bottom: 1px solid #212020;
+
+		.icon-menu {
+			display: none;
+			transform: scaleX(-1);
+			width: 30px;
+			height: 30px;
+			transition: all 0.5s;
+
+			&--opened {
+				transform: scaleX(1);
+			}
+
+			@media (max-width: 768px) {
+				display: inline-block;
+			}
+		}
+	}
+
+	&__buttons {
+		@media (max-width: 768px) {
+			position: fixed;
+			left: -260px;
+			top: 0;
+			background-color: #1b1a1a;
+			bottom: 0;
+			z-index: 100;
+			width: 260px;
+		}
 	}
 
 	&__button {
@@ -25,6 +57,28 @@
 
 		.svg-icon {
 			margin-right: 8px;
+		}
+	}
+
+	&__sign {
+		margin-left: 24px;
+		height: 100%;
+		transition: left 0.5s;
+
+		@media (max-width: 768px) {
+			position: fixed;
+			margin: 0;
+			padding: 10px;
+			width: 260px;
+			top: 0;
+			left: -260px;
+			bottom: 0;
+			background-color: #1b1a1a;
+			z-index: 100;
+
+			&--opened {
+				left: 0;
+			}
 		}
 	}
 }
@@ -46,7 +100,7 @@
 	}
 
 	&__text {
-		font-family: "MyriadPro";
+		font-family: 'MyriadPro';
 		color: #f9f9f9;
 		font-size: 16px;
 	}
@@ -64,16 +118,105 @@
 	background: url('../img/main-logo.svg') no-repeat;
 }
 
+.sign {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	padding: 0 10px;
+	color: #bfbfbf;
+
+	&--desktop {
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	&--mobile {
+		display: none;
+		color: #f9f9f9;
+
+		.sign {
+			&__title {
+				font-size: 16px;
+				text-align: center;
+				margin-top: 120px;
+			}
+
+			&__subtitle {
+				font-size: 12px;
+				left: 42%;
+				position: relative;
+			}
+		}
+
+		@media (max-width: 768px) {
+			display: block;
+		}
+	}
+
+	&__type {
+		cursor: pointer;
+	}
+
+	&__methods {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+}
+
+.sign-form {
+	&__item {
+		margin: 15px 20px;
+
+		&:last-child {
+			margin-top: 30px;
+			text-align: center;
+		}
+	}
+
+	input[type='checkbox'] {
+		display: none;
+
+		&:checked {
+			& + .fake-checkbox::before {
+				opacity: 1;
+			}
+
+			&,
+			& ~ span {
+				color: #f9f9f9;
+				transition: color 0.2s;
+			}
+		}
+	}
+}
+
 .navigation {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 50px;
+	padding: 0 65px 0 30px;
+	position: relative;
+
+	&:after {
+		content: '';
+		width: 50px;
+		height: 100%;
+		position: absolute;
+		right: 65px;
+		background: linear-gradient(to left, #1b1a1a 20%, rgba(33, 33, 33, 0) 80%);
+	}
 
 	&__list {
 		display: flex;
+		white-space: nowrap;
+		overflow: hidden;
 		color: #f0f0f0;
-
+		overflow-x: auto;
 		.svg-icon {
 			margin-right: 8px;
 		}

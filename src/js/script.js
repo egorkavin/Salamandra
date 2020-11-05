@@ -603,3 +603,12 @@ if (searchBars) {
 		})
 	})
 }
+
+const menuBtn = document.querySelector('.header .icon-menu')
+if (menuBtn) {
+	const headerSign = document.querySelector('.header__sign')
+	menuBtn.addEventListener('click', () => {
+		menuBtn.classList.toggle('icon-menu--opened')
+		headerSign.classList.toggle('header__sign--opened')
+	})
+}
