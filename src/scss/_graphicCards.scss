@@ -181,6 +181,10 @@
 		color: #f9f9f9;
 	}
 
+	&:not(.swiper-slide) &__title {
+		@include trim(2);
+	}
+
 	&__price-and-buttons {
 		display: flex;
 		align-items: center;
