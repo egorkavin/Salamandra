@@ -575,12 +575,6 @@ if (sectionSlider) {
 			truncate(40, title, productName)
 		}
 
-		const productDescription = product.querySelector('.product__description')
-		if (productDescription.offsetHeight > 55) {
-			productDescription.classList.add('product__description--overflow')
-			truncate(55, productDescription, productDescription)
-		}
-
 		function truncate(maxHeight, parent, elToOverflow) {
 			while (parent.offsetHeight > maxHeight) {
 				elToOverflow.textContent = elToOverflow.textContent.substr(
