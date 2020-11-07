@@ -45,6 +45,7 @@
 		// }
 	}
 
+	// TODO remove appropriate styles to the swiper-slide
 	.product--short {
 		width: 340px;
 		height: 450px;
@@ -162,6 +163,10 @@
 		max-width: 950px;
 	}
 
+	.swiper-slide {
+		margin: 10px;
+	}
+
 	.product__description {
 		@include trim(3);
 	}
@@ -179,10 +184,6 @@
 			.swiper-wrapper {
 				flex-wrap: wrap;
 				justify-content: center;
-			}
-
-			.swiper-slide {
-				margin: 10px;
 			}
 
 			&__btn {
