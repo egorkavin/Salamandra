@@ -103,17 +103,27 @@
 .section-slider {
 	position: relative;
 
-	&:not(.reached-end):after {
+	&:after,
+	&:before {
 		content: '';
 		width: 50px;
 		height: 100%;
 		position: absolute;
 		z-index: 35;
 		top: 0;
+		transition: opacity 0.2s;
+		pointer-events: none;
+	}
+
+	&:after {
 		right: 0;
 		background: linear-gradient(to left, #222222 20%, rgba(33, 33, 33, 0) 80%);
 	}
 
+	&:before {
+		left: 0;
+		background: linear-gradient(to right, #222222 20%, rgba(33, 33, 33, 0) 80%);
+	}
 	&__btn {
 		width: 40px;
 		height: 40px;
