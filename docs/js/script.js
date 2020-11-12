@@ -354,15 +354,21 @@ if (conflictsBlock) {
 	})
 }
 
-//TODO
 const viewTypes = document.querySelectorAll('.view-types__type')
 if (viewTypes) {
 	viewTypes.forEach(type => {
 		type.addEventListener('click', () => {
 			const active = document.querySelector('.view-types__type--active')
 			if (type !== active) {
-				active.classList.remove('view-types__type--active')
+				if (active) {
+					active.classList.remove('view-types__type--active')
+				}
 				type.classList.add('view-types__type--active')
+
+				if (type.classList.contains('lines')) {
+					const products = document.querySelectorAll('.product')
+					products.forEach(product => product.classList.add('product--long'))
+				}
 			}
 		})
 	})
@@ -573,12 +579,6 @@ if (sectionSlider) {
 			title.classList.add('product__title--overflow')
 			const productName = title.querySelector('.product__name')
 			truncate(40, title, productName)
-		}
-
-		const productDescription = product.querySelector('.product__description')
-		if (productDescription.offsetHeight > 55) {
-			productDescription.classList.add('product__description--overflow')
-			truncate(55, productDescription, productDescription)
 		}
 
 		function truncate(maxHeight, parent, elToOverflow) {

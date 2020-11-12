@@ -674,7 +674,6 @@ body {
   white-space: nowrap;
   overflow: hidden;
   color: #f0f0f0;
-  overflow-x: auto;
 }
 
 .navigation__list .svg-icon {
@@ -1464,6 +1463,13 @@ svg[data-conflictid].fixed.fixed--prev {
 .product__title {
   font-size: 16px;
   color: #f9f9f9;
+}
+
+.product:not(.swiper-slide) .product__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .product__price-and-buttons {
@@ -2786,10 +2792,6 @@ svg[data-conflictid].fixed.fixed--prev {
   margin-top: 14px;
 }
 
-.section .product--short .product__description--overflow:after {
-  content: '...';
-}
-
 .section .product--short .product__price-and-buttons {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -2803,17 +2805,40 @@ svg[data-conflictid].fixed.fixed--prev {
   position: relative;
 }
 
-.section-slider:not(.reached-end):after {
+.section-slider:after,
+.section-slider:before {
   content: '';
   width: 50px;
   height: 100%;
   position: absolute;
   z-index: 35;
   top: 0;
+  -webkit-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.section-slider:after {
   right: 0;
   background: -webkit-gradient(linear, right top, left top, color-stop(20%, #222222), color-stop(80%, rgba(33, 33, 33, 0)));
   background: -o-linear-gradient(right, #222222 20%, rgba(33, 33, 33, 0) 80%);
   background: linear-gradient(to left, #222222 20%, rgba(33, 33, 33, 0) 80%);
+}
+
+.section-slider:before {
+  left: 0;
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #222222), color-stop(80%, rgba(33, 33, 33, 0)));
+  background: -o-linear-gradient(left, #222222 20%, rgba(33, 33, 33, 0) 80%);
+  background: linear-gradient(to right, #222222 20%, rgba(33, 33, 33, 0) 80%);
+}
+
+.section-slider--reach-end:after {
+  opacity: 0;
+}
+
+.section-slider--reach-beg:before {
+  opacity: 0;
 }
 
 .section-slider__btn {
@@ -2877,6 +2902,17 @@ svg[data-conflictid].fixed.fixed--prev {
   max-width: 950px;
 }
 
+.slider-container .swiper-slide {
+  margin: 10px;
+}
+
+.slider-container .product__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .slider-container--opened {
   padding: 0;
 }
@@ -2896,10 +2932,6 @@ svg[data-conflictid].fixed.fixed--prev {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.slider-container--opened .section-slider .swiper-slide {
-  margin: 10px;
 }
 
 .slider-container--opened .section-slider__btn--toggle .svg-icon {
