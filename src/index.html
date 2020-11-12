@@ -37,7 +37,7 @@
                         <span class="svg-icon icon-toggle-slider"></span>
                     </div>
                 </div>
-                <div class="swiper-container section__slider section-slider">
+                <div class="swiper-container section__slider section-slider section-slider--reach-beg">
                     <div class="swiper-wrapper">
                         <div class="product product--short swiper-slide">
                             <div class="product__wrapper">
@@ -601,6 +601,18 @@
                 mySwiper.destroy()
             }
             slider.classList.toggle('slider-container--opened')
+        })
+
+        const sectionContainer = document.querySelector('.section-slider')
+        mySwiper.on('reachEnd', () => {
+            sectionContainer.classList.add('section-slider--reach-end')
+        })
+        mySwiper.on('reachBeginning', () => {
+            sectionContainer.classList.add('section-slider--reach-beg')
+        })
+        mySwiper.on('fromEdge', () => {
+            sectionContainer.classList.remove('section-slider--reach-end')
+            sectionContainer.classList.remove('section-slider--reach-beg')
         })
     </script>
 </body>
