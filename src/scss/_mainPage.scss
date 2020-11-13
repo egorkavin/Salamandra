@@ -83,6 +83,7 @@
 	}
 
 	&__slider-container {
+		margin: -10px 0;
 		padding: 0 55px;
 		position: relative;
 	}
@@ -141,7 +142,7 @@
 		}
 	}
 
-	&__pages-navigation {
+	&__pagination {
 		margin: 20px 0 10px;
 	}
 }
@@ -233,7 +234,7 @@
 	}
 
 	.swiper-slide {
-		margin: 0 10px;
+		margin: 10px 10px;
 	}
 
 	.product__description {
