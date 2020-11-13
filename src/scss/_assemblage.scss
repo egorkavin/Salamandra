@@ -144,7 +144,7 @@
 		}
 	}
 
-	&[data-conflictID] {
+	&[data-conflict-id] {
 		.pc-part__title {
 			position: relative;
 		}
@@ -231,7 +231,7 @@
 	}
 }
 
-svg[data-conflictid] {
+svg[data-conflict-id] {
 	display: none;
 	&.hover {
 		display: block;
