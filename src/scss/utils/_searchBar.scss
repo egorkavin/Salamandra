@@ -2,13 +2,8 @@
 	height: 40px;
 	display: flex;
 	align-items: center;
-
-	form {
-		display: flex;
-		align-items: center;
-		margin: 0 10px;
-		position: relative;
-	}
+	padding: 0 10px;
+	position: relative;
 
 	&--active {
 		.search-bar {
