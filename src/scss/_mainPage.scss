@@ -21,6 +21,10 @@
 		margin-bottom: 30px;
 	}
 
+	&:last-child {
+		margin-bottom: 20px;
+	}
+
 	&__title {
 		background-color: #212020;
 		border-radius: 3px;
@@ -203,7 +207,7 @@
 	}
 
 	.swiper-slide {
-		margin: 10px;
+		margin: 0 10px;
 	}
 
 	.product__description {
