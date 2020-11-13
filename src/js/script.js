@@ -560,7 +560,7 @@ if (productRating) {
 		<circle 
 			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
 			stroke-dasharray="
-			${Array(value).fill(11).join(` ${GAP_LEN} `)} 
+			${Array(value).fill(DASH_LEN).join(` ${GAP_LEN} `)} 
 			${CIRCUMFERENCE - 16 * value + GAP_LEN}
 			"
 		></circle>
