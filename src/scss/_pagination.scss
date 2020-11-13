@@ -4,14 +4,15 @@
 	text-align: center;
 
 	&__show-more {
-		width: 130px;
+		display: inline-flex;
+		align-items: center;
 		height: 20px;
+		padding: 0 8px 0 5px;
 		border-radius: 10px;
 		background-color: #bfbfbf;
-	}
 
-	&__icon {
-		&--show-more {
+		.icon-show-more {
+			margin-right: 5px;
 		}
 	}
 

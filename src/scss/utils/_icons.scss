@@ -181,4 +181,8 @@
 		filter: url(#white) url(#grey);
 		background-image: url('../img/icons/icons.svg#menu');
 	}
+
+	&.icon-show-more {
+		background-image: url('../img/icons/icons.svg#show-more');
+	}
 }
