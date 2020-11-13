@@ -1,5 +1,6 @@
-.pages-navigation {
+.pagination {
 	font-size: 12px;
+	font-weight: normal;
 	text-align: center;
 
 	&__show-more {
@@ -25,16 +26,25 @@
 			margin-right: 10px;
 		}
 
-		&--active .pages-navigation__page-button {
+		&--current .pagination__page-button {
 			background-color: #da0b29;
 			color: #f9f9f9;
+		}
+
+		span {
+			font-size: 14px;
+			font-weight: bold;
+			color: #bfbfbf;
 		}
 	}
 
 	&__page-button {
-		width: 20px;
+		display: inline-block;
+		line-height: 20px;
+		min-width: 20px;
 		height: 20px;
-		border-radius: 50%;
+		padding: 0 5px;
+		border-radius: 10px;
 		background-color: #bfbfbf;
 	}
 }
