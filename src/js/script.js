@@ -333,20 +333,20 @@ if (conflictsBlock) {
 	items.forEach(item => {
 		item.addEventListener('click', () => {
 			switchConflictsBlockItem(conflictsBlock, item)
-			const conflictId = item.dataset.conflictId
+			const { conflictId } = item.dataset
 			mapCirclesById(conflictId, unhoverCircles)
 			switchConflict(conflictId)
 		})
 		item.addEventListener('mouseover', () => {
 			item.classList.add('conflicts__item--hover')
-			const conflictId = item.dataset.conflictId
+			const { conflictId } = item.dataset
 			mapCirclesById(conflictId, hoverCircles)
 			hoverConflict(conflictId)
 			hoverConflictsBlockItem(conflictsBlock, item)
 		})
 		item.addEventListener('mouseout', () => {
 			item.classList.remove('conflicts__item--hover')
-			const conflictId = item.dataset.conflictId
+			const { conflictId } = item.dataset
 			mapCirclesById(conflictId, unhoverCircles)
 			unhoverConflict(conflictId)
 			unhoverConflictsBlockItem(conflictsBlock, item)
