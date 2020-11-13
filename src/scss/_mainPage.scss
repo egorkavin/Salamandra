@@ -1,3 +1,19 @@
+.container {
+	max-width: 1060px;
+	margin: 24px auto 0;
+	padding: 0 10px;
+	box-sizing: content-box;
+	font-family: Verdana, sans-serif;
+	font-weight: 700;
+}
+
+.main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .section {
 	width: 100%;
 
