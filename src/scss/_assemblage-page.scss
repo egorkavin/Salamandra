@@ -99,6 +99,16 @@
 		.year-rate__percentage {
 			margin-left: auto;
 		}
+
+		.svg-icon {
+			filter: url(#white);
+			margin-left: 9px;
+
+			&.icon-collection {
+				margin-left: 0;
+				margin-right: 9px;
+			}
+		}
 	}
 }
 
