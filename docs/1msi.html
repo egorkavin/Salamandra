@@ -103,7 +103,8 @@
         </ul>
     </nav>
 </header>
-    <aside class="sidebar sidebar--filter sidebar--hidden">
+    <div class="sidebars">
+        <aside class="sidebar sidebar--filter sidebar--hidden">
     <a class="sidebar__btn sidebar__btn--filter">
         <span></span>
         <span></span>
@@ -514,13 +515,13 @@
     </ul>
 
 </aside>
-    <aside class="sidebar sidebar--assemblage sidebar--hidden">
+        <aside class="sidebar sidebar--assemblage sidebar--hidden">
     <a class="sidebar__btn sidebar__btn--assemblage">
         <span class="svg-icon icon-collection"></span>
     </a>
     <p class="sidebar__title">Сборка</p>
     <ul class="sidebar__pc-parts pc-parts">
-        <li class="pc-parts__item pc-part" data-conflictID="1 2" data-icon="cpu">
+        <li class="pc-parts__item pc-part" data-conflict-id="1 2" data-icon="cpu">
             <div class="pc-part__description">
                 <div class="pc-part__title">
                     <p>Intel Core i5-7431Y</p>
@@ -532,7 +533,7 @@
         <li class="pc-parts__item pc-part pc-part--current">
             <p>Выбор видеокарты</p>
         </li>
-        <li class="pc-parts__item pc-part" data-conflictID="1" data-icon="ram">
+        <li class="pc-parts__item pc-part" data-conflict-id="1" data-icon="ram">
             <div class="pc-part__description">
                 <div class="pc-part__title">
                     <p>G.Skill Fury Black (HX424C15FB/4)</p>
@@ -542,7 +543,7 @@
             <span class="pc-part__price">8 999</span>
         </li>
         <li class="pc-parts__item">
-            <div class="pc-part" data-conflictID="2" data-icon="hdd">
+            <div class="pc-part" data-conflict-id="2" data-icon="hdd">
                 <div class="pc-part__description">
                     <div class="pc-part__title">
                         <p>Western HDD Digital Blue (WD10SLorem)</p>
@@ -551,7 +552,7 @@
                 </div>
                 <span class="pc-part__price">8 999</span>
             </div>
-            <div class="pc-part" data-conflictID="2">
+            <div class="pc-part" data-conflict-id="2">
                 <div class="pc-part__description">
                     <div class="pc-part__title">
                         <p>Kingston SSD HyperX Fury 3D (KCLorem)</p>
@@ -571,7 +572,7 @@
             </div>
             <span class="pc-part__price">8 999</span>
         </li>
-        <li class="pc-parts__item pc-part" data-conflictID="3">
+        <li class="pc-parts__item pc-part" data-conflict-id="3">
             <div class="pc-part__description" data-icon="power">
                 <div class="pc-part__title">
                     <p>Chieftec Full-Range GPS-1250C</p>
@@ -592,442 +593,458 @@
     <div class="sidebar__conflicts conflicts">
         <div class="conflicts__title">3 Конфликта</div>
         <div class="conflicts__body">
-            <p class="conflicts__item" data-conflictID="1">Процессор и оп. память: конфликт типов памяти</p>
-            <p class="conflicts__item" data-conflictID="3">Блок питания: недостаточная мощность</p>
-            <p class="conflicts__item" data-conflictID="2">Какой-то конфликт с памятью</p>
+            <p class="conflicts__item" data-conflict-id="1">Процессор и оп. память: конфликт типов памяти</p>
+            <p class="conflicts__item" data-conflict-id="3">Блок питания: недостаточная мощность</p>
+            <p class="conflicts__item" data-conflict-id="2">Какой-то конфликт с памятью</p>
         </div>
     </div>
 </aside>
+    </div>
     <div class="container">
-        <section class="content-management">
-            <button class="content-management__button content-management__button--back">
-                <span class="svg-icon icon-back-arrow"></span>
-                <span>ВИДЕОКАРТЫ / NVIDIA GeForce GTX 1050 Ti</span>
-            </button>
-            <span class="content-management__button content-management__button--view-type">
-                <span class="svg-icon icon-share"></span>
-                <span class="svg-icon icon-subscribe"></span>
-                <span class="svg-icon icon-save-game"></span>
-            </span>
-        </section>
-
         <main class="main">
-            <div class="main__product-page-wrapper product-page">
-                <div class="product-page__item product-card">
-                    <div class="product product--long">
-                        <div class="product__wrapper">
-                            <h2 class="product__title">
-                                MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit) (1354/7008) (DVI, HDMI,
-                                DisplayPort) (GTX 1050 TI GAMING X 4G)
-                            </h2>
-                            <div class="product__photos">
-                                <a class="product__link product__image-wrapper" href="1msi.html">
-                                    <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
-                                </a>
-                                <div class="product__slider product-slider swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <img src="img/graphicsCard/test2.jpeg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test3.jpg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test2.jpeg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test3.jpg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test2.jpeg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test3.jpg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test2.jpeg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test3.jpg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test2.jpeg"
-                                            class="swiper-slide product-slider__item"></img>
-                                        <img src="img/graphicsCard/test3.jpg"
-                                            class="swiper-slide product-slider__item"></img>
+            <section class="section">
+                <div class="section__header">
+                    <span class="section__title">
+                        <span class="svg-icon icon-back-arrow"></span>
+                        <span>видеокарты / NVIDIA GeForce GTX 1050 Ti</span>
+                    </span>
+                    <form class="section__button section__button--search search-bar" action="#">
+                        <input type="submit" value="" class="search-bar__submit">
+                        <span class="search-bar__icon svg-icon icon-search"></span>
+                        <input type="text" class="search-bar__input" placeholder="Что вы ищите...">
+                    </form>
+                    <span class="section__button section__button--actions">
+                        <span class="svg-icon icon-share"></span>
+                        <span class="svg-icon icon-subscribe"></span>
+                        <span class="svg-icon icon-save-game"></span>
+                    </span>
+                </div>
+                <div class="section__product-page product-page">
+                    <div class="product-page__item product-card">
+                        <div class="product product--long">
+                            <div class="product__wrapper">
+                                <h2 class="product__title">
+                                    MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit) (1354/7008) (DVI, HDMI,
+                                    DisplayPort) (GTX 1050 TI GAMING X 4G)
+                                </h2>
+                                <div class="product__photos">
+                                    <a class="product__link product__image-wrapper" href="1msi.html">
+                                        <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
+                                    </a>
+                                    <div class="product__slider product-slider swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <img src="img/graphicsCard/test2.jpeg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test3.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test2.jpeg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test3.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test2.jpeg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test3.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test2.jpeg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test3.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test2.jpeg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img src="img/graphicsCard/test3.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                        </div>
+                                        <span class="product-slider__button product-slider__button_prev">
+                                            <span class="svg-icon icon-back-arrow"></span>
+                                        </span>
+                                        <span class="product-slider__button product-slider__button_next">
+                                            <span class="svg-icon icon-back-arrow"></span>
+                                        </span>
                                     </div>
-                                    <span class="product-slider__button product-slider__button_prev">
-                                        <span class="svg-icon icon-back-arrow"></span>
-                                    </span>
-                                    <span class="product-slider__button product-slider__button_next">
-                                        <span class="svg-icon icon-back-arrow"></span>
-                                    </span>
                                 </div>
-                            </div>
-                            <div class="product__main-part">
-                                <div class="product__price-and-buttons">
-                                    <span class="product__price price">
-                                        от
-                                        <span class="price__value">23999 р.</span>
-                                    </span>
-                                    <button class="product__button product__button--big">
-                                        <span class="svg-icon icon-buy"></span>
-                                        <span>Купить</span>
-                                    </button>
-                                    <button class="product__button product__button--small product__button--small--red">
-                                        <span class="svg-icon icon-to-assemblage"></span>
-                                    </button>
-                                    <button class="product__button product__button--small product__button--small--grey">
-                                        <span class="svg-icon icon-cancel"></span>
-                                    </button>
-                                </div>
-                                <div class="product__hidden-description product-info">
-                                    <p class="product-info__field">
-                                        <span class="product-info__title">Графический чип:</span>
-                                        <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
-                                    </p>
-                                    <p class="product-info__field">
-                                        <span class="product-info__title">Память:</span>
-                                        <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
-                                    </p>
-                                    <p class="product-info__field">
-                                        <span class="product-info__title">Интерфейс:</span>
-                                        <span class="product-info__value">PCI-Express x16 3.0</span>
-                                    </p>
-                                    <p class="product-info__field">
-                                        <span class="product-info__title">Разъемы:</span>
-                                        <span class="product-info__value">DVI, DisplayPort, HDMI</span>
-                                    </p>
-                                    <div class="product__score product-score">
-                                        <span class="product-score__rating product-score-rating">4</span>
-                                        <span class="product-score__year-rate year-rate">
-                                            Min:
-                                            <span class="year-rate__percentage">
-                                                <span class="year-rate__value">80</span>
-                                                %
+                                <div class="product__main-part">
+                                    <div class="product__price-and-buttons">
+                                        <span class="product__price price">
+                                            от
+                                            <span class="price__value">23999 р.</span>
+                                        </span>
+                                        <button class="product__button product__button--big">
+                                            <span class="svg-icon icon-buy"></span>
+                                            <span>Купить</span>
+                                        </button>
+                                        <button
+                                            class="product__button product__button--small product__button--small--red">
+                                            <span class="svg-icon icon-to-assemblage"></span>
+                                        </button>
+                                        <button
+                                            class="product__button product__button--small product__button--small--grey">
+                                            <span class="svg-icon icon-cancel"></span>
+                                        </button>
+                                    </div>
+                                    <div class="product__hidden-description product-info">
+                                        <p class="product-info__field">
+                                            <span class="product-info__title">Графический чип:</span>
+                                            <span class="product-info__value">GeForce GTX 1050 Ti (1354 МГц)</span>
+                                        </p>
+                                        <p class="product-info__field">
+                                            <span class="product-info__title">Память:</span>
+                                            <span class="product-info__value">4 GB (GDDR5, 128 бит, 7008 МГц)</span>
+                                        </p>
+                                        <p class="product-info__field">
+                                            <span class="product-info__title">Интерфейс:</span>
+                                            <span class="product-info__value">PCI-Express x16 3.0</span>
+                                        </p>
+                                        <p class="product-info__field">
+                                            <span class="product-info__title">Разъемы:</span>
+                                            <span class="product-info__value">DVI, DisplayPort, HDMI</span>
+                                        </p>
+                                        <div class="product__score product-score">
+                                            <span class="product-score__rating product-score-rating">4</span>
+                                            <span class="product-score__year-rate year-rate">
+                                                Min:
+                                                <span class="year-rate__percentage">
+                                                    <span class="year-rate__value">80</span>
+                                                    %
+                                                </span>
+                                                <span class="year-rate__year">2018</span>
                                             </span>
-                                            <span class="year-rate__year">2018</span>
-                                        </span>
-                                        <span class="product-score__year-rate year-rate">
-                                            Rec:
-                                            <span class="year-rate__percentage">
-                                                <span class="year-rate__value">100</span>
-                                                %
+                                            <span class="product-score__year-rate year-rate">
+                                                Rec:
+                                                <span class="year-rate__percentage">
+                                                    <span class="year-rate__value">100</span>
+                                                    %
+                                                </span>
+                                                <span class="year-rate__year">2016</span>
                                             </span>
-                                            <span class="year-rate__year">2016</span>
-                                        </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product__rating product-rating">
-                                    <div class="product-rating__stars" data-total-value="0">
-                                        <span class="product-rating__value">
-                                            <span class="product-rating__average">9,5</span>
-                                            <span class="product-rating__max">10</span>
-                                        </span>
-                                        <span class="product-rating__star" data-value="10">★</span>
-                                        <span class="product-rating__star" data-value="9">★</span>
-                                        <span class="product-rating__star" data-value="8">★</span>
-                                        <span class="product-rating__star" data-value="7">★</span>
-                                        <span class="product-rating__star" data-value="6">★</span>
-                                        <span class="product-rating__star" data-value="5">★</span>
-                                        <span class="product-rating__star" data-value="4">★</span>
-                                        <span class="product-rating__star" data-value="3">★</span>
-                                        <span class="product-rating__star" data-value="2">★</span>
-                                        <span class="product-rating__star" data-value="1">★</span>
+                                    <div class="product__rating product-rating">
+                                        <div class="product-rating__stars" data-total-value="0">
+                                            <span class="product-rating__value">
+                                                <span class="product-rating__average">9,5</span>
+                                                <span class="product-rating__max">10</span>
+                                            </span>
+                                            <span class="product-rating__star" data-value="10">★</span>
+                                            <span class="product-rating__star" data-value="9">★</span>
+                                            <span class="product-rating__star" data-value="8">★</span>
+                                            <span class="product-rating__star" data-value="7">★</span>
+                                            <span class="product-rating__star" data-value="6">★</span>
+                                            <span class="product-rating__star" data-value="5">★</span>
+                                            <span class="product-rating__star" data-value="4">★</span>
+                                            <span class="product-rating__star" data-value="3">★</span>
+                                            <span class="product-rating__star" data-value="2">★</span>
+                                            <span class="product-rating__star" data-value="1">★</span>
+                                        </div>
+                                        <p class="product-rating__note">
+                                            Вы пока не оценили этот товар
+                                        </p>
                                     </div>
-                                    <p class="product-rating__note">
-                                        Вы пока не оценили этот товар
-                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="product-page__item product-tabs">
-                    <ul class="product-tabs__items">
-                        <li data-tab="shops" class="product-tabs__item product-tabs__item--active">Магазины</li>
-                        <li data-tab="description" class="product-tabs__item">Описание</li>
-                        <li data-tab="specs" class="product-tabs__item">Характеристики</li>
-                        <li data-tab="comments" class="product-tabs__item">Отзывы</li>
-                    </ul>
-                    <div class="product-tabs__content">
-                        <div id="shops" class="product-shops product-tabs__block product-tabs__block--active">
-                            <div class="product-shops__shop product-shop">
-                                <div class="product-shop__image-wrapper">
-                                    <img class="product-shop__image" src="img/shop1.png"></img>
-                                </div>
-                                <div class="product-shop__info">
-                                    <h3 class="product-shop__product-title">
-                                        Процессор AMD Ryzen 5 3600 (100-100000031BOX)
-                                    </h3>
-                                    <p class="product-shop__description">
-                                        AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
-                                        65W, BOX, разблокированный множитель частоты...
-                                        AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
-                                        65W, BOX, разблокированный множитель частоты...
-                                        AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
-                                        65W, BOX, разблокированный множитель частоты...
-                                        AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
-                                        65W, BOX, разблокированный множитель частоты...
-                                    </p>
-                                    <div class="product-shop__footer">
-                                        <a href="https://www.itbox.ua/" class="product-shop__footer-site">Itbox.ua</a>
-                                        <span class="product-shop__footer-item">
-                                            | Гарантия:
-                                            <span class="product-shop__footer-item-value">
-                                                12 месяцев
+                    <div class="product-page__item product-tabs">
+                        <ul class="product-tabs__items">
+                            <li data-tab="shops" class="product-tabs__item product-tabs__item--active">Магазины</li>
+                            <li data-tab="description" class="product-tabs__item">Описание</li>
+                            <li data-tab="specs" class="product-tabs__item">Характеристики</li>
+                            <li data-tab="comments" class="product-tabs__item">Отзывы</li>
+                        </ul>
+                        <div class="product-tabs__content">
+                            <div id="shops" class="product-shops product-tabs__block product-tabs__block--active">
+                                <div class="product-shops__shop product-shop">
+                                    <div class="product-shop__image-wrapper">
+                                        <img class="product-shop__image" src="img/shop1.png"></img>
+                                    </div>
+                                    <div class="product-shop__info">
+                                        <h3 class="product-shop__product-title">
+                                            Процессор AMD Ryzen 5 3600 (100-100000031BOX)
+                                        </h3>
+                                        <p class="product-shop__description">
+                                            AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
+                                            65W, BOX, разблокированный множитель частоты...
+                                            AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
+                                            65W, BOX, разблокированный множитель частоты...
+                                            AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
+                                            65W, BOX, разблокированный множитель частоты...
+                                            AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
+                                            65W, BOX, разблокированный множитель частоты...
+                                        </p>
+                                        <div class="product-shop__footer">
+                                            <a href="https://www.itbox.ua/"
+                                                class="product-shop__footer-site">Itbox.ua</a>
+                                            <span class="product-shop__footer-item">
+                                                | Гарантия:
+                                                <span class="product-shop__footer-item-value">
+                                                    12 месяцев
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="product-shop__footer-item">
-                                            | Доставка:
-                                            <span class="product-shop__footer-item-value">
-                                                по РФ с Москвы
+                                            <span class="product-shop__footer-item">
+                                                | Доставка:
+                                                <span class="product-shop__footer-item-value">
+                                                    по РФ с Москвы
+                                                </span>
                                             </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-shop__price product-price">
+                                        <span class="product-price__price price price--big">
+                                            от
+                                            <span class="price__value">23999 р.</span>
                                         </span>
+                                        <a class="product-price__button product-price__button--to-store">
+                                            <span>В магазин</span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="product-shop__price product-price">
-                                    <span class="product-price__price price price--big">
-                                        от
-                                        <span class="price__value">23999 р.</span>
-                                    </span>
-                                    <a class="product-price__button product-price__button--to-store">
-                                        <span>В магазин</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-shops__shop product-shop product-shop--out-of-stock">
-                                <div class="product-shop__image-wrapper">
-                                    <img class="product-shop__image" src="img/shop1.png"></img>
-                                </div>
-                                <div class="product-shop__info">
-                                    <h3 class="product-shop__product-title">
-                                        Процессор AMD Ryzen 5 3600 (100-100000031BOX)
-                                    </h3>
-                                    <p class="product-shop__description">
-                                        AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
-                                        65W, BOX, разблокированный множитель частоты...
-                                    </p>
-                                    <div class="product-shop__footer">
-                                        <a href="https://www.itbox.ua/" class="product-shop__footer-site">Itbox.ua</a>
-                                        <span class="product-shop__footer-item">
-                                            | Гарантия:
-                                            <span class="product-shop__footer-item-value">
-                                                12 месяцев
+                                <div class="product-shops__shop product-shop product-shop--out-of-stock">
+                                    <div class="product-shop__image-wrapper">
+                                        <img class="product-shop__image" src="img/shop1.png"></img>
+                                    </div>
+                                    <div class="product-shop__info">
+                                        <h3 class="product-shop__product-title">
+                                            Процессор AMD Ryzen 5 3600 (100-100000031BOX)
+                                        </h3>
+                                        <p class="product-shop__description">
+                                            AM4, 6 ядер, 3.6GHz, HT 3200MHz, нет, L2: 3MB, L3: 32MB, 7nm,
+                                            65W, BOX, разблокированный множитель частоты...
+                                        </p>
+                                        <div class="product-shop__footer">
+                                            <a href="https://www.itbox.ua/"
+                                                class="product-shop__footer-site">Itbox.ua</a>
+                                            <span class="product-shop__footer-item">
+                                                | Гарантия:
+                                                <span class="product-shop__footer-item-value">
+                                                    12 месяцев
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="product-shop__footer-item">
-                                            | Доставка:
-                                            <span class="product-shop__footer-item-value">
-                                                по РФ с Москвы
+                                            <span class="product-shop__footer-item">
+                                                | Доставка:
+                                                <span class="product-shop__footer-item-value">
+                                                    по РФ с Москвы
+                                                </span>
                                             </span>
+                                        </div>
+                                    </div>
+                                    <div class="product-shop__price product-price">
+                                        <span class="product-price__price price price--big">
+                                            нет в наличии
                                         </span>
+                                        <a class="product-price__button product-price__button--to-store">
+                                            <span>В магазин</span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="product-shop__price product-price">
-                                    <span class="product-price__price price price--big">
-                                        нет в наличии
-                                    </span>
-                                    <a class="product-price__button product-price__button--to-store">
-                                        <span>В магазин</span>
-                                    </a>
+                            </div>
+                            <div id="description" class="product-tabs__block product-description">
+                                <div class="product-description__text">
+                                    Долгожданная новая глава в саге Elder Scrolls появилась от разработчиков, создавших
+                                    «Игру
+                                    года» в 2006 и 2008 годах — Bethesda Game Studios. В Skyrim понятие фантастического
+                                    эпоса
+                                    появилась от разработчиков в открытом мире было переосмыслено и Долгожданная новая
+                                    глава
+                                    в
+                                    саге Elder Scrolls появилась от разработчиков, создавших «Игру года» в 2006 и 2008
+                                    годах
+                                    —
+                                    Bethesda Game Studios. В Skyrim понятие фантастического эпоса в открытом мире было
+                                    переосмыслено и Долгожданная новая глава в саге Elder Scrolls появилась от
+                                    разработчиков
+                                    фантастического эпоса, создавших «Игру года» в 2006 и 2008 годах — Bethesda Game
+                                    Studios...
+                                </div>
+                                <div class="product-description__image-wrapper">
+                                    <img src="img/graphicsCard/test3.jpg" class="product-description__image"></img>
                                 </div>
                             </div>
-                        </div>
-                        <div id="description" class="product-tabs__block product-description">
-                            <div class="product-description__text">
-                                Долгожданная новая глава в саге Elder Scrolls появилась от разработчиков, создавших
-                                «Игру
-                                года» в 2006 и 2008 годах — Bethesda Game Studios. В Skyrim понятие фантастического
-                                эпоса
-                                появилась от разработчиков в открытом мире было переосмыслено и Долгожданная новая глава
-                                в
-                                саге Elder Scrolls появилась от разработчиков, создавших «Игру года» в 2006 и 2008 годах
-                                —
-                                Bethesda Game Studios. В Skyrim понятие фантастического эпоса в открытом мире было
-                                переосмыслено и Долгожданная новая глава в саге Elder Scrolls появилась от разработчиков
-                                фантастического эпоса, создавших «Игру года» в 2006 и 2008 годах — Bethesda Game
-                                Studios...
-                            </div>
-                            <div class="product-description__image-wrapper">
-                                <img src="img/graphicsCard/test3.jpg" class="product-description__image"></img>
-                            </div>
-                        </div>
-                        <div id="specs" class="product-tabs__block product-specs">
-                            <div class="product-specs__item">
-                                <h3 class="product-specs__title">Конфигурация</h3>
-                                <ul class="product-specs__list">
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Графический чип
-                                        </span>
-                                        <span class="product-specs__item-value">
-                                            GeForce GTX 1050 Ti
-                                        </span>
-                                    </li>
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Частота памяти
-                                        </span>
-                                        <span class="product-specs__item-value">
-                                            Gaming/Silent Mode: 7008 МГц
-                                            OC Mode: 7108 МГц
-                                        </span>
-                                    </li>
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Объем памяти*
-                                        </span>
-                                        <span class="product-specs__item-value">
-                                            4 ГБ
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product-specs__item">
-                                <h3 class="product-specs__title">Интерфейсы и разъемы</h3>
-                                <ul class="product-specs__list">
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Фронтальные разъемы USB 2.0
-                                        </span>
-                                        <span class="product-specs__item-value">1</span>
-                                    </li>
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Частота памяти
-                                        </span>
-                                        <span class="product-specs__item-value">
-                                            Gaming/Silent Mode: 7008 МГц
-                                            OC Mode: 7108 МГц
-                                        </span>
-                                    </li>
-                                    <li class="product-specs__list-item">
-                                        <span class="product-specs__list-item-name">
-                                            Объем памяти**
-                                        </span>
-                                        <span class="product-specs__item-value">
-                                            4 ГБ
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product-specs__footnotes specs-footnotes">
-                                <p class="specs-footnotes__item">
-                                    * фактический объем доступной памяти графической может быть меньше!
-                                </p>
-                                <p class="specs-footnotes__item">
-                                    ** фактическая скорость передачи данных с использованием разъема может отличаться!
-                                </p>
-                            </div>
+                            <div id="specs" class="product-tabs__block product-specs">
+                                <div class="product-specs__item">
+                                    <h3 class="product-specs__title">Конфигурация</h3>
+                                    <ul class="product-specs__list">
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Графический чип
+                                            </span>
+                                            <span class="product-specs__item-value">
+                                                GeForce GTX 1050 Ti
+                                            </span>
+                                        </li>
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Частота памяти
+                                            </span>
+                                            <span class="product-specs__item-value">
+                                                Gaming/Silent Mode: 7008 МГц
+                                                OC Mode: 7108 МГц
+                                            </span>
+                                        </li>
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Объем памяти*
+                                            </span>
+                                            <span class="product-specs__item-value">
+                                                4 ГБ
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product-specs__item">
+                                    <h3 class="product-specs__title">Интерфейсы и разъемы</h3>
+                                    <ul class="product-specs__list">
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Фронтальные разъемы USB 2.0
+                                            </span>
+                                            <span class="product-specs__item-value">1</span>
+                                        </li>
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Частота памяти
+                                            </span>
+                                            <span class="product-specs__item-value">
+                                                Gaming/Silent Mode: 7008 МГц
+                                                OC Mode: 7108 МГц
+                                            </span>
+                                        </li>
+                                        <li class="product-specs__list-item">
+                                            <span class="product-specs__list-item-name">
+                                                Объем памяти**
+                                            </span>
+                                            <span class="product-specs__item-value">
+                                                4 ГБ
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product-specs__footnotes specs-footnotes">
+                                    <p class="specs-footnotes__item">
+                                        * фактический объем доступной памяти графической может быть меньше!
+                                    </p>
+                                    <p class="specs-footnotes__item">
+                                        ** фактическая скорость передачи данных с использованием разъема может
+                                        отличаться!
+                                    </p>
+                                </div>
 
-                        </div>
-                        <div id="comments" class="product-tabs__block product-comments">
-                            <div class="product-comments__form-wrapper">
-                                <div class="product-comments__auth">
-                                    Чтобы написать свой комментарий, авторизуйтесь:
-                                    <span class="product-comments__red-link">
-                                        Войти
-                                    </span>
+                            </div>
+                            <div id="comments" class="product-tabs__block product-comments">
+                                <div class="product-comments__form-wrapper">
+                                    <div class="product-comments__auth">
+                                        Чтобы написать свой комментарий, авторизуйтесь:
+                                        <span class="product-comments__red-link">
+                                            Войти
+                                        </span>
+                                    </div>
+                                    <div class="product-comments__comment-form comment-form">
+                                        <form method="POST">
+                                            <div>
+                                                <textarea required="required"
+                                                    placeholder="Ваш комментарий..."></textarea>
+                                            </div>
+                                            <div class="comment-form__footer">
+                                                <span class="comment-form__reply-to">
+                                                    Вы отвечаете пользователю
+                                                    <span class="comment-form__reply-username">Some3</span>
+                                                </span>
+                                                <button class="comment-form__button" type="submit">
+                                                    Отправить
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="product-comments__comment-form comment-form">
-                                    <form method="POST">
-                                        <div>
-                                            <textarea required="required" placeholder="Ваш комментарий..."></textarea>
+                                <div class="product-comments__comment product-comment">
+                                    <div class="product-comment__left">
+                                        <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                    </div>
+                                    <div class="product-comment__right">
+                                        <div class="product-comment__header">
+                                            <span class="product-comment__author">
+                                                Some User Name
+                                            </span>
+                                            <span class="product-comment__vote comment-vote">
+                                                <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                                <span class="comment-vote__rating">10</span>
+                                                <span class="comment-vote__btn comment-vote__btn--up"></span>
+                                            </span>
                                         </div>
-                                        <div class="comment-form__footer">
-                                            <span class="comment-form__reply-to">
-                                                Вы отвечаете пользователю
-                                                <span class="comment-form__reply-username">Some3</span>
+                                        <p class="product-comment__text">
+                                            Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
+                                            важно... Бла бла бал бал,
+                                            много-много текста
+                                        </p>
+                                        <div class="product-comment__footer">
+                                            <span class="product-comment__rating">
+                                                Оценка:
                                             </span>
-                                            <button class="comment-form__button" type="submit">
-                                                Отправить
-                                            </button>
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="product-comments__comment product-comment">
-                                <div class="product-comment__left">
-                                    <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
-                                </div>
-                                <div class="product-comment__right">
-                                    <div class="product-comment__header">
-                                        <span class="product-comment__author">
-                                            Some User Name
-                                        </span>
-                                        <span class="product-comment__vote comment-vote">
-                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
-                                            <span class="comment-vote__rating">10</span>
-                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
-                                        </span>
-                                    </div>
-                                    <p class="product-comment__text">
-                                        Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
-                                        важно... Бла бла бал бал,
-                                        много-много текста
-                                    </p>
-                                    <div class="product-comment__footer">
-                                        <span class="product-comment__rating">
-                                            Оценка:
-                                        </span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-comments__comment product-comment product-comment_response">
-                                <div class="product-comment__left">
-                                    <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
-                                </div>
-                                <div class="product-comment__right">
-                                    <div class="product-comment__header">
-                                        <span class="product-comment__author">
-                                            Some Other User Name
-                                            <span class="product-comment__responsed-to">
-                                                ответил
+                                <div class="product-comments__comment product-comment product-comment_response">
+                                    <div class="product-comment__left">
+                                        <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                    </div>
+                                    <div class="product-comment__right">
+                                        <div class="product-comment__header">
+                                            <span class="product-comment__author">
+                                                Some Other User Name
+                                                <span class="product-comment__responsed-to">
+                                                    ответил
+                                                </span>
+                                                Some User Name
                                             </span>
-                                            Some User Name
-                                        </span>
-                                        <span class="product-comment__vote comment-vote">
-                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
-                                            <span class="comment-vote__rating">9</span>
-                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
-                                        </span>
-                                    </div>
-                                    <p class="product-comment__text">
-                                        Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
-                                        важно... Бла бла бал бал,
-                                        много-много текста
-                                    </p>
-                                    <div class="product-comment__footer">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-comments__comment product-comment product-comment_response">
-                                <div class="product-comment__left">
-                                    <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
-                                </div>
-                                <div class="product-comment__right">
-                                    <div class="product-comment__header">
-                                        <span class="product-comment__author">
-                                            Some3
-                                            <span class="product-comment__responsed-to">
-                                                ответил
+                                            <span class="product-comment__vote comment-vote">
+                                                <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                                <span class="comment-vote__rating">9</span>
+                                                <span class="comment-vote__btn comment-vote__btn--up"></span>
                                             </span>
-                                            Some Other User Name
-                                        </span>
-                                        <span class="product-comment__vote comment-vote">
-                                            <span class="comment-vote__btn comment-vote__btn--down"></span>
-                                            <span class="comment-vote__rating">-9</span>
-                                            <span class="comment-vote__btn comment-vote__btn--up"></span>
-                                        </span>
+                                        </div>
+                                        <p class="product-comment__text">
+                                            Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
+                                            важно... Бла бла бал бал,
+                                            много-много текста
+                                        </p>
+                                        <div class="product-comment__footer">
+                                        </div>
                                     </div>
-                                    <p class="product-comment__text">
-                                        Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
-                                        важно... Бла бла бал бал,
-                                        много-много текста Отличная игра, взяда 2 месяца назад, тогда была немного
-                                        дороже, но это не
-                                        важно... Бла бла бал бал,
-                                        много-много текста
-                                    </p>
-                                    <div class="product-comment__footer">
+                                </div>
+                                <div class="product-comments__comment product-comment product-comment_response">
+                                    <div class="product-comment__left">
+                                        <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                    </div>
+                                    <div class="product-comment__right">
+                                        <div class="product-comment__header">
+                                            <span class="product-comment__author">
+                                                Some3
+                                                <span class="product-comment__responsed-to">
+                                                    ответил
+                                                </span>
+                                                Some Other User Name
+                                            </span>
+                                            <span class="product-comment__vote comment-vote">
+                                                <span class="comment-vote__btn comment-vote__btn--down"></span>
+                                                <span class="comment-vote__rating">-9</span>
+                                                <span class="comment-vote__btn comment-vote__btn--up"></span>
+                                            </span>
+                                        </div>
+                                        <p class="product-comment__text">
+                                            Отличная игра, взяда 2 месяца назад, тогда была немного дороже, но это не
+                                            важно... Бла бла бал бал,
+                                            много-много текста Отличная игра, взяда 2 месяца назад, тогда была немного
+                                            дороже, но это не
+                                            важно... Бла бла бал бал,
+                                            много-много текста
+                                        </p>
+                                        <div class="product-comment__footer">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
         <footer class="footer">
     <div class="footer__item about-block">

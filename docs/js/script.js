@@ -98,59 +98,6 @@ if (sidebarOpenButtons) {
 	}
 }
 
-//Pagination
-const paginationSection = document.querySelector('.pages-navigation')
-//const pageNumberButtons = paginationSection.querySelector('.pages-navigation__page-numbers');
-if (paginationSection) {
-	const itemsFromAllPages = document.querySelectorAll('.product')
-	const itemsPerPage = 4
-	let currentPage = 1
-	displayPage(1, itemsPerPage, itemsFromAllPages)
-	createPagination(paginationSection, itemsPerPage, itemsFromAllPages)
-
-	function displayPage(pageNumber, itemsPerPage, allItems) {
-		const from = (pageNumber - 1) * itemsPerPage
-		const arrOfNodes = Array.prototype.slice.call(allItems)
-		const pageItems = arrOfNodes.splice(from, itemsPerPage)
-		pageItems.forEach(item => item.removeAttribute('style'))
-		arrOfNodes.forEach(item => {
-			item.style.display = 'none'
-		})
-	}
-
-	function createPagination(paginationSection, itemsPerPage, allItems) {
-		const numberOfPages = Math.ceil(itemsFromAllPages.length / itemsPerPage)
-		const pageNumbersList = paginationSection.querySelector('.pages-navigation__list-of-pages')
-		for (let i = 0; i < numberOfPages; i++) {
-			const btn = createPageButton(i + 1, itemsPerPage, allItems)
-			pageNumbersList.appendChild(btn)
-		}
-	}
-
-	function createPageButton(pageNumber, itemsPerPage, allItems) {
-		const li = document.createElement('li')
-		const button = document.createElement('button')
-		li.classList.add('pages-navigation__page-wrapper')
-		button.classList.add('pages-navigation__page-button')
-		button.textContent = pageNumber
-
-		if (pageNumber === currentPage) {
-			li.classList.add('pages-navigation__page-wrapper--active')
-		}
-		button.addEventListener('click', () => {
-			currentPage = pageNumber
-			displayPage(pageNumber, itemsPerPage, allItems)
-			const prevPage = document.querySelector(
-				'.pages-navigation__page-wrapper.pages-navigation__page-wrapper--active'
-			)
-			prevPage.classList.remove('pages-navigation__page-wrapper--active')
-			li.classList.add('pages-navigation__page-wrapper--active')
-		})
-		li.appendChild(button)
-		return li
-	}
-}
-
 //Tabs
 const tabs = document.querySelectorAll('.product-tabs__item')
 if (tabs) {
@@ -277,9 +224,9 @@ const unhoverCircles = circle => circle.classList.remove('conflict-circle--hover
 const hoverCircles = circle => circle.classList.add('conflict-circle--hover')
 const toggleCircles = circle => circle.classList.toggle('conflict-circle--fixed')
 
-function mapCirclesById(conflictID, callback) {
+function mapCirclesById(conflictId, callback) {
 	const circles = document.querySelectorAll(
-		`.pc-part[data-conflictid~="${conflictID}"] .conflict-circle`
+		`.pc-part[data-conflict-id~="${conflictId}"] .conflict-circle`
 	)
 	circles.forEach(callback)
 }
@@ -320,9 +267,9 @@ function unhoverConflictsBlockItem(conflictsBlock, item) {
 	}
 }
 
-function getConflictsBlockItemById(conflictID) {
+function getConflictsBlockItemById(conflictId) {
 	const conflictsBlock = document.querySelector('.conflicts')
-	return conflictsBlock.querySelector(`.conflicts__item[data-conflictid="${conflictID}"]`)
+	return conflictsBlock.querySelector(`.conflicts__item[data-conflict-id="${conflictId}"]`)
 }
 
 const conflictsBlock = document.querySelector('.conflicts')
@@ -333,22 +280,22 @@ if (conflictsBlock) {
 	items.forEach(item => {
 		item.addEventListener('click', () => {
 			switchConflictsBlockItem(conflictsBlock, item)
-			const conflictID = item.dataset.conflictid
-			mapCirclesById(conflictID, unhoverCircles)
-			switchConflict(conflictID)
+			const { conflictId } = item.dataset
+			mapCirclesById(conflictId, unhoverCircles)
+			switchConflict(conflictId)
 		})
 		item.addEventListener('mouseover', () => {
 			item.classList.add('conflicts__item--hover')
-			const conflictID = item.dataset.conflictid
-			mapCirclesById(conflictID, hoverCircles)
-			hoverConflict(conflictID)
+			const { conflictId } = item.dataset
+			mapCirclesById(conflictId, hoverCircles)
+			hoverConflict(conflictId)
 			hoverConflictsBlockItem(conflictsBlock, item)
 		})
 		item.addEventListener('mouseout', () => {
 			item.classList.remove('conflicts__item--hover')
-			const conflictID = item.dataset.conflictid
-			mapCirclesById(conflictID, unhoverCircles)
-			unhoverConflict(conflictID)
+			const { conflictId } = item.dataset
+			mapCirclesById(conflictId, unhoverCircles)
+			unhoverConflict(conflictId)
 			unhoverConflictsBlockItem(conflictsBlock, item)
 		})
 	})
@@ -374,15 +321,15 @@ if (viewTypes) {
 	})
 }
 
-const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflictID]')
+const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflict-id]')
 if (pcPartConflicts) {
-	let conflicts = document.querySelectorAll('.pc-part[data-conflictID~="1"]')
+	let conflicts = document.querySelectorAll('.pc-part[data-conflict-id~="1"]')
 	const getTitle = conflict => conflict.querySelector('.pc-part__title')
 	for (let i = 1; conflicts.length > 0; ) {
 		if (conflicts.length !== 1) {
 			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
 		}
-		conflicts = document.querySelectorAll(`.pc-part[data-conflictID~="${++i}"]`)
+		conflicts = document.querySelectorAll(`.pc-part[data-conflict-id~="${++i}"]`)
 	}
 
 	pcPartConflicts.forEach(item => {
@@ -392,16 +339,16 @@ if (pcPartConflicts) {
 		circle.addEventListener('mouseover', () => {
 			circle.closest('.pc-part').querySelector('.pc-part__price').style.color = '#bfbfbf'
 			circle.classList.add('conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
-			conflictID.forEach(id =>
+			const conflictId = circle.closest('[data-conflict-id]').dataset.conflictId.split(' ')
+			conflictId.forEach(id =>
 				hoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
 			)
 		})
 		circle.addEventListener('mouseout', () => {
 			circle.closest('.pc-part').querySelector('.pc-part__price').removeAttribute('style')
 			circle.classList.remove('conflict-circle--hover')
-			const conflictID = circle.closest('[data-conflictid]').dataset.conflictid.split(' ')
-			conflictID.forEach(id =>
+			const conflictId = circle.closest('[data-conflict-id]').dataset.conflictId.split(' ')
+			conflictId.forEach(id =>
 				unhoverConflictsBlockItem(conflictsBlock, getConflictsBlockItemById(id))
 			)
 		})
@@ -409,74 +356,74 @@ if (pcPartConflicts) {
 	})
 }
 
-function getCurrentConflictID() {
+function getCurrentConflictId() {
 	const fixedCircle = document.querySelector('.conflict-circle--fixed')
 	if (fixedCircle) {
-		let id = fixedCircle.closest('[data-conflictid]').dataset.conflictid
+		let id = fixedCircle.closest('[data-conflict-id]').dataset.conflictId
 		if (id.split(' ').length !== 1) {
-			id = document.querySelector('svg[data-conflictid].fixed').dataset.conflictid
+			id = document.querySelector('svg[data-conflict-id].fixed').dataset.conflictId
 		}
 		return id
 	}
 	return null
 }
 
-function switchConflict(conflictID) {
-	const conflictIDToSwitch = conflictID
-	const fixedConflictID = getCurrentConflictID()
-	const conflictSVGToSwitch = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
-	const fixedSVG = document.querySelector('svg[data-conflictid].fixed')
-	if (conflictIDToSwitch !== fixedConflictID) {
+function switchConflict(conflictId) {
+	const conflictIdToSwitch = conflictId
+	const fixedConflictId = getCurrentConflictId()
+	const conflictSVGToSwitch = document.querySelector(`svg[data-conflict-id="${conflictId}"]`)
+	const fixedSVG = document.querySelector('svg[data-conflict-id].fixed')
+	if (conflictIdToSwitch !== fixedConflictId) {
 		if (fixedSVG) {
 			fixedSVG.classList.remove('fixed', 'fixed--prev', 'hover')
 		}
 		if (conflictSVGToSwitch) {
 			conflictSVGToSwitch.classList.add('fixed')
 		}
-		mapCirclesById(fixedConflictID, unhoverCircles)
-		mapCirclesById(fixedConflictID, disableFixedCircles)
-		mapCirclesById(fixedConflictID, disablePrevCircles)
-		mapCirclesById(conflictID, fixCircles)
+		mapCirclesById(fixedConflictId, unhoverCircles)
+		mapCirclesById(fixedConflictId, disableFixedCircles)
+		mapCirclesById(fixedConflictId, disablePrevCircles)
+		mapCirclesById(conflictId, fixCircles)
 	} else {
 		if (conflictSVGToSwitch) {
 			conflictSVGToSwitch.classList.remove('hover')
 			conflictSVGToSwitch.classList.toggle('fixed')
 		}
-		mapCirclesById(conflictID, toggleCircles)
+		mapCirclesById(conflictId, toggleCircles)
 	}
 }
 
-function hoverConflict(conflictID) {
-	const conflictIDToHover = conflictID
-	const fixedConflictID = getCurrentConflictID()
-	const conflictSVGToHover = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+function hoverConflict(conflictId) {
+	const conflictIdToHover = conflictId
+	const fixedConflictId = getCurrentConflictId()
+	const conflictSVGToHover = document.querySelector(`svg[data-conflict-id="${conflictId}"]`)
 	if (conflictSVGToHover) {
 		conflictSVGToHover.classList.add('hover')
 	}
 
-	const fixedSVG = document.querySelector('svg[data-conflictid].fixed')
-	if (fixedConflictID && fixedConflictID !== conflictIDToHover) {
+	const fixedSVG = document.querySelector('svg[data-conflict-id].fixed')
+	if (fixedConflictId && fixedConflictId !== conflictIdToHover) {
 		if (fixedSVG) {
 			fixedSVG.classList.add('fixed--prev')
 		}
-		mapCirclesById(fixedConflictID, disableCirclesAsPrevious)
+		mapCirclesById(fixedConflictId, disableCirclesAsPrevious)
 	}
 }
 
-function unhoverConflict(conflictID) {
-	const conflictIDToHover = conflictID
-	const fixedPrevConflictID = getCurrentConflictID()
-	const conflictSVGToUnhover = document.querySelector(`svg[data-conflictid="${conflictID}"]`)
+function unhoverConflict(conflictId) {
+	const conflictIdToHover = conflictId
+	const fixedPrevConflictId = getCurrentConflictId()
+	const conflictSVGToUnhover = document.querySelector(`svg[data-conflict-id="${conflictId}"]`)
 	if (conflictSVGToUnhover) {
 		conflictSVGToUnhover.classList.remove('hover')
 	}
 
-	const fixedPrevSVG = document.querySelector('svg[data-conflictid].fixed--prev')
-	if (fixedPrevConflictID !== conflictIDToHover) {
+	const fixedPrevSVG = document.querySelector('svg[data-conflict-id].fixed--prev')
+	if (fixedPrevConflictId !== conflictIdToHover) {
 		if (fixedPrevSVG) {
 			fixedPrevSVG.classList.remove('fixed--prev')
 		}
-		mapCirclesById(fixedPrevConflictID, disablePrevCircles)
+		mapCirclesById(fixedPrevConflictId, disablePrevCircles)
 	}
 }
 
@@ -504,7 +451,7 @@ function setConflictsLines(id, ...conflicts) {
 	`
 	const linesToPart = conflicts.map(createConflictDash).join('')
 	const line = `
-		<svg data-conflictid="${id}"
+		<svg data-conflict-id="${id}"
 			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
 			width="8" height="${len + 12}" viewBox="0 0 8 ${len + 12}"
 			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -560,7 +507,7 @@ if (productRating) {
 		<circle 
 			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
 			stroke-dasharray="
-			${Array(value).fill(11).join(` ${GAP_LEN} `)} 
+			${Array(value).fill(DASH_LEN).join(` ${GAP_LEN} `)} 
 			${CIRCUMFERENCE - 16 * value + GAP_LEN}
 			"
 		></circle>
