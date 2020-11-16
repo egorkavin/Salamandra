@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        fill: #f9f9f9;
+        fill-rule: evenodd;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#bfbfbf"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="close_icon" data-name="close icon" class="cls-1">
+    <path id="Фигура_2971" data-name="Фигура 2971" class="cls-2" d="M283.293,37.707l1.414-1.414,12,12-1.415,1.414Z" transform="translate(-279.36 -32.359)"/>
+    <path id="Фигура_2971_копия" data-name="Фигура 2971 копия" class="cls-2" d="M294.62,36.01l1.369,1.368-11.61,11.61-1.368-1.368Z" transform="translate(-279.36 -32.359)"/>
+  </g>
+</svg>
