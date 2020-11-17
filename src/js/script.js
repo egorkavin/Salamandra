@@ -301,7 +301,7 @@ if (conflictsBlock) {
 }
 
 const viewTypes = document.querySelectorAll('.view-types__type')
-if (viewTypes) {
+if (viewTypes.length) {
 	const defaultType = document.querySelector('.view-types__type--active')
 	setProductsViewType(defaultType)
 
