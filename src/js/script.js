@@ -354,7 +354,7 @@ if (pcPartConflicts) {
 	const getTitle = conflict => conflict.querySelector('.pc-part__title')
 	for (let i = 1; conflicts.length > 0; ) {
 		if (conflicts.length !== 1) {
-			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
+			setConflictsLines(i, [].map.call(conflicts, getTitle))
 		}
 		conflicts = document.querySelectorAll(`.pc-part[data-conflict-id~="${++i}"]`)
 	}
@@ -454,7 +454,7 @@ function unhoverConflict(conflictId) {
 	}
 }
 
-function setConflictsLines(id, ...conflicts) {
+function setConflictsLines(id, conflicts) {
 	const top1 = conflicts[0].offsetTop
 	const topN = conflicts[conflicts.length - 1].offsetTop
 	const len = topN - top1
