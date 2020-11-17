@@ -31,30 +31,30 @@
 		padding-top: 30px;
 		padding-left: 10px;
 		padding-right: 10px;
-	}
 
-	.conflicts {
-		&__title {
-			width: auto;
-			padding: 0;
-			line-height: normal;
-			color: #e0a006;
-			background-color: transparent;
-		}
+		.conflicts {
+			&__title {
+				width: auto;
+				padding: 0;
+				line-height: normal;
+				color: #e0a006;
+				background-color: transparent;
+			}
 
-		&__body {
-			display: flex;
-			flex-wrap: wrap;
-			font-weight: 400;
-		}
+			&__body {
+				display: flex;
+				flex-wrap: wrap;
+				font-weight: 400;
+			}
 
-		&__item {
-			line-height: 25px;
-			padding: 0 10px;
+			&__item {
+				line-height: 25px;
+				padding: 0 10px;
 
-			&:not(:last-child) {
-				margin-right: 30px;
-				margin-bottom: 3px;
+				&:not(:last-child) {
+					margin-right: 30px;
+					margin-bottom: 3px;
+				}
 			}
 		}
 	}
@@ -113,6 +113,8 @@
 }
 
 .assemblage-parts {
+	position: relative;
+
 	&__part {
 		position: relative;
 		&:not(:last-child) {
@@ -121,14 +123,18 @@
 	}
 }
 
-.assemblage .product {
+.assemblage-parts .product {
 	display: flex; //TODO wtf why you need it?
 	flex-direction: column;
 	max-height: 245px;
-	padding: 20px 0 0 0;
-	transition: padding 0.5s;
+	padding: 10px 0;
+	margin-left: 10px;
 
-	&:not(:last-child) {
+	.discount {
+		z-index: 35;
+	}
+
+	&:last-child {
 		padding-bottom: 20px;
 	}
 
@@ -137,6 +143,19 @@
 	}
 
 	&--collapsed {
+		.discount {
+			width: 40px;
+			height: 40px;
+
+			div {
+				width: 57px;
+				padding: 3px 0;
+				left: -3px;
+				top: 6px;
+				font-size: 8px;
+			}
+		}
+
 		&:not(:last-child) {
 			padding-bottom: 15px;
 		}
@@ -151,7 +170,7 @@
 
 			&__wrapper {
 				height: 25px;
-				margin-top: -25px;
+				margin-top: -28px;
 			}
 
 			&__button {
@@ -176,12 +195,7 @@
 	&__wrapper {
 		position: relative;
 		box-shadow: none;
-		transition: all 0.5s;
 		height: 179px;
-
-		&:hover {
-			box-shadow: none;
-		}
 	}
 
 	&__title {
@@ -195,17 +209,20 @@
 			overflow: hidden;
 			display: inline-block;
 			width: 100%;
-			// transition: all 0.5s;
 			line-height: 25px;
 			padding-right: 18px;
 			position: relative;
+
+			.svg-icon {
+				position: relative;
+				top: 5px;
+			}
 
 			.icon {
 				display: inline-block;
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				transition: transform 0.2s;
 
 				&--arrow {
 					width: 10px;
@@ -221,7 +238,6 @@
 		width: 356px;
 		flex-shrink: 0;
 		height: auto;
-		transition: height 0.5s;
 
 		&:after {
 			background-image: radial-gradient(ellipse 40% 40%, transparent, 80%, #1b1a1a);
@@ -237,10 +253,6 @@
 
 	&__hidden-description {
 		margin: 30px auto 20px 0;
-	}
-
-	&__button {
-		transition: all 0.5s;
 	}
 }
 

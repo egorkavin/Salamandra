@@ -25,22 +25,22 @@ if (sidebars.length) {
 
 			const filterItemsQuantity = filter.querySelectorAll('.filter__item-quantity')
 			filterItemsQuantity.forEach(filterItemQuantity => {
-		if (filterItemQuantity.textContent === '(+0)') {
-			const parent = filterItemQuantity.closest('.filter__item')
-			parent.classList.add('filter__item--disabled')
-			parent.addEventListener('click', e => e.preventDefault())
-		}
-	})
+				if (filterItemQuantity.textContent === '(+0)') {
+					const parent = filterItemQuantity.closest('.filter__item')
+					parent.classList.add('filter__item--disabled')
+					parent.addEventListener('click', e => e.preventDefault())
+				}
+			})
 
 			const itemsCount = filter.querySelector('.filter__items-count')
 			setItemsCountInList(itemsCount, itemsList)
 			toggleItemsListByFilterName(itemsList, filterName.parentNode)
-				}
-		})
+		}
+	})
 
 	function setItemsCountInList(itemsCount, itemsList) {
-	const getCheckedItems = itemsList =>
-		itemsList.querySelectorAll('input[type="checkbox"]:checked')
+		const getCheckedItems = itemsList =>
+			itemsList.querySelectorAll('input[type="checkbox"]:checked')
 
 		itemsList.addEventListener('change', () => {
 			const parent = itemsCount.parentNode
@@ -60,15 +60,15 @@ if (sidebars.length) {
 					)
 
 					const cancel = parent.parentNode.querySelector('.svg-icon.icon-cancel-filter')
-						cancel.addEventListener('click', () => {
-							const checkedItems = getCheckedItems(itemsList)
-							checkedItems.forEach(item => {
-								item.checked = false
-							})
-							setItemsCountToZero(itemsCount)
+					cancel.addEventListener('click', () => {
+						const checkedItems = getCheckedItems(itemsList)
+						checkedItems.forEach(item => {
+							item.checked = false
 						})
-					}
+						setItemsCountToZero(itemsCount)
+					})
 				}
+			}
 
 			function setItemsCountToZero(itemsCount) {
 				itemsCount.innerHTML = `(${itemsList.childElementCount})`
@@ -88,7 +88,7 @@ if (sidebars.length) {
 					itemsWrapper.removeAttribute('style')
 				} else {
 					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
-}
+				}
 			}
 		})
 	}
@@ -206,7 +206,30 @@ const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
 if (assemblageParts) {
 	assemblageParts.forEach(part => {
 		const title = part.querySelector('.product__title')
-		title.addEventListener('click', () => part.classList.toggle('product--collapsed'))
+
+		const getTitle = conflict => conflict.querySelector('.product__title')
+		title.addEventListener('click', () => {
+			part.classList.toggle('product--collapsed')
+
+			const conflictsSVG = document.querySelectorAll('svg[data-conflict-id]')
+			const fixedSVG = document.querySelector('svg.fixed')
+			const fixedId = fixedSVG === null ? undefined : fixedSVG.dataset.conflictId
+			conflictsSVG.forEach(svg => {
+				const { conflictId: id } = svg.dataset
+				const conflicts = document.querySelectorAll(
+					`.assemblage-parts__part[data-conflict-id~="${id}"]`
+				)
+
+				svg.remove()
+				setConflictsLines2(id, ...[].map.call(conflicts, getTitle))
+				document.querySelector(`svg[data-conflict-id~="${id}"]`)
+			})
+			if (fixedId) {
+				document
+					.querySelector(`svg[data-conflict-id~="${fixedSVG.dataset.conflictId}"]`)
+					.classList.add('fixed')
+			}
+		})
 	})
 }
 
@@ -321,7 +344,7 @@ if (viewTypes.length) {
 	function setProductsViewType(type) {
 		const products = document.querySelectorAll('.product')
 		const container = document.querySelector('.container')
-				if (type.classList.contains('lines')) {
+		if (type.classList.contains('lines')) {
 			products.forEach(product => {
 				product.classList.add('product--long')
 				product.classList.remove('product--flex')
@@ -342,10 +365,16 @@ if (viewTypes.length) {
 		}
 	}
 }
-				}
-			}
-		})
-	})
+
+if (assemblageParts) {
+	let conflicts = document.querySelectorAll('.assemblage-parts__part[data-conflict-id~="1"]')
+	const getTitle = conflict => conflict.querySelector('.product__title')
+	for (let i = 1; conflicts.length > 0; ) {
+		if (conflicts.length !== 1) {
+			setConflictsLines2(i, ...[].map.call(conflicts, getTitle))
+		}
+		conflicts = document.querySelectorAll(`.assemblage-parts__part[data-conflict-id~="${++i}"]`)
+	}
 }
 
 const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflict-id]')
@@ -384,6 +413,11 @@ if (pcPartConflicts) {
 }
 
 function getCurrentConflictId() {
+	const fixedSVG = document.querySelector('svg.fixed')
+	const fixedId = fixedSVG === null ? undefined : fixedSVG.dataset.conflictId
+	if (fixedId) {
+		return fixedId
+	}
 	const fixedCircle = document.querySelector('.conflict-circle--fixed')
 	if (fixedCircle) {
 		let id = fixedCircle.closest('[data-conflict-id]').dataset.conflictId
@@ -496,17 +530,60 @@ function setConflictsLines(id, conflicts) {
 	document.querySelector('.sidebar__pc-parts').insertAdjacentHTML('beforeend', line)
 }
 
+function setConflictsLines2(id, ...conflicts) {
+	const { top: parentTop } = document.querySelector('.assemblage-parts').getBoundingClientRect()
+	const top1 = conflicts[0].getBoundingClientRect().top - parentTop
+	const topN = conflicts[conflicts.length - 1].getBoundingClientRect().top - parentTop
+	const len = topN - top1
+	const lineHeight = 10
+	const topAbs = top1 + lineHeight
+	const createConflictDash = conflict => `
+		<polyline 
+			points="
+				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+			"
+			stroke="#e0a006"
+		/>
+		<polyline 
+			points="
+				7.5,${conflict.getBoundingClientRect().top - parentTop - top1}
+				7.5,${conflict.getBoundingClientRect().top - parentTop - top1 + 11}
+			"
+			stroke="#e0a006"
+		/>
+	`
+	const linesToPart = conflicts.map(createConflictDash).join('')
+	const line = `
+		<svg data-conflict-id="${id}"
+			style="position: absolute;top:${topAbs}px;left:0px;" 
+			width="8" height="${len + 12}" viewBox="0 0 8 ${len + 12}"
+			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		>
+			<polyline 
+				points="
+					1.5,6
+					1.5,${len + 6}
+				"
+				fill="transparent" stroke="#e0a006" stroke-dasharray="4px"
+			/>
+			${linesToPart}
+		</svg>
+	`
+	document.querySelector('.assemblage-parts').insertAdjacentHTML('beforeend', line)
+}
+
 const dataIcons = document.querySelectorAll('[data-icon]')
 if (dataIcons.length) {
-dataIcons.forEach(item => {
+	dataIcons.forEach(item => {
 		const { icon } = item.dataset
-	if (item.classList.contains('pc-parts__choose-item')) {
+		if (item.classList.contains('pc-parts__choose-item')) {
 			item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
-	} else {
-		const title = item.querySelector('.pc-part__title')
+		} else {
+			const title = item.querySelector('.pc-part__title')
 			title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
-	}
-})
+		}
+	})
 }
 
 const pcPartsDescriptions = document.querySelectorAll('.pc-part__description')
