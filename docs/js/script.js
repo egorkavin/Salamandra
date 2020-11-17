@@ -1,12 +1,12 @@
 'use strict'
 
 //Sidebar
-const sidebarOpenButtons = document.querySelectorAll('.sidebar__btn')
-if (sidebarOpenButtons) {
-	sidebarOpenButtons.forEach(button => {
-		button.addEventListener('click', () => {
-			const parentSidebar = button.closest('.sidebar')
-			parentSidebar.classList.toggle('sidebar--hidden')
+const sidebars = document.querySelectorAll('.sidebar')
+if (sidebars.length) {
+	sidebars.forEach(sidebar => {
+		const btn = sidebar.querySelector('.sidebar__btn')
+		btn.addEventListener('click', () => {
+			sidebar.classList.toggle('sidebar--hidden')
 		})
 	})
 
@@ -15,47 +15,33 @@ if (sidebarOpenButtons) {
 		const filterName = filter.querySelector('.filter__name span')
 		if (filterName) {
 			const itemsList = filter.querySelector('.filter__items-list')
-			const itemsCount = document.createElement('span')
-			itemsCount.innerHTML = ` (${itemsList.childElementCount})`
-			filterName.insertAdjacentElement('beforeend', itemsCount)
 			filterName.insertAdjacentHTML(
 				'beforeend',
-				'<span class="filter__icon filter__icon--arrow"></span>'
+				`
+				<span class="filter__items-count">(${itemsList.childElementCount})</span>
+				<span class="filter__icon filter__icon--arrow"></span>
+				`
 			)
-			toggleItemsListByFilterName(itemsList, filterName.parentNode)
-			setItemsCountInList(itemsCount, itemsList)
-		}
-	})
 
-	const filtersItemsQuantity = document.querySelectorAll('.filter__item-quantity')
-	filtersItemsQuantity.forEach(filterItemQuantity => {
-		if (filterItemQuantity.textContent === '(+0)') {
-			const parent = filterItemQuantity.closest('.filter__item')
-			parent.classList.add('filter__item--disabled')
-			parent.addEventListener('click', e => e.preventDefault())
-		}
-	})
-
-	function toggleItemsListByFilterName(itemsList, filterName) {
-		filterName.addEventListener('click', e => {
-			e.preventDefault()
-			if (!e.target.classList.contains('icon-cancel-filter')) {
-				filterName.classList.toggle('filter__name--active')
-				const itemsListHeight = itemsList.clientHeight
-				const itemsWrapper = itemsList.parentNode
-				if (itemsWrapper.style.maxHeight) {
-					itemsWrapper.removeAttribute('style')
-				} else {
-					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+			const filterItemsQuantity = filter.querySelectorAll('.filter__item-quantity')
+			filterItemsQuantity.forEach(filterItemQuantity => {
+				if (filterItemQuantity.textContent === '(+0)') {
+					const parent = filterItemQuantity.closest('.filter__item')
+					parent.classList.add('filter__item--disabled')
+					parent.addEventListener('click', e => e.preventDefault())
 				}
-			}
-		})
-	}
+			})
 
-	const getCheckedItems = itemsList =>
-		itemsList.querySelectorAll('input[type="checkbox"]:checked')
+			const itemsCount = filter.querySelector('.filter__items-count')
+			setItemsCountInList(itemsCount, itemsList)
+			toggleItemsListByFilterName(itemsList, filterName.parentNode)
+		}
+	})
 
 	function setItemsCountInList(itemsCount, itemsList) {
+		const getCheckedItems = itemsList =>
+			itemsList.querySelectorAll('input[type="checkbox"]:checked')
+
 		itemsList.addEventListener('change', () => {
 			const parent = itemsCount.parentNode
 			const count = getCheckedItems(itemsList).length
@@ -72,27 +58,37 @@ if (sidebarOpenButtons) {
 						'afterend',
 						'<span class="svg-icon icon-cancel-filter"><span>'
 					)
-					addCancelListener(itemsCount)
 
-					function addCancelListener(itemsCount) {
-						const cancel = parent.parentNode.querySelector(
-							'.svg-icon.icon-cancel-filter'
-						)
-						cancel.addEventListener('click', () => {
-							const checkedItems = getCheckedItems(itemsList)
-							checkedItems.forEach(item => {
-								item.checked = false
-							})
-							setItemsCountToZero(itemsCount)
+					const cancel = parent.parentNode.querySelector('.svg-icon.icon-cancel-filter')
+					cancel.addEventListener('click', () => {
+						const checkedItems = getCheckedItems(itemsList)
+						checkedItems.forEach(item => {
+							item.checked = false
 						})
-					}
+						setItemsCountToZero(itemsCount)
+					})
 				}
 			}
 
 			function setItemsCountToZero(itemsCount) {
 				itemsCount.innerHTML = `(${itemsList.childElementCount})`
 				const icons = parent.parentNode.querySelectorAll('.svg-icon')
-				icons.forEach(icon => parent.parentNode.removeChild(icon))
+				icons.forEach(icon => icon.remove())
+			}
+		})
+	}
+
+	function toggleItemsListByFilterName(itemsList, filterName) {
+		filterName.addEventListener('click', e => {
+			if (!e.target.classList.contains('icon-cancel-filter')) {
+				filterName.classList.toggle('filter__name--active')
+				const itemsListHeight = itemsList.clientHeight
+				const itemsWrapper = itemsList.parentNode
+				if (itemsWrapper.style.maxHeight) {
+					itemsWrapper.removeAttribute('style')
+				} else {
+					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+				}
 			}
 		})
 	}
@@ -100,14 +96,15 @@ if (sidebarOpenButtons) {
 
 //Tabs
 const tabs = document.querySelectorAll('.product-tabs__item')
-if (tabs) {
+if (tabs.length) {
 	tabs.forEach(tab => {
 		tab.addEventListener('click', () => {
-			const prevActiveTab = document.querySelector('.product-tabs__item--active')
-			const prevActiveTabBody = document.querySelector(`#${prevActiveTab.dataset.tab}`)
+			const activeTab = document.querySelector('.product-tabs__item--active')
+			const activeTabBody = document.querySelector(`#${activeTab.dataset.tab}`)
+			activeTab.classList.remove('product-tabs__item--active')
+			activeTabBody.classList.remove('product-tabs__block--active')
+
 			const newActiveTabBody = document.querySelector(`#${tab.dataset.tab}`)
-			prevActiveTab.classList.remove('product-tabs__item--active')
-			prevActiveTabBody.classList.remove('product-tabs__block--active')
 			tab.classList.add('product-tabs__item--active')
 			newActiveTabBody.classList.add('product-tabs__block--active')
 		})
@@ -116,19 +113,21 @@ if (tabs) {
 
 //Stars rating
 const stars = document.querySelectorAll('.product-rating__star')
-if (stars) {
-	stars.forEach(item =>
-		item.addEventListener('click', () => {
-			const { value } = item.dataset
-			item.parentNode.dataset.totalValue = value
+if (stars.length) {
+	stars.forEach(star =>
+		star.addEventListener('click', () => {
+			const { value } = star.dataset
+			star.parentNode.dataset.totalValue = value
 			const note = document.querySelector('.product-rating__note')
-			if (note) note.remove()
+			if (note) {
+				note.remove()
+			}
 		})
 	)
 }
 
 const yearRates = document.querySelectorAll('.year-rate')
-if (yearRates) {
+if (yearRates.length) {
 	const value = document.querySelectorAll('.year-rate__value')
 	value.forEach(yearRate => {
 		const percentValue = parseInt(yearRate.textContent)
@@ -150,7 +149,7 @@ if (yearRates) {
 
 //Comment votes
 const commentVotes = document.querySelectorAll('.comment-vote')
-if (commentVotes) {
+if (commentVotes.length) {
 	commentVotes.forEach(vote => {
 		const upvoteBtn = vote.querySelector('.comment-vote__btn--up')
 		const downvoteBtn = vote.querySelector('.comment-vote__btn--down')
@@ -182,7 +181,7 @@ if (commentVotes) {
 
 //Price at shops
 const pricesAtShops = document.querySelectorAll('.product-price__price')
-if (pricesAtShops) {
+if (pricesAtShops.length) {
 	pricesAtShops.forEach(price => {
 		if (!price.textContent.trim().localeCompare('нет в наличии')) {
 			price.style.border = 'none'
@@ -207,7 +206,30 @@ const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
 if (assemblageParts) {
 	assemblageParts.forEach(part => {
 		const title = part.querySelector('.product__title')
-		title.addEventListener('click', () => part.classList.toggle('product--collapsed'))
+
+		const getTitle = conflict => conflict.querySelector('.product__title')
+		title.addEventListener('click', () => {
+			part.classList.toggle('product--collapsed')
+
+			const conflictsSVG = document.querySelectorAll('svg[data-conflict-id]')
+			const fixedSVG = document.querySelector('svg.fixed')
+			const fixedId = fixedSVG === null ? undefined : fixedSVG.dataset.conflictId
+			conflictsSVG.forEach(svg => {
+				const { conflictId: id } = svg.dataset
+				const conflicts = document.querySelectorAll(
+					`.assemblage-parts__part[data-conflict-id~="${id}"]`
+				)
+
+				svg.remove()
+				setConflictsLines2(id, ...[].map.call(conflicts, getTitle))
+				document.querySelector(`svg[data-conflict-id~="${id}"]`)
+			})
+			if (fixedId) {
+				document
+					.querySelector(`svg[data-conflict-id~="${fixedSVG.dataset.conflictId}"]`)
+					.classList.add('fixed')
+			}
+		})
 	})
 }
 
@@ -302,7 +324,10 @@ if (conflictsBlock) {
 }
 
 const viewTypes = document.querySelectorAll('.view-types__type')
-if (viewTypes) {
+if (viewTypes.length) {
+	const defaultType = document.querySelector('.view-types__type--active')
+	setProductsViewType(defaultType)
+
 	viewTypes.forEach(type => {
 		type.addEventListener('click', () => {
 			const active = document.querySelector('.view-types__type--active')
@@ -311,14 +336,45 @@ if (viewTypes) {
 					active.classList.remove('view-types__type--active')
 				}
 				type.classList.add('view-types__type--active')
-
-				if (type.classList.contains('lines')) {
-					const products = document.querySelectorAll('.product')
-					products.forEach(product => product.classList.add('product--long'))
-				}
+				setProductsViewType(type)
 			}
 		})
 	})
+
+	function setProductsViewType(type) {
+		const products = document.querySelectorAll('.product')
+		const container = document.querySelector('.container')
+		if (type.classList.contains('lines')) {
+			products.forEach(product => {
+				product.classList.add('product--long')
+				product.classList.remove('product--flex')
+				container.classList.remove('container--full-width')
+			})
+		} else if (type.classList.contains('flex-lines')) {
+			products.forEach(product => {
+				product.classList.add('product--flex')
+				product.classList.remove('product--long')
+				container.classList.remove('container--full-width')
+			})
+		} else if (type.classList.contains('blocks')) {
+			products.forEach(product => {
+				product.classList.add('product--flex')
+				product.classList.remove('product--long')
+				container.classList.add('container--full-width')
+			})
+		}
+	}
+}
+
+if (assemblageParts) {
+	let conflicts = document.querySelectorAll('.assemblage-parts__part[data-conflict-id~="1"]')
+	const getTitle = conflict => conflict.querySelector('.product__title')
+	for (let i = 1; conflicts.length > 0; ) {
+		if (conflicts.length !== 1) {
+			setConflictsLines2(i, ...[].map.call(conflicts, getTitle))
+		}
+		conflicts = document.querySelectorAll(`.assemblage-parts__part[data-conflict-id~="${++i}"]`)
+	}
 }
 
 const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflict-id]')
@@ -327,7 +383,7 @@ if (pcPartConflicts) {
 	const getTitle = conflict => conflict.querySelector('.pc-part__title')
 	for (let i = 1; conflicts.length > 0; ) {
 		if (conflicts.length !== 1) {
-			setConflictsLines(i, ...[].map.call(conflicts, getTitle))
+			setConflictsLines(i, [].map.call(conflicts, getTitle))
 		}
 		conflicts = document.querySelectorAll(`.pc-part[data-conflict-id~="${++i}"]`)
 	}
@@ -357,6 +413,11 @@ if (pcPartConflicts) {
 }
 
 function getCurrentConflictId() {
+	const fixedSVG = document.querySelector('svg.fixed')
+	const fixedId = fixedSVG === null ? undefined : fixedSVG.dataset.conflictId
+	if (fixedId) {
+		return fixedId
+	}
 	const fixedCircle = document.querySelector('.conflict-circle--fixed')
 	if (fixedCircle) {
 		let id = fixedCircle.closest('[data-conflict-id]').dataset.conflictId
@@ -427,7 +488,7 @@ function unhoverConflict(conflictId) {
 	}
 }
 
-function setConflictsLines(id, ...conflicts) {
+function setConflictsLines(id, conflicts) {
 	const top1 = conflicts[0].offsetTop
 	const topN = conflicts[conflicts.length - 1].offsetTop
 	const len = topN - top1
@@ -469,16 +530,61 @@ function setConflictsLines(id, ...conflicts) {
 	document.querySelector('.sidebar__pc-parts').insertAdjacentHTML('beforeend', line)
 }
 
+function setConflictsLines2(id, ...conflicts) {
+	const { top: parentTop } = document.querySelector('.assemblage-parts').getBoundingClientRect()
+	const top1 = conflicts[0].getBoundingClientRect().top - parentTop
+	const topN = conflicts[conflicts.length - 1].getBoundingClientRect().top - parentTop
+	const len = topN - top1
+	const lineHeight = 10
+	const topAbs = top1 + lineHeight
+	const createConflictDash = conflict => `
+		<polyline 
+			points="
+				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+			"
+			stroke="#e0a006"
+		/>
+		<polyline 
+			points="
+				7.5,${conflict.getBoundingClientRect().top - parentTop - top1}
+				7.5,${conflict.getBoundingClientRect().top - parentTop - top1 + 11}
+			"
+			stroke="#e0a006"
+		/>
+	`
+	const linesToPart = conflicts.map(createConflictDash).join('')
+	const line = `
+		<svg data-conflict-id="${id}"
+			style="position: absolute;top:${topAbs}px;left:0px;" 
+			width="8" height="${len + 12}" viewBox="0 0 8 ${len + 12}"
+			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		>
+			<polyline 
+				points="
+					1.5,6
+					1.5,${len + 6}
+				"
+				fill="transparent" stroke="#e0a006" stroke-dasharray="4px"
+			/>
+			${linesToPart}
+		</svg>
+	`
+	document.querySelector('.assemblage-parts').insertAdjacentHTML('beforeend', line)
+}
+
 const dataIcons = document.querySelectorAll('[data-icon]')
-dataIcons.forEach(item => {
-	const iconName = item.dataset.icon
-	if (item.classList.contains('pc-parts__choose-item')) {
-		item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
-	} else {
-		const title = item.querySelector('.pc-part__title')
-		title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
-	}
-})
+if (dataIcons.length) {
+	dataIcons.forEach(item => {
+		const { icon } = item.dataset
+		if (item.classList.contains('pc-parts__choose-item')) {
+			item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
+		} else {
+			const title = item.querySelector('.pc-part__title')
+			title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
+		}
+	})
+}
 
 const pcPartsDescriptions = document.querySelectorAll('.pc-part__description')
 if (pcPartsDescriptions) {
@@ -486,17 +592,17 @@ if (pcPartsDescriptions) {
 		const title = description.querySelector('.pc-part__title')
 		const titleP = title.querySelector('p')
 		const details = description.querySelector('.pc-part__details')
-		if (titleP.offsetWidth >= 215) {
+		if (titleP.getBoundingClientRect().width >= 215) {
 			title.classList.add('pc-part__title--gradient')
 		}
-		if (details.offsetWidth >= 215) {
+		if (details.getBoundingClientRect().width >= 215) {
 			details.classList.add('pc-part__details--gradient')
 		}
 	})
 }
 
 const productRating = document.querySelectorAll('.product-score-rating')
-if (productRating) {
+if (productRating.length) {
 	productRating.forEach(rating => {
 		const value = parseInt(rating.textContent)
 		const DASH_LEN = 11
@@ -522,7 +628,7 @@ if (sectionSlider) {
 	const products = sectionSlider.querySelectorAll('.product--short')
 	products.forEach(product => {
 		const title = product.querySelector('.product__title')
-		if (title.offsetHeight > 40) {
+		if (title.getBoundingClientRect().height > 40) {
 			title.classList.add('product__title--overflow')
 			const productName = title.querySelector('.product__name')
 			truncate(40, title, productName)
@@ -540,12 +646,14 @@ if (sectionSlider) {
 }
 
 const searchBars = document.querySelectorAll('.search-bar')
-if (searchBars) {
+if (searchBars.length) {
 	searchBars.forEach(sb => {
 		sb.addEventListener('click', () => {
 			sb.classList.add('search-bar--active')
 			document.querySelector('body').addEventListener('click', e => {
-				if (!sb.contains(e.target)) sb.classList.remove('search-bar--active')
+				if (!sb.contains(e.target)) {
+					sb.classList.remove('search-bar--active')
+				}
 			})
 		})
 	})

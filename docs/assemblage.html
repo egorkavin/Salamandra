@@ -177,16 +177,20 @@
                     <section class="assemblage__conflicts conflicts">
                         <div class="conflicts__title">3 Конфликта</div>
                         <div class="conflicts__body">
-                            <p class="conflicts__item">Процессор и оп. память: конфликт типов памяти</p>
-                            <p class="conflicts__item">Блок питания: недостаточная мощность</p>
-                            <p class="conflicts__item conflicts__item--chosen">Выбрано 2 процессора</p>
+                            <p class="conflicts__item" data-conflict-id="1">Процессор и оп. память: конфликт типов
+                                памяти</p>
+                            <p class="conflicts__item" data-conflict-id="2">Блок питания: недостаточная мощность</p>
                             <p class="conflicts__item conflicts__item--question">Вы не выбрали видеокарту</p>
                         </div>
                     </section>
                     <section class="assemblage__parts assemblage-parts">
-                        <div class="assemblage-parts__part product product--long">
+                        <div class="assemblage-parts__part product product--long" data-conflict-id="1 2">
+                            <div class="discount">
+                                <div>-40%</div>
+                            </div>
                             <h2 class="product__title">
                                 <a class="product__link">
+                                    <span class="svg-icon icon-gpu"></span>
                                     2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit) Lorem ipsum, dolor sit
                                     amet
                                     consectetur adipisicing elit. Vel, saepe.
@@ -250,9 +254,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="assemblage-parts__part product product--long product--collapsed">
+                        <div class="assemblage-parts__part product product--long product--collapsed"
+                            data-conflict-id="1">
+                            <div class="discount">
+                                <div>-20%</div>
+                            </div>
                             <h2 class="product__title">
                                 <a class="product__link">
+                                    <span class="svg-icon icon-gpu"></span>
+
                                     2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
                                     <span class="icon icon--arrow"></span>
                                 </a>
@@ -314,9 +324,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="assemblage-parts__part product product--long product--collapsed">
+                        <div class="assemblage-parts__part product product--long product--collapsed"
+                            data-conflict-id="2">
                             <h2 class="product__title">
                                 <a class="product__link">
+                                    <span class="svg-icon icon-gpu"></span>
+
                                     2MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit)
                                     <span class="icon icon--arrow"></span>
                                 </a>
