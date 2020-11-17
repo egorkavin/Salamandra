@@ -302,6 +302,9 @@ if (conflictsBlock) {
 
 const viewTypes = document.querySelectorAll('.view-types__type')
 if (viewTypes) {
+	const defaultType = document.querySelector('.view-types__type--active')
+	setProductsViewType(defaultType)
+
 	viewTypes.forEach(type => {
 		type.addEventListener('click', () => {
 			const active = document.querySelector('.view-types__type--active')
@@ -310,10 +313,35 @@ if (viewTypes) {
 					active.classList.remove('view-types__type--active')
 				}
 				type.classList.add('view-types__type--active')
+				setProductsViewType(type)
+			}
+		})
+	})
 
+	function setProductsViewType(type) {
+		const products = document.querySelectorAll('.product')
+		const container = document.querySelector('.container')
 				if (type.classList.contains('lines')) {
-					const products = document.querySelectorAll('.product')
-					products.forEach(product => product.classList.add('product--long'))
+			products.forEach(product => {
+				product.classList.add('product--long')
+				product.classList.remove('product--flex')
+				container.classList.remove('container--full-width')
+			})
+		} else if (type.classList.contains('flex-lines')) {
+			products.forEach(product => {
+				product.classList.add('product--flex')
+				product.classList.remove('product--long')
+				container.classList.remove('container--full-width')
+			})
+		} else if (type.classList.contains('blocks')) {
+			products.forEach(product => {
+				product.classList.add('product--flex')
+				product.classList.remove('product--long')
+				container.classList.add('container--full-width')
+			})
+		}
+	}
+}
 				}
 			}
 		})
