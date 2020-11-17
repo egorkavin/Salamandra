@@ -1,12 +1,12 @@
 'use strict'
 
 //Sidebar
-const sidebarOpenButtons = document.querySelectorAll('.sidebar__btn')
-if (sidebarOpenButtons) {
-	sidebarOpenButtons.forEach(button => {
-		button.addEventListener('click', () => {
-			const parentSidebar = button.closest('.sidebar')
-			parentSidebar.classList.toggle('sidebar--hidden')
+const sidebars = document.querySelectorAll('.sidebar')
+if (sidebars.length) {
+	sidebars.forEach(sidebar => {
+		const btn = sidebar.querySelector('.sidebar__btn')
+		btn.addEventListener('click', () => {
+			sidebar.classList.toggle('sidebar--hidden')
 		})
 	})
 
@@ -15,20 +15,16 @@ if (sidebarOpenButtons) {
 		const filterName = filter.querySelector('.filter__name span')
 		if (filterName) {
 			const itemsList = filter.querySelector('.filter__items-list')
-			const itemsCount = document.createElement('span')
-			itemsCount.innerHTML = ` (${itemsList.childElementCount})`
-			filterName.insertAdjacentElement('beforeend', itemsCount)
 			filterName.insertAdjacentHTML(
 				'beforeend',
-				'<span class="filter__icon filter__icon--arrow"></span>'
+				`
+				<span class="filter__items-count">(${itemsList.childElementCount})</span>
+				<span class="filter__icon filter__icon--arrow"></span>
+				`
 			)
-			toggleItemsListByFilterName(itemsList, filterName.parentNode)
-			setItemsCountInList(itemsCount, itemsList)
-		}
-	})
 
-	const filtersItemsQuantity = document.querySelectorAll('.filter__item-quantity')
-	filtersItemsQuantity.forEach(filterItemQuantity => {
+			const filterItemsQuantity = filter.querySelectorAll('.filter__item-quantity')
+			filterItemsQuantity.forEach(filterItemQuantity => {
 		if (filterItemQuantity.textContent === '(+0)') {
 			const parent = filterItemQuantity.closest('.filter__item')
 			parent.classList.add('filter__item--disabled')
@@ -36,26 +32,16 @@ if (sidebarOpenButtons) {
 		}
 	})
 
-	function toggleItemsListByFilterName(itemsList, filterName) {
-		filterName.addEventListener('click', e => {
-			e.preventDefault()
-			if (!e.target.classList.contains('icon-cancel-filter')) {
-				filterName.classList.toggle('filter__name--active')
-				const itemsListHeight = itemsList.clientHeight
-				const itemsWrapper = itemsList.parentNode
-				if (itemsWrapper.style.maxHeight) {
-					itemsWrapper.removeAttribute('style')
-				} else {
-					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+			const itemsCount = filter.querySelector('.filter__items-count')
+			setItemsCountInList(itemsCount, itemsList)
+			toggleItemsListByFilterName(itemsList, filterName.parentNode)
 				}
-			}
 		})
-	}
 
+	function setItemsCountInList(itemsCount, itemsList) {
 	const getCheckedItems = itemsList =>
 		itemsList.querySelectorAll('input[type="checkbox"]:checked')
 
-	function setItemsCountInList(itemsCount, itemsList) {
 		itemsList.addEventListener('change', () => {
 			const parent = itemsCount.parentNode
 			const count = getCheckedItems(itemsList).length
@@ -72,12 +58,8 @@ if (sidebarOpenButtons) {
 						'afterend',
 						'<span class="svg-icon icon-cancel-filter"><span>'
 					)
-					addCancelListener(itemsCount)
 
-					function addCancelListener(itemsCount) {
-						const cancel = parent.parentNode.querySelector(
-							'.svg-icon.icon-cancel-filter'
-						)
+					const cancel = parent.parentNode.querySelector('.svg-icon.icon-cancel-filter')
 						cancel.addEventListener('click', () => {
 							const checkedItems = getCheckedItems(itemsList)
 							checkedItems.forEach(item => {
@@ -87,12 +69,26 @@ if (sidebarOpenButtons) {
 						})
 					}
 				}
-			}
 
 			function setItemsCountToZero(itemsCount) {
 				itemsCount.innerHTML = `(${itemsList.childElementCount})`
 				const icons = parent.parentNode.querySelectorAll('.svg-icon')
-				icons.forEach(icon => parent.parentNode.removeChild(icon))
+				icons.forEach(icon => icon.remove())
+			}
+		})
+	}
+
+	function toggleItemsListByFilterName(itemsList, filterName) {
+		filterName.addEventListener('click', e => {
+			if (!e.target.classList.contains('icon-cancel-filter')) {
+				filterName.classList.toggle('filter__name--active')
+				const itemsListHeight = itemsList.clientHeight
+				const itemsWrapper = itemsList.parentNode
+				if (itemsWrapper.style.maxHeight) {
+					itemsWrapper.removeAttribute('style')
+				} else {
+					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+}
 			}
 		})
 	}
@@ -100,14 +96,15 @@ if (sidebarOpenButtons) {
 
 //Tabs
 const tabs = document.querySelectorAll('.product-tabs__item')
-if (tabs) {
+if (tabs.length) {
 	tabs.forEach(tab => {
 		tab.addEventListener('click', () => {
-			const prevActiveTab = document.querySelector('.product-tabs__item--active')
-			const prevActiveTabBody = document.querySelector(`#${prevActiveTab.dataset.tab}`)
+			const activeTab = document.querySelector('.product-tabs__item--active')
+			const activeTabBody = document.querySelector(`#${activeTab.dataset.tab}`)
+			activeTab.classList.remove('product-tabs__item--active')
+			activeTabBody.classList.remove('product-tabs__block--active')
+
 			const newActiveTabBody = document.querySelector(`#${tab.dataset.tab}`)
-			prevActiveTab.classList.remove('product-tabs__item--active')
-			prevActiveTabBody.classList.remove('product-tabs__block--active')
 			tab.classList.add('product-tabs__item--active')
 			newActiveTabBody.classList.add('product-tabs__block--active')
 		})
@@ -116,19 +113,21 @@ if (tabs) {
 
 //Stars rating
 const stars = document.querySelectorAll('.product-rating__star')
-if (stars) {
-	stars.forEach(item =>
-		item.addEventListener('click', () => {
-			const { value } = item.dataset
-			item.parentNode.dataset.totalValue = value
+if (stars.length) {
+	stars.forEach(star =>
+		star.addEventListener('click', () => {
+			const { value } = star.dataset
+			star.parentNode.dataset.totalValue = value
 			const note = document.querySelector('.product-rating__note')
-			if (note) note.remove()
+			if (note) {
+				note.remove()
+			}
 		})
 	)
 }
 
 const yearRates = document.querySelectorAll('.year-rate')
-if (yearRates) {
+if (yearRates.length) {
 	const value = document.querySelectorAll('.year-rate__value')
 	value.forEach(yearRate => {
 		const percentValue = parseInt(yearRate.textContent)
@@ -150,7 +149,7 @@ if (yearRates) {
 
 //Comment votes
 const commentVotes = document.querySelectorAll('.comment-vote')
-if (commentVotes) {
+if (commentVotes.length) {
 	commentVotes.forEach(vote => {
 		const upvoteBtn = vote.querySelector('.comment-vote__btn--up')
 		const downvoteBtn = vote.querySelector('.comment-vote__btn--down')
@@ -182,7 +181,7 @@ if (commentVotes) {
 
 //Price at shops
 const pricesAtShops = document.querySelectorAll('.product-price__price')
-if (pricesAtShops) {
+if (pricesAtShops.length) {
 	pricesAtShops.forEach(price => {
 		if (!price.textContent.trim().localeCompare('нет в наличии')) {
 			price.style.border = 'none'
@@ -470,15 +469,17 @@ function setConflictsLines(id, ...conflicts) {
 }
 
 const dataIcons = document.querySelectorAll('[data-icon]')
+if (dataIcons.length) {
 dataIcons.forEach(item => {
-	const iconName = item.dataset.icon
+		const { icon } = item.dataset
 	if (item.classList.contains('pc-parts__choose-item')) {
-		item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
+			item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 	} else {
 		const title = item.querySelector('.pc-part__title')
-		title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${iconName}"></span>`)
+			title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 	}
 })
+}
 
 const pcPartsDescriptions = document.querySelectorAll('.pc-part__description')
 if (pcPartsDescriptions) {
@@ -486,17 +487,17 @@ if (pcPartsDescriptions) {
 		const title = description.querySelector('.pc-part__title')
 		const titleP = title.querySelector('p')
 		const details = description.querySelector('.pc-part__details')
-		if (titleP.offsetWidth >= 215) {
+		if (titleP.getBoundingClientRect().width >= 215) {
 			title.classList.add('pc-part__title--gradient')
 		}
-		if (details.offsetWidth >= 215) {
+		if (details.getBoundingClientRect().width >= 215) {
 			details.classList.add('pc-part__details--gradient')
 		}
 	})
 }
 
 const productRating = document.querySelectorAll('.product-score-rating')
-if (productRating) {
+if (productRating.length) {
 	productRating.forEach(rating => {
 		const value = parseInt(rating.textContent)
 		const DASH_LEN = 11
@@ -522,7 +523,7 @@ if (sectionSlider) {
 	const products = sectionSlider.querySelectorAll('.product--short')
 	products.forEach(product => {
 		const title = product.querySelector('.product__title')
-		if (title.offsetHeight > 40) {
+		if (title.getBoundingClientRect().height > 40) {
 			title.classList.add('product__title--overflow')
 			const productName = title.querySelector('.product__name')
 			truncate(40, title, productName)
@@ -540,12 +541,14 @@ if (sectionSlider) {
 }
 
 const searchBars = document.querySelectorAll('.search-bar')
-if (searchBars) {
+if (searchBars.length) {
 	searchBars.forEach(sb => {
 		sb.addEventListener('click', () => {
 			sb.classList.add('search-bar--active')
 			document.querySelector('body').addEventListener('click', e => {
-				if (!sb.contains(e.target)) sb.classList.remove('search-bar--active')
+				if (!sb.contains(e.target)) {
+					sb.classList.remove('search-bar--active')
+				}
 			})
 		})
 	})
