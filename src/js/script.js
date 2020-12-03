@@ -1,3 +1,5 @@
+/* eslint-disable strict */
+
 'use strict'
 
 //Sidebar
@@ -138,6 +140,7 @@ if (yearRates.length) {
 			<circle
 				stroke="#fff" fill="transparent"
 				stroke-width="2" cx="15" cy="15" r="13"
+				stroke-linecap="round"
 				stroke-dasharray="${circumference} ${circumference}" 
 				stroke-dashoffset="${offset}"/>
 		</svg>
