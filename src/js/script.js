@@ -492,28 +492,31 @@ function unhoverConflict(conflictId) {
 }
 
 function setConflictsLines(id, conflicts) {
-	const top1 = conflicts[0].offsetTop
-	const topN = conflicts[conflicts.length - 1].offsetTop
+	const top1 = parseInt(conflicts[0].offsetTop)
+	const topN = parseInt(conflicts[conflicts.length - 1].offsetTop)
 	const len = topN - top1
 	const lineHeight = 8
 	const topAbs = top1 + lineHeight
-	const createConflictDash = conflict => `
+	const createConflictDash = offsetTop => `
 		<polyline 
 			points="
-				1,${conflict.offsetTop - top1 + 5}.5
-				6,${conflict.offsetTop - top1 + 5}.5
+				1,${offsetTop - top1 + 5.5}
+				6,${offsetTop - top1 + 5.5}
 			"
 			stroke="#e0a006"
 		/>
 		<polyline 
 			points="
-				7.5,${conflict.offsetTop - top1}
-				7.5,${conflict.offsetTop - top1 + 11}
+				7.5,${offsetTop - top1}
+				7.5,${offsetTop - top1 + 11}
 			"
 			stroke="#e0a006"
 		/>
 	`
-	const linesToPart = conflicts.map(createConflictDash).join('')
+	const linesToPart = conflicts
+		.map(confilct => parseInt(confilct.offsetTop))
+		.map(createConflictDash)
+		.join('')
 	const line = `
 		<svg data-conflict-id="${id}"
 			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
@@ -534,17 +537,19 @@ function setConflictsLines(id, conflicts) {
 }
 
 function setConflictsLines2(id, ...conflicts) {
-	const { top: parentTop } = document.querySelector('.assemblage-parts').getBoundingClientRect()
-	const top1 = conflicts[0].getBoundingClientRect().top - parentTop
-	const topN = conflicts[conflicts.length - 1].getBoundingClientRect().top - parentTop
+	const parentTop = parseInt(
+		document.querySelector('.assemblage-parts').getBoundingClientRect().top
+	)
+	const top1 = parseInt(conflicts[0].getBoundingClientRect().top) - parentTop
+	const topN = parseInt(conflicts[conflicts.length - 1].getBoundingClientRect().top) - parentTop
 	const len = topN - top1
 	const lineHeight = 10
 	const topAbs = top1 + lineHeight
 	const createConflictDash = conflict => `
 		<polyline 
 			points="
-				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
-				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5.5}
+				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5.5}
 			"
 			stroke="#e0a006"
 		/>
