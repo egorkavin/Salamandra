@@ -30,6 +30,10 @@
 		font-size: 14px;
 		margin-right: auto;
 
+		&--back {
+			cursor: pointer;
+		}
+
 		.svg-icon {
 			margin-right: 15px;
 		}
