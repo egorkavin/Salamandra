@@ -158,12 +158,20 @@
 
 	&__type {
 		cursor: pointer;
+
+		&--sign-in {
+			margin-right: 5px;
+		}
 	}
 
 	&__methods {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
+
+		.svg-icon {
+			margin: 0 3px;
+		}
 	}
 }
 
