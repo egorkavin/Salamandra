@@ -208,10 +208,11 @@ if (pcParts) {
 const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
 if (assemblageParts) {
 	assemblageParts.forEach(part => {
-		const title = part.querySelector('.product__title')
+		const titleLinkSelector = '.product__title .product__link'
+		const titleLinks = part.querySelector(titleLinkSelector)
 
-		const getTitle = conflict => conflict.querySelector('.product__title')
-		title.addEventListener('click', () => {
+		const getTitleLink = conflict => conflict.querySelector(titleLinkSelector)
+		titleLinks.addEventListener('click', () => {
 			part.classList.toggle('product--collapsed')
 
 			const conflictsSVG = document.querySelectorAll('svg[data-conflict-id]')
@@ -224,7 +225,7 @@ if (assemblageParts) {
 				)
 
 				svg.remove()
-				setConflictsLines2(id, ...[].map.call(conflicts, getTitle))
+				setConflictsLines2(id, ...[].map.call(conflicts, getTitleLink))
 				document.querySelector(`svg[data-conflict-id~="${id}"]`)
 			})
 			if (fixedId) {
