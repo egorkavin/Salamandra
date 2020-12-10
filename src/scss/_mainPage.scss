@@ -97,12 +97,12 @@
 
 	&:after {
 		right: 0;
-		background: linear-gradient(to left, #222222 20%, rgba(33, 33, 33, 0) 80%);
+		background: linear-gradient(to left, #222222 20%, rgba(33, 33, 33, 0) 100%);
 	}
 
 	&:before {
 		left: 0;
-		background: linear-gradient(to right, #222222 20%, rgba(33, 33, 33, 0) 80%);
+		background: linear-gradient(to right, #222222 20%, rgba(33, 33, 33, 0) 100%);
 	}
 
 	&--reach-end {
