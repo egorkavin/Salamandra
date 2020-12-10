@@ -1,3 +1,5 @@
+/* eslint-disable strict */
+
 'use strict'
 
 //Sidebar
@@ -138,6 +140,7 @@ if (yearRates.length) {
 			<circle
 				stroke="#fff" fill="transparent"
 				stroke-width="2" cx="15" cy="15" r="13"
+				stroke-linecap="round"
 				stroke-dasharray="${circumference} ${circumference}" 
 				stroke-dashoffset="${offset}"/>
 		</svg>
@@ -205,10 +208,11 @@ if (pcParts) {
 const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
 if (assemblageParts) {
 	assemblageParts.forEach(part => {
-		const title = part.querySelector('.product__title')
+		const titleLinkSelector = '.product__title .product__link'
+		const titleLinks = part.querySelector(titleLinkSelector)
 
-		const getTitle = conflict => conflict.querySelector('.product__title')
-		title.addEventListener('click', () => {
+		const getTitleLink = conflict => conflict.querySelector(titleLinkSelector)
+		titleLinks.addEventListener('click', () => {
 			part.classList.toggle('product--collapsed')
 
 			const conflictsSVG = document.querySelectorAll('svg[data-conflict-id]')
@@ -221,7 +225,7 @@ if (assemblageParts) {
 				)
 
 				svg.remove()
-				setConflictsLines2(id, ...[].map.call(conflicts, getTitle))
+				setConflictsLines2(id, ...[].map.call(conflicts, getTitleLink))
 				document.querySelector(`svg[data-conflict-id~="${id}"]`)
 			})
 			if (fixedId) {
@@ -489,28 +493,31 @@ function unhoverConflict(conflictId) {
 }
 
 function setConflictsLines(id, conflicts) {
-	const top1 = conflicts[0].offsetTop
-	const topN = conflicts[conflicts.length - 1].offsetTop
+	const top1 = parseInt(conflicts[0].offsetTop)
+	const topN = parseInt(conflicts[conflicts.length - 1].offsetTop)
 	const len = topN - top1
 	const lineHeight = 8
 	const topAbs = top1 + lineHeight
-	const createConflictDash = conflict => `
+	const createConflictDash = offsetTop => `
 		<polyline 
 			points="
-				1,${conflict.offsetTop - top1 + 5}.5
-				6,${conflict.offsetTop - top1 + 5}.5
+				1,${offsetTop - top1 + 5.5}
+				6,${offsetTop - top1 + 5.5}
 			"
 			stroke="#e0a006"
 		/>
 		<polyline 
 			points="
-				7.5,${conflict.offsetTop - top1}
-				7.5,${conflict.offsetTop - top1 + 11}
+				7.5,${offsetTop - top1}
+				7.5,${offsetTop - top1 + 11}
 			"
 			stroke="#e0a006"
 		/>
 	`
-	const linesToPart = conflicts.map(createConflictDash).join('')
+	const linesToPart = conflicts
+		.map(confilct => parseInt(confilct.offsetTop))
+		.map(createConflictDash)
+		.join('')
 	const line = `
 		<svg data-conflict-id="${id}"
 			style="position: absolute;top:${topAbs - 6}px;left:50px;" 
@@ -531,17 +538,19 @@ function setConflictsLines(id, conflicts) {
 }
 
 function setConflictsLines2(id, ...conflicts) {
-	const { top: parentTop } = document.querySelector('.assemblage-parts').getBoundingClientRect()
-	const top1 = conflicts[0].getBoundingClientRect().top - parentTop
-	const topN = conflicts[conflicts.length - 1].getBoundingClientRect().top - parentTop
+	const parentTop = parseInt(
+		document.querySelector('.assemblage-parts').getBoundingClientRect().top
+	)
+	const top1 = parseInt(conflicts[0].getBoundingClientRect().top) - parentTop
+	const topN = parseInt(conflicts[conflicts.length - 1].getBoundingClientRect().top) - parentTop
 	const len = topN - top1
 	const lineHeight = 10
 	const topAbs = top1 + lineHeight
 	const createConflictDash = conflict => `
 		<polyline 
 			points="
-				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
-				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5}.5
+				1,${conflict.getBoundingClientRect().top - parentTop - top1 + 5.5}
+				6,${conflict.getBoundingClientRect().top - parentTop - top1 + 5.5}
 			"
 			stroke="#e0a006"
 		/>

@@ -601,6 +601,10 @@ body {
   cursor: pointer;
 }
 
+.sign__type--sign-in {
+  margin-right: 5px;
+}
+
 .sign__methods {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,6 +613,10 @@ body {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.sign__methods .svg-icon {
+  margin: 0 3px;
 }
 
 .sign-form__item {
@@ -1279,6 +1287,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   text-transform: uppercase;
   font-size: 14px;
   margin-right: auto;
+}
+
+.section__title--back {
+  cursor: pointer;
 }
 
 .section__title .svg-icon {
@@ -2350,7 +2362,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   font-weight: 400;
   color: #f9f9f9;
   border-radius: 3px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 }
 
 .footer__item {
@@ -2620,10 +2632,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 
 .assemblage-parts .product--collapsed .discount div {
   width: 57px;
-  padding: 3px 0;
+  padding: 2px 0;
   left: -3px;
   top: 6px;
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .assemblage-parts .product--collapsed:not(:last-child) {
@@ -2641,6 +2653,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 .assemblage-parts .product--collapsed .product__wrapper {
   height: 25px;
   margin-top: -28px;
+}
+
+.assemblage-parts .product--collapsed .product__main-part {
+  padding-right: 28px;
 }
 
 .assemblage-parts .product--collapsed .product__button {
@@ -2677,7 +2693,7 @@ svg[data-conflict-id].fixed.fixed--prev {
       -ms-flex-order: 0;
           order: 0;
   z-index: 25;
-  cursor: pointer;
+  pointer-events: none;
 }
 
 .assemblage-parts .product__title .product__link {
@@ -2688,6 +2704,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   line-height: 25px;
   padding-right: 18px;
   position: relative;
+  pointer-events: all;
 }
 
 .assemblage-parts .product__title .product__link .svg-icon {
@@ -2724,7 +2741,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .assemblage-parts .product__main-part {
-  padding: 0 0 0 20px;
+  padding: 0 20px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
