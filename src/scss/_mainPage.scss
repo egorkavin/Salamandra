@@ -180,8 +180,9 @@
 			margin: -10px;
 			max-width: 1080px;
 
-			&:after {
-				content: none;
+			&:after,
+			&:before {
+				display: none;
 			}
 
 			.swiper-wrapper {

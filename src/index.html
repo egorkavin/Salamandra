@@ -589,16 +589,31 @@
         let mySwiper;
 
         function initSwiper() {
+            const sectionContainer = document.querySelector('.section-slider')
+            sectionContainer.classList.remove('section-slider--reach-end')
+            sectionContainer.classList.add('section-slider--reach-beg')
+
             mySwiper = new Swiper('.swiper-container', {
                 slidesPerView: 'auto',
                 grabCursor: true,
                 resistance: false,
-                // Navigation arrows
                 navigation: {
                     nextEl: '.section-slider__btn--next',
                     prevEl: '.section-slider__btn--prev',
                     disabledClass: 'section-slider__btn--disabled'
                 },
+            })
+
+            mySwiper.on('reachEnd', () => {
+                console.log(123)
+                sectionContainer.classList.add('section-slider--reach-end')
+            })
+            mySwiper.on('reachBeginning', () => {
+                sectionContainer.classList.add('section-slider--reach-beg')
+            })
+            mySwiper.on('fromEdge', () => {
+                sectionContainer.classList.remove('section-slider--reach-end')
+                sectionContainer.classList.remove('section-slider--reach-beg')
             })
         }
         initSwiper()
@@ -606,23 +621,12 @@
         toggleSwiperBtn.addEventListener('click', () => {
             const slider = document.querySelector('.slider-container');
             if (slider.classList.contains('slider-container--opened')) {
+                slider.classList.remove('slider-container--opened')
                 initSwiper()
             } else {
                 mySwiper.destroy()
+                slider.classList.add('slider-container--opened')
             }
-            slider.classList.toggle('slider-container--opened')
-        })
-
-        const sectionContainer = document.querySelector('.section-slider')
-        mySwiper.on('reachEnd', () => {
-            sectionContainer.classList.add('section-slider--reach-end')
-        })
-        mySwiper.on('reachBeginning', () => {
-            sectionContainer.classList.add('section-slider--reach-beg')
-        })
-        mySwiper.on('fromEdge', () => {
-            sectionContainer.classList.remove('section-slider--reach-end')
-            sectionContainer.classList.remove('section-slider--reach-beg')
         })
     </script>
 </body>
