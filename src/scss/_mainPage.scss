@@ -37,6 +37,17 @@
 			display: flex;
 			flex-direction: column;
 		}
+
+		&__assembly-score {
+			font-size: 14px;
+			color: #807979;
+			font-weight: 700;
+			position: absolute;
+			top: 15px;
+			left: 20px;
+			z-index: 1;
+		}
+
 		&__image-wrapper {
 			width: 100%;
 
