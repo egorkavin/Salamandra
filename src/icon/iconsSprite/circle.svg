@@ -1,0 +1,26 @@
+<svg id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 18.374 18.374">
+  <defs>
+    <style>
+      .clssss-1 {
+        stroke: #da2304;
+        stroke-width: 2px;
+      }
+
+      .clssss-2 {
+        stroke: #696969;
+        stroke-width: 1px;
+        opacity: 0.5;
+      }
+    </style>
+  </defs>
+  <g>
+    <g style="fill: none; filter: url(#filter)">
+      <circle id="Эллипс_7" data-name="Эллипс 7" class="clssss-1" cx="9.187" cy="9.187" r="7" style="stroke: inherit; filter: none; fill: inherit"/>
+    </g>
+    <use xlink:href="#Эллипс_7" style="stroke: #da2304; filter: none; fill: none"/>
+    <g style="fill: none; filter: url(#filter-2)">
+      <circle id="Эллипс_8" data-name="Эллипс 8" class="clssss-2" cx="9.187" cy="9.187" r="5" style="stroke: inherit; filter: none; fill: inherit"/>
+    </g>
+    <use xlink:href="#Эллипс_8" style="stroke: #696969; filter: none; fill: none"/>
+  </g>
+</svg>
