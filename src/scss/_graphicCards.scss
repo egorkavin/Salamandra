@@ -67,7 +67,6 @@
 				margin: 10px auto;
 				overflow: auto;
 				border: none;
-				-webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
 				mask-image: linear-gradient(to top, transparent 0%, black 20%);
 				padding-bottom: 15px;
 			}
@@ -97,17 +96,7 @@
 		position: relative;
 		background-color: #fff;
 		border-radius: 10px; //TODO костыль
-
-		&:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			display: inline-block;
-			background-image: radial-gradient(ellipse 40% 40%, transparent, 80%, #1b1a1a);
-		}
+		mask-image: radial-gradient(ellipse 40% 40%, #1b1a1a, 80%, transparent);
 	}
 
 	&__image {
