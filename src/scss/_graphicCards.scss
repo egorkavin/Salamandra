@@ -67,6 +67,9 @@
 				margin: 10px auto;
 				overflow: auto;
 				border: none;
+				-webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+				mask-image: linear-gradient(to top, transparent 0%, black 20%);
+				padding-bottom: 15px;
 			}
 
 			&__price-and-buttons {
