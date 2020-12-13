@@ -201,7 +201,7 @@ if (pricesAtShops.length) {
 const pcParts = document.querySelector('.pc-parts')
 if (pcParts) {
 	const prices = pcParts.querySelectorAll('.pc-part__price')
-	const totalPrice = pcParts.querySelector('.pc-parts__total')
+	const totalPrice = document.querySelector('.assemblage-items__total')
 	const reducer = (acc, price) => {
 		const priceContent = price.textContent
 		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.')
