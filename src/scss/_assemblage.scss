@@ -24,6 +24,10 @@
 		font-size: 12px;
 		border-bottom: 1px solid #1b1a1a;
 
+		&:not(.pc-part--current) {
+			cursor: pointer;
+		}
+
 		.pc-part--multiple:not(:first-child) {
 			margin-top: 15px;
 		}
