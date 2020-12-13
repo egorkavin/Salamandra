@@ -3,6 +3,13 @@
 	width: 360px;
 	border-left: 1px solid #1b1a1a;
 
+	.sidebar__title {
+		padding-right: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
 	&.sidebar--hidden {
 		transform: translateX(100%);
 	}
