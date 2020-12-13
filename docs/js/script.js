@@ -119,10 +119,16 @@ if (stars.length) {
 	stars.forEach(star =>
 		star.addEventListener('click', () => {
 			const { value } = star.dataset
-			star.parentNode.dataset.totalValue = value
-			const note = document.querySelector('.product-rating__note')
-			if (note) {
-				note.remove()
+			const parent = star.parentNode
+			parent.dataset.totalValue = value
+			if (parent.classList.contains('product-comment__rating')) {
+				const userValue = parent.querySelector('.product-rating__value')
+				userValue.textContent = parent.dataset.totalValue
+			} else {
+				const note = document.querySelector('.product-rating__note')
+				if (note) {
+					note.remove()
+				}
 			}
 		})
 	)
@@ -195,7 +201,7 @@ if (pricesAtShops.length) {
 const pcParts = document.querySelector('.pc-parts')
 if (pcParts) {
 	const prices = pcParts.querySelectorAll('.pc-part__price')
-	const totalPrice = pcParts.querySelector('.pc-parts__total')
+	const totalPrice = document.querySelector('.assemblage-items__total')
 	const reducer = (acc, price) => {
 		const priceContent = price.textContent
 		const priceValue = priceContent.replace(/\s/g, '').replace(/,/g, '.')
@@ -589,7 +595,7 @@ if (dataIcons.length) {
 		if (item.classList.contains('pc-parts__choose-item')) {
 			item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 		} else {
-			const title = item.querySelector('.pc-part__title')
+			const title = item.querySelector('.pc-part__title') || item
 			title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 		}
 	})

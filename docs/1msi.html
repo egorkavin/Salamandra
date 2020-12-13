@@ -515,87 +515,119 @@
     </ul>
 
 </aside>
-        <aside class="sidebar sidebar--assemblage sidebar--hidden">
+        <aside class="sidebar sidebar--assemblage">
     <a class="sidebar__btn sidebar__btn--assemblage">
         <span class="svg-icon icon-collection"></span>
     </a>
-    <p class="sidebar__title">Сборка</p>
-    <ul class="sidebar__pc-parts pc-parts">
-        <li class="pc-parts__item pc-part" data-conflict-id="1 2" data-icon="cpu">
-            <div class="pc-part__description">
-                <div class="pc-part__title">
-                    <p>Intel Core i5-7431Y</p>
-                </div>
-                <p class="pc-part__details">3.9 ГГц</p>
-            </div>
-            <span class="pc-part__price">20 999,63</span>
-        </li>
-        <li class="pc-parts__item pc-part pc-part--current">
-            <p>Выбор видеокарты</p>
-        </li>
-        <li class="pc-parts__item pc-part" data-conflict-id="1" data-icon="ram">
-            <div class="pc-part__description">
-                <div class="pc-part__title">
-                    <p>G.Skill Fury Black (HX424C15FB/4)</p>
-                </div>
-                <p class="pc-part__details">2х16 Гб (DDR4, 3200 МГц)</p>
-            </div>
-            <span class="pc-part__price">8 999</span>
-        </li>
-        <li class="pc-parts__item">
-            <div class="pc-part" data-conflict-id="2" data-icon="hdd">
+    <p class="sidebar__title">
+        <span>Сборка</span>
+        <span class="sidebar__rating product-score-rating">4</span>
+    </p>
+    <div class="assemblage-items">
+        <ul class="sidebar__pc-parts pc-parts">
+            <li class="pc-parts__item pc-part" data-conflict-id="1 2" data-icon="cpu">
                 <div class="pc-part__description">
                     <div class="pc-part__title">
-                        <p>Western HDD Digital Blue (WD10SLorem)</p>
+                        <p>Intel Core i5-7431Y</p>
                     </div>
-                    <p class="pc-part__details">1TB, 2.5" (SATA III, 5400rpm, 128Lorem)</p>
+                    <p class="pc-part__details">3.9 ГГц</p>
+                    <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
                 </div>
-                <span class="pc-part__price">8 999</span>
-            </div>
-            <div class="pc-part" data-conflict-id="2">
+                <span class="pc-part__price">20 999,63</span>
+            </li>
+            <li class="pc-parts__item pc-part pc-part--current" data-icon="gpu">
+                <span class="pc-part__current-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <p>Выбор видеокарты</p>
+            </li>
+            <li class="pc-parts__item pc-part" data-conflict-id="1" data-icon="ram">
                 <div class="pc-part__description">
                     <div class="pc-part__title">
-                        <p>Kingston SSD HyperX Fury 3D (KCLorem)</p>
+                        <p>G.Skill Fury Black (HX424C15FB/4)</p>
                     </div>
-                    <p class="pc-part__details">240GB, 2.5" (SATA III, TLC)</p>
+                    <p class="pc-part__details">2х16 Гб (DDR4, 3200 МГц)</p>
+                    <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
                 </div>
                 <span class="pc-part__price">8 999</span>
-            </div>
-            <div class="pc-parts__add-item">Добавить постоянную память</div>
-        </li>
-        <li class="pc-parts__item pc-part">
-            <div class="pc-part__description" data-icon="mb">
-                <div class="pc-part__title">
-                    <p>Asus Prime B450-PLUS</p>
+            </li>
+            <li class="pc-parts__item">
+                <div class="pc-part" data-conflict-id="2" data-icon="hdd">
+                    <div class="pc-part__description">
+                        <div class="pc-part__title">
+                            <p>Western HDD Digital Blue (WD10SLorem)</p>
+                        </div>
+                        <p class="pc-part__details">1TB, 2.5" (SATA III, 5400rpm, 128Lorem)</p>
+                        <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
+                    </div>
+                    <span class="pc-part__price">8 999</span>
                 </div>
-                <p class="pc-part__details">sAM4, AMD B450, PCI-Ex16, 4xDDLorem</p>
-            </div>
-            <span class="pc-part__price">8 999</span>
-        </li>
-        <li class="pc-parts__item pc-part" data-conflict-id="3">
-            <div class="pc-part__description" data-icon="power">
-                <div class="pc-part__title">
-                    <p>Chieftec Full-Range GPS-1250C</p>
+                <div class="pc-part" data-conflict-id="2">
+                    <div class="pc-part__description">
+                        <div class="pc-part__title">
+                            <p>Kingston SSD HyperX Fury 3D (KCLorem)</p>
+                        </div>
+                        <p class="pc-part__details">240GB, 2.5" (SATA III, TLC)</p>
+                        <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
+                    </div>
+                    <span class="pc-part__price">8 999</span>
                 </div>
-                <p class="pc-part__details">1250W</p>
+                <div class="pc-parts__add-item">Добавить постоянную память</div>
+            </li>
+            <li class="pc-parts__item pc-part">
+                <div class="pc-part__description" data-icon="mb">
+                    <div class="pc-part__title">
+                        <p>Asus Prime B450-PLUS</p>
+                    </div>
+                    <p class="pc-part__details">sAM4, AMD B450, PCI-Ex16, 4xDDLorem</p>
+                    <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
+                </div>
+                <span class="pc-part__price">8 999</span>
+            </li>
+            <li class="pc-parts__item pc-part" data-conflict-id="3">
+                <div class="pc-part__description" data-icon="power">
+                    <div class="pc-part__title">
+                        <p>Chieftec Full-Range GPS-1250C</p>
+                    </div>
+                    <p class="pc-part__details">1250W</p>
+                    <span class="pc-part__cancel svg-icon icon-cancel-filter"></span>
+                </div>
+                <span class="pc-part__price">6 599</span>
+            </li>
+            <li class="pc-parts__item pc-parts__choose-item" data-icon="cooler">Выбрать охлаждение</li>
+            <li class="pc-parts__item pc-parts__choose-item" data-icon="periphery">Выбрать периферию</li>
+            <li class="pc-parts__item pc-parts__choose-item" data-icon="block">Выбрать корпус</li>
+            <li class="pc-parts__item pc-parts__choose-item" data-icon="other">Выбрать другое</li>
+        </ul>
+        <div class="sidebar__conflicts conflicts">
+            <div class="conflicts__title">3 Конфликта</div>
+            <div class="conflicts__body">
+                <p class="conflicts__item" data-conflict-id="1">Процессор и оп. память: конфликт типов памяти</p>
+                <p class="conflicts__item" data-conflict-id="3">Блок питания: недостаточная мощность</p>
+                <p class="conflicts__item" data-conflict-id="2">Какой-то конфликт с памятью</p>
             </div>
-            <span class="pc-part__price">6 599</span>
-        </li>
-        <li class="pc-parts__item pc-parts__choose-item" data-icon="cooler">Выбрать охлаждение</li>
-        <li class="pc-parts__item pc-parts__choose-item" data-icon="periphery">Выбрать периферию</li>
-        <li class="pc-parts__item pc-parts__choose-item" data-icon="block">Выбрать корпус</li>
-        <li class="pc-parts__item pc-parts__choose-item" data-icon="other">Выбрать другое</li>
-        <li class="pc-parts__footer">
-            <span class="pc-parts__assemblage-number">Сборка 12913</span>
-            <span class="pc-parts__total">196 998 Р</span>
-        </li>
-    </ul>
-    <div class="sidebar__conflicts conflicts">
-        <div class="conflicts__title">3 Конфликта</div>
-        <div class="conflicts__body">
-            <p class="conflicts__item" data-conflict-id="1">Процессор и оп. память: конфликт типов памяти</p>
-            <p class="conflicts__item" data-conflict-id="3">Блок питания: недостаточная мощность</p>
-            <p class="conflicts__item" data-conflict-id="2">Какой-то конфликт с памятью</p>
+        </div>
+        <div class="assemblage-items__footer">
+            <div class="assemblage-items__info">
+                <input type="text" class="assemblage-items__name" placeholder="Сборка ...">
+                <span class="assemblage-items__total">196 998 Р</span>
+            </div>
+            <div class="assemblage-items__pages pagination">
+                <ul class="pagination__list-of-pages">
+                    <li class="pagination__page-wrapper pagination__page-wrapper--current">
+                        <a href="#" class="pagination__page-button">1</a>
+                    </li>
+                    <li class="pagination__page-wrapper">
+                        <a href="#" class="pagination__page-button">+</a>
+                    </li>
+                </ul>
+                <span class="svg-icon icon-steam"></span>
+                <!-- TODO save icon -->
+                <span class="svg-icon icon-vk"></span>
+                <!-- TODO link icon -->
+            </div>
         </div>
     </div>
 </aside>
@@ -623,6 +655,9 @@
                     <div class="product-page__item product-card">
                         <div class="product product--long">
                             <div class="product__wrapper">
+                                <div class="discount">
+                                    <div>-25%</div>
+                                </div>
                                 <h2 class="product__title">
                                     MSI PCI-Ex GeForce GTX 1050 Ti GAMING X 4GB GDDR5 (128bit) (1354/7008) (DVI, HDMI,
                                     DisplayPort) (GTX 1050 TI GAMING X 4G)
@@ -753,6 +788,9 @@
                         <div class="product-tabs__content">
                             <div id="shops" class="product-shops product-tabs__block product-tabs__block--active">
                                 <div class="product-shops__shop product-shop">
+                                    <div class="discount">
+                                        <div>-25%</div>
+                                    </div>
                                     <div class="product-shop__image-wrapper">
                                         <img class="product-shop__image" src="img/shop1.png"></img>
                                     </div>
@@ -790,7 +828,7 @@
                                     <div class="product-shop__price product-price">
                                         <span class="product-price__price price price--big">
                                             от
-                                            <span class="price__value">23999 р.</span>
+                                            <span class="price__value">23999 ₽</span>
                                         </span>
                                         <a class="product-price__button product-price__button--to-store">
                                             <span>В магазин</span>
@@ -798,6 +836,9 @@
                                     </div>
                                 </div>
                                 <div class="product-shops__shop product-shop product-shop--out-of-stock">
+                                    <div class="discount">
+                                        <div>-99%</div>
+                                    </div>
                                     <div class="product-shop__image-wrapper">
                                         <img class="product-shop__image" src="img/shop1.png"></img>
                                     </div>
@@ -866,9 +907,10 @@
                                             <span class="product-specs__list-item-name">
                                                 Графический чип
                                             </span>
-                                            <span class="product-specs__item-value">
+                                            <a href="#"
+                                                class="product-specs__item-value product-specs__item-value--link">
                                                 GeForce GTX 1050 Ti
-                                            </span>
+                                            </a>
                                         </li>
                                         <li class="product-specs__list-item">
                                             <span class="product-specs__list-item-name">
@@ -883,9 +925,10 @@
                                             <span class="product-specs__list-item-name">
                                                 Объем памяти*
                                             </span>
-                                            <span class="product-specs__item-value">
+                                            <a href="#"
+                                                class="product-specs__item-value product-specs__item-value--link">
                                                 4 ГБ
-                                            </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -911,9 +954,10 @@
                                             <span class="product-specs__list-item-name">
                                                 Объем памяти**
                                             </span>
-                                            <span class="product-specs__item-value">
+                                            <a href="#"
+                                                class="product-specs__item-value product-specs__item-value--link">
                                                 4 ГБ
-                                            </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -932,9 +976,10 @@
                                 <div class="product-comments__form-wrapper">
                                     <div class="product-comments__auth">
                                         Чтобы написать свой комментарий, авторизуйтесь:
-                                        <span class="product-comments__red-link">
+                                        <a href="#" class="product-comments__sign-in">
                                             Войти
-                                        </span>
+                                            <span class="svg-icon icon-circle"></span>
+                                        </a>
                                     </div>
                                     <div class="product-comments__comment-form comment-form">
                                         <form method="POST">
@@ -944,10 +989,14 @@
                                             </div>
                                             <div class="comment-form__footer">
                                                 <span class="comment-form__reply-to">
-                                                    Вы отвечаете пользователю
-                                                    <span class="comment-form__reply-username">Some3</span>
+                                                    <span>
+                                                        Вы отвечаете пользователю
+                                                        <span class="comment-form__reply-username">Some3</span>
+                                                    </span>
+                                                    <span class="svg-icon icon-cancel-filter"></span>
                                                 </span>
                                                 <button class="comment-form__button" type="submit">
+                                                    <span class="svg-icon icon-back-arrow"></span>
                                                     Отправить
                                                 </button>
                                             </div>
@@ -957,6 +1006,7 @@
                                 <div class="product-comments__comment product-comment">
                                     <div class="product-comment__left">
                                         <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                        <span class="product-comment__social-icon svg-icon icon-steam"></span>
                                     </div>
                                     <div class="product-comment__right">
                                         <div class="product-comment__header">
@@ -975,24 +1025,42 @@
                                             много-много текста
                                         </p>
                                         <div class="product-comment__footer">
-                                            <span class="product-comment__rating">
+                                            <span class="product-comment__rating product-rating__stars"
+                                                data-total-value="0">
+                                                <span class="product-rating__value"></span>
+                                                <span class="product-rating__star" data-value="10">★</span>
+                                                <span class="product-rating__star" data-value="9">★</span>
+                                                <span class="product-rating__star" data-value="8">★</span>
+                                                <span class="product-rating__star" data-value="7">★</span>
+                                                <span class="product-rating__star" data-value="6">★</span>
+                                                <span class="product-rating__star" data-value="5">★</span>
+                                                <span class="product-rating__star" data-value="4">★</span>
+                                                <span class="product-rating__star" data-value="3">★</span>
+                                                <span class="product-rating__star" data-value="2">★</span>
+                                                <span class="product-rating__star" data-value="1">★</span>
                                                 Оценка:
                                             </span>
+                                            <span class="product-comment__respond-btn svg-icon icon-respond"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="product-comments__comment product-comment product-comment_response">
                                     <div class="product-comment__left">
                                         <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                        <span class="product-comment__social-icon svg-icon icon-steam"></span>
                                     </div>
                                     <div class="product-comment__right">
                                         <div class="product-comment__header">
-                                            <span class="product-comment__author">
-                                                Some Other User Name
-                                                <span class="product-comment__responsed-to">
+                                            <span>
+                                                <span class="product-comment__author">
+                                                    Some Other User Name
+                                                </span>
+                                                <span class="product-comment__responded-to">
                                                     ответил
                                                 </span>
-                                                Some User Name
+                                                <span class="product-comment__recipient">
+                                                    Some User Name
+                                                </span>
                                             </span>
                                             <span class="product-comment__vote comment-vote">
                                                 <span class="comment-vote__btn comment-vote__btn--down"></span>
@@ -1006,21 +1074,27 @@
                                             много-много текста
                                         </p>
                                         <div class="product-comment__footer">
+                                            <span class="product-comment__respond-btn svg-icon icon-respond"></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="product-comments__comment product-comment product-comment_response">
                                     <div class="product-comment__left">
                                         <img src="img/graphicsCard/test2.jpeg" class="product-comment__avatar">
+                                        <span class="product-comment__social-icon svg-icon icon-steam"></span>
                                     </div>
                                     <div class="product-comment__right">
                                         <div class="product-comment__header">
-                                            <span class="product-comment__author">
-                                                Some3
-                                                <span class="product-comment__responsed-to">
+                                            <span>
+                                                <span class="product-comment__author">
+                                                    Some3
+                                                </span>
+                                                <span class="product-comment__responded-to">
                                                     ответил
                                                 </span>
-                                                Some Other User Name
+                                                <span class="product-comment__recipient">
+                                                    Some Other User Name
+                                                </span>
                                             </span>
                                             <span class="product-comment__vote comment-vote">
                                                 <span class="comment-vote__btn comment-vote__btn--down"></span>
@@ -1037,6 +1111,8 @@
                                             много-много текста
                                         </p>
                                         <div class="product-comment__footer">
+                                            <span
+                                                class="product-comment__respond-btn product-comment__respond-btn--pressed svg-icon icon-respond"></span>
                                         </div>
                                     </div>
                                 </div>
