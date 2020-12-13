@@ -119,10 +119,16 @@ if (stars.length) {
 	stars.forEach(star =>
 		star.addEventListener('click', () => {
 			const { value } = star.dataset
-			star.parentNode.dataset.totalValue = value
-			const note = document.querySelector('.product-rating__note')
-			if (note) {
-				note.remove()
+			const parent = star.parentNode
+			parent.dataset.totalValue = value
+			if (parent.classList.contains('product-comment__rating')) {
+				const userValue = parent.querySelector('.product-rating__value')
+				userValue.textContent = parent.dataset.totalValue
+			} else {
+				const note = document.querySelector('.product-rating__note')
+				if (note) {
+					note.remove()
+				}
 			}
 		})
 	)

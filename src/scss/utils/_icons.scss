@@ -189,4 +189,13 @@
 	&.icon-circle {
 		background-image: url('../img/icons/icons.svg#circle');
 	}
+
+	&.icon-respond {
+		background-image: url('../img/icons/icons.svg#respond');
+	}
+
+	&.icon-steam {
+		filter: url(#white);
+		background-image: url('../img/icons/icons.svg#steam');
+	}
 }

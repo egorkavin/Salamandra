@@ -1,0 +1,25 @@
+<svg id="respond" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .zls-1 {
+        fill: #afafaf;
+      }
+
+      .zls-1, .zls-2 {
+        stroke: #afafaf;
+        stroke-width: 1px;
+      }
+
+      .zls-2 {
+        fill: none;
+      }
+
+      .zls-3 {
+        opacity: 0.8;
+      }
+    </style>
+  </defs>
+  <rect class="zls-1" x="1.5" y="4.25" width="12" height="8" rx="3" ry="3"/>
+  <rect class="zls-2" x="7.5" y="7.25" width="12" height="8" rx="3" ry="3"/>
+  <image class="zls-3" x="14.5" y="15.25" width="2" height="2" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQImWNct27dGUZGRgYmBgYGhv///5sAADVNBg4vE381AAAAAElFTkSuQmCC"/>
+</svg>
