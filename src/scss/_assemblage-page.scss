@@ -243,10 +243,6 @@
 		width: 356px;
 		flex-shrink: 0;
 		height: auto;
-
-		&:after {
-			background-image: radial-gradient(ellipse 40% 40%, transparent, 80%, #1b1a1a);
-		}
 	}
 
 	&__main-part {

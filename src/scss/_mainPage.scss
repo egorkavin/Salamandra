@@ -50,11 +50,8 @@
 
 		&__image-wrapper {
 			width: 100%;
-
-			&:after {
-				background-image: radial-gradient(ellipse 40% 40%, transparent, 80%, #1b1a1a);
-			}
 		}
+
 		&__title {
 			&--overflow {
 				.product__name:after {
