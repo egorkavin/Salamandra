@@ -68,7 +68,10 @@
 				overflow: auto;
 				border: none;
 				mask-image: linear-gradient(to top, transparent 0%, black 20%);
-				padding-bottom: 15px;
+
+				p:last-of-type {
+					padding-bottom: 15px;
+				}
 			}
 
 			&__price-and-buttons {
