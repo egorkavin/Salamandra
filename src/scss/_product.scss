@@ -363,9 +363,23 @@
 	display: flex;
 	align-items: center;
 	padding: 15px 0;
+	position: relative;
 
 	&:not(:last-child) {
 		border-bottom: 1px solid #212020;
+	}
+
+	.discount {
+		width: 40px;
+		height: 40px;
+
+		div {
+			width: 57px;
+			padding: 2px 0;
+			left: -3px;
+			top: 6px;
+			font-size: 10px;
+		}
 	}
 
 	&--out-of-stock {
@@ -574,6 +588,12 @@
 	}
 
 	&__reply-to {
+		display: inline-flex;
+		align-items: center;
+
+		.icon-cancel-filter {
+			cursor: pointer;
+		}
 	}
 
 	&__reply-username {
@@ -582,12 +602,19 @@
 
 	&__button {
 		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
 		background-color: #bfbfbf;
 		color: #1b1a1a;
 		border-radius: 3px;
 		font-weight: 700;
 		height: 25px;
-		padding: 0 13px 0 26px;
+		padding: 0 12px 0 5px;
+
+		.icon-back-arrow {
+			filter: none;
+			transform: scaleX(-1);
+		}
 	}
 }
 
