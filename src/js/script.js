@@ -595,7 +595,7 @@ if (dataIcons.length) {
 		if (item.classList.contains('pc-parts__choose-item')) {
 			item.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 		} else {
-			const title = item.querySelector('.pc-part__title')
+			const title = item.querySelector('.pc-part__title') || item
 			title.insertAdjacentHTML('afterbegin', `<span class="svg-icon icon-${icon}"></span>`)
 		}
 	})
