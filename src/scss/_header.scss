@@ -207,24 +207,15 @@
 	justify-content: center;
 	align-items: center;
 	height: 50px;
-	padding: 0 65px 0 30px;
+	padding: 0 65px 0 65px;
 	position: relative;
-
-	&:after {
-		content: '';
-		width: 50px;
-		height: 100%;
-		position: absolute;
-		right: 65px;
-		background: linear-gradient(to left, #1b1a1a 20%, rgba(33, 33, 33, 0) 80%);
-	}
 
 	&__list {
 		display: flex;
 		white-space: nowrap;
 		overflow: hidden;
 		color: #f0f0f0;
-		overflow-x: auto;
+
 		.svg-icon {
 			margin-right: 8px;
 		}
@@ -237,5 +228,9 @@
 		&:last-child {
 			margin-right: 35px;
 		}
+	}
+
+	@media (max-width: 1625px) {
+		display: none;
 	}
 }

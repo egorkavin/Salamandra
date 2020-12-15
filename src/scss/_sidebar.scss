@@ -12,9 +12,19 @@
 	line-height: 1rem;
 	position: absolute;
 	top: 0;
-	transition: all 0.5s;
+	transition: transform 0.5s;
 	z-index: 30;
 	background-color: #212020;
+
+	&--lower {
+		background-color: transparent;
+
+		.sidebar__title,
+		.sidebar-list {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
 
 	&__btn {
 		display: flex;
@@ -31,13 +41,15 @@
 		top: 22px;
 		cursor: pointer;
 
-		&--filter {
-			right: 36px;
+		&--filter,
+		&--nav {
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			border-left: none;
 			right: -36px;
+		}
 
+		&--filter {
 			span {
 				display: inline-block;
 				height: 2px;
@@ -60,6 +72,22 @@
 				&:nth-of-type(3) {
 					width: 4px;
 					margin-right: 20px;
+				}
+			}
+		}
+
+		&--nav {
+			top: 85px;
+
+			span {
+				display: inline-block;
+				height: 2px;
+				background-color: #f9f9f9;
+				width: 16px;
+				margin: 0 auto;
+
+				&:not(:last-of-type) {
+					margin-bottom: 4px;
 				}
 			}
 		}

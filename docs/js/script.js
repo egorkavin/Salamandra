@@ -8,7 +8,36 @@ if (sidebars.length) {
 	sidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
 		btn.addEventListener('click', () => {
-			sidebar.classList.toggle('sidebar--hidden')
+			if (
+				sidebar.classList.contains('sidebar--filter') ||
+				sidebar.classList.contains('sidebar--nav')
+			) {
+				const filterSidebar = document.querySelector('.sidebar--filter')
+				const navSidebar = document.querySelector('.sidebar--nav')
+				const upper = sidebar
+				const lower =
+					(sidebar === filterSidebar && navSidebar) ||
+					(sidebar === navSidebar && filterSidebar)
+
+				if (
+					!upper.classList.contains('sidebar--hidden') &&
+					!lower.classList.contains('sidebar--hidden') &&
+					!upper.previousElementSibling
+				) {
+					upper.parentNode.insertBefore(lower, upper)
+					lower.classList.add('sidebar--lower')
+					upper.classList.remove('sidebar--lower')
+				} else {
+					upper.parentNode.insertBefore(lower, upper)
+					setTimeout(() => {
+						//TODO find better solution
+						upper.classList.toggle('sidebar--hidden')
+						lower.classList.toggle('sidebar--hidden')
+					}, 0)
+				}
+			} else {
+				sidebar.classList.toggle('sidebar--hidden')
+			}
 		})
 	})
 
