@@ -711,3 +711,19 @@ if (menuBtn) {
 		headerSign.classList.toggle('header__sign--opened')
 	})
 }
+
+const productPhotos = document.querySelector('.product__photos')
+if (productPhotos) {
+	const imgs = productPhotos.querySelectorAll('.swiper-slide')
+	imgs.forEach(img => {
+		img.addEventListener('click', () => {
+			const clone = img.cloneNode()
+			clone.classList = 'product__image'
+			clone.removeAttribute('role')
+			clone.removeAttribute('style')
+			clone.removeAttribute('aria-label')
+			const productImgWrapper = productPhotos.firstElementChild
+			productImgWrapper.replaceChild(clone, productImgWrapper.firstElementChild)
+		})
+	})
+}
