@@ -49,30 +49,31 @@
                                     DisplayPort) (GTX 1050 TI GAMING X 4G)
                                 </h2>
                                 <div class="product__photos">
-                                    <a class="product__link product__image-wrapper" href="1msi.html">
-                                        <img src="img/graphicsCard/test3.jpg" class="product__image"></img>
-                                    </a>
+                                    <div class="product__link product__image-wrapper">
+                                        <img data-modal-slide="1" src="img/graphicsCard/test3.jpg"
+                                            class="product__image"></img>
+                                    </div>
                                     <div class="product__slider product-slider swiper-container">
                                         <div class="swiper-wrapper">
-                                            <img src="img/graphicsCard/test2.jpeg"
-                                                class="swiper-slide product-slider__item"></img>
                                             <img src="img/graphicsCard/test3.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test2.jpeg"
+                                            <img data-modal-slide="2" src="img/1.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test3.jpg"
+                                            <img data-modal-slide="3" src="img/2.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test2.jpeg"
+                                            <img data-modal-slide="4" src="img/graphicsCard/test2.jpeg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test3.jpg"
+                                            <img data-modal-slide="5" src="img/1.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test2.jpeg"
+                                            <img data-modal-slide="6" src="img/2.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test3.jpg"
+                                            <img data-modal-slide="7" src="img/graphicsCard/test2.jpeg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test2.jpeg"
+                                            <img data-modal-slide="8" src="img/1.jpg"
                                                 class="swiper-slide product-slider__item"></img>
-                                            <img src="img/graphicsCard/test3.jpg"
+                                            <img data-modal-slide="9" src="img/2.jpg"
+                                                class="swiper-slide product-slider__item"></img>
+                                            <img data-modal-slide="10" src="img/graphicsCard/test2.jpeg"
                                                 class="swiper-slide product-slider__item"></img>
                                         </div>
                                         <span class="product-slider__button product-slider__button_prev">
@@ -509,6 +510,44 @@
             </section>
         </main>
         @@include('_footer.html')
+    </div>
+
+    <div class="product-modal">
+        <span class="product-modal__close">&times;</span>
+        <div class="product-modal__content">
+            <div class="product-modal__img">
+                <img src="img/graphicsCard/test3.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/1.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/2.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/graphicsCard/test2.jpeg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/1.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/2.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/graphicsCard/test2.jpeg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/1.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/2.jpg">
+            </div>
+            <div class="product-modal__img">
+                <img src="img/graphicsCard/test2.jpeg">
+            </div>
+            <a class="product-modal__prev">&#10094;</a>
+            <a class="product-modal__next">&#10095;</a>
+        </div>
     </div>
 
     @@include("_filterMatrix.html")

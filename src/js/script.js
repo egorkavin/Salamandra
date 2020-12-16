@@ -714,16 +714,79 @@ if (menuBtn) {
 
 const productPhotos = document.querySelector('.product__photos')
 if (productPhotos) {
-	const imgs = productPhotos.querySelectorAll('.swiper-slide')
-	imgs.forEach(img => {
-		img.addEventListener('click', () => {
-			const clone = img.cloneNode()
-			clone.classList = 'product__image'
-			clone.removeAttribute('role')
-			clone.removeAttribute('style')
-			clone.removeAttribute('aria-label')
-			const productImgWrapper = productPhotos.firstElementChild
-			productImgWrapper.replaceChild(clone, productImgWrapper.firstElementChild)
+	const slides = productPhotos.querySelectorAll('.swiper-slide')
+	slides.forEach(slide => {
+		slide.addEventListener('click', () => {
+			if (slide.dataset.modalSlide) {
+				const imgClone = slide.cloneNode(true)
+				imgClone.classList = 'product__image'
+				imgClone.dataset.modalSlide = slide.dataset.modalSlide
+				imgClone.removeAttribute('role')
+				imgClone.removeAttribute('style')
+				imgClone.removeAttribute('aria-label')
+				slide.removeAttribute('data-modal-slide')
+
+				const prevModalNum = productPhotos.querySelector('.product__image').dataset
+					.modalSlide
+				const prevModalImg = productPhotos.querySelector(
+					`.swiper-slide:nth-child(${prevModalNum})`
+				)
+				prevModalImg.dataset.modalSlide = prevModalNum
+
+				const productImgWrapper = productPhotos.firstElementChild
+				const productImg = productImgWrapper.firstElementChild
+				productImgWrapper.replaceChild(imgClone, productImg)
+			}
 		})
 	})
+
+	const productModal = document.querySelector('.product-modal')
+	const prevBtn = productModal.querySelector('.product-modal__prev')
+	const nextBtn = productModal.querySelector('.product-modal__next')
+	prevBtn.addEventListener('click', () => plusSlides(-1))
+	nextBtn.addEventListener('click', () => plusSlides(1))
+
+	const openModal = () => {
+		productModal.style.display = 'flex'
+	}
+	const closeModal = () => {
+		productModal.style.display = 'none'
+	}
+
+	let slideIndex = 1
+	const plusSlides = n => {
+		showSlides((slideIndex += n))
+	}
+	const currentSlide = n => {
+		showSlides((slideIndex = n))
+	}
+
+	productModal.addEventListener('click', e => {
+		const targetClassList = e.target.classList
+		if (
+			targetClassList.contains('product-modal') ||
+			targetClassList.contains('product-modal__close')
+		) {
+			closeModal()
+		}
+	})
+
+	const productPhotosMain = productPhotos.firstElementChild
+	productPhotosMain.addEventListener('click', () => {
+		openModal()
+		currentSlide(+productPhotosMain.firstElementChild.dataset.modalSlide)
+	})
+
+	function showSlides(n) {
+		const imgs = document.querySelectorAll('.product-modal__img')
+		if (n > imgs.length) {
+			slideIndex = 1
+		} else if (n < 1) {
+			slideIndex = imgs.length
+		}
+		imgs.forEach(img => {
+			img.style.display = 'none'
+		})
+		imgs[slideIndex - 1].style.display = 'flex'
+	}
 }
