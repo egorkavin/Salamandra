@@ -13,8 +13,15 @@
 	&--full-width {
 		max-width: 100%;
 
-		.section__products {
-			max-width: 100%;
+		.section {
+			&__header {
+				max-width: 1060px;
+				margin: 0 auto 20px;
+			}
+
+			&__products {
+				max-width: 100%;
+			}
 		}
 	}
 }

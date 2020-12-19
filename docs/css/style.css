@@ -3121,6 +3121,11 @@ svg[data-conflict-id].fixed.fixed--prev {
   max-width: 100%;
 }
 
+.container--full-width .section__header {
+  max-width: 1060px;
+  margin: 0 auto 20px;
+}
+
 .container--full-width .section__products {
   max-width: 100%;
 }
