@@ -3320,7 +3320,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .slider-container .swiper-slide {
-  margin: 10px 10px;
+  margin: 10px;
 }
 
 .slider-container .product__description {
@@ -3425,6 +3425,16 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 @media (max-width: 425px) {
+  .section__product {
+    margin: 5px 0 5px 0;
+  }
+
+  .section__slider-container {
+    padding: 0;
+    margin-bottom: 50px;
+    margin: -5px -5px 50px -5px;
+  }
+
   .product__button--big {
     width: 25px;
   }
@@ -3446,5 +3456,82 @@ svg[data-conflict-id].fixed.fixed--prev {
         -ms-flex-align: center;
             align-items: center;
     padding: 20px;
+  }
+
+  .container {
+    padding: 0 5px;
+  }
+
+  .section-slider:after,
+  .section-slider:before {
+    width: 5px;
+  }
+
+  .section-slider:after {
+    background: -webkit-gradient(linear, right top, left top, from(#222222), to(rgba(33, 33, 33, 0)));
+    background: -o-linear-gradient(right, #222222 0%, rgba(33, 33, 33, 0) 100%);
+    background: linear-gradient(to left, #222222 0%, rgba(33, 33, 33, 0) 100%);
+  }
+
+  .section-slider:before {
+    background: -webkit-gradient(linear, left top, right top, color-stop(20%, #222222), to(rgba(33, 33, 33, 0)));
+    background: -o-linear-gradient(left, #222222 20%, rgba(33, 33, 33, 0) 100%);
+    background: linear-gradient(to right, #222222 20%, rgba(33, 33, 33, 0) 100%);
+  }
+
+  .section-slider__btn {
+    top: unset;
+    bottom: -50px;
+    -webkit-transform: unset;
+        -ms-transform: unset;
+            transform: unset;
+  }
+
+  .section-slider__btn--next {
+    right: 10px;
+  }
+
+  .section-slider__btn--prev {
+    left: 10px;
+  }
+
+  .section-slider__btn--toggle {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+
+  .slider-container .swiper-slide.product--short {
+    margin: 5px;
+  }
+
+  .slider-container .swiper-slide.product--short .product__rating {
+    margin-right: 10px;
+  }
+
+  .slider-container .swiper-slide.product--short .product__price {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+
+  .slider-container .swiper-slide.product--short .product__button--big {
+    width: 110px;
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+  }
+
+  .slider-container .swiper-slide.product--short .product__button--big span {
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 375px) {
+  .slider-container .swiper-slide {
+    width: calc(100vw - 10px);
+    min-width: 280px;
   }
 }
