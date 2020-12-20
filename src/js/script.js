@@ -790,3 +790,28 @@ if (productPhotos) {
 		imgs[slideIndex - 1].style.display = 'flex'
 	}
 }
+
+function reportWindowSize() {
+	if (+window.innerWidth <= 373) {
+		const products = sectionSlider.querySelectorAll('.product--short')
+		products.forEach(product => {
+			const title = product.querySelector('.product__title')
+			if (title.getBoundingClientRect().height > 40) {
+				title.classList.add('product__title--overflow')
+				const productName = title.querySelector('.product__name')
+				truncate(40, title, productName)
+			}
+
+			function truncate(maxHeight, parent, elToOverflow) {
+				while (parent.offsetHeight > maxHeight) {
+					elToOverflow.textContent = elToOverflow.textContent.substr(
+						0,
+						elToOverflow.textContent.length - 1
+					)
+				}
+			}
+		})
+	}
+}
+
+window.onresize = reportWindowSize
