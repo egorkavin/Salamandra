@@ -73,6 +73,10 @@
 
 	&__product {
 		margin: 10px;
+
+		@media (max-width: 425px) {
+			margin: 5px 0 5px 0;
+	}
 	}
 
 	&__slider-container {
