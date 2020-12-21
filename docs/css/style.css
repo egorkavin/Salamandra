@@ -3107,7 +3107,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  min-height: 100vh;
+  min-height: calc(100vh - 125px - 24px);
   max-width: 1060px;
   margin: 24px auto 0;
   padding: 0 10px;
@@ -3369,6 +3369,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .sidebar--nav {
     display: block;
+  }
+
+  .container {
+    min-height: calc(100vh - 75px - 24px);
   }
 }
 
