@@ -3532,6 +3532,6 @@ svg[data-conflict-id].fixed.fixed--prev {
 @media (max-width: 375px) {
   .slider-container .swiper-slide {
     width: calc(100vw - 10px);
-    min-width: 280px;
+    min-width: 310px;
   }
 }
