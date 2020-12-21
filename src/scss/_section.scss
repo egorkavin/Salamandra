@@ -61,6 +61,12 @@
 				cursor: pointer;
 			}
 		}
+
+		&--view-types {
+			@media (max-width: 425px) {
+				display: none;
+			}
+		}
 	}
 
 	&__products {

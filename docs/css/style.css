@@ -3429,6 +3429,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 @media (max-width: 425px) {
+  .section__button--view-types {
+    display: none;
+  }
+
   .section__product {
     margin: 5px 0 5px 0;
   }
