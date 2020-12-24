@@ -792,7 +792,8 @@ if (productPhotos) {
 }
 
 function reportWindowSize() {
-	if (+window.innerWidth <= 373) {
+	const sectionSlider = document.querySelector('.section__slider')
+	if (sectionSlider && +window.innerWidth <= 373) {
 		const products = sectionSlider.querySelectorAll('.product--short')
 		products.forEach(product => {
 			const title = product.querySelector('.product__title')
