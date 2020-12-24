@@ -156,7 +156,7 @@ if (stars.length) {
 			} else {
 				const note = document.querySelector('.product-rating__note')
 				if (note) {
-					note.remove()
+					note.classList.add('product-rating__note--hidden')
 				}
 			}
 		})

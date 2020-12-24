@@ -308,6 +308,11 @@
 		font-size: 12px;
 		font-weight: 400;
 		color: #807979;
+
+		&--hidden {
+			pointer-events: none;
+			opacity: 0;
+		}
 	}
 }
 
