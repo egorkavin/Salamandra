@@ -355,12 +355,25 @@
 		padding-left: 34px;
 		margin: 0 10px;
 		border-bottom: 1px solid #212020;
+		overflow: auto;
+
+		@media (max-width: 768px) {
+			padding-bottom: 10px;
+		}
 	}
 
 	&__item {
 		margin-top: 12px;
 		padding: 0 16px 10px;
 		cursor: pointer;
+
+		&[data-tab='photos'] {
+			display: none;
+
+			@media (max-width: 768px) {
+				display: list-item;
+			}
+		}
 
 		&:not(:last-child) {
 			margin-right: 10px;
@@ -371,9 +384,6 @@
 			color: #f9f9f9;
 			font-weight: 700;
 		}
-	}
-
-	&__content {
 	}
 
 	&__block {
@@ -387,9 +397,12 @@
 }
 
 .product-shops {
-	//padding: 0 10px 0 30px;
+	@media (max-width: 768px) {
+		padding: 0 10px;
 
-	&__shop {
+		&__shop {
+			flex-direction: column;
+		}
 	}
 }
 
@@ -398,6 +411,21 @@
 	align-items: center;
 	padding: 15px 0;
 	position: relative;
+
+	@media (max-width: 768px) {
+		&__image {
+			margin-bottom: 10px;
+		}
+
+		&__description {
+			margin-left: 0;
+		}
+
+		&__footer {
+			margin-left: 0;
+			margin-bottom: 10px;
+		}
+	}
 
 	&:not(:last-child) {
 		border-bottom: 1px solid #212020;
@@ -525,32 +553,44 @@
 	}
 
 	&__list-item {
+		display: flex;
 		&:not(:last-child) {
 			margin-bottom: 16px;
 		}
 	}
 
 	&__list-item-name {
-		display: inline-block;
-		max-width: 360px;
-		width: 100%;
-		white-space: nowrap;
+		display: block;
+		width: 40%;
+		padding-right: 15px;
 		overflow: hidden;
+		span {
+			display: inline-block;
+			position: relative;
 
-		&::after {
-			content: '........................................................................';
+			&::after {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 100%;
+				content: '........................................................................';
+			}
 		}
 	}
 
 	&__item-value {
 		color: #f9f9f9;
+		padding-left: 15px;
+		width: 60%;
+		margin-left: 4px;
 
 		&--link {
 			color: #da0b29;
 		}
 	}
 
-	&__footnotes {
+	@media (max-width: 768px) {
+		padding: 0 10px;
 	}
 }
 
@@ -622,12 +662,19 @@
 
 	&__footer {
 		display: flex;
+		flex-wrap: wrap;
 		font-size: 12px;
+		margin-top: -10px;
+
+		.svg-icon {
+			flex-shrink: 0;
+		}
 	}
 
 	&__reply-to {
 		display: inline-flex;
 		align-items: center;
+		margin-top: 10px;
 
 		.icon-cancel-filter {
 			cursor: pointer;
@@ -639,6 +686,7 @@
 	}
 
 	&__button {
+		margin-top: 1px;
 		margin-left: auto;
 		display: inline-flex;
 		align-items: center;
@@ -689,6 +737,10 @@
 
 	&_response {
 		margin-left: 55px;
+
+		@media (max-width: 768px) {
+			margin-left: 30px;
+		}
 	}
 
 	&__left {
