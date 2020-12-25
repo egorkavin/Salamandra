@@ -156,7 +156,7 @@ if (stars.length) {
 			} else {
 				const note = document.querySelector('.product-rating__note')
 				if (note) {
-					note.remove()
+					note.classList.add('product-rating__note--hidden')
 				}
 			}
 		})
@@ -792,7 +792,8 @@ if (productPhotos) {
 }
 
 function reportWindowSize() {
-	if (+window.innerWidth <= 373) {
+	const sectionSlider = document.querySelector('.section__slider')
+	if (sectionSlider && +window.innerWidth <= 373) {
 		const products = sectionSlider.querySelectorAll('.product--short')
 		products.forEach(product => {
 			const title = product.querySelector('.product__title')
