@@ -126,8 +126,27 @@ if (sidebars.length) {
 }
 
 //Tabs
-const tabs = document.querySelectorAll('.product-tabs__item')
-if (tabs.length) {
+const productTabsWrapper = document.querySelector('.product-tabs__items')
+if (productTabsWrapper) {
+	const productSlides = document.querySelectorAll('.swiper-slide')
+	if (productSlides) {
+		productTabsWrapper.insertAdjacentHTML(
+			'beforeend',
+			'<li data-tab="photos" class="product-tabs__item">Изображения</li>'
+		)
+
+		const photosTab = document.querySelector('.product-photos-tab')
+		productSlides.forEach(img => {
+			const src = img.getAttribute('src')
+			photosTab.insertAdjacentHTML(
+				'beforeend',
+				`<div class="product-description__image-wrapper">
+					<img src="${src}" class="product-description__image"></img>
+				</div>`
+			)
+		})
+	}
+	const tabs = productTabsWrapper.querySelectorAll('.product-tabs__item')
 	tabs.forEach(tab => {
 		tab.addEventListener('click', () => {
 			const activeTab = document.querySelector('.product-tabs__item--active')
