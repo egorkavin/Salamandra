@@ -1,4 +1,5 @@
 .section__product-page {
+	max-width: 100%;
 	width: 950px;
 	margin: 0 auto;
 }
@@ -39,11 +40,15 @@
 		&__title {
 			order: 1;
 			padding: 17px 17px 20px;
+			display: block !important;
 		}
 
 		&__photos {
 			order: 2;
 			max-width: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 		}
 
 		&__link {
@@ -59,7 +64,7 @@
 
 		&__main-part {
 			order: 3;
-			flex-grow: 1;
+			// flex-grow: 1;
 			align-items: center;
 			justify-content: center;
 		}
@@ -92,7 +97,7 @@
 		}
 
 		&__hidden-description {
-			margin: 35px 0 0 0;
+			margin: 35px 0 13px 0;
 		}
 
 		&__score {
@@ -109,7 +114,7 @@
 .product-slider {
 	margin: 0;
 	height: 56px;
-	width: 485px;
+	width: 100%;
 	position: relative;
 
 	&__item {
@@ -180,12 +185,16 @@
 .product-score {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-left: 33px;
 	height: 30px;
 	font-size: 14px;
 	color: #f9f9f9;
 
 	&__rating {
 		margin-right: 10px;
+		margin-left: -32px;
 	}
 
 	&__year-rate {
@@ -254,17 +263,27 @@
 }
 
 .product-rating {
-	width: 330px;
+	max-width: 330px;
+	width: 100%;
 	min-height: 49px;
 	text-align: center;
+
 	&__value {
 		text-align: center;
 	}
+
 	&__average {
 		display: inline-block;
 		margin-bottom: 5px;
 		font-size: 18px;
 		color: #da0b29;
+
+		@media (max-width: 1625px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 
 	&__max {
@@ -277,6 +296,10 @@
 		display: flex;
 		flex-direction: row-reverse;
 		align-items: center;
+
+		@media (max-width: 1625px) {
+			justify-content: space-between;
+		}
 	}
 
 	&__stars[data-total-value='1'] &__star:nth-child(n + 11),
@@ -303,6 +326,10 @@
 		&:hover,
 		&:hover ~ & {
 			color: #696969;
+		}
+
+		@media (max-width: 1625px) {
+			margin-right: 0;
 		}
 	}
 
@@ -833,5 +860,25 @@
 	&__next {
 		right: 0;
 		border-radius: 3px 0 0 3px;
+	}
+}
+
+@media (max-width: 768px) {
+	.product-card .product {
+		&__wrapper {
+			flex-direction: column;
+		}
+
+		&__photos {
+			max-width: 100%;
+		}
+
+		&__slider {
+			display: none;
+		}
+
+		&__main-part {
+			max-width: 100%;
+		}
 	}
 }

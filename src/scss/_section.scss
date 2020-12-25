@@ -36,6 +36,7 @@
 
 		.svg-icon {
 			margin-right: 15px;
+			flex-shrink: 0;
 		}
 	}
 
@@ -45,7 +46,7 @@
 		border: 1px solid #1b1a1a;
 
 		&--search {
-			margin-right: 11px;
+			margin: 0 11px;
 		}
 
 		&--view-types,
