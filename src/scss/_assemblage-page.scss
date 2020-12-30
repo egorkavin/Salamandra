@@ -102,14 +102,27 @@
 
 		.svg-icon {
 			filter: url(#white);
-			margin-left: 9px;
 
 			&.icon-collection {
-				margin-left: 0;
 				margin-right: 9px;
 			}
 		}
 	}
+
+	&__icon-wrapper {
+		display: inline-flex;
+		margin-left: 9px;
+		align-items: center;
+		justify-content: center;
+}
+
+	&__quantity {
+		margin-left: 3px;
+	}
+}
+
+.assembalge-info__icon-wrapper {
+	margin-left: 9px;
 }
 
 .assemblage-parts {
