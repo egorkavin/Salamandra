@@ -3103,6 +3103,7 @@ svg[data-conflict-id].fixed.fixed--prev {
           order: 0;
   z-index: 25;
   pointer-events: none;
+  padding-right: 80px;
 }
 
 .assemblage-parts .product__title .product__link {
@@ -3111,7 +3112,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   display: inline-block;
   width: 100%;
   line-height: 25px;
-  padding-right: 18px;
+  padding-right: 20px;
   position: relative;
   pointer-events: all;
 }
@@ -3134,7 +3135,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   width: 10px;
   height: 9px;
   background-image: url(../img/filter/filter__arrow.svg);
-  right: 0px;
+  right: 5px;
 }
 
 .assemblage-parts .product__image-wrapper {
