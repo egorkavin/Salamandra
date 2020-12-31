@@ -340,6 +340,9 @@
 						max-width: 100%;
 						width: 100%;
 					}
+					&__hidden-description {
+						mask-image: none;
+					}
 				}
 			}
 
