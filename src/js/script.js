@@ -177,22 +177,22 @@ if (productTabsWrapper) {
 //Stars rating
 const stars = document.querySelectorAll('.product-rating__star')
 if (stars.length) {
-	stars.forEach(star =>
-		star.addEventListener('click', () => {
-			const { value } = star.dataset
+	stars.forEach(star => {
 			const parent = star.parentNode
-			parent.dataset.totalValue = value
-			if (parent.classList.contains('product-comment__rating')) {
+
+		if (parent.dataset.totalValue !== '0') {
 				const userValue = parent.querySelector('.product-rating__value')
 				userValue.textContent = parent.dataset.totalValue
+			star.classList.add('product-rating__star--disabled')
 			} else {
+			star.addEventListener('click', () => {
+				const { value } = star.dataset
+				parent.dataset.totalValue = value
 				const note = document.querySelector('.product-rating__note')
-				if (note) {
 					note.classList.add('product-rating__note--hidden')
-				}
+			})
 			}
 		})
-	)
 }
 
 const yearRates = document.querySelectorAll('.year-rate')
