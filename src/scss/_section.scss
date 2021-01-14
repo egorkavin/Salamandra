@@ -29,6 +29,7 @@
 		text-transform: uppercase;
 		font-size: 14px;
 		margin-right: auto;
+		min-width: 0;
 
 		&--back {
 			cursor: pointer;
@@ -37,6 +38,13 @@
 		.svg-icon {
 			margin-right: 15px;
 			flex-shrink: 0;
+
+			& + span {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				direction: rtl;
+			}
 		}
 	}
 
