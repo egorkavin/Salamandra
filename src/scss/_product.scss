@@ -933,4 +933,7 @@
 			max-width: 100%;
 		}
 	}
+	.product-specs__list-item-name span::after {
+		display: none;
+	}
 }
