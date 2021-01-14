@@ -12,28 +12,41 @@ if (sidebars.length) {
 				sidebar.classList.contains('sidebar--filter') ||
 				sidebar.classList.contains('sidebar--nav')
 			) {
-				const filterSidebar = document.querySelector('.sidebar--filter')
-				const navSidebar = document.querySelector('.sidebar--nav')
-				const upper = sidebar
-				const lower =
-					(sidebar === filterSidebar && navSidebar) ||
-					(sidebar === navSidebar && filterSidebar)
+				const leftSidebars = document.querySelectorAll('.sidebars__left > *')
+				const sidebarsAreHidden = () => {
+					const hiddenSidebars = document.querySelectorAll(
+						'.sidebars__left > .sidebar--hidden'
+					)
+					return hiddenSidebars.length === leftSidebars.length
+				}
+				const oldUpper = document.querySelector('.sidebars__left .sidebar--upper')
+				const newUpper = sidebar
+				newUpper.classList.add('sidebar--upper')
+				if (sidebarsAreHidden() && oldUpper == null) {
+					leftSidebars.forEach(sidebar => {
+						if (sidebar !== newUpper) {
+							sidebar.classList.add('sidebar--lower')
+						}
+						sidebar.classList.remove('sidebar--hidden')
+					})
+				} else if (sidebarsAreHidden() && newUpper === oldUpper) {
+					leftSidebars.forEach(sidebar => {
+						sidebar.classList.remove('sidebar--hidden')
+					})
+				} else if (newUpper !== oldUpper) {
+					oldUpper.classList.add('sidebar--lower')
+					oldUpper.classList.remove('sidebar--upper')
+					newUpper.classList.remove('sidebar--lower')
 
-				if (
-					!upper.classList.contains('sidebar--hidden') &&
-					!lower.classList.contains('sidebar--hidden') &&
-					!upper.previousElementSibling
-				) {
-					upper.parentNode.insertBefore(lower, upper)
-					lower.classList.add('sidebar--lower')
-					upper.classList.remove('sidebar--lower')
+					if (sidebarsAreHidden()) {
+						leftSidebars.forEach(sidebar => {
+							sidebar.classList.remove('sidebar--hidden')
+						})
+					}
 				} else {
-					upper.parentNode.insertBefore(lower, upper)
-					setTimeout(() => {
-						//TODO find better solution
-						upper.classList.toggle('sidebar--hidden')
-						lower.classList.toggle('sidebar--hidden')
-					}, 0)
+					leftSidebars.forEach(sidebar => {
+						sidebar.classList.add('sidebar--hidden')
+					})
 				}
 			} else {
 				sidebar.classList.toggle('sidebar--hidden')

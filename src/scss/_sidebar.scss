@@ -18,11 +18,14 @@
 
 	&--lower {
 		background-color: transparent;
+		pointer-events: none;
 
 		.sidebar__title,
 		.sidebar-list {
 			opacity: 0;
-			pointer-events: none;
+		}
+		.sidebar__btn {
+			pointer-events: all;
 		}
 	}
 
