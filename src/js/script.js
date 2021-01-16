@@ -848,3 +848,39 @@ function reportWindowSize() {
 }
 
 window.onresize = reportWindowSize
+
+// Handle comment's button click
+const productComments = document.querySelector('.product-comments')
+if (productComments) {
+	const replyToWrapper = productComments.querySelector('.comment-form__reply-to')
+	const replyCancel = replyToWrapper.querySelector('.icon-cancel-filter')
+	replyCancel.addEventListener('click', () => {
+		replyToWrapper.style.display = 'none'
+		const activeButton = productComments.querySelector(
+			'.product-comment__respond-btn--pressed '
+		)
+		activeButton.classList.remove('product-comment__respond-btn--pressed')
+	})
+	const replyUsername = replyToWrapper.querySelector('.comment-form__reply-username')
+
+	const productComment = productComments.querySelectorAll('.product-comment')
+	productComment.forEach(comment => {
+		const username = comment.querySelector('.product-comment__author').textContent.trim()
+		const respondButton = comment.querySelector('.product-comment__respond-btn')
+		respondButton.addEventListener('click', () => {
+			const activeButton = productComments.querySelector(
+				'.product-comment__respond-btn--pressed '
+			)
+			if (activeButton) {
+				activeButton.classList.remove('product-comment__respond-btn--pressed')
+			}
+			if (activeButton !== respondButton) {
+				respondButton.classList.add('product-comment__respond-btn--pressed')
+				replyToWrapper.removeAttribute('style')
+				replyUsername.textContent = username
+			} else {
+				replyToWrapper.style.display = 'none'
+			}
+		})
+	})
+}
