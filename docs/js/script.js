@@ -5,21 +5,23 @@
 //Sidebar
 const sidebars = document.querySelectorAll('.sidebar')
 if (sidebars.length) {
+	const findUpper = sidebar => sidebar.classList.contains('sidebar--upper')
+	const hasHidden = sidebar => sidebar.classList.contains('sidebar--hidden')
+
 	sidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
 		btn.addEventListener('click', () => {
-			if (
-				sidebar.classList.contains('sidebar--filter') ||
-				sidebar.classList.contains('sidebar--nav')
-			) {
-				const leftSidebars = document.querySelectorAll('.sidebars__left > *')
+			if (window.innerWidth > 425 && !sidebar.classList.contains('sidebar--assemblage')) {
+				const leftSidebars =
+					window.innerWidth > 425
+						? document.querySelectorAll('.sidebars__left .sidebar')
+						: document.querySelectorAll('.sidebars__right .sidebar')
+
 				const sidebarsAreHidden = () => {
-					const hiddenSidebars = document.querySelectorAll(
-						'.sidebars__left > .sidebar--hidden'
-					)
+					const hiddenSidebars = [].filter.call(leftSidebars, hasHidden)
 					return hiddenSidebars.length === leftSidebars.length
 				}
-				const oldUpper = document.querySelector('.sidebars__left .sidebar--upper')
+				const oldUpper = [].find.call(leftSidebars, findUpper)
 				const newUpper = sidebar
 				newUpper.classList.add('sidebar--upper')
 				if (sidebarsAreHidden() && oldUpper == null) {
@@ -824,6 +826,8 @@ if (productPhotos) {
 }
 
 function reportWindowSize() {
+	displayRightSidebars()
+
 	const sectionSlider = document.querySelector('.section__slider')
 	if (sectionSlider && +window.innerWidth <= 373) {
 		const products = sectionSlider.querySelectorAll('.product--short')
@@ -881,6 +885,43 @@ if (productComments) {
 			} else {
 				replyToWrapper.style.display = 'none'
 			}
+		})
+	})
+}
+
+function displayRightSidebars() {
+	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
+	if (+window.innerWidth <= 425 && rightSidebarsButtons && document.body.scrollTop < 150) {
+		rightSidebarsButtons.forEach(sidebar => {
+			sidebar.style.display = 'none'
+		})
+	} else {
+		rightSidebarsButtons.forEach(sidebar => {
+			sidebar.style = ''
+		})
+	}
+}
+displayRightSidebars()
+
+document.body.addEventListener('scroll', displayRightSidebars)
+
+const mobileSidebarButtons = document.querySelector('.section__mobile-buttons')
+if (mobileSidebarButtons) {
+	const cancelButtons = document.querySelectorAll('.sidebars__right .sidebar__close-btn')
+	cancelButtons.forEach(btn => {
+		btn.addEventListener('click', () => {
+			document.body.style = ''
+			const sidebarToclose = btn.closest('.sidebar')
+			sidebarToclose.classList.add('sidebar--hidden')
+		})
+	})
+	const openButtons = mobileSidebarButtons.querySelectorAll('.section__button')
+	openButtons.forEach(btn => {
+		btn.addEventListener('click', () => {
+			document.body.style.overflow = 'hidden'
+			const rightSidebars = document.querySelector('.sidebars__right')
+			const sidebarToOpen = rightSidebars.querySelector(`.${btn.dataset.sidebar}`)
+			sidebarToOpen.classList.remove('sidebar--hidden')
 		})
 	})
 }
