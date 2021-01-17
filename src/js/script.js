@@ -560,8 +560,8 @@ function unhoverConflict(conflictId) {
 }
 
 function setConflictsLines(id, conflicts) {
-	const top1 = parseInt(conflicts[0].offsetTop)
-	const topN = parseInt(conflicts[conflicts.length - 1].offsetTop)
+	const top1 = parseInt(conflicts[0].offsetParent.offsetTop)
+	const topN = parseInt(conflicts[conflicts.length - 1].offsetParent.offsetTop)
 	const len = topN - top1
 	const lineHeight = 8
 	const topAbs = top1 + lineHeight
@@ -582,7 +582,7 @@ function setConflictsLines(id, conflicts) {
 		/>
 	`
 	const linesToPart = conflicts
-		.map(confilct => parseInt(confilct.offsetTop))
+		.map(confilct => parseInt(confilct.offsetParent.offsetTop))
 		.map(createConflictDash)
 		.join('')
 	const line = `
