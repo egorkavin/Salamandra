@@ -11,7 +11,10 @@ if (sidebars.length) {
 	sidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
 		btn.addEventListener('click', () => {
-			if (window.innerWidth > 425 && !sidebar.classList.contains('sidebar--assemblage')) {
+			if (
+				(window.innerWidth > 425 && !sidebar.classList.contains('sidebar--assemblage')) ||
+				window.innerWidth < 425
+			) {
 				const leftSidebars =
 					window.innerWidth > 425
 						? document.querySelectorAll('.sidebars__left .sidebar')
@@ -912,6 +915,14 @@ if (mobileSidebarButtons) {
 		btn.addEventListener('click', () => {
 			document.body.style = ''
 			const sidebarToclose = btn.closest('.sidebar')
+			if (sidebarToclose.classList.contains('sidebar--upper')) {
+				const rightSidebars = document.querySelectorAll('.sidebars__right .sidebar')
+				rightSidebars.forEach(sidebar => {
+					if (!sidebar.classList.contains('sidebar--hidden')) {
+						sidebar.classList.add('sidebar--hidden')
+					}
+				})
+			}
 			sidebarToclose.classList.add('sidebar--hidden')
 		})
 	})
