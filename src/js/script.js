@@ -178,21 +178,21 @@ if (productTabsWrapper) {
 const stars = document.querySelectorAll('.product-rating__star')
 if (stars.length) {
 	stars.forEach(star => {
-			const parent = star.parentNode
+		const parent = star.parentNode
 
 		if (parent.dataset.totalValue !== '0') {
-				const userValue = parent.querySelector('.product-rating__value')
-				userValue.textContent = parent.dataset.totalValue
+			const userValue = parent.querySelector('.product-rating__value')
+			userValue.textContent = parent.dataset.totalValue
 			star.classList.add('product-rating__star--disabled')
-			} else {
+		} else {
 			star.addEventListener('click', () => {
 				const { value } = star.dataset
 				parent.dataset.totalValue = value
 				const note = document.querySelector('.product-rating__note')
-					note.classList.add('product-rating__note--hidden')
+				note.classList.add('product-rating__note--hidden')
 			})
-			}
-		})
+		}
+	})
 }
 
 const yearRates = document.querySelectorAll('.year-rate')
