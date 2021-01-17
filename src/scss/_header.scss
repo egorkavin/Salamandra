@@ -55,6 +55,7 @@
 
 		&--search {
 			margin-right: 30px;
+			cursor: pointer;
 
 			&.search-bar--active .search-bar__wrapper {
 				border-bottom: 1px solid #212020;
