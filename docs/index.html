@@ -23,10 +23,14 @@
             </div>
         </a>
         <div class="header__buttons">
-            <a href="#" class="header__button header__button--search">
-                <span class="svg-icon icon-search"></span>
-                Поиск
-            </a>
+            <form class="header__button header__button--search search-bar" action="#">
+                <div class="search-bar__wrapper">
+                    <input type="submit" value="" class="search-bar__submit">
+                    <span class="search-bar__icon svg-icon icon-search"></span>
+                    <span class="search-bar__search">Поиск</span>
+                    <input type="text" class="search-bar__input" placeholder="Что вы ищите...">
+                </div>
+            </form>
             <a href="#" class="header__button header__button--assemblage">
                 <span class="svg-icon icon-collection"></span>
                 Сборки
@@ -107,9 +111,11 @@
         <div class="sidebars__left">
     <aside class="sidebar sidebar--filter sidebar--hidden">
         <a class="sidebar__btn sidebar__btn--filter">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="sidebar__btn-icon sidebar__btn-icon--filter">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </a>
         <p class="sidebar__title">Фильтр</p>
         <ul class="sidebar-list">
@@ -517,9 +523,11 @@
     </aside>
     <aside class="sidebar sidebar--nav sidebar--hidden">
         <a class="sidebar__btn sidebar__btn--nav">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="sidebar__btn-icon sidebar__btn-icon--nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </a>
         <p class="sidebar__title">Каталог</p>
         <ul class="sidebar-list">

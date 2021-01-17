@@ -23,10 +23,14 @@
             </div>
         </a>
         <div class="header__buttons">
-            <a href="#" class="header__button header__button--search">
-                <span class="svg-icon icon-search"></span>
-                Поиск
-            </a>
+            <form class="header__button header__button--search search-bar" action="#">
+                <div class="search-bar__wrapper">
+                    <input type="submit" value="" class="search-bar__submit">
+                    <span class="search-bar__icon svg-icon icon-search"></span>
+                    <span class="search-bar__search">Поиск</span>
+                    <input type="text" class="search-bar__input" placeholder="Что вы ищите...">
+                </div>
+            </form>
             <a href="#" class="header__button header__button--assemblage">
                 <span class="svg-icon icon-collection"></span>
                 Сборки
@@ -107,9 +111,11 @@
         <div class="sidebars__left">
     <aside class="sidebar sidebar--filter sidebar--hidden">
         <a class="sidebar__btn sidebar__btn--filter">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="sidebar__btn-icon sidebar__btn-icon--filter">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </a>
         <p class="sidebar__title">Фильтр</p>
         <ul class="sidebar-list">
@@ -517,9 +523,11 @@
     </aside>
     <aside class="sidebar sidebar--nav sidebar--hidden">
         <a class="sidebar__btn sidebar__btn--nav">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="sidebar__btn-icon sidebar__btn-icon--nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
         </a>
         <p class="sidebar__title">Каталог</p>
         <ul class="sidebar-list">
@@ -1050,10 +1058,10 @@
                                                     placeholder="Ваш комментарий..."></textarea>
                                             </div>
                                             <div class="comment-form__footer">
-                                                <span class="comment-form__reply-to">
+                                                <span class="comment-form__reply-to" style="display: none;">
                                                     <span>
                                                         Вы отвечаете пользователю
-                                                        <span class="comment-form__reply-username">Some3</span>
+                                                        <span class="comment-form__reply-username"></span>
                                                     </span>
                                                     <span class="svg-icon icon-cancel-filter"></span>
                                                 </span>
@@ -1088,7 +1096,7 @@
                                         </p>
                                         <div class="product-comment__footer">
                                             <span class="product-comment__rating product-rating__stars"
-                                                data-total-value="0">
+                                                data-total-value="7">
                                                 <span class="product-rating__value"></span>
                                                 <span class="product-rating__star" data-value="10">★</span>
                                                 <span class="product-rating__star" data-value="9">★</span>
@@ -1100,7 +1108,7 @@
                                                 <span class="product-rating__star" data-value="3">★</span>
                                                 <span class="product-rating__star" data-value="2">★</span>
                                                 <span class="product-rating__star" data-value="1">★</span>
-                                                Оценка:
+                                                <span class="product-rating__label">Оценка:</span>
                                             </span>
                                             <span class="product-comment__respond-btn svg-icon icon-respond"></span>
                                         </div>
@@ -1173,8 +1181,7 @@
                                             много-много текста
                                         </p>
                                         <div class="product-comment__footer">
-                                            <span
-                                                class="product-comment__respond-btn product-comment__respond-btn--pressed svg-icon icon-respond"></span>
+                                            <span class="product-comment__respond-btn svg-icon icon-respond"></span>
                                         </div>
                                     </div>
                                 </div>

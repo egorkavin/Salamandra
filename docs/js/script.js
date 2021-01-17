@@ -12,28 +12,41 @@ if (sidebars.length) {
 				sidebar.classList.contains('sidebar--filter') ||
 				sidebar.classList.contains('sidebar--nav')
 			) {
-				const filterSidebar = document.querySelector('.sidebar--filter')
-				const navSidebar = document.querySelector('.sidebar--nav')
-				const upper = sidebar
-				const lower =
-					(sidebar === filterSidebar && navSidebar) ||
-					(sidebar === navSidebar && filterSidebar)
+				const leftSidebars = document.querySelectorAll('.sidebars__left > *')
+				const sidebarsAreHidden = () => {
+					const hiddenSidebars = document.querySelectorAll(
+						'.sidebars__left > .sidebar--hidden'
+					)
+					return hiddenSidebars.length === leftSidebars.length
+				}
+				const oldUpper = document.querySelector('.sidebars__left .sidebar--upper')
+				const newUpper = sidebar
+				newUpper.classList.add('sidebar--upper')
+				if (sidebarsAreHidden() && oldUpper == null) {
+					leftSidebars.forEach(sidebar => {
+						if (sidebar !== newUpper) {
+							sidebar.classList.add('sidebar--lower')
+						}
+						sidebar.classList.remove('sidebar--hidden')
+					})
+				} else if (sidebarsAreHidden() && newUpper === oldUpper) {
+					leftSidebars.forEach(sidebar => {
+						sidebar.classList.remove('sidebar--hidden')
+					})
+				} else if (newUpper !== oldUpper) {
+					oldUpper.classList.add('sidebar--lower')
+					oldUpper.classList.remove('sidebar--upper')
+					newUpper.classList.remove('sidebar--lower')
 
-				if (
-					!upper.classList.contains('sidebar--hidden') &&
-					!lower.classList.contains('sidebar--hidden') &&
-					!upper.previousElementSibling
-				) {
-					upper.parentNode.insertBefore(lower, upper)
-					lower.classList.add('sidebar--lower')
-					upper.classList.remove('sidebar--lower')
+					if (sidebarsAreHidden()) {
+						leftSidebars.forEach(sidebar => {
+							sidebar.classList.remove('sidebar--hidden')
+						})
+					}
 				} else {
-					upper.parentNode.insertBefore(lower, upper)
-					setTimeout(() => {
-						//TODO find better solution
-						upper.classList.toggle('sidebar--hidden')
-						lower.classList.toggle('sidebar--hidden')
-					}, 0)
+					leftSidebars.forEach(sidebar => {
+						sidebar.classList.add('sidebar--hidden')
+					})
 				}
 			} else {
 				sidebar.classList.toggle('sidebar--hidden')
@@ -164,22 +177,22 @@ if (productTabsWrapper) {
 //Stars rating
 const stars = document.querySelectorAll('.product-rating__star')
 if (stars.length) {
-	stars.forEach(star =>
-		star.addEventListener('click', () => {
-			const { value } = star.dataset
-			const parent = star.parentNode
-			parent.dataset.totalValue = value
-			if (parent.classList.contains('product-comment__rating')) {
-				const userValue = parent.querySelector('.product-rating__value')
-				userValue.textContent = parent.dataset.totalValue
-			} else {
+	stars.forEach(star => {
+		const parent = star.parentNode
+
+		if (parent.dataset.totalValue !== '0') {
+			const userValue = parent.querySelector('.product-rating__value')
+			userValue.textContent = parent.dataset.totalValue
+			star.classList.add('product-rating__star--disabled')
+		} else {
+			star.addEventListener('click', () => {
+				const { value } = star.dataset
+				parent.dataset.totalValue = value
 				const note = document.querySelector('.product-rating__note')
-				if (note) {
-					note.classList.add('product-rating__note--hidden')
-				}
-			}
-		})
-	)
+				note.classList.add('product-rating__note--hidden')
+			})
+		}
+	})
 }
 
 const yearRates = document.querySelectorAll('.year-rate')
@@ -260,7 +273,7 @@ if (pcParts) {
 }
 
 const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
-if (assemblageParts) {
+if (assemblageParts.length) {
 	assemblageParts.forEach(part => {
 		const titleLinkSelector = '.product__title .product__link'
 		const titleLinks = part.querySelector(titleLinkSelector)
@@ -547,8 +560,8 @@ function unhoverConflict(conflictId) {
 }
 
 function setConflictsLines(id, conflicts) {
-	const top1 = parseInt(conflicts[0].offsetTop)
-	const topN = parseInt(conflicts[conflicts.length - 1].offsetTop)
+	const top1 = parseInt(conflicts[0].offsetParent.offsetTop)
+	const topN = parseInt(conflicts[conflicts.length - 1].offsetParent.offsetTop)
 	const len = topN - top1
 	const lineHeight = 8
 	const topAbs = top1 + lineHeight
@@ -569,7 +582,7 @@ function setConflictsLines(id, conflicts) {
 		/>
 	`
 	const linesToPart = conflicts
-		.map(confilct => parseInt(confilct.offsetTop))
+		.map(confilct => parseInt(confilct.offsetParent.offsetTop))
 		.map(createConflictDash)
 		.join('')
 	const line = `
@@ -835,3 +848,39 @@ function reportWindowSize() {
 }
 
 window.onresize = reportWindowSize
+
+// Handle comment's button click
+const productComments = document.querySelector('.product-comments')
+if (productComments) {
+	const replyToWrapper = productComments.querySelector('.comment-form__reply-to')
+	const replyCancel = replyToWrapper.querySelector('.icon-cancel-filter')
+	replyCancel.addEventListener('click', () => {
+		replyToWrapper.style.display = 'none'
+		const activeButton = productComments.querySelector(
+			'.product-comment__respond-btn--pressed '
+		)
+		activeButton.classList.remove('product-comment__respond-btn--pressed')
+	})
+	const replyUsername = replyToWrapper.querySelector('.comment-form__reply-username')
+
+	const productComment = productComments.querySelectorAll('.product-comment')
+	productComment.forEach(comment => {
+		const username = comment.querySelector('.product-comment__author').textContent.trim()
+		const respondButton = comment.querySelector('.product-comment__respond-btn')
+		respondButton.addEventListener('click', () => {
+			const activeButton = productComments.querySelector(
+				'.product-comment__respond-btn--pressed '
+			)
+			if (activeButton) {
+				activeButton.classList.remove('product-comment__respond-btn--pressed')
+			}
+			if (activeButton !== respondButton) {
+				respondButton.classList.add('product-comment__respond-btn--pressed')
+				replyToWrapper.removeAttribute('style')
+				replyUsername.textContent = username
+			} else {
+				replyToWrapper.style.display = 'none'
+			}
+		})
+	})
+}
