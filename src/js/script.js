@@ -273,7 +273,7 @@ if (pcParts) {
 }
 
 const assemblageParts = document.querySelectorAll('.assemblage-parts__part')
-if (assemblageParts) {
+if (assemblageParts.length) {
 	assemblageParts.forEach(part => {
 		const titleLinkSelector = '.product__title .product__link'
 		const titleLinks = part.querySelector(titleLinkSelector)
