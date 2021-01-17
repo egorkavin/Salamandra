@@ -55,6 +55,10 @@
 
 		&--search {
 			margin: 0 11px;
+
+			&.search-bar--active .search-bar__wrapper {
+				border-bottom: 1px solid #1b1a1a;
+			}
 		}
 
 		&--view-types,
