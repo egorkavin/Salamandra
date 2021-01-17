@@ -932,6 +932,7 @@ if (mobileSidebarButtons) {
 			document.body.style.overflow = 'hidden'
 			const rightSidebars = document.querySelector('.sidebars__right')
 			const sidebarToOpen = rightSidebars.querySelector(`.${btn.dataset.sidebar}`)
+			sidebarToOpen.classList.remove('sidebar--lower')
 			sidebarToOpen.classList.remove('sidebar--hidden')
 		})
 	})
