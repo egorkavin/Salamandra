@@ -1,18 +1,20 @@
 .sidebar--assemblage {
-	right: 0;
 	width: 360px;
-	border-left: 1px solid #1b1a1a;
 
 	.sidebar__title {
 		padding-top: 30px;
 		padding-right: 20px;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
+
+		span:first-child {
+			margin-right: auto;
+		}
 	}
 
-	&.sidebar--hidden {
-		transform: translateX(100%);
+	.sidebar__close-btn {
+		display: none;
+		margin-left: 10px;
 	}
 
 	.assemblage-items {
@@ -24,7 +26,7 @@
 		height: calc(100% - 81px);
 
 		&__footer {
-			margin: 0 15px 0 20px;
+			margin: 10px 15px 10px 20px;
 		}
 
 		&__info {
@@ -135,6 +137,7 @@
 	}
 
 	&__description {
+		min-width: 0;
 		margin-right: auto;
 		position: relative;
 	}
@@ -185,7 +188,10 @@
 	&__price {
 		color: #bfbfbf;
 		font-size: 11px;
+		flex-shrink: 0;
+		margin-left: 3px;
 		position: relative;
+
 		&:after {
 			content: '₽';
 			position: absolute;

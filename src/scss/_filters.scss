@@ -1,12 +1,6 @@
 .sidebar--filter,
 .sidebar--nav {
-	left: 0;
 	width: 320px;
-	border-right: 1px solid #1b1a1a;
-
-	&.sidebar--hidden {
-		transform: translateX(-100%);
-	}
 }
 
 .sidebar--nav {
