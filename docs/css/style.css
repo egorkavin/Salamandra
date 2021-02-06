@@ -999,12 +999,14 @@ body {
   position: absolute;
   right: 0;
   top: 0;
+  cursor: pointer;
 }
 
 .sidebar--assemblage .assemblage-items__pages .icon-vk {
   position: absolute;
   right: 26px;
   top: 0;
+  cursor: pointer;
 }
 
 .pc-parts {
