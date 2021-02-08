@@ -1783,10 +1783,14 @@ svg[data-conflict-id].fixed.fixed--prev {
   margin: 10px auto;
   overflow: auto;
   border: none;
-  -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(transparent), color-stop(20%, black));
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
-          mask-image: -webkit-gradient(linear, left bottom, left top, from(transparent), color-stop(20%, black));
-          mask-image: linear-gradient(to top, transparent 0%, black 20%);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(15%, black), color-stop(85%, black), to(transparent));
+  -webkit-mask-image: linear-gradient(transparent 0%, black 15%, black 85%, transparent 100%);
+          mask-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(15%, black), color-stop(85%, black), to(transparent));
+          mask-image: linear-gradient(transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.product--long .product__hidden-description p:first-of-type {
+  padding-top: 15px;
 }
 
 .product--long .product__hidden-description p:last-of-type {
@@ -3422,7 +3426,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .assemblage-parts .product__hidden-description {
-  margin: 30px auto 20px 0;
+  margin: 15px 0 15px 0;
 }
 
 .product-info {

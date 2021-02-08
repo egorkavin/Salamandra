@@ -69,8 +69,11 @@
 				margin: 10px auto;
 				overflow: auto;
 				border: none;
-				mask-image: linear-gradient(to top, transparent 0%, black 20%);
+				mask-image: linear-gradient(transparent 0%, black 15%, black 85%, transparent 100%);
 
+				p:first-of-type {
+					padding-top: 15px;
+				}
 				p:last-of-type {
 					padding-bottom: 15px;
 				}
