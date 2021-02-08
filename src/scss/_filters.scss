@@ -55,6 +55,12 @@
 	font-size: 14px;
 	font-weight: 400;
 
+	&:not(.filter--selected) {
+		.filter__item:hover .filter__icon--except {
+			display: inline;
+		}
+	}
+
 	label {
 		cursor: pointer;
 	}
@@ -71,6 +77,11 @@
 			height: 9px;
 			background-image: url(../img/filter/filter__arrow.svg);
 			right: -15px;
+		}
+
+		&--except {
+			cursor: pointer;
+			display: none;
 		}
 	}
 

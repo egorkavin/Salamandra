@@ -795,6 +795,10 @@ body {
   font-weight: 400;
 }
 
+.filter:not(.filter--selected) .filter__item:hover .filter__icon--except {
+  display: inline;
+}
+
 .filter label {
   cursor: pointer;
 }
@@ -818,6 +822,11 @@ body {
   height: 9px;
   background-image: url(../img/filter/filter__arrow.svg);
   right: -15px;
+}
+
+.filter__icon--except {
+  cursor: pointer;
+  display: none;
 }
 
 .filter__item--disabled {

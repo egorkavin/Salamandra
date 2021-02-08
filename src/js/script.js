@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable strict */
 
 'use strict'
@@ -60,86 +61,152 @@ if (sidebars.length) {
 	})
 
 	const filters = document.querySelectorAll('.filter')
-	filters.forEach(filter => {
-		const filterName = filter.querySelector('.filter__name span')
-		if (filterName) {
-			const itemsList = filter.querySelector('.filter__items-list')
+	if (filters.length) {
+		filters.forEach(filter => {
+			const filterName = filter.querySelector('.filter__name span')
+			if (filterName) {
+				const itemsList = filter.querySelector('.filter__items-list')
+				addExceptButtonToItems(filter)
+				addItemsCount(filter, itemsList.childElementCount)
+				handleCheckboxClick(filter)
+				toggleItemsListByFilterName(itemsList, filterName.parentNode)
+			}
+		})
+
+		function addExceptButtonToItems(filter) {
+			const items = filter.querySelectorAll('.filter__item')
+			items.forEach(item => {
+				const exceptIcon = createExceptIcon()
+				exceptIcon.addEventListener('click', () => {
+					const isDisabled = listItem =>
+						listItem.classList.contains('filter__item--disabled')
+					items.forEach(listItem => {
+						if (listItem !== item && !isDisabled(listItem)) {
+							listItem.querySelector('.filter__checkbox').checked = true
+						}
+					})
+					const filterItemsCount = document.querySelector('.filter__items-count')
+					filterItemsCount.textContent = `(${getCheckedItems(filter).length}/${
+						items.length
+					})`
+					addMultipleItemsIcon(filter)
+					addCancelIcon(filter, items.length)
+					toggleExceptIcons(filter)
+				})
+				item.insertAdjacentElement('beforeend', exceptIcon)
+			})
+
+			function createExceptIcon() {
+				const exceptIcon = document.createElement('span')
+				exceptIcon.classList.add('filter__icon--except')
+				exceptIcon.textContent = '—'
+				return exceptIcon
+			}
+		}
+
+		function addMultipleItemsIcon(filter) {
+			const filterName = filter.querySelector('.filter__name')
+			filterName.insertAdjacentHTML(
+				'afterbegin',
+				'<span class="svg-icon icon-square-box"><span>'
+			)
+		}
+
+		function addCancelIcon(filter, itemsLength) {
+			const filterName = filter.querySelector('.filter__name')
+			const filterCount = filterName.querySelector('.filter__items-count')
+			filterName.insertAdjacentHTML(
+				'beforeend',
+				'<span class="svg-icon icon-cancel-filter"><span>'
+			)
+			const cancel = filterName.parentNode.querySelector('.svg-icon.icon-cancel-filter')
+			cancel.addEventListener('click', () => {
+				const checkedItems = getCheckedItems(filter)
+				checkedItems.forEach(item => {
+					item.checked = false
+				})
+				filterCount.innerHTML = `(${itemsLength})`
+				const icons = filterName.querySelectorAll('.svg-icon')
+				icons.forEach(icon => icon.remove())
+				toggleExceptIcons(filter)
+			})
+		}
+
+		function getCheckedItems(itemsList) {
+			return itemsList.querySelectorAll('input[type="checkbox"]:checked')
+		}
+
+		function toggleExceptIcons(filter) {
+			const checkboxes = filter.querySelectorAll('.filter__checkbox')
+			const someIsChecked = [].some.call(checkboxes, checkbox => checkbox.checked)
+			const icons = filter.querySelectorAll('.filter__icon--except')
+			icons.forEach(icon => {
+				icon.style.display = someIsChecked ? 'none' : ''
+			})
+		}
+
+		function addItemsCount(filter, count) {
+			const filterName = filter.querySelector('.filter__name span')
 			filterName.insertAdjacentHTML(
 				'beforeend',
 				`
-				<span class="filter__items-count">(${itemsList.childElementCount})</span>
+				<span class="filter__items-count">(${count})</span>
 				<span class="filter__icon filter__icon--arrow"></span>
 				`
 			)
+		}
 
-			const filterItemsQuantity = filter.querySelectorAll('.filter__item-quantity')
-			filterItemsQuantity.forEach(filterItemQuantity => {
-				if (filterItemQuantity.textContent === '(+0)') {
-					const parent = filterItemQuantity.closest('.filter__item')
-					parent.classList.add('filter__item--disabled')
-					parent.addEventListener('click', e => e.preventDefault())
+		function handleCheckboxClick(filter) {
+			const items = filter.querySelectorAll('.filter__item')
+			items.forEach(item => {
+				const checkbox = item.querySelector('.filter__checkbox')
+				if (itemIsDisabled(item)) {
+					item.classList.add('filter__item--disabled')
+					checkbox.disabled = true
+				} else {
+					checkbox.addEventListener('change', () => {
+						toggleExceptIcons(filter)
+						const filterName = filter.querySelector('.filter__name')
+						const filterCount = filterName.querySelector('.filter__items-count')
+						const count = getCheckedItems(filter).length
+						if (count === 0) {
+							filterCount.innerHTML = `(${items.length})`
+							const icons = filterName.querySelectorAll('.svg-icon')
+							icons.forEach(icon => icon.remove())
+						} else {
+							filterCount.innerHTML = `(${count}/${items.length})`
+							if (!filterName.querySelector('.icon-square-box')) {
+								addMultipleItemsIcon(filter)
+								addCancelIcon(filter, items.length)
+							}
+						}
+					})
 				}
 			})
 
-			const itemsCount = filter.querySelector('.filter__items-count')
-			setItemsCountInList(itemsCount, itemsList)
-			toggleItemsListByFilterName(itemsList, filterName.parentNode)
+			function itemIsDisabled(item) {
+				const filterItemQuantity = item.querySelector('.filter__item-quantity')
+				if (filterItemQuantity) {
+					return filterItemQuantity.textContent === '(+0)'
+				}
+				return false
+			}
 		}
-	})
 
-	function setItemsCountInList(itemsCount, itemsList) {
-		const getCheckedItems = itemsList =>
-			itemsList.querySelectorAll('input[type="checkbox"]:checked')
-
-		itemsList.addEventListener('change', () => {
-			const parent = itemsCount.parentNode
-			const count = getCheckedItems(itemsList).length
-			if (count === 0) {
-				setItemsCountToZero(itemsCount)
-			} else {
-				itemsCount.innerHTML = `(${count}/${itemsList.childElementCount})`
-				if (parent.parentNode.childElementCount === 1) {
-					parent.insertAdjacentHTML(
-						'beforebegin',
-						'<span class="svg-icon icon-square-box"><span>'
-					)
-					parent.insertAdjacentHTML(
-						'afterend',
-						'<span class="svg-icon icon-cancel-filter"><span>'
-					)
-
-					const cancel = parent.parentNode.querySelector('.svg-icon.icon-cancel-filter')
-					cancel.addEventListener('click', () => {
-						const checkedItems = getCheckedItems(itemsList)
-						checkedItems.forEach(item => {
-							item.checked = false
-						})
-						setItemsCountToZero(itemsCount)
-					})
+		function toggleItemsListByFilterName(itemsList, filterName) {
+			filterName.addEventListener('click', e => {
+				if (!e.target.classList.contains('icon-cancel-filter')) {
+					filterName.classList.toggle('filter__name--active')
+					const itemsWrapper = itemsList.parentNode
+					if (itemsWrapper.style.maxHeight) {
+						itemsWrapper.removeAttribute('style')
+					} else {
+						const itemsListHeight = itemsList.clientHeight
+						itemsWrapper.style.maxHeight = `${itemsListHeight}px`
+					}
 				}
-			}
-
-			function setItemsCountToZero(itemsCount) {
-				itemsCount.innerHTML = `(${itemsList.childElementCount})`
-				const icons = parent.parentNode.querySelectorAll('.svg-icon')
-				icons.forEach(icon => icon.remove())
-			}
-		})
-	}
-
-	function toggleItemsListByFilterName(itemsList, filterName) {
-		filterName.addEventListener('click', e => {
-			if (!e.target.classList.contains('icon-cancel-filter')) {
-				filterName.classList.toggle('filter__name--active')
-				const itemsListHeight = itemsList.clientHeight
-				const itemsWrapper = itemsList.parentNode
-				if (itemsWrapper.style.maxHeight) {
-					itemsWrapper.removeAttribute('style')
-				} else {
-					itemsWrapper.style.maxHeight = `${itemsListHeight}px`
-				}
-			}
-		})
+			})
+		}
 	}
 }
 
