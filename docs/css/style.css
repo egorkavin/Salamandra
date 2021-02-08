@@ -1715,6 +1715,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 .product__wrapper {
   position: relative;
   width: 100%;
+  min-height: 100%;
   overflow: hidden;
   background-color: #1b1a1a;
   border-radius: 3px;
