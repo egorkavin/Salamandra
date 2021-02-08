@@ -142,11 +142,15 @@
 }
 
 .assemblage-parts .product {
-	display: flex; //TODO wtf why you need it?
+	display: flex;
 	flex-direction: column;
 	max-height: 245px;
 	padding: 10px 0;
 	margin-left: 10px;
+
+	@media (max-width: 768px) {
+		margin-left: 0;
+	}
 
 	.discount {
 		z-index: 35;
