@@ -37,10 +37,19 @@
 			box-shadow: none;
 		}
 
+		.discount + .product__title:before {
+			content: '';
+			width: 60px;
+			height: 65px;
+			display: block;
+			float: right;
+		}
+
 		&__title {
 			order: 1;
 			padding: 17px 17px 20px;
 			display: block !important;
+			flex-shrink: 1;
 		}
 
 		&__photos {
