@@ -2029,12 +2029,22 @@ svg[data-conflict-id].fixed.fixed--prev {
           box-shadow: none;
 }
 
+.product-card .product .discount + .product__title:before {
+  content: '';
+  width: 60px;
+  height: 65px;
+  display: block;
+  float: right;
+}
+
 .product-card .product__title {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
   padding: 17px 17px 20px;
   display: block !important;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 
 .product-card .product__photos {
@@ -3906,6 +3916,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .product-specs__list-item-name span::after {
     display: none;
+  }
+
+  .assemblage-parts .product {
+    margin-left: 0;
   }
 
   .assemblage-parts .product:not(.product--collapsed) {
