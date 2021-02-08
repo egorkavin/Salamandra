@@ -192,9 +192,13 @@
 		}
 	}
 
+	input {
+		color: #f9f9f9;
+		background: none;
+	}
+
 	input[type='checkbox'] {
 		display: none;
-
 		&:checked {
 			& + .fake-checkbox::before {
 				opacity: 1;
@@ -206,6 +210,11 @@
 				transition: color 0.2s;
 			}
 		}
+	}
+
+	button {
+		color: #f9f9f9;
+		background: none;
 	}
 }
 

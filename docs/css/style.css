@@ -679,6 +679,11 @@ body {
   text-align: center;
 }
 
+.sign-form input {
+  color: #f9f9f9;
+  background: none;
+}
+
 .sign-form input[type='checkbox'] {
   display: none;
 }
@@ -693,6 +698,11 @@ body {
   -webkit-transition: color 0.2s;
   -o-transition: color 0.2s;
   transition: color 0.2s;
+}
+
+.sign-form button {
+  color: #f9f9f9;
+  background: none;
 }
 
 .navigation {
