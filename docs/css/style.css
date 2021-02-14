@@ -1325,7 +1325,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 .sidebars {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 125px;
   z-index: 100;
 }
 
@@ -1346,11 +1346,11 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .sidebars__left .sidebar--filter .sidebar__btn {
-  top: 22px;
+  top: 147px;
 }
 
 .sidebars__left .sidebar--nav .sidebar__btn {
-  top: 85px;
+  top: 210px;
 }
 
 .sidebars__left .sidebar__btn {
@@ -1378,7 +1378,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .sidebars__right .sidebar--assemblage .sidebar__btn {
-  top: 22px;
+  top: 147px;
 }
 
 .sidebars__right .sidebar--filter {
@@ -1417,7 +1417,7 @@ svg[data-conflict-id].fixed.fixed--prev {
   font-size: 14px;
   line-height: 1rem;
   position: absolute;
-  top: 0;
+  top: -125px;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   -o-transition: transform 0.5s;
@@ -3711,6 +3711,26 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .sidebar--nav {
     display: block;
+  }
+
+  .sidebars {
+    top: 75px;
+  }
+
+  .sidebars__left .sidebar--filter .sidebar__btn {
+    top: 97px;
+  }
+
+  .sidebars__left .sidebar--nav .sidebar__btn {
+    top: 160px;
+  }
+
+  .sidebars__right .sidebar--assemblage .sidebar__btn {
+    top: 97px;
+  }
+
+  .sidebar {
+    top: -75px;
   }
 
   .product-rating__average {

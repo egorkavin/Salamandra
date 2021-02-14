@@ -1,7 +1,11 @@
 .sidebars {
 	position: sticky;
-	top: 0;
+	top: 125px;
 	z-index: 100;
+
+	@media (max-width: 1625px) {
+		top: 75px;
+	}
 
 	&__left {
 		.sidebar {
@@ -20,7 +24,10 @@
 			&--filter {
 				.sidebar {
 					&__btn {
-						top: 22px;
+						top: 147px;
+						@media (max-width: 1625px) {
+							top: 97px;
+						}
 					}
 				}
 			}
@@ -28,7 +35,10 @@
 			&--nav {
 				.sidebar {
 					&__btn {
-						top: 85px;
+						top: 210px;
+						@media (max-width: 1625px) {
+							top: 160px;
+						}
 					}
 				}
 			}
@@ -68,7 +78,10 @@
 			&--assemblage {
 				.sidebar {
 					&__btn {
-						top: 22px;
+						top: 147px;
+						@media (max-width: 1625px) {
+							top: 97px;
+						}
 						@media (max-width: 425px) {
 							top: 80px;
 						}
@@ -135,10 +148,14 @@
 	font-size: 14px;
 	line-height: 1rem;
 	position: absolute;
-	top: 0;
+	top: -125px;
 	transition: transform 0.5s;
 	z-index: 30;
 	background-color: #212020;
+
+	@media (max-width: 1625px) {
+		top: -75px;
+	}
 
 	&--upper {
 		.sidebar__btn {
