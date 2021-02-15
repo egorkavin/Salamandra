@@ -28,7 +28,7 @@
 			margin-right: 3px;
 		}
 
-		@media (max-width: 425px) {
+		@media (max-width: 549px) {
 			display: flex;
 		}
 	}
@@ -189,7 +189,7 @@
 	&__product {
 		margin: 10px;
 
-		@media (max-width: 425px) {
+		@media (max-width: 549px) {
 			margin: 5px 0 5px 0;
 		}
 	}
@@ -199,7 +199,7 @@
 		padding: 0 55px;
 		position: relative;
 
-		@media (max-width: 425px) {
+		@media (max-width: 549px) {
 			padding: 0;
 			margin-bottom: 50px;
 			margin: -5px -5px 50px -5px;

@@ -13,11 +13,11 @@ if (sidebars.length) {
 		const btn = sidebar.querySelector('.sidebar__btn')
 		btn.addEventListener('click', () => {
 			if (
-				(window.innerWidth > 425 && !sidebar.classList.contains('sidebar--assemblage')) ||
-				window.innerWidth < 425
+				(window.innerWidth > 549 && !sidebar.classList.contains('sidebar--assemblage')) ||
+				window.innerWidth < 549
 			) {
 				const leftSidebars =
-					window.innerWidth > 425
+					window.innerWidth > 549
 						? document.querySelectorAll('.sidebars__left .sidebar')
 						: document.querySelectorAll('.sidebars__right .sidebar')
 
@@ -961,7 +961,7 @@ if (productComments) {
 
 function displayRightSidebars() {
 	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
-	if (+window.innerWidth <= 425 && rightSidebarsButtons && document.body.scrollTop < 150) {
+	if (+window.innerWidth <= 549 && rightSidebarsButtons && document.body.scrollTop < 150) {
 		rightSidebarsButtons.forEach(sidebar => {
 			sidebar.style.display = 'none'
 		})
