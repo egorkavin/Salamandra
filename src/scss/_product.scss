@@ -40,7 +40,8 @@
 		.discount + .product__title:before {
 			content: '';
 			width: 60px;
-			height: 65px;
+			max-height: 65px;
+			height: 100%;
 			display: block;
 			float: right;
 		}
