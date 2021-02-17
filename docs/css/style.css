@@ -1329,16 +1329,20 @@ svg[data-conflict-id].fixed.fixed--prev {
   z-index: 100;
 }
 
+.sidebars__left--hidden .sidebar {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.sidebars__left:not(.sidebars__left--hidden) .sidebar--upper .sidebar__btn {
+  padding-right: 0;
+}
+
 .sidebars__left .sidebar {
   left: 0;
   right: unset;
   border-right: 1px solid #1b1a1a;
-}
-
-.sidebars__left .sidebar--hidden {
-  -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
 }
 
 .sidebars__left .sidebar--lower {
@@ -1359,18 +1363,23 @@ svg[data-conflict-id].fixed.fixed--prev {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left: none;
+  padding-right: 14px;
+}
+
+.sidebars__right--hidden .sidebar {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.sidebars__right:not(.sidebars__right--hidden) .sidebar--upper .sidebar__btn {
+  padding-left: 0;
 }
 
 .sidebars__right .sidebar {
   left: unset;
   right: 0;
   border-left: 1px solid #1b1a1a;
-}
-
-.sidebars__right .sidebar--hidden {
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
 }
 
 .sidebars__right .sidebar--lower {
@@ -1404,7 +1413,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 .sidebars__right .sidebar__btn {
   left: -36px;
   right: unset;
-  padding-right: 3px;
+  padding-left: 14px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
@@ -1425,13 +1434,6 @@ svg[data-conflict-id].fixed.fixed--prev {
   transition: transform 0.5s, -webkit-transform 0.5s;
   z-index: 30;
   background-color: #212020;
-}
-
-.sidebar--upper .sidebar__btn {
-  padding-right: 14px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
 }
 
 .sidebar--lower {
@@ -1846,6 +1848,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 .product__title {
   font-size: 16px;
   color: #f9f9f9;
+  min-height: 38.4px;
 }
 
 .product:not(.swiper-slide) .product__title {
@@ -2047,7 +2050,8 @@ svg[data-conflict-id].fixed.fixed--prev {
 .product-card .product .discount + .product__title:before {
   content: '';
   width: 60px;
-  height: 65px;
+  max-height: 65px;
+  height: 100%;
   display: block;
   float: right;
 }
@@ -4046,7 +4050,11 @@ svg[data-conflict-id].fixed.fixed--prev {
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 549px) {
+  body.sidebar-open {
+    overflow-y: hidden;
+  }
+
   .sidebars__left {
     display: none;
   }
@@ -4073,6 +4081,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .sidebars__right .sidebar__btn {
     left: -42px;
+    padding-left: 0;
   }
 
   .sidebar__btn {

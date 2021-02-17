@@ -4,58 +4,46 @@
 'use strict'
 
 //Sidebar
-const sidebars = document.querySelectorAll('.sidebar')
-if (sidebars.length) {
-	const findUpper = sidebar => sidebar.classList.contains('sidebar--upper')
-	const hasHidden = sidebar => sidebar.classList.contains('sidebar--hidden')
-
-	sidebars.forEach(sidebar => {
+const allSidebars = document.querySelectorAll('.sidebar')
+if (allSidebars.length) {
+	const hasUpper = sidebar => sidebar.classList.contains('sidebar--upper')
+	allSidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
+		const leftIsClosest = btn.closest('.sidebars__left')
 		btn.addEventListener('click', () => {
-			if (
-				(window.innerWidth > 425 && !sidebar.classList.contains('sidebar--assemblage')) ||
-				window.innerWidth < 425
-			) {
-				const leftSidebars =
-					window.innerWidth > 425
-						? document.querySelectorAll('.sidebars__left .sidebar')
-						: document.querySelectorAll('.sidebars__right .sidebar')
+			const sidebarClass = leftIsClosest ? 'sidebars__left' : 'sidebars__right'
+			const hiddenClass = `${sidebarClass}--hidden`
+			const sidebarsWrapper = document.querySelector(`.${sidebarClass}`)
+			const sidebars = sidebarsWrapper.querySelectorAll('.sidebar')
 
-				const sidebarsAreHidden = () => {
-					const hiddenSidebars = [].filter.call(leftSidebars, hasHidden)
-					return hiddenSidebars.length === leftSidebars.length
-				}
-				const oldUpper = [].find.call(leftSidebars, findUpper)
-				const newUpper = sidebar
-				newUpper.classList.add('sidebar--upper')
-				if (sidebarsAreHidden() && oldUpper == null) {
-					leftSidebars.forEach(sidebar => {
-						if (sidebar !== newUpper) {
-							sidebar.classList.add('sidebar--lower')
-						}
-						sidebar.classList.remove('sidebar--hidden')
-					})
-				} else if (sidebarsAreHidden() && newUpper === oldUpper) {
-					leftSidebars.forEach(sidebar => {
-						sidebar.classList.remove('sidebar--hidden')
-					})
-				} else if (newUpper !== oldUpper) {
-					oldUpper.classList.add('sidebar--lower')
-					oldUpper.classList.remove('sidebar--upper')
-					newUpper.classList.remove('sidebar--lower')
+			const sidebarsAreHidden = sidebarsWrapper.classList.contains(hiddenClass)
+			const removeHiddenClass = () => sidebarsWrapper.classList.remove(hiddenClass)
+			const addHiddenClass = () => sidebarsWrapper.classList.add(hiddenClass)
 
-					if (sidebarsAreHidden()) {
-						leftSidebars.forEach(sidebar => {
-							sidebar.classList.remove('sidebar--hidden')
-						})
+			const oldUpper = [].find.call(sidebars, hasUpper)
+			const newUpper = sidebar
+			newUpper.classList.add('sidebar--upper')
+			document.body.classList.add('sidebar-open')
+			if (sidebarsAreHidden && !oldUpper) {
+				removeHiddenClass()
+				sidebars.forEach(sidebar => {
+					if (sidebar !== newUpper) {
+						sidebar.classList.add('sidebar--lower')
 					}
-				} else {
-					leftSidebars.forEach(sidebar => {
-						sidebar.classList.add('sidebar--hidden')
-					})
+				})
+			} else if (sidebarsAreHidden && newUpper === oldUpper) {
+				removeHiddenClass()
+			} else if (newUpper !== oldUpper) {
+				oldUpper.classList.add('sidebar--lower')
+				oldUpper.classList.remove('sidebar--upper')
+				newUpper.classList.remove('sidebar--lower')
+
+				if (sidebarsAreHidden) {
+					removeHiddenClass()
 				}
 			} else {
-				sidebar.classList.toggle('sidebar--hidden')
+				addHiddenClass()
+				document.body.classList.remove('sidebar-open')
 			}
 		})
 	})
@@ -961,7 +949,7 @@ if (productComments) {
 
 function displayRightSidebars() {
 	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
-	if (+window.innerWidth <= 425 && rightSidebarsButtons && document.body.scrollTop < 150) {
+	if (+window.innerWidth <= 549 && rightSidebarsButtons && document.body.scrollTop < 150) {
 		rightSidebarsButtons.forEach(sidebar => {
 			sidebar.style.display = 'none'
 		})
@@ -977,30 +965,34 @@ document.body.addEventListener('scroll', displayRightSidebars)
 
 const mobileSidebarButtons = document.querySelector('.section__mobile-buttons')
 if (mobileSidebarButtons) {
-	const cancelButtons = document.querySelectorAll('.sidebars__right .sidebar__close-btn')
-	cancelButtons.forEach(btn => {
-		btn.addEventListener('click', () => {
-			document.body.style = ''
-			const sidebarToclose = btn.closest('.sidebar')
-			if (sidebarToclose.classList.contains('sidebar--upper')) {
-				const rightSidebars = document.querySelectorAll('.sidebars__right .sidebar')
-				rightSidebars.forEach(sidebar => {
-					if (!sidebar.classList.contains('sidebar--hidden')) {
-						sidebar.classList.add('sidebar--hidden')
-					}
-				})
-			}
-			sidebarToclose.classList.add('sidebar--hidden')
-		})
-	})
 	const openButtons = mobileSidebarButtons.querySelectorAll('.section__button')
 	openButtons.forEach(btn => {
 		btn.addEventListener('click', () => {
-			document.body.style.overflow = 'hidden'
-			const rightSidebars = document.querySelector('.sidebars__right')
-			const sidebarToOpen = rightSidebars.querySelector(`.${btn.dataset.sidebar}`)
+			const rightSidebarsWrapper = document.querySelector('.sidebars__right')
+			rightSidebarsWrapper.classList.remove('sidebars__right--hidden')
+
+			const rightSidebars = rightSidebarsWrapper.querySelectorAll('.sidebar')
+			rightSidebars.forEach(sidebar => {
+				sidebar.classList.remove('sidebar--upper')
+				sidebar.classList.add('sidebar--lower')
+			})
+
+			const sidebarToOpen = rightSidebarsWrapper.querySelector(`.${btn.dataset.sidebar}`)
 			sidebarToOpen.classList.remove('sidebar--lower')
-			sidebarToOpen.classList.remove('sidebar--hidden')
+			sidebarToOpen.classList.add('sidebar--upper')
+
+			document.body.classList.add('sidebar-open')
 		})
 	})
 }
+
+const cancelButtons = document.querySelectorAll('.sidebars__right .sidebar__close-btn')
+cancelButtons.forEach(btn => {
+	btn.addEventListener('click', () => {
+		const rightSidebars = document.querySelector('.sidebars__right')
+		if (!rightSidebars.classList.contains('sidebars__right--hidden')) {
+			rightSidebars.classList.add('sidebars__right--hidden')
+		}
+		document.body.classList.remove('sidebar-open')
+	})
+})
