@@ -11,6 +11,12 @@ html {
 body {
 	background-color: #222;
 	min-width: 320px;
+
+	&.sidebar-open {
+		@media (max-width: 549px) {
+			overflow-y: hidden;
+		}
+	}
 }
 
 .hidden-svg {
