@@ -805,7 +805,7 @@ body {
   font-weight: 400;
 }
 
-.filter:not(.filter--selected) .filter__item:hover .filter__icon--except {
+.filter:not(.filter--selected) .filter__item:not(.filter__item--disabled):hover .filter__icon--except {
   display: inline;
 }
 
@@ -837,6 +837,7 @@ body {
 .filter__icon--except {
   cursor: pointer;
   display: none;
+  margin-right: 10px;
 }
 
 .filter__item--disabled {
@@ -849,6 +850,10 @@ body {
 
 .filter__item--disabled .fake-checkbox {
   border-color: #807979;
+}
+
+.filter__item--disabled .filter__icon--except {
+  display: none;
 }
 
 .filter__checkbox {
@@ -921,6 +926,15 @@ body {
 
 .filter__items-list {
   padding: 18px 0;
+}
+
+.filter__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .filter__item:not(:last-of-type) {
@@ -3822,6 +3836,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .sign--mobile {
     display: block;
+  }
+
+  .filter__icon--except {
+    display: inline;
   }
 
   .section__button--search {

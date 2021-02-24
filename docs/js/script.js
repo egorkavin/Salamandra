@@ -73,7 +73,7 @@ if (allSidebars.length) {
 							listItem.querySelector('.filter__checkbox').checked = true
 						}
 					})
-					const filterItemsCount = document.querySelector('.filter__items-count')
+					const filterItemsCount = filter.querySelector('.filter__items-count')
 					filterItemsCount.textContent = `(${getCheckedItems(filter).length}/${
 						items.length
 					})`
@@ -801,6 +801,11 @@ if (menuBtn) {
 	menuBtn.addEventListener('click', () => {
 		menuBtn.classList.toggle('icon-menu--opened')
 		headerSign.classList.toggle('header__sign--opened')
+	})
+	document.addEventListener('click', e => {
+		if (!headerSign.contains(e.target) && !menuBtn.contains(e.target)) {
+			headerSign.classList.remove('header__sign--opened')
+		}
 	})
 }
 
