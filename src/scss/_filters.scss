@@ -56,7 +56,7 @@
 	font-weight: 400;
 
 	&:not(.filter--selected) {
-		.filter__item:hover .filter__icon--except {
+		.filter__item:not(.filter__item--disabled):hover .filter__icon--except {
 			display: inline;
 		}
 	}
@@ -82,6 +82,11 @@
 		&--except {
 			cursor: pointer;
 			display: none;
+			margin-right: 10px;
+
+			@media (max-width: 768px) {
+				display: inline;
+			}
 		}
 	}
 
@@ -95,6 +100,10 @@
 
 			.fake-checkbox {
 				border-color: #807979;
+			}
+
+			.filter__icon--except {
+				display: none;
 			}
 		}
 	}
@@ -158,6 +167,9 @@
 	}
 
 	&__item {
+		display: flex;
+		justify-content: space-between;
+
 		&:not(:last-of-type) {
 			margin-bottom: 18px;
 		}
