@@ -73,7 +73,7 @@ if (allSidebars.length) {
 							listItem.querySelector('.filter__checkbox').checked = true
 						}
 					})
-					const filterItemsCount = document.querySelector('.filter__items-count')
+					const filterItemsCount = filter.querySelector('.filter__items-count')
 					filterItemsCount.textContent = `(${getCheckedItems(filter).length}/${
 						items.length
 					})`
