@@ -802,6 +802,11 @@ if (menuBtn) {
 		menuBtn.classList.toggle('icon-menu--opened')
 		headerSign.classList.toggle('header__sign--opened')
 	})
+	document.addEventListener('click', e => {
+		if (!headerSign.contains(e.target) && !menuBtn.contains(e.target)) {
+			headerSign.classList.remove('header__sign--opened')
+		}
+	})
 }
 
 const productPhotos = document.querySelector('.product__photos')
