@@ -279,7 +279,7 @@
 
 .conflicts {
 	&__title {
-		width: 320px;
+		max-width: 320px;
 		margin-bottom: 10px;
 		padding-left: 15px;
 		line-height: 35px;
