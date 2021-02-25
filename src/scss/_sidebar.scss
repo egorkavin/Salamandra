@@ -1,12 +1,4 @@
 .sidebars {
-	position: sticky;
-	top: 125px;
-	z-index: 100;
-
-	@media (max-width: 1625px) {
-		top: 75px;
-	}
-
 	&__left {
 		&--hidden .sidebar {
 			transform: translateX(-100%);
@@ -158,15 +150,11 @@
 	font-family: Verdana;
 	font-size: 14px;
 	line-height: 1rem;
-	position: absolute;
-	top: -125px;
+	position: fixed;
+	top: 0;
 	transition: transform 0.5s;
 	z-index: 30;
 	background-color: #212020;
-
-	@media (max-width: 1625px) {
-		top: -75px;
-	}
 
 	&--lower {
 		background-color: transparent;
