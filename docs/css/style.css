@@ -115,7 +115,6 @@ ul li {
 
 body,
 html {
-  overflow-x: hidden;
   position: relative;
 }
 
@@ -1336,13 +1335,6 @@ svg[data-conflict-id].fixed.fixed--prev {
   display: none;
 }
 
-.sidebars {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 125px;
-  z-index: 100;
-}
-
 .sidebars__left--hidden .sidebar {
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);
@@ -1439,8 +1431,8 @@ svg[data-conflict-id].fixed.fixed--prev {
   font-family: Verdana;
   font-size: 14px;
   line-height: 1rem;
-  position: absolute;
-  top: -125px;
+  position: fixed;
+  top: 0;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   -o-transition: transform 0.5s;
@@ -3731,10 +3723,6 @@ svg[data-conflict-id].fixed.fixed--prev {
     display: block;
   }
 
-  .sidebars {
-    top: 75px;
-  }
-
   .sidebars__left .sidebar--filter .sidebar__btn {
     top: 97px;
   }
@@ -3745,10 +3733,6 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .sidebars__right .sidebar--assemblage .sidebar__btn {
     top: 97px;
-  }
-
-  .sidebar {
-    top: -75px;
   }
 
   .product-rating__average {
