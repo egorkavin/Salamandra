@@ -265,6 +265,7 @@ if (yearRates.length) {
 		const circle = `
 		<svg class="percent-circle" width="30" height="30">
 			<circle
+				transform="rotate(270, 15, 15)"
 				stroke="#fff" fill="transparent"
 				stroke-width="2" cx="15" cy="15" r="13"
 				stroke-linecap="round"
@@ -747,6 +748,7 @@ if (productRating.length) {
 		const svg = `
 		<svg class="rate-ring" width="30" height="30">
 		<circle 
+			transform="rotate(270, 15, 15)"
 			stroke="#fff" fill="transparent" stroke-width="2" cx="15" cy="15" r="13"
 			stroke-dasharray="
 			${Array(value).fill(DASH_LEN).join(` ${GAP_LEN} `)} 

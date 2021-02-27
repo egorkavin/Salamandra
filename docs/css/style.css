@@ -2242,16 +2242,6 @@ svg[data-conflict-id].fixed.fixed--prev {
   left: 0;
 }
 
-.percent-circle circle,
-.rate-ring circle {
-  -webkit-transform-origin: center;
-      -ms-transform-origin: center;
-          transform-origin: center;
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-
 .year-rate {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
