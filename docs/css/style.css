@@ -4057,7 +4057,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 
 @media (max-width: 549px) {
   body.sidebar-open {
-    overflow-y: hidden;
+    overflow: hidden;
   }
 
   .sidebars__left {

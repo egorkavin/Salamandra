@@ -13,7 +13,7 @@ body {
 
 	&.sidebar-open {
 		@media (max-width: 549px) {
-			overflow-y: hidden;
+			overflow: hidden;
 		}
 	}
 }
