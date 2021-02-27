@@ -852,6 +852,8 @@
 }
 
 .comment-vote {
+	flex-shrink: 0;
+
 	&__rating {
 		font-weight: 700;
 	}
@@ -868,6 +870,10 @@
 
 		&--up {
 			transform: rotate(180deg);
+		}
+
+		@media (max-width: 768px) {
+			visibility: visible;
 		}
 	}
 }

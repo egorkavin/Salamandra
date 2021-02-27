@@ -2869,6 +2869,11 @@ svg[data-conflict-id].fixed.fixed--prev {
           filter: url(#white) url(#red);
 }
 
+.comment-vote {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 .comment-vote__rating {
   font-weight: 700;
 }
@@ -3927,6 +3932,10 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .product-comment_response {
     margin-left: 30px;
+  }
+
+  .comment-vote__btn {
+    visibility: visible;
   }
 
   .product-page .product__wrapper {
