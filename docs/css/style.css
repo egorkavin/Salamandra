@@ -3035,6 +3035,9 @@ svg[data-conflict-id].fixed.fixed--prev {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   max-width: 721px;
   width: 100%;
 }
