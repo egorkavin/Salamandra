@@ -498,16 +498,21 @@ if (viewTypes.length) {
 	}
 }
 
-if (assemblageParts) {
-	let conflicts = document.querySelectorAll('.assemblage-parts__part[data-conflict-id~="1"]')
-	const getTitle = conflict => conflict.querySelector('.product__title')
-	for (let i = 1; conflicts.length > 0; ) {
-		if (conflicts.length !== 1) {
-			setConflictsLines2(i, ...[].map.call(conflicts, getTitle))
+function updateConflictsLines() {
+	if (assemblageParts) {
+		let conflicts = document.querySelectorAll('.assemblage-parts__part[data-conflict-id~="1"]')
+		const getTitle = conflict => conflict.querySelector('.product__title')
+		for (let i = 1; conflicts.length > 0; ) {
+			if (conflicts.length !== 1) {
+				setConflictsLines2(i, ...[].map.call(conflicts, getTitle))
+			}
+			conflicts = document.querySelectorAll(
+				`.assemblage-parts__part[data-conflict-id~="${++i}"]`
+			)
 		}
-		conflicts = document.querySelectorAll(`.assemblage-parts__part[data-conflict-id~="${++i}"]`)
 	}
 }
+updateConflictsLines()
 
 const pcPartConflicts = document.querySelectorAll('.pc-part[data-conflict-id]')
 if (pcPartConflicts) {
@@ -1000,6 +1005,17 @@ function reportWindowSize() {
 			}
 		})
 	}
+	const conflicts = document.querySelectorAll('.assemblage__conflicts .conflicts__item')
+	if (conflicts) {
+		const conflictsSvg = document.querySelectorAll('svg[data-conflict-id]')
+		conflictsSvg.forEach(svg => svg.remove())
+		conflicts.forEach(conflict => {
+			conflict.classList.remove('conflicts__item--chosen')
+			conflict.classList.remove('conflicts__item--hover')
+			conflict.classList.remove('conflicts__item--prev')
+		})
+	}
+	updateConflictsLines()
 }
 
 window.addEventListener('resize', reportWindowSize)

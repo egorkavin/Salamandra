@@ -3965,10 +3965,6 @@ svg[data-conflict-id].fixed.fixed--prev {
     display: none;
   }
 
-  .assemblage-parts .product {
-    margin-left: 0;
-  }
-
   .assemblage-parts .product:not(.product--collapsed) {
     max-height: 100%;
   }
