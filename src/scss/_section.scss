@@ -14,6 +14,22 @@
 		align-items: center;
 		flex-wrap: wrap;
 		margin-bottom: 20px;
+
+		&--center-on-wrap {
+			margin: -10px -5px 20px;
+			justify-content: center;
+
+			.section {
+				&__title,
+				&__button {
+					margin: 10px 5px 0;
+				}
+
+				&__title {
+					margin-right: auto;
+				}
+			}
+		}
 	}
 
 	&__mobile-buttons {

@@ -1568,6 +1568,22 @@ svg[data-conflict-id].fixed.fixed--prev {
   margin-bottom: 20px;
 }
 
+.section__header--center-on-wrap {
+  margin: -10px -5px 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section__header--center-on-wrap .section__title,
+.section__header--center-on-wrap .section__button {
+  margin: 10px 5px 0;
+}
+
+.section__header--center-on-wrap .section__title {
+  margin-right: auto;
+}
+
 .section__mobile-buttons {
   display: none;
   -ms-flex-wrap: wrap;
