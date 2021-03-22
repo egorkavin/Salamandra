@@ -67,6 +67,13 @@
 
 		&--back {
 			cursor: pointer;
+
+			&:hover {
+				color: #f9f9f9;
+				.svg-icon {
+					filter: url(#white) url(#f9f9f9);
+				}
+			}
 		}
 
 		.svg-icon {
@@ -89,6 +96,10 @@
 
 		&--search {
 			margin: 0 11px;
+
+			&:hover .svg-icon {
+				filter: url(#white) url(#f9f9f9);
+			}
 
 			&.search-bar--active .search-bar__wrapper {
 				border-bottom: 1px solid #1b1a1a;

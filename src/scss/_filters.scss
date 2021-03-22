@@ -31,7 +31,7 @@
 	display: inline-block;
 	width: 10px;
 	height: 10px;
-	border: 1px solid #f9f9f9;
+	border: 1px solid #bfbfbf;
 	border-radius: 5px;
 	position: relative;
 	margin-right: 5px;
@@ -55,6 +55,15 @@
 	font-size: 14px;
 	font-weight: 400;
 
+	&:hover {
+		.filter__name {
+			color: #f9f9f9;
+		}
+		.filter__icon--arrow {
+			filter: url(#white) url(#f9f9f9);
+		}
+	}
+
 	&:not(.filter--selected) {
 		.filter__item:not(.filter__item--disabled):hover .filter__icon--except {
 			display: inline;
@@ -77,6 +86,7 @@
 			height: 9px;
 			background-image: url(../img/filter/filter__arrow.svg);
 			right: -15px;
+			filter: url(#white) url(#grey);
 		}
 
 		&--except {
@@ -91,6 +101,12 @@
 	}
 
 	&__item {
+		&:not(.filter__item--disabled):hover {
+			color: #f9f9f9;
+			.fake-checkbox {
+				border-color: #f9f9f9;
+			}
+		}
 		&--disabled {
 			color: #807979;
 

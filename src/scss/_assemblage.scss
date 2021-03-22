@@ -53,6 +53,14 @@
 			margin-top: 15px;
 			position: relative;
 
+			.svg-icon {
+				filter: url(#white) url(#grey);
+
+				&:hover {
+					filter: url(#white) url(#f9f9f9);
+				}
+			}
+
 			.icon-steam {
 				position: absolute;
 				right: 0;
@@ -91,6 +99,9 @@
 	&__add-item {
 		margin-top: 12px;
 		color: #bfbfbf;
+		&:hover {
+			color: #f9f9f9;
+		}
 		&:before {
 			content: '+ ';
 			font-size: 18px;
@@ -102,6 +113,10 @@
 		color: #bfbfbf;
 		font-size: 14px;
 		font-weight: 700;
+
+		&:hover {
+			color: #f9f9f9;
+		}
 
 		&:before {
 			content: '+ ';

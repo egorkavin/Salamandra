@@ -5,6 +5,10 @@
 		&--active.svg-icon {
 			filter: url(#white) url(#red);
 		}
+
+		&:not(.view-types__type--active):hover {
+			filter: url(#white) url(#f9f9f9);
+		}
 	}
 }
 

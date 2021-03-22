@@ -548,6 +548,15 @@ body {
   font-weight: 700;
 }
 
+.header__button:hover {
+  color: #f9f9f9;
+}
+
+.header__button:hover .svg-icon {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
+}
+
 .header__button--search {
   margin-right: 30px;
   cursor: pointer;
@@ -651,6 +660,10 @@ body {
   cursor: pointer;
 }
 
+.sign__type:hover {
+  color: #f9f9f9;
+}
+
 .sign__type--sign-in {
   margin-right: 5px;
 }
@@ -667,6 +680,14 @@ body {
 
 .sign__methods .svg-icon {
   margin: 0 3px;
+  cursor: pointer;
+  -webkit-filter: url(#white) url(#grey);
+          filter: url(#white) url(#grey);
+}
+
+.sign__methods .svg-icon:hover {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
 }
 
 .sign-form__item {
@@ -777,7 +798,7 @@ body {
   display: inline-block;
   width: 10px;
   height: 10px;
-  border: 1px solid #f9f9f9;
+  border: 1px solid #bfbfbf;
   border-radius: 5px;
   position: relative;
   margin-right: 5px;
@@ -802,6 +823,15 @@ body {
 .filter {
   font-size: 14px;
   font-weight: 400;
+}
+
+.filter:hover .filter__name {
+  color: #f9f9f9;
+}
+
+.filter:hover .filter__icon--arrow {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
 }
 
 .filter:not(.filter--selected) .filter__item:not(.filter__item--disabled):hover .filter__icon--except {
@@ -831,12 +861,22 @@ body {
   height: 9px;
   background-image: url(../img/filter/filter__arrow.svg);
   right: -15px;
+  -webkit-filter: url(#white) url(#grey);
+          filter: url(#white) url(#grey);
 }
 
 .filter__icon--except {
   cursor: pointer;
   display: none;
   margin-right: 10px;
+}
+
+.filter__item:not(.filter__item--disabled):hover {
+  color: #f9f9f9;
+}
+
+.filter__item:not(.filter__item--disabled):hover .fake-checkbox {
+  border-color: #f9f9f9;
 }
 
 .filter__item--disabled {
@@ -1027,6 +1067,16 @@ body {
   position: relative;
 }
 
+.sidebar--assemblage .assemblage-items__pages .svg-icon {
+  -webkit-filter: url(#white) url(#grey);
+          filter: url(#white) url(#grey);
+}
+
+.sidebar--assemblage .assemblage-items__pages .svg-icon:hover {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
+}
+
 .sidebar--assemblage .assemblage-items__pages .icon-steam {
   position: absolute;
   right: 0;
@@ -1065,6 +1115,10 @@ body {
   color: #bfbfbf;
 }
 
+.pc-parts__add-item:hover {
+  color: #f9f9f9;
+}
+
 .pc-parts__add-item:before {
   content: '+ ';
   font-size: 18px;
@@ -1075,6 +1129,10 @@ body {
   color: #bfbfbf;
   font-size: 14px;
   font-weight: 700;
+}
+
+.pc-parts__choose-item:hover {
+  color: #f9f9f9;
 }
 
 .pc-parts__choose-item:before {
@@ -1475,6 +1533,15 @@ svg[data-conflict-id].fixed.fixed--prev {
   cursor: pointer;
 }
 
+.sidebar__btn:hover .sidebar__btn-icon span {
+  background-color: #f9f9f9;
+}
+
+.sidebar__btn:hover .svg-icon {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
+}
+
 .sidebar__btn-icon {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1495,7 +1562,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 .sidebar__btn-icon span {
   display: inline-block;
   height: 2px;
-  background-color: #f9f9f9;
+  background-color: #bfbfbf;
 }
 
 .sidebar__btn-icon--filter span:nth-of-type(1) {
@@ -1625,6 +1692,15 @@ svg[data-conflict-id].fixed.fixed--prev {
   cursor: pointer;
 }
 
+.section__title--back:hover {
+  color: #f9f9f9;
+}
+
+.section__title--back:hover .svg-icon {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
+}
+
 .section__title .svg-icon {
   margin-right: 15px;
   -ms-flex-negative: 0;
@@ -1647,6 +1723,11 @@ svg[data-conflict-id].fixed.fixed--prev {
 
 .section__button--search {
   margin: 0 11px;
+}
+
+.section__button--search:hover .svg-icon {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
 }
 
 .section__button--search.search-bar--active .search-bar__wrapper {
@@ -1729,6 +1810,11 @@ svg[data-conflict-id].fixed.fixed--prev {
 .view-types__type--active.svg-icon {
   -webkit-filter: url(#white) url(#red);
           filter: url(#white) url(#red);
+}
+
+.view-types__type:not(.view-types__type--active):hover {
+  -webkit-filter: url(#white) url(#f9f9f9);
+          filter: url(#white) url(#f9f9f9);
 }
 
 .product {
