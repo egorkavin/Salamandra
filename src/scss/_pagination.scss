@@ -11,6 +11,10 @@
 		border-radius: 10px;
 		background-color: #bfbfbf;
 
+		&:hover {
+			background-color: #f9f9f9;
+		}
+
 		.icon-show-more {
 			margin-right: 5px;
 		}
@@ -30,6 +34,10 @@
 		&--current .pagination__page-button {
 			background-color: #da0b29;
 			color: #f9f9f9;
+
+			&:hover {
+				background-color: #da0b29;
+			}
 		}
 
 		span {
@@ -48,5 +56,9 @@
 		border-radius: 10px;
 		background-color: #bfbfbf;
 		color: #000;
+
+		&:hover {
+			background-color: #f9f9f9;
+		}
 	}
 }

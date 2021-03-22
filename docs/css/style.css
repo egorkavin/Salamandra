@@ -1924,6 +1924,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   background-color: #bfbfbf;
 }
 
+.product__button--small--grey:hover {
+  background-color: #f9f9f9;
+}
+
 .product__button--small--red {
   background-color: #da0b29;
 }
@@ -1989,6 +1993,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   background-color: #bfbfbf;
 }
 
+.pagination__show-more:hover {
+  background-color: #f9f9f9;
+}
+
 .pagination__show-more .icon-show-more {
   margin-right: 5px;
 }
@@ -2012,6 +2020,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   color: #f9f9f9;
 }
 
+.pagination__page-wrapper--current .pagination__page-button:hover {
+  background-color: #da0b29;
+}
+
 .pagination__page-wrapper span {
   font-size: 14px;
   font-weight: bold;
@@ -2027,6 +2039,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   border-radius: 10px;
   background-color: #bfbfbf;
   color: #000;
+}
+
+.pagination__page-button:hover {
+  background-color: #f9f9f9;
 }
 
 .section__product-page {
@@ -2741,6 +2757,10 @@ svg[data-conflict-id].fixed.fixed--prev {
   font-weight: 700;
   height: 25px;
   padding: 0 12px 0 5px;
+}
+
+.comment-form__button:hover {
+  background-color: #f9f9f9;
 }
 
 .comment-form__button .icon-back-arrow {

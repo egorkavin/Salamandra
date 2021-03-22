@@ -717,6 +717,10 @@
 		height: 25px;
 		padding: 0 12px 0 5px;
 
+		&:hover {
+			background-color: #f9f9f9;
+		}
+
 		.icon-back-arrow {
 			filter: none;
 			transform: scaleX(-1);

@@ -155,6 +155,10 @@
 
 			&--grey {
 				background-color: #bfbfbf;
+
+				&:hover {
+					background-color: #f9f9f9;
+				}
 			}
 
 			&--red {
