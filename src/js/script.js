@@ -965,9 +965,14 @@ cancelButtons.forEach(btn => {
 	})
 })
 
+function isMobileButtonsVisible() {
+	const { bottom } = mobileSidebarButtons.getBoundingClientRect()
+	return bottom > 0
+}
+
 function displayRightSidebars() {
 	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
-	if (+window.innerWidth <= 549 && rightSidebarsButtons && window.pageYOffset < 150) {
+	if (+window.innerWidth <= 549 && rightSidebarsButtons && isMobileButtonsVisible()) {
 		rightSidebarsButtons.forEach(sidebar => {
 			sidebar.style.display = 'none'
 		})
