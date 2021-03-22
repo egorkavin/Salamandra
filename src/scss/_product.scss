@@ -8,11 +8,11 @@
 	&__item {
 		background-color: #1b1a1a;
 		border-radius: 3px;
-		box-shadow: 0px 0px 4.5px 0.5px rgba(126, 37, 37, 0.2);
+		box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
 		overflow: hidden;
 
 		&:hover {
-			box-shadow: 0px 0px 13.5px 1.5px rgba(126, 37, 37, 0.5);
+			box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
 		}
 
 		&:not(:last-child) {

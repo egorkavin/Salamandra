@@ -19,13 +19,13 @@
 		overflow: hidden;
 		background-color: #1b1a1a;
 		border-radius: 3px;
-		box-shadow: 0 0 4.5px 0.5px rgba(126, 37, 37, 0.2);
+		box-shadow: 0 0 4.5px 0.5px rgba(0, 0, 0, 0.2);
 	}
 
 	&:hover {
 		.product__wrapper {
 			z-index: 20;
-			box-shadow: 0 0 13.5px 1.5px rgba(126, 37, 37, 0.5);
+			box-shadow: 0 0 13.5px 1.5px rgba(0, 0, 0, 0.5);
 		}
 
 		.product__hidden-description {

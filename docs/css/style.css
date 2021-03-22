@@ -1743,14 +1743,14 @@ svg[data-conflict-id].fixed.fixed--prev {
   overflow: hidden;
   background-color: #1b1a1a;
   border-radius: 3px;
-  -webkit-box-shadow: 0 0 4.5px 0.5px rgba(126, 37, 37, 0.2);
-          box-shadow: 0 0 4.5px 0.5px rgba(126, 37, 37, 0.2);
+  -webkit-box-shadow: 0 0 4.5px 0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 4.5px 0.5px rgba(0, 0, 0, 0.2);
 }
 
 .product:hover .product__wrapper {
   z-index: 20;
-  -webkit-box-shadow: 0 0 13.5px 1.5px rgba(126, 37, 37, 0.5);
-          box-shadow: 0 0 13.5px 1.5px rgba(126, 37, 37, 0.5);
+  -webkit-box-shadow: 0 0 13.5px 1.5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 13.5px 1.5px rgba(0, 0, 0, 0.5);
 }
 
 .product:hover .product__hidden-description {
@@ -2038,14 +2038,14 @@ svg[data-conflict-id].fixed.fixed--prev {
 .product-page__item {
   background-color: #1b1a1a;
   border-radius: 3px;
-  -webkit-box-shadow: 0px 0px 4.5px 0.5px rgba(126, 37, 37, 0.2);
-          box-shadow: 0px 0px 4.5px 0.5px rgba(126, 37, 37, 0.2);
+  -webkit-box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 4.5px 0.5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
 .product-page__item:hover {
-  -webkit-box-shadow: 0px 0px 13.5px 1.5px rgba(126, 37, 37, 0.5);
-          box-shadow: 0px 0px 13.5px 1.5px rgba(126, 37, 37, 0.5);
+  -webkit-box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 13.5px 1.5px rgba(0, 0, 0, 0.5);
 }
 
 .product-page__item:not(:last-child) {
@@ -3902,8 +3902,8 @@ svg[data-conflict-id].fixed.fixed--prev {
 
   .section__products .product--long:hover .product__wrapper {
     z-index: 20;
-    -webkit-box-shadow: 0 0 13.5px 1.5px rgba(126, 37, 37, 0.5);
-            box-shadow: 0 0 13.5px 1.5px rgba(126, 37, 37, 0.5);
+    -webkit-box-shadow: 0 0 13.5px 1.5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 13.5px 1.5px rgba(0, 0, 0, 0.5);
   }
 
   .section__products .product--long:hover .product__hidden-description {
