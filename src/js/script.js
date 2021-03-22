@@ -966,6 +966,9 @@ cancelButtons.forEach(btn => {
 })
 
 function isMobileButtonsVisible() {
+	if (!mobileSidebarButtons) {
+		return false
+	}
 	const { bottom } = mobileSidebarButtons.getBoundingClientRect()
 	return bottom > 0
 }
