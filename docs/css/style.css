@@ -1954,6 +1954,7 @@ svg[data-conflict-id].fixed.fixed--prev {
 }
 
 .product__title {
+  width: 100%;
   font-size: 16px;
   color: #f9f9f9;
   min-height: 38.4px;
