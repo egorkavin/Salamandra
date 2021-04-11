@@ -1977,6 +1977,13 @@ svg[data-conflict-id].fixed.fixed--prev {
   margin-top: 12px;
 }
 
+.product__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+}
+
 .product__rating {
   font-size: 14px;
   color: #f9f9f9;

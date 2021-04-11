@@ -137,6 +137,11 @@
 		margin-top: 12px;
 	}
 
+	&__buttons {
+		display: flex;
+		margin-left: auto;
+	}
+
 	&__rating {
 		font-size: 14px;
 		color: #f9f9f9;
