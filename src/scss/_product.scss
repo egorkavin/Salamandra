@@ -112,7 +112,7 @@
 
 		&__score {
 			order: 3;
-			margin-bottom: 25px;
+			margin-bottom: 8px;
 		}
 
 		&__rating {
@@ -181,36 +181,15 @@
 	}
 }
 
-.product-info {
-	&__field {
-	}
-
-	&__title {
-	}
-
-	&__value {
-	}
-}
-
 .product-score {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;
-	padding-left: 33px;
-	height: 30px;
 	font-size: 14px;
 	color: #f9f9f9;
 
 	&__rating {
-		margin-right: 10px;
-		margin-left: -32px;
-	}
-
-	&__year-rate {
-		&:not(:last-child) {
-			margin-right: 10px;
-		}
+		flex-shrink: 0;
 	}
 }
 
@@ -232,12 +211,16 @@
 }
 
 .year-rate {
-	display: inline-flex;
-	height: 30px;
-	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	font-weight: 400;
-	padding-left: 10px;
-	border-left: 1px solid #212020;
+
+	&__item {
+		padding-left: 10px;
+		border-left: 1px solid #212020;
+		margin-left: 10px;
+	}
 
 	&__percentage {
 		margin: 0 12px;
