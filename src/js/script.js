@@ -372,7 +372,6 @@ if (assemblageParts.length) {
 	})
 }
 
-//TODO Move to one block (conflicts)
 const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
 const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
 const disableCirclesAsPrevious = circle => {
@@ -826,15 +825,23 @@ if (menuBtn) {
 const productPhotos = document.querySelector('.product__photos')
 if (productPhotos) {
 	const slides = productPhotos.querySelectorAll('.swiper-slide')
-	slides.forEach(slide => {
+	const slidesCount = slides.length
+
+	const getSlideClone = idx => {
+		const imgClone = slides[idx].cloneNode()
+		imgClone.removeAttribute('role')
+		imgClone.removeAttribute('style')
+		imgClone.removeAttribute('aria-label')
+		imgClone.removeAttribute('class')
+		return imgClone
+	}
+
+	slides.forEach((slide, i) => {
 		slide.addEventListener('click', () => {
 			if (slide.dataset.modalSlide) {
-				const imgClone = slide.cloneNode(true)
+				const imgClone = getSlideClone(i)
 				imgClone.classList = 'product__image'
 				imgClone.dataset.modalSlide = slide.dataset.modalSlide
-				imgClone.removeAttribute('role')
-				imgClone.removeAttribute('style')
-				imgClone.removeAttribute('aria-label')
 				slide.removeAttribute('data-modal-slide')
 
 				const prevModalNum = productPhotos.querySelector('.product__image').dataset
@@ -852,17 +859,27 @@ if (productPhotos) {
 	})
 
 	const productModal = document.querySelector('.product-modal')
+	const closeModalButton = productModal.querySelector('.product-modal__close')
+	const imageWrapper = productModal.querySelector('.product-modal__img')
+
+	const openModal = () => {
+		productModal.classList.add('product-modal--visible')
+	}
+	const closeModal = () => {
+		productModal.classList.remove('product-modal--visible')
+	}
+
+	const closeTarget = [productModal, imageWrapper, closeModalButton]
+	productModal.addEventListener('click', e => {
+		if (closeTarget.some(target => target === e.target)) {
+			closeModal()
+		}
+	})
+
 	const prevBtn = productModal.querySelector('.product-modal__prev')
 	const nextBtn = productModal.querySelector('.product-modal__next')
 	prevBtn.addEventListener('click', () => plusSlides(-1))
 	nextBtn.addEventListener('click', () => plusSlides(1))
-
-	const openModal = () => {
-		productModal.style.display = 'flex'
-	}
-	const closeModal = () => {
-		productModal.style.display = 'none'
-	}
 
 	let slideIndex = 1
 	const plusSlides = n => {
@@ -872,33 +889,22 @@ if (productPhotos) {
 		showSlides((slideIndex = n))
 	}
 
-	productModal.addEventListener('click', e => {
-		const targetClassList = e.target.classList
-		if (
-			targetClassList.contains('product-modal') ||
-			targetClassList.contains('product-modal__close')
-		) {
-			closeModal()
-		}
-	})
-
 	const productPhotosMain = productPhotos.firstElementChild
 	productPhotosMain.addEventListener('click', () => {
 		openModal()
-		currentSlide(+productPhotosMain.firstElementChild.dataset.modalSlide)
+		currentSlide(productPhotosMain.firstElementChild.dataset.modalSlide - 1)
 	})
 
 	function showSlides(n) {
-		const imgs = document.querySelectorAll('.product-modal__img')
-		if (n > imgs.length) {
-			slideIndex = 1
-		} else if (n < 1) {
-			slideIndex = imgs.length
+		const wrapper = document.querySelector('.product-modal__img')
+		if (n > slidesCount - 1) {
+			slideIndex = 0
+		} else if (n < 0) {
+			slideIndex = slidesCount - 1
 		}
-		imgs.forEach(img => {
-			img.style.display = 'none'
-		})
-		imgs[slideIndex - 1].style.display = 'flex'
+		wrapper.innerHTML = ''
+		const slideClone = getSlideClone(slideIndex)
+		wrapper.appendChild(slideClone)
 	}
 }
 
@@ -1009,6 +1015,20 @@ function displayRightSidebars() {
 				leftSidebarsWrapper.appendChild(sidebar)
 			}
 		})
+	}
+
+	if (window.innerWidth > 768) {
+		const activeTab = document.querySelector('.product-tabs__item--active')
+		if (activeTab.dataset.tab === 'photos') {
+			const activeTabBody = document.querySelector(`#${activeTab.dataset.tab}`)
+			activeTab.classList.remove('product-tabs__item--active')
+			activeTabBody.classList.remove('product-tabs__block--active')
+
+			const newActiveTab = document.querySelector(`[data-tab="shops"]`)
+			const newActiveTabBody = document.querySelector(`#shops`)
+			newActiveTab.classList.add('product-tabs__item--active')
+			newActiveTabBody.classList.add('product-tabs__block--active')
+		}
 	}
 
 	const rightSidebarsButtons = rightSidebarsWrapper.querySelectorAll('.sidebar__btn')

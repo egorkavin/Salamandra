@@ -66,7 +66,7 @@
 
 		&__image-wrapper {
 			max-width: 100%;
-			height: 285px; //TODO
+			height: 285px;
 		}
 
 		&__image {
@@ -124,7 +124,8 @@
 .product-slider {
 	margin: 0;
 	height: 56px;
-	width: 475px;
+	width: 100%;
+	max-width: 475px;
 	position: relative;
 
 	&__item {
@@ -876,6 +877,10 @@
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0.5);
 
+	&--visible {
+		display: flex;
+	}
+
 	&__close {
 		color: white;
 		position: absolute;
@@ -899,7 +904,7 @@
 	}
 
 	&__img {
-		display: none;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 
@@ -960,7 +965,6 @@
 	}
 }
 
-// TODO choose width
 @media (max-width: 568px) {
 	.product-comment {
 		.product-rating__star--disabled {
