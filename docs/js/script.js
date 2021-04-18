@@ -6,44 +6,51 @@
 //Sidebar
 const allSidebars = document.querySelectorAll('.sidebar')
 if (allSidebars.length) {
-	const hasUpper = sidebar => sidebar.classList.contains('sidebar--upper')
+	const getWrapper = node => {
+		const wrapper = node.closest('.sidebars__left') || node.closest('.sidebars__right')
+		return wrapper
+	}
+
+	const getHiddenClass = wrapper => {
+		const className = wrapper.classList.contains('sidebars__left')
+			? 'sidebars__left'
+			: 'sidebars__right'
+		return `${className}--hidden`
+	}
+
 	allSidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
-		const leftIsClosest = btn.closest('.sidebars__left')
 		btn.addEventListener('click', () => {
-			const sidebarClass = leftIsClosest ? 'sidebars__left' : 'sidebars__right'
-			const hiddenClass = `${sidebarClass}--hidden`
-			const sidebarsWrapper = document.querySelector(`.${sidebarClass}`)
+			const sidebarsWrapper = getWrapper(btn)
+			const hiddenClass = getHiddenClass(sidebarsWrapper)
 			const sidebars = sidebarsWrapper.querySelectorAll('.sidebar')
 
-			const sidebarsAreHidden = sidebarsWrapper.classList.contains(hiddenClass)
-			const removeHiddenClass = () => sidebarsWrapper.classList.remove(hiddenClass)
-			const addHiddenClass = () => sidebarsWrapper.classList.add(hiddenClass)
-
-			const oldUpper = [].find.call(sidebars, hasUpper)
+			const oldUpper = sidebarsWrapper.querySelector('.sidebar--upper')
 			const newUpper = sidebar
 			newUpper.classList.add('sidebar--upper')
 			document.body.classList.add('sidebar-open')
-			if (sidebarsAreHidden && !oldUpper) {
-				removeHiddenClass()
+
+			if (sidebarsWrapper.classList.contains(hiddenClass)) {
+				sidebarsWrapper.classList.remove(hiddenClass)
 				sidebars.forEach(sidebar => {
 					if (sidebar !== newUpper) {
 						sidebar.classList.add('sidebar--lower')
 					}
 				})
-			} else if (sidebarsAreHidden && newUpper === oldUpper) {
-				removeHiddenClass()
-			} else if (newUpper !== oldUpper) {
+			} else if (oldUpper && oldUpper !== newUpper) {
 				oldUpper.classList.add('sidebar--lower')
 				oldUpper.classList.remove('sidebar--upper')
 				newUpper.classList.remove('sidebar--lower')
-
-				if (sidebarsAreHidden) {
-					removeHiddenClass()
-				}
 			} else {
-				addHiddenClass()
 				document.body.classList.remove('sidebar-open')
+				sidebarsWrapper.classList.add(hiddenClass)
+			}
+		})
+		sidebar.addEventListener('transitionend', () => {
+			const sidebarsWrapper = getWrapper(btn)
+			const hiddenClass = getHiddenClass(sidebarsWrapper)
+			if (sidebarsWrapper.classList.contains(hiddenClass)) {
+				sidebar.classList.remove('sidebar--upper', 'sidebar--lower')
 			}
 		})
 	})
@@ -365,7 +372,6 @@ if (assemblageParts.length) {
 	})
 }
 
-//TODO Move to one block (conflicts)
 const disableFixedCircles = circle => circle.classList.remove('conflict-circle--fixed')
 const fixCircles = circle => circle.classList.add('conflict-circle--fixed')
 const disableCirclesAsPrevious = circle => {
@@ -819,15 +825,23 @@ if (menuBtn) {
 const productPhotos = document.querySelector('.product__photos')
 if (productPhotos) {
 	const slides = productPhotos.querySelectorAll('.swiper-slide')
-	slides.forEach(slide => {
+	const slidesCount = slides.length
+
+	const getSlideClone = idx => {
+		const imgClone = slides[idx].cloneNode()
+		imgClone.removeAttribute('role')
+		imgClone.removeAttribute('style')
+		imgClone.removeAttribute('aria-label')
+		imgClone.removeAttribute('class')
+		return imgClone
+	}
+
+	slides.forEach((slide, i) => {
 		slide.addEventListener('click', () => {
 			if (slide.dataset.modalSlide) {
-				const imgClone = slide.cloneNode(true)
+				const imgClone = getSlideClone(i)
 				imgClone.classList = 'product__image'
 				imgClone.dataset.modalSlide = slide.dataset.modalSlide
-				imgClone.removeAttribute('role')
-				imgClone.removeAttribute('style')
-				imgClone.removeAttribute('aria-label')
 				slide.removeAttribute('data-modal-slide')
 
 				const prevModalNum = productPhotos.querySelector('.product__image').dataset
@@ -845,17 +859,27 @@ if (productPhotos) {
 	})
 
 	const productModal = document.querySelector('.product-modal')
+	const closeModalButton = productModal.querySelector('.product-modal__close')
+	const imageWrapper = productModal.querySelector('.product-modal__img')
+
+	const openModal = () => {
+		productModal.classList.add('product-modal--visible')
+	}
+	const closeModal = () => {
+		productModal.classList.remove('product-modal--visible')
+	}
+
+	const closeTarget = [productModal, imageWrapper, closeModalButton]
+	productModal.addEventListener('click', e => {
+		if (closeTarget.some(target => target === e.target)) {
+			closeModal()
+		}
+	})
+
 	const prevBtn = productModal.querySelector('.product-modal__prev')
 	const nextBtn = productModal.querySelector('.product-modal__next')
 	prevBtn.addEventListener('click', () => plusSlides(-1))
 	nextBtn.addEventListener('click', () => plusSlides(1))
-
-	const openModal = () => {
-		productModal.style.display = 'flex'
-	}
-	const closeModal = () => {
-		productModal.style.display = 'none'
-	}
 
 	let slideIndex = 1
 	const plusSlides = n => {
@@ -865,33 +889,22 @@ if (productPhotos) {
 		showSlides((slideIndex = n))
 	}
 
-	productModal.addEventListener('click', e => {
-		const targetClassList = e.target.classList
-		if (
-			targetClassList.contains('product-modal') ||
-			targetClassList.contains('product-modal__close')
-		) {
-			closeModal()
-		}
-	})
-
 	const productPhotosMain = productPhotos.firstElementChild
 	productPhotosMain.addEventListener('click', () => {
 		openModal()
-		currentSlide(+productPhotosMain.firstElementChild.dataset.modalSlide)
+		currentSlide(productPhotosMain.firstElementChild.dataset.modalSlide - 1)
 	})
 
 	function showSlides(n) {
-		const imgs = document.querySelectorAll('.product-modal__img')
-		if (n > imgs.length) {
-			slideIndex = 1
-		} else if (n < 1) {
-			slideIndex = imgs.length
+		const wrapper = document.querySelector('.product-modal__img')
+		if (n > slidesCount - 1) {
+			slideIndex = 0
+		} else if (n < 0) {
+			slideIndex = slidesCount - 1
 		}
-		imgs.forEach(img => {
-			img.style.display = 'none'
-		})
-		imgs[slideIndex - 1].style.display = 'flex'
+		wrapper.innerHTML = ''
+		const slideClone = getSlideClone(slideIndex)
+		wrapper.appendChild(slideClone)
 	}
 }
 
@@ -954,7 +967,7 @@ if (mobileSidebarButtons) {
 	})
 }
 
-const cancelButtons = document.querySelectorAll('.sidebars__right .sidebar__close-btn')
+const cancelButtons = document.querySelectorAll('.sidebar__close-btn')
 cancelButtons.forEach(btn => {
 	btn.addEventListener('click', () => {
 		const rightSidebars = document.querySelector('.sidebars__right')
@@ -973,8 +986,52 @@ function isMobileButtonsVisible() {
 	return bottom > 0
 }
 
+function getSidebarsAndWrapper(wrapperSelector) {
+	const wrapper = document.querySelector(wrapperSelector)
+	const sidebars = wrapper.querySelectorAll('.sidebar')
+	return [wrapper, sidebars]
+}
+
 function displayRightSidebars() {
-	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
+	const [rightSidebarsWrapper, rightSidebars] = getSidebarsAndWrapper('.sidebars__right')
+	const [leftSidebarsWrapper, leftSidebars] = getSidebarsAndWrapper('.sidebars__left')
+	if (window.innerWidth <= 549 && leftSidebars.length) {
+		const isRightSidebarsOpen = !rightSidebarsWrapper.classList.contains(
+			'sidebars__right--hidden'
+		)
+		leftSidebars.forEach(sidebar => {
+			sidebar.classList.remove('sidebar--upper', 'sidebar--lower')
+			if (isRightSidebarsOpen) {
+				sidebar.classList.add('sidebar--lower')
+			}
+			rightSidebarsWrapper.appendChild(sidebar)
+		})
+	} else if (window.innerWidth > 549 && !leftSidebars.length) {
+		rightSidebarsWrapper.classList.add('sidebars__right--hidden')
+		rightSidebars.forEach(sidebar => {
+			sidebar.classList.remove('sidebar--upper')
+			sidebar.classList.remove('sidebar--lower')
+			if (!sidebar.classList.contains('sidebar--assemblage')) {
+				leftSidebarsWrapper.appendChild(sidebar)
+			}
+		})
+	}
+
+	if (window.innerWidth > 768) {
+		const activeTab = document.querySelector('.product-tabs__item--active')
+		if (activeTab.dataset.tab === 'photos') {
+			const activeTabBody = document.querySelector(`#${activeTab.dataset.tab}`)
+			activeTab.classList.remove('product-tabs__item--active')
+			activeTabBody.classList.remove('product-tabs__block--active')
+
+			const newActiveTab = document.querySelector(`[data-tab="shops"]`)
+			const newActiveTabBody = document.querySelector(`#shops`)
+			newActiveTab.classList.add('product-tabs__item--active')
+			newActiveTabBody.classList.add('product-tabs__block--active')
+		}
+	}
+
+	const rightSidebarsButtons = rightSidebarsWrapper.querySelectorAll('.sidebar__btn')
 	if (+window.innerWidth <= 549 && rightSidebarsButtons && isMobileButtonsVisible()) {
 		rightSidebarsButtons.forEach(sidebar => {
 			sidebar.style.display = 'none'
@@ -989,7 +1046,7 @@ displayRightSidebars()
 
 window.addEventListener('scroll', displayRightSidebars)
 
-function reportWindowSize() {
+function onResize() {
 	displayRightSidebars()
 
 	const sectionSlider = document.querySelector('.section__slider')
@@ -1026,4 +1083,4 @@ function reportWindowSize() {
 	updateConflictsLines()
 }
 
-window.addEventListener('resize', reportWindowSize)
+window.addEventListener('resize', onResize)
