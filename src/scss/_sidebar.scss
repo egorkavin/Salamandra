@@ -86,14 +86,6 @@
 				top: 176px;
 			}
 
-			&--assemblage {
-				@media (max-width: 549px) {
-					.sidebar__close-btn {
-						display: inline;
-					}
-				}
-			}
-
 			&--filter {
 				display: none;
 				@media (max-width: 549px) {
@@ -214,6 +206,13 @@
 			&:not(:last-of-type) {
 				margin-bottom: 4px;
 			}
+		}
+	}
+
+	&__close-btn {
+		display: none;
+		@media (max-width: 549px) {
+          display: inline;
 		}
 	}
 

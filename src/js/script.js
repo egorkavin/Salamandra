@@ -6,44 +6,51 @@
 //Sidebar
 const allSidebars = document.querySelectorAll('.sidebar')
 if (allSidebars.length) {
-	const hasUpper = sidebar => sidebar.classList.contains('sidebar--upper')
+	const getWrapper = node => {
+		const wrapper = node.closest('.sidebars__left') || node.closest('.sidebars__right')
+		return wrapper
+	}
+
+	const getHiddenClass = wrapper => {
+		const className = wrapper.classList.contains('sidebars__left')
+			? 'sidebars__left'
+			: 'sidebars__right'
+		return `${className}--hidden`
+	}
+
 	allSidebars.forEach(sidebar => {
 		const btn = sidebar.querySelector('.sidebar__btn')
-		const leftIsClosest = btn.closest('.sidebars__left')
 		btn.addEventListener('click', () => {
-			const sidebarClass = leftIsClosest ? 'sidebars__left' : 'sidebars__right'
-			const hiddenClass = `${sidebarClass}--hidden`
-			const sidebarsWrapper = document.querySelector(`.${sidebarClass}`)
+			const sidebarsWrapper = getWrapper(btn)
+			const hiddenClass = getHiddenClass(sidebarsWrapper)
 			const sidebars = sidebarsWrapper.querySelectorAll('.sidebar')
 
-			const sidebarsAreHidden = sidebarsWrapper.classList.contains(hiddenClass)
-			const removeHiddenClass = () => sidebarsWrapper.classList.remove(hiddenClass)
-			const addHiddenClass = () => sidebarsWrapper.classList.add(hiddenClass)
-
-			const oldUpper = [].find.call(sidebars, hasUpper)
+			const oldUpper = sidebarsWrapper.querySelector('.sidebar--upper')
 			const newUpper = sidebar
 			newUpper.classList.add('sidebar--upper')
 			document.body.classList.add('sidebar-open')
-			if (sidebarsAreHidden && !oldUpper) {
-				removeHiddenClass()
+
+			if (sidebarsWrapper.classList.contains(hiddenClass)) {
+				sidebarsWrapper.classList.remove(hiddenClass)
 				sidebars.forEach(sidebar => {
 					if (sidebar !== newUpper) {
 						sidebar.classList.add('sidebar--lower')
 					}
 				})
-			} else if (sidebarsAreHidden && newUpper === oldUpper) {
-				removeHiddenClass()
-			} else if (newUpper !== oldUpper) {
+			} else if (oldUpper && oldUpper !== newUpper) {
 				oldUpper.classList.add('sidebar--lower')
 				oldUpper.classList.remove('sidebar--upper')
 				newUpper.classList.remove('sidebar--lower')
-
-				if (sidebarsAreHidden) {
-					removeHiddenClass()
-				}
 			} else {
-				addHiddenClass()
 				document.body.classList.remove('sidebar-open')
+				sidebarsWrapper.classList.add(hiddenClass)
+			}
+		})
+		sidebar.addEventListener('transitionend', () => {
+			const sidebarsWrapper = getWrapper(btn)
+			const hiddenClass = getHiddenClass(sidebarsWrapper)
+			if (sidebarsWrapper.classList.contains(hiddenClass)) {
+				sidebar.classList.remove('sidebar--upper', 'sidebar--lower')
 			}
 		})
 	})
@@ -954,7 +961,7 @@ if (mobileSidebarButtons) {
 	})
 }
 
-const cancelButtons = document.querySelectorAll('.sidebars__right .sidebar__close-btn')
+const cancelButtons = document.querySelectorAll('.sidebar__close-btn')
 cancelButtons.forEach(btn => {
 	btn.addEventListener('click', () => {
 		const rightSidebars = document.querySelector('.sidebars__right')
@@ -973,8 +980,38 @@ function isMobileButtonsVisible() {
 	return bottom > 0
 }
 
+function getSidebarsAndWrapper(wrapperSelector) {
+	const wrapper = document.querySelector(wrapperSelector)
+	const sidebars = wrapper.querySelectorAll('.sidebar')
+	return [wrapper, sidebars]
+}
+
 function displayRightSidebars() {
-	const rightSidebarsButtons = document.querySelectorAll('.sidebars__right .sidebar__btn')
+	const [rightSidebarsWrapper, rightSidebars] = getSidebarsAndWrapper('.sidebars__right')
+	const [leftSidebarsWrapper, leftSidebars] = getSidebarsAndWrapper('.sidebars__left')
+	if (window.innerWidth <= 549 && leftSidebars.length) {
+		const isRightSidebarsOpen = !rightSidebarsWrapper.classList.contains(
+			'sidebars__right--hidden'
+		)
+		leftSidebars.forEach(sidebar => {
+			sidebar.classList.remove('sidebar--upper', 'sidebar--lower')
+			if (isRightSidebarsOpen) {
+				sidebar.classList.add('sidebar--lower')
+			}
+			rightSidebarsWrapper.appendChild(sidebar)
+		})
+	} else if (window.innerWidth > 549 && !leftSidebars.length) {
+		rightSidebarsWrapper.classList.add('sidebars__right--hidden')
+		rightSidebars.forEach(sidebar => {
+			sidebar.classList.remove('sidebar--upper')
+			sidebar.classList.remove('sidebar--lower')
+			if (!sidebar.classList.contains('sidebar--assemblage')) {
+				leftSidebarsWrapper.appendChild(sidebar)
+			}
+		})
+	}
+
+	const rightSidebarsButtons = rightSidebarsWrapper.querySelectorAll('.sidebar__btn')
 	if (+window.innerWidth <= 549 && rightSidebarsButtons && isMobileButtonsVisible()) {
 		rightSidebarsButtons.forEach(sidebar => {
 			sidebar.style.display = 'none'
@@ -989,7 +1026,7 @@ displayRightSidebars()
 
 window.addEventListener('scroll', displayRightSidebars)
 
-function reportWindowSize() {
+function onResize() {
 	displayRightSidebars()
 
 	const sectionSlider = document.querySelector('.section__slider')
@@ -1026,4 +1063,4 @@ function reportWindowSize() {
 	updateConflictsLines()
 }
 
-window.addEventListener('resize', reportWindowSize)
+window.addEventListener('resize', onResize)

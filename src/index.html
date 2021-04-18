@@ -15,8 +15,13 @@
 <body>
     @@include("_header.html")
     <div class="sidebars">
-        @@include("_filters.html")
-        @@include("_assemblage.html")
+        <div class="sidebars__left sidebars__left--hidden">
+            @@include("_filterSidebar.html")
+            @@include("_navSidebar.html")
+        </div>
+        <div class="sidebars__right sidebars__right--hidden">
+            @@include("_assemblageSidebar.html")
+        </div>
     </div>
     <div class="container">
         <main class="main">
