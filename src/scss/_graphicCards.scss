@@ -13,7 +13,7 @@
 }
 
 .product {
-	height: 350px; //TODO
+	height: 350px;
 	max-width: 465px;
 
 	&__wrapper {
@@ -107,7 +107,6 @@
 		justify-content: center;
 		position: relative;
 		background-color: #fff;
-		border-radius: 10px; //TODO костыль
 		mask-image: radial-gradient(ellipse 40% 40%, #1b1a1a, 80%, transparent);
 	}
 
